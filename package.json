@@ -7,12 +7,6 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
-    "lint-staged": {
-  "*.{js,ts,tsx,json,css,md}": [
-    "prettier --write",
-    "eslint --fix"
-  ]
-},
     "preview": "vite preview",
     "prepare": "husky"
   },
@@ -42,5 +36,11 @@
   },
   "overrides": {
     "vite": "npm:rolldown-vite@7.1.12"
+  },
+  "lint-staged": {
+    "*.{js,ts,tsx,json,css,md}": [
+      "prettier --write",
+      "eslint --fix"
+    ]
   }
 }
