@@ -1,12 +1,12 @@
 import { Button } from '@/components/ui/button/button';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import { changeLanguage } from '@/localization/changeLang';
 
 const Navbar = () => {
   const { t, i18n } = useTranslation();
   const toggleLanguage = () => {
-    const newLang = i18n.language === 'en' ? 'ar' : 'en';
-    i18n.changeLanguage(newLang);
+    changeLanguage(i18n.language === 'en' ? 'ar' : 'en');
   };
 
   const navigate = useNavigate();
