@@ -2,7 +2,6 @@ import { Button } from '@/components/ui/button/button';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { changeLanguage } from '@/localization/changeLang';
-import Logo from './Logo';
 
 const Navbar = () => {
   const { t, i18n } = useTranslation();
@@ -12,8 +11,8 @@ const Navbar = () => {
 
   const navigate = useNavigate();
   return (
-    <div className="flex    justify-between items-center px-21 py-10 ">
-      <Logo className="w-[168.44px] h-[40px]" />
+    <div className="flex min-h-20 bg-gray-50 justify-between items-center p-4 ">
+      <h1>Easy Order Shop</h1>
       <div className="flex gap-4 bg-white px-4 py-2 rounded-full w-50">
         <NavLink
           to="about"
@@ -26,7 +25,7 @@ const Navbar = () => {
         <NavLink
           to="help"
           className={({ isActive }) =>
-            `px-4 py-2 rounded-full font-integral hover:bg-gray-100 w-20 ${isActive ? 'bg-gray-200 text-red-600' : ''}`
+            `px-4 py-2 rounded-full hover:bg-gray-100 w-20 ${isActive ? 'bg-gray-200 text-red-600' : ''}`
           }
         >
           {t('help')}

@@ -1,11 +1,5 @@
-import LandingBg from '@/components/LandingBg';
-
 const HomePage = () => {
-  return (
-    <div className="  ">
-      <LandingBg className="" />
-    </div>
-  );
+  return <div>HomePage</div>;
 };
 
 export default HomePage;
