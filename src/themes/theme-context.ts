@@ -8,6 +8,6 @@ export type ThemeProviderState = {
 };
 
 export const ThemeProviderContext = createContext<ThemeProviderState>({
-  theme: 'system',
+  theme: 'light',
   setTheme: () => null,
 });
