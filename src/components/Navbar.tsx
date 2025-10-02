@@ -1,14 +1,14 @@
 import { Button } from '@/components/ui/button/button';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { changeLanguage } from '@/localization/changeLang';
 import Logo from './Logo';
+import { useLanguage } from '@/hooks/useLanguage';
+import { useThemes } from '@/hooks/useThemes';
 
 const Navbar = () => {
-  const { t, i18n } = useTranslation();
-  const toggleLanguage = () => {
-    changeLanguage(i18n.language === 'en' ? 'ar' : 'en');
-  };
+  const { t } = useTranslation();
+  const { toggleLanguage } = useLanguage();
+  const { toggleTheme } = useThemes();
 
   const navigate = useNavigate();
   return (
@@ -37,6 +37,7 @@ const Navbar = () => {
         <Button onClick={() => navigate('signup')}>Sign Up</Button>
       </div>
       <Button onClick={toggleLanguage}>change language</Button>
+      <Button onClick={toggleTheme}>change theme</Button>
     </div>
   );
 };
