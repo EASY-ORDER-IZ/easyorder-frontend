@@ -1,4 +1,4 @@
-import { useTheme } from '@/themes/useThemes';
+import { useTheme } from '@/themes/theme.provider';
 
 export const useThemes = () => {
   const { theme, setTheme } = useTheme();

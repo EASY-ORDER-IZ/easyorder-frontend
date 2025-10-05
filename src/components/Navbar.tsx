@@ -33,7 +33,9 @@ const Navbar = () => {
         </NavLink>
       </div>
       <div className="flex gap-4 px-4 py-2  w-50">
-        <Button onClick={() => navigate('signin')}>Sign In</Button>
+        <Button className="text-button-text" onClick={() => navigate('signin')}>
+          Sign In
+        </Button>
         <Button onClick={() => navigate('signup')}>Sign Up</Button>
       </div>
       <Button onClick={toggleLanguage}>change language</Button>
