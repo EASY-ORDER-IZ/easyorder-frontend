@@ -1,4 +1,4 @@
-import { useTheme } from '@/themes/useThemes';
+import { useTheme } from '@/themes/theme.provider';
 
 export const useThemes = () => {
   const { theme, setTheme } = useTheme();
@@ -6,5 +6,5 @@ export const useThemes = () => {
   const toggleTheme = () => {
     setTheme(theme === 'light' ? 'dark' : 'light');
   };
-  return { toggleTheme, theme, setTheme };
+  return { toggleTheme };
 };

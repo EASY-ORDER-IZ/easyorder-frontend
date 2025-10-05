@@ -3,7 +3,7 @@ import { NavLink, useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import Logo from './Logo';
 import { useLanguage } from '@/hooks/useLanguage';
-import { useThemes } from '@/hooks/useTheme';
+import { useThemes } from '../hooks/useThemes';
 
 const Navbar = () => {
   const { t } = useTranslation();
@@ -14,7 +14,7 @@ const Navbar = () => {
   return (
     <div className="flex items-center justify-between px-21 py-10">
       <Logo className="h-[40px] w-[168.44px]" />
-      <div className="bg-button-bg text-button-text flex w-50 gap-4 rounded-full px-4 py-2">
+      <div className="flex w-50 gap-4 rounded-full bg-white px-4 py-2">
         <NavLink
           to="about"
           className={({ isActive }) =>
@@ -30,14 +30,16 @@ const Navbar = () => {
           }
         >
           {t('help')}
-        </NavLink>{' '}
-        <Button onClick={toggleTheme}>change theme</Button>
+        </NavLink>
       </div>
       <div className="flex w-50 gap-4 px-4 py-2">
-        <Button onClick={() => navigate('signin')}>Sign In</Button>
+        <Button className="text-button-text" onClick={() => navigate('signin')}>
+          Sign In
+        </Button>
         <Button onClick={() => navigate('signup')}>Sign Up</Button>
       </div>
       <Button onClick={toggleLanguage}>change language</Button>
+      <Button onClick={toggleTheme}>change theme</Button>
     </div>
   );
 };
