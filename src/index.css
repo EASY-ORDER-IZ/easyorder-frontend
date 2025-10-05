@@ -16,6 +16,7 @@
   --font-satoshi: satoshi, 'sans-serif';
   --font-integral: integral, 'sans-serif';
 
+  --color-text: var(--text);
   --color-text-50: oklch(93.1% 0 0);
   --color-text-100: oklch(78.26% 0 0);
   --color-text-200: oklch(66.98% 0 0);
@@ -27,20 +28,29 @@
   --color-text-800: oklch(16.38% 0 0);
   --color-text-900: oklch(14.96% 0 0);
 
+  --color-filter-bg: oklch(94.8% 0 0);
   --color-button-text: var(--button-text);
   --color-button-bg: var(--button-bg);
+  --color-button-text-sec: var(--button-text-sec);
+  --color-button-bg-sec: var(--button-bg-sec);
   --color-component-bg: var(--component-bg);
   --color-discount-text: oklch(64.89% 0.237 26.97);
   --color-filter-bg: oklch(95.51% 0 0);
 }
 
 :root {
+  --text: oklch(0% 0 0);
   --button-text: oklch(100% 0 0);
   --button-bg: oklch(0% 0 0);
+  --button-text-sec: oklch(0% 0 0);
+  --button-bg-sec: oklch(100% 0 0);
   --component-bg: oklch(95.7% 0.003 345.21);
 }
 
 .dark {
+  --text: oklch(100% 0 0);
+  --button-text-sec: oklch(100% 0 0);
+  --button-bg-sec: oklch(0% 0 0);
   --button-text: oklch(0% 0 0);
   --button-bg: oklch(100% 0 0);
   --component-bg: oklch(0% 0 0);
