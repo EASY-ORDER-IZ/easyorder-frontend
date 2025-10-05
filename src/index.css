@@ -28,6 +28,7 @@
   --color-text-800: oklch(16.38% 0 0);
   --color-text-900: oklch(14.96% 0 0);
 
+  --color-filter-bg: oklch(94.8% 0 0);
   --color-button-text: var(--button-text);
   --color-button-bg: var(--button-bg);
   --color-button-text-sec: var(--button-text-sec);

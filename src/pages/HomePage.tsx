@@ -1,9 +1,9 @@
-import ProductBar from '@/components/ProductBar';
+import StylesFilter from '@/components/StylesFilter';
 
 const HomePage = () => {
   return (
-    <div className="flex flex-col">
-      <ProductBar title="NEW ARRIVALS" />
+    <div className="flex flex-col px-21 py-10">
+      <StylesFilter />
     </div>
   );
 };
