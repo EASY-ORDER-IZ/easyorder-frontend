@@ -28,6 +28,17 @@
   --color-text-800: oklch(16.38% 0 0);
   --color-text-900: oklch(14.96% 0 0);
 
+  --color-custom-green: oklch(0.7041 0.227 144.18);
+  --color-custom-red: oklch(0.6105 0.2487 29.07);
+  --color-custom-yellow: oklch(0.8896 0.1852 101.39);
+  --color-custom-orange: oklch(0.7076 0.1808 51.93);
+  --color-custom-aqua: oklch(0.7767 0.1414 220.61);
+  --color-custom-blue: oklch(0.4827 0.2742 264.27);
+  --color-custom-pruple: oklch(0.5186 0.2831 294.6);
+  --color-custom-pink: oklch(0.6413 0.2663 349.52);
+  --color-custom-black: oklch(0 0 0);
+  --color-cusom-white: oklch(1 0 0);
+
   --color-border: oklch(0% 0 0);
 
   --color-filter-bg: oklch(94.8% 0 0);
