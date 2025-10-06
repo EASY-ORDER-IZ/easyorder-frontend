@@ -18,7 +18,11 @@ export function CollapsibleComponent({ title, component }: Props) {
         <div className="flex w-full justify-between">
           <span className="align-middle text-[20px] leading-[100%] font-bold">{title}</span>
           <CollapsibleTrigger asChild>
-            {isOpen ? <ChevronUp /> : <ChevronDown />}
+            {isOpen ? (
+              <ChevronUp className="cursor-pointer" />
+            ) : (
+              <ChevronDown className="cursor-pointer" />
+            )}
           </CollapsibleTrigger>
         </div>
       </div>
