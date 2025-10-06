@@ -1,6 +1,8 @@
 import { ChevronRight, SlidersVertical } from 'lucide-react';
-import { clotherCate } from '../store/staticData';
+import { clotherCate } from '../../store/staticData';
 import CollapsibleComponent from './CollapsibleComponent';
+import SliderComponents from './SliderComponents';
+import ColorsComponent from './ColorsComponent';
 const FliterComponent = () => {
   return (
     <div className="border-border/10 hidden flex-col gap-6 rounded-[20px] border px-6 py-5 sm:flex sm:w-[240px] lg:w-[300px]">
@@ -19,8 +21,10 @@ const FliterComponent = () => {
           );
         })}
         <div className="h-0 w-full border opacity-10"></div>
-        <CollapsibleComponent title="Price" />
+        <CollapsibleComponent component={<SliderComponents />} title="Price" />
       </div>
+      <div className="h-0 w-full border opacity-10"></div>
+      <CollapsibleComponent title="Colors" component={<ColorsComponent />} />
     </div>
   );
 };

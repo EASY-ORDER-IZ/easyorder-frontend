@@ -1,4 +1,4 @@
-import StylesFilter from '@/components/StylesFilter';
+import StylesFilter from '@/components/ProductComponents/StylesFilter';
 
 const HomePage = () => {
   return (

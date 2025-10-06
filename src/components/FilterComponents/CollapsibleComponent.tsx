@@ -4,12 +4,12 @@ import * as React from 'react';
 import { ChevronDown, ChevronUp } from 'lucide-react';
 
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@/components/ui/collapsible';
-import SliderComponents from './SliderComponents';
 
 interface Props {
   title?: string;
+  component?: React.ReactNode;
 }
-export function CollapsibleComponent({ title }: Props) {
+export function CollapsibleComponent({ title, component }: Props) {
   const [isOpen, setIsOpen] = React.useState(false);
 
   return (
@@ -23,9 +23,7 @@ export function CollapsibleComponent({ title }: Props) {
         </div>
       </div>
 
-      <CollapsibleContent>
-        <SliderComponents />
-      </CollapsibleContent>
+      <CollapsibleContent>{component}</CollapsibleContent>
     </Collapsible>
   );
 }

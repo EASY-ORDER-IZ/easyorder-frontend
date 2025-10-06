@@ -1,5 +1,5 @@
 import { newClothes } from '@/store/staticData';
-import ProductCard from './ProductCard';
+import ProductCard from './ProductComponents/ProductCard';
 import { Button } from './ui/button/button';
 import { useState } from 'react';
 

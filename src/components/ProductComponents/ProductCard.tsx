@@ -1,5 +1,5 @@
 import StarsRating from './StarsRating';
-import { Card, CardHeader, CardTitle, CardDescription, CardContent } from './ui/card';
+import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '../ui/card';
 
 interface Product {
   name?: string;

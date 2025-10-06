@@ -1,7 +1,7 @@
+import casual from '../../assets/images/img2.png';
+import formal from '../../assets/images/img3.png';
+import { cate } from '../../store/staticData';
 import CategoryCard from './CategoryCard';
-import casual from '../assets/images/img2.png';
-import formal from '../assets/images/img3.png';
-import { cate } from '../store/staticData';
 
 const StylesFilter = () => {
   return (

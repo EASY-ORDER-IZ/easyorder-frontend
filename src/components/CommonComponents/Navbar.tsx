@@ -3,7 +3,7 @@ import { NavLink, useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import Logo from './Logo';
 import { useLanguage } from '@/hooks/useLanguage';
-import { useThemes } from '../hooks/useThemes';
+import { useThemes } from '../../hooks/useThemes';
 
 const Navbar = () => {
   const { t } = useTranslation();
