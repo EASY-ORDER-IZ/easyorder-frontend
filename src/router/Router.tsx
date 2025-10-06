@@ -33,7 +33,7 @@ const Router = createBrowserRouter([
         element: <div>Sign Up Page</div>,
       },
       {
-        path: 'cate',
+        path: 'cate/:title',
         element: <CategoryPage />,
       },
     ],
