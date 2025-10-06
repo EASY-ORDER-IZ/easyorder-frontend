@@ -1,5 +1,13 @@
+import BreadCrumbComponent from '@/components/BreadCrumbComponent';
+import { useParams } from 'react-router-dom';
+
 const CategoryPage = () => {
-  return <div>CategoryPage</div>;
+  const { title } = useParams();
+  return (
+    <div>
+      <BreadCrumbComponent cate={title} />
+    </div>
+  );
 };
 
 export default CategoryPage;
