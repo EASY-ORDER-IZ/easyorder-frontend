@@ -10,7 +10,7 @@ interface Props {
   component?: React.ReactNode;
 }
 export function CollapsibleComponent({ title, component }: Props) {
-  const [isOpen, setIsOpen] = React.useState(false);
+  const [isOpen, setIsOpen] = React.useState(true);
 
   return (
     <Collapsible open={isOpen} onOpenChange={setIsOpen} className="flex w-full flex-col gap-5">

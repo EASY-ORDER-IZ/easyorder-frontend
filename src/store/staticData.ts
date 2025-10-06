@@ -33,10 +33,10 @@ export const newClothes = [
   { id: 4, name: 'T-shirt', stars: 1.3, price: 33, discount: 9, img: img3 },
 ];
 export const cate = [
-  { id: 1, title: 'casual', img: casual },
-  { id: 2, title: 'formal', img: formal },
-  { id: 3, title: 'islamic', img: formal },
-  { id: 4, title: 'gym', img: casual },
+  { id: 1, title: 'Casual', img: casual },
+  { id: 2, title: 'Formal', img: formal },
+  { id: 3, title: 'Islamic', img: formal },
+  { id: 4, title: 'Gym', img: casual },
 ];
 export const clotherCate = [
   { id: 1, title: 'T-shirts' },
