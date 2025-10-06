@@ -1,6 +1,7 @@
 import CategoryCard from './CategoryCard';
 import casual from '../assets/images/img2.png';
 import formal from '../assets/images/img3.png';
+import { cate } from '../store/staticData';
 
 const StylesFilter = () => {
   return (
@@ -19,11 +20,9 @@ const StylesFilter = () => {
         </div>
       </div>
       <div className="flex flex-col gap-4 sm:hidden">
-        <CategoryCard title="Casual" img={casual} />
-        <CategoryCard title="Formal" img={formal} />
-
-        <CategoryCard title="Islamic" img={formal} />
-        <CategoryCard title="Gym" img={casual} />
+        {cate.map((c) => {
+          return <CategoryCard key={c.id} title={c.title} img={c.img} />;
+        })}
       </div>
     </div>
   );
