@@ -5,7 +5,7 @@ const CategoryPage = () => {
   const { title } = useParams();
 
   return (
-    <div className="px-20">
+    <div className="flex flex-col gap-5 px-20">
       <div className="h-6"></div>
       <div>
         <BreadCrumbComponent cate={title} />
