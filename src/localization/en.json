@@ -1,4 +1,27 @@
 {
   "About": "About",
-  "help": "Help"
+  "help": "Help",
+  "navbar": {
+    "shop": "Shop",
+    "onsale": "On Sale",
+    "newarrivals": "New Arrivals",
+    "brands": "Brands",
+    "placeholder": "Search for products..."
+  },
+  "signupBar": "Sign up and get 20% off your first order. Sign Up Now",
+  "heroSection": {
+    "title": {
+      "line1": "FIND CLOTHES",
+      "line2": "THAT MATCHES",
+      "line3": "YOUR STYLE"
+    },
+    "description": {
+      "line1": " Browse through our diverse range of meticulously crafted garments, designed",
+      "line2": "to complement your individuality and cater to your sense of style."
+    },
+    "button": "Shop Now",
+    "counter": "International Brands",
+    "counter2": "High-Quality Products",
+    "counter3": "Happy Customers"
+  }
 }
