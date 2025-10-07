@@ -15,8 +15,10 @@ const SliderComponents = () => {
       />
 
       <div className="flex origin-left justify-around">
-        {range.map((r) => {
-          return <span className="text-[14px] leading-[100%] font-medium">{`$${r}`}</span>;
+        {range.map((r, index) => {
+          return (
+            <span key={index} className="text-[14px] leading-[100%] font-medium">{`$${r}`}</span>
+          );
         })}
       </div>
     </div>

@@ -39,6 +39,8 @@
   --color-custom-black: oklch(0 0 0);
   --color-cusom-white: oklch(1 0 0);
 
+  --color-disabled-bg: oklch(0.9551 0 0);
+
   --color-border: oklch(0% 0 0);
 
   --color-filter-bg: oklch(94.8% 0 0);

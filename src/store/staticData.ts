@@ -57,3 +57,15 @@ export const colors = [
   '#FFFFFF',
   '#000000',
 ];
+export const size = [
+  { id: 1, title: 'XX-Small' },
+  { id: 2, title: 'X-Small' },
+  { id: 3, title: 'Small' },
+  { id: 5, title: 'medium' },
+
+  { id: 6, title: 'Large' },
+  { id: 7, title: 'X-Large' },
+  { id: 8, title: 'XX-Large' },
+  { id: 9, title: '3X-Large' },
+  { id: 10, title: '4X-Large' },
+];

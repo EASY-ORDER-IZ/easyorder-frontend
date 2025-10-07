@@ -14,17 +14,15 @@ export function CollapsibleComponent({ title, component }: Props) {
 
   return (
     <Collapsible open={isOpen} onOpenChange={setIsOpen} className="flex w-full flex-col gap-5">
-      <div>
-        <div className="flex w-full justify-between">
-          <span className="align-middle text-[20px] leading-[100%] font-bold">{title}</span>
-          <CollapsibleTrigger asChild>
-            {isOpen ? (
-              <ChevronUp className="cursor-pointer" />
-            ) : (
-              <ChevronDown className="cursor-pointer" />
-            )}
-          </CollapsibleTrigger>
-        </div>
+      <div className="flex w-full justify-between">
+        <span className="align-middle text-[20px] leading-[100%] font-bold">{title}</span>
+        <CollapsibleTrigger asChild>
+          {isOpen ? (
+            <ChevronUp className="cursor-pointer" />
+          ) : (
+            <ChevronDown className="cursor-pointer" />
+          )}
+        </CollapsibleTrigger>
       </div>
 
       <CollapsibleContent>{component}</CollapsibleContent>
