@@ -8,7 +8,7 @@ import Size from './Size';
 import { Button } from '../ui/button/button';
 const FliterComponent = () => {
   return (
-    <div className="border-border/10 hidden flex-col gap-6 rounded-[20px] border px-6 py-5 sm:flex sm:w-[270px] lg:w-[300px]">
+    <div className="border-border/10 hidden flex-col gap-6 rounded-[20px] border px-6 py-5 sm:flex sm:w-[240px] lg:w-[300px]">
       <div className="flex w-full justify-between">
         <span className="align-middle text-[20px] leading-[100%] font-bold">Filters</span>
         <SlidersVertical className="size-6 opacity-40" />

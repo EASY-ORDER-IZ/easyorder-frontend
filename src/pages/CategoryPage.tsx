@@ -10,11 +10,11 @@ const CategoryPage = () => {
       <div className="flex flex-col gap-5">
         <div className="h-0 w-full border opacity-10"></div>
         <div className="flex w-full gap-4">
-          <div className="flex flex-col gap-5">
+          <div className="hidden flex-col gap-5 lg:flex">
             <BreadCrumbComponent cate={title} />
             <FliterComponent />
           </div>
-          <div className="flex w-full pt-12">
+          <div className="flex w-full flex-col pt-12">
             <Sort min={1} max={10} total={100} title={title} />
           </div>
         </div>
