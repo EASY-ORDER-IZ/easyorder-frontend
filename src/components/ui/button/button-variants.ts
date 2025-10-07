@@ -13,6 +13,8 @@ export const buttonVariants = cva(
           'bg-button-bg-sec text-medium  text-[16px] border-1 border-black/10 text-button-text-sec rounded-[72px]',
         ghost: 'hover:bg-accent hover:text-accent-foreground dark:hover:bg-accent/50',
         link: 'text-primary underline-offset-4 hover:underline',
+        pagLinkActive: 'bg-button-bg/10  text-button-bg',
+        pagLinkInActive: 'text-button-bg/50  ',
       },
       size: {
         default: 'h-9 px-4 py-2 has-[>svg]:px-3',

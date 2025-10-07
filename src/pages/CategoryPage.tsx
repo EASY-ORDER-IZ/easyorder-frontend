@@ -2,6 +2,7 @@ import FliterComponent from '@/components/FilterComponents/Filter';
 import BreadCrumbComponent from '@/components/FilterComponents/BreadCrumb';
 import { useParams } from 'react-router-dom';
 import Sort from '@/components/FilterComponents/Sort';
+import ProductPagination from '@/components/ProductComponents/Pagination';
 const CategoryPage = () => {
   const { title } = useParams();
 
@@ -18,6 +19,7 @@ const CategoryPage = () => {
             <Sort min={1} max={10} total={100} title={title} />
           </div>
         </div>
+        <ProductPagination />
       </div>
     </>
   );

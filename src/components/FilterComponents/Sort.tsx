@@ -30,7 +30,9 @@ const Sort = ({ title, min, max, total }: Props) => {
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
               <div className="flex gap-1">
-                <span className="text-[15px] leading-[100%] font-normal">{position}</span>
+                <span className="cursor-pointer text-[15px] leading-[100%] font-normal">
+                  {position}
+                </span>
                 <ChevronDown className="h-5 w-5" />
               </div>
             </DropdownMenuTrigger>
