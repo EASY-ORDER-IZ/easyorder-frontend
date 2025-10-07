@@ -12,7 +12,7 @@ const Navbar = () => {
 
   const navigate = useNavigate();
   return (
-    <div className="flex items-center justify-between px-21 py-10">
+    <div className="flex items-center justify-between">
       <Logo className="h-[40px] w-[168.44px]" />
       <div className="flex w-50 gap-4 rounded-full bg-white px-4 py-2">
         <NavLink
