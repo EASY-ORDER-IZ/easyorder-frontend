@@ -1,8 +1,8 @@
 import { SlidersVertical } from 'lucide-react';
 import { clotherCate, cate } from '@/store/staticData';
-import CollapsibleComponent from './CollapsibleComponent';
-import SliderComponents from './SliderComponents';
-import ColorsComponent from './ColorsComponent';
+import CollapsibleComponent from './Collapsible';
+import SliderComponents from './Slider';
+import ColorsComponent from './Colors';
 import TypeFilter from './TypeFilter';
 import Size from './Size';
 import { Button } from '../ui/button/button';

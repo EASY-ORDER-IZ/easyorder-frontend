@@ -1,5 +1,5 @@
-import FliterComponent from '@/components/FilterComponents/FliterComponent';
-import BreadCrumbComponent from '@/components/FilterComponents/BreadCrumbComponent';
+import FliterComponent from '@/components/FilterComponents/Filter';
+import BreadCrumbComponent from '@/components/FilterComponents/BreadCrumb';
 import { useParams } from 'react-router-dom';
 const CategoryPage = () => {
   const { title } = useParams();
