@@ -11,6 +11,10 @@ import guccie_logo from './images/gucci-logo.svg';
 import star from './images/star.svg';
 import menu from './images/menu.svg';
 import black_search_icon from './images/black-search-icon.svg';
+import img_1 from './images/image_1.svg';
+import img_2 from './images/image_2.svg';
+import img_3 from './images/image_5.svg';
+import img_4 from './images/image_6.svg';
 export {
   cart,
   down_arrow,
@@ -25,4 +29,8 @@ export {
   star,
   menu,
   black_search_icon,
+  img_1,
+  img_2,
+  img_3,
+  img_4,
 };
