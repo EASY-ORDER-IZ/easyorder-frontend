@@ -6,7 +6,7 @@ import ProductPagination from '@/components/ProductComponents/Pagination';
 import { newClothes } from '@/store/staticData';
 import { useState } from 'react';
 import ProductCard from '@/components/ProductComponents/ProductCard';
-
+import { Separator } from '@/components/ui/separator';
 const CategoryPage = () => {
   const { title } = useParams();
   const [currentPage, setCurrentPage] = useState(1);
@@ -44,9 +44,9 @@ const CategoryPage = () => {
               <ProductCard key={idx} product={p} />
             ))}
           </div>
-          <div className="mt-6 h-0 w-full border opacity-10 md:mt-10"></div>
+          <Separator className="mt-6" />
 
-          <div className="mt-6 flex justify-center md:mt-10">
+          <div className="mt-6 flex justify-center md:mt-5">
             <ProductPagination
               totalItems={totalItems}
               itemsPerPage={itemsPerPage}

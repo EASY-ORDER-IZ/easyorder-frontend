@@ -1,5 +1,6 @@
 import StarsRating from './StarsRating';
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '../ui/card';
+import { Badge } from '@/components/ui/badge';
 
 interface Product {
   name?: string;
@@ -27,7 +28,7 @@ const ProductCard = ({ product }: { product: Product }) => {
         />
 
         <CardTitle>
-          <span className="text-text text-[15px] font-bold tracking-normal lg:text-[22px]">
+          <span className="text-text text-[15px] font-bold tracking-normal lg:text-[20px]">
             {product.name}
           </span>
         </CardTitle>
@@ -44,9 +45,7 @@ const ProductCard = ({ product }: { product: Product }) => {
               <span className="text-text-300 text-[15px] line-through lg:text-[22px]">
                 ${product.price}
               </span>
-              <div className="rounded-2xl bg-red-100">
-                <span className="px-3 py-1 text-xs text-red-500">-{product.discount}%</span>
-              </div>
+              <Badge variant="discount">{`-${product.discount}%`}</Badge>
             </>
           ) : (
             <span className="text-[22px] font-bold">${product.price}</span>

@@ -8,7 +8,8 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
 import React from 'react';
-import { ChevronDown, SlidersVertical } from 'lucide-react';
+import { ChevronDown } from 'lucide-react';
+import DialogComponent from './Dialog';
 interface Props {
   title?: string;
   min?: number;
@@ -50,9 +51,7 @@ const Sort = ({ title, min, max, total }: Props) => {
           </DropdownMenu>
         </div>
       </div>
-      <div className="bg-disabled-bg cursor-pointer rounded-[62px] px-3 py-3 sm:hidden">
-        <SlidersVertical className="h-5 w-5" />
-      </div>
+      <DialogComponent />
     </div>
   );
 };

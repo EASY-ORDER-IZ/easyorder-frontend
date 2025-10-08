@@ -7,7 +7,7 @@ export const newClothes = [
     id: 1,
     name: 'T-shirt with tape Details',
     stars: 5,
-    price: 22,
+    price: 222,
     discount: 4,
     img: img1,
   },
