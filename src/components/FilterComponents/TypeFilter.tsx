@@ -15,7 +15,7 @@ const TypeFilter = ({ type = [] }: Props) => {
     return navigate(`/cate/${title?.toLowerCase()}`);
   };
   return (
-    <div className="flex w-full flex-col gap-5">
+    <div className="flex w-full flex-col gap-4">
       {type.map((c, index) => {
         return (
           <div key={index} className="flex w-full justify-between">

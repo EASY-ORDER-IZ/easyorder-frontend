@@ -20,7 +20,7 @@ const Sort = ({ title, min, max, total }: Props) => {
   const [position, setPosition] = React.useState('Most Popular');
   return (
     <div className="flex w-full justify-between">
-      <span className="text-[27px] leading-[100%] font-bold capitalize">{title}</span>
+      <span className="text-[25px] leading-[100%] font-bold capitalize">{title}</span>
       <div className="flex gap-3">
         <span className="text-text/60 text-[15px] leading-[100%] font-normal">
           {`Showing ${min}-${max} of ${total}`}

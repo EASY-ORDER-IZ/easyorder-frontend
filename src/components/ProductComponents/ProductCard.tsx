@@ -18,12 +18,12 @@ const ProductCard = ({ product }: { product: Product }) => {
   const finalPrice = (product.price || 0) - dis;
 
   return (
-    <Card className="flex max-w-[450px] flex-col md:max-w-[320px] lg:max-w-[450px]">
+    <Card className="flex w-full max-w-[full] flex-col md:max-w-[360px] lg:max-w-[400px]">
       <CardHeader className="flex flex-col">
         <img
           src={product.img}
           alt={product.name}
-          className="mb-3 rounded-2xl object-cover sm:h-52 md:h-56 lg:h-55"
+          className="w-full rounded-2xl object-cover sm:h-44 md:h-50 lg:h-57"
         />
 
         <CardTitle>

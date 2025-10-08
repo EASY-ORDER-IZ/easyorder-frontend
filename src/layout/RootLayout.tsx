@@ -3,7 +3,7 @@ import Navbar from '../components/CommonComponents/Navbar';
 
 const RootLayout = () => {
   return (
-    <div className="px-5 py-5 lg:px-15">
+    <div className="px-5 pt-5 pb-15 lg:px-15">
       <Navbar />
       <Outlet />
     </div>

@@ -1,46 +1,125 @@
+import React, { useState } from 'react';
 import {
+  Pagination,
   PaginationContent,
-  PaginationEllipsis,
   PaginationItem,
   PaginationLink,
   PaginationNext,
   PaginationPrevious,
-  Pagination,
+  PaginationEllipsis,
 } from '@/components/ui/pagination';
-import { useState } from 'react';
+import { Button } from '../ui/button/button';
 
-const ProductPagination = () => {
-  const numbers = [1, 2, 3, 8, 9, 10];
+interface Props {
+  totalItems: number;
+  itemsPerPage: number;
+  currentPage: number;
+  setCurrentPage: (p: number) => void;
+}
 
-  const [activeIndex, setActiveIndex] = useState<number | null>(null);
-  const handleOnClick = (i: number) => {
-    setActiveIndex(i);
+const ProductPagination: React.FC<Props> = ({
+  totalItems,
+  itemsPerPage,
+  currentPage,
+  setCurrentPage,
+}) => {
+  const totalPages = Math.max(1, Math.ceil(totalItems / itemsPerPage));
+  const leftCount = 3;
+  const rightCount = 3;
+
+  const range = (start: number, end: number) => {
+    const arr: number[] = [];
+    for (let i = start; i <= end; i++) arr.push(i);
+    return arr;
   };
+
+  const handleEllipsisClick = () => {
+    if (currentPage <= leftCount) {
+      setCurrentPage(Math.max(leftCount + 1, totalPages - rightCount + 1));
+      setRightPages(
+        rightStart <= totalPages ? range(totalPages - rightStart + leftCount - 1, totalPages) : [],
+      );
+    } else {
+      setCurrentPage(leftCount);
+      setRightPages(rightStart <= totalPages ? range(rightStart, totalPages) : []);
+    }
+  };
+
+  const goPrev = () => setCurrentPage(Math.max(1, currentPage - 1));
+  const goNext = () => setCurrentPage(Math.min(totalPages, currentPage + 1));
+
+  const shouldShowAll = totalPages <= leftCount + rightCount;
+
+  const leftPages = range(1, Math.min(leftCount, totalPages));
+  const rightStart = Math.max(leftCount + 1, totalPages - rightCount + 1);
+  const [rightPages, setRightPages] = useState(
+    rightStart <= totalPages ? range(rightStart, totalPages) : [],
+  );
+
   return (
-    <Pagination>
-      <PaginationContent>
-        <PaginationItem>
-          <PaginationPrevious href="#" />
+    <Pagination className="relative">
+      <PaginationContent className="flex justify-center">
+        <PaginationItem className="absolute left-0">
+          <PaginationPrevious
+            href="#"
+            onClick={(e) => {
+              e.preventDefault();
+              goPrev();
+            }}
+          />
         </PaginationItem>
+
         <PaginationItem>
-          {numbers.map((c, index) => (
+          {leftPages.map((p) => (
             <PaginationLink
-              key={index}
-              onClick={() => handleOnClick(index)}
-              isActive={activeIndex === index}
+              key={p}
               href="#"
+              isActive={currentPage === p}
+              onClick={(e) => {
+                e.preventDefault();
+                setCurrentPage(p);
+              }}
             >
-              {c}
+              {p}
             </PaginationLink>
           ))}
+
+          {!shouldShowAll && (
+            <>
+              <Button
+                aria-label="jump-pages"
+                onClick={handleEllipsisClick}
+                className="mx-1 inline-flex items-center"
+                style={{ background: 'transparent', border: 'none', cursor: 'pointer' }}
+              >
+                <PaginationEllipsis />
+              </Button>
+
+              {rightPages.map((p) => (
+                <PaginationLink
+                  key={p}
+                  href="#"
+                  isActive={currentPage === p}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    setCurrentPage(p);
+                  }}
+                >
+                  {p}
+                </PaginationLink>
+              ))}
+            </>
+          )}
         </PaginationItem>
 
-        <PaginationItem>
-          <PaginationEllipsis />
-        </PaginationItem>
-
-        <PaginationItem>
-          <PaginationNext href="#" />
+        <PaginationItem className="absolute right-0">
+          <PaginationNext
+            href="#"
+            onClick={(e) => {
+              e.preventDefault();
+              goNext();
+            }}
+          />
         </PaginationItem>
       </PaginationContent>
     </Pagination>
