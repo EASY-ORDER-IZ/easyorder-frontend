@@ -45,8 +45,18 @@ const ProductPagination: React.FC<Props> = ({
     }
   };
 
-  const goPrev = () => setCurrentPage(Math.max(1, currentPage - 1));
-  const goNext = () => setCurrentPage(Math.min(totalPages, currentPage + 1));
+  const goPrev = () => {
+    setCurrentPage(Math.max(1, currentPage - 1));
+    if (currentPage <= leftCount)
+      setRightPages(rightStart <= totalPages ? range(rightStart, totalPages) : []);
+  };
+  const goNext = () => {
+    setCurrentPage(Math.min(totalPages, currentPage + 1));
+    if (currentPage >= leftCount)
+      setRightPages(
+        rightStart <= totalPages ? range(totalPages - rightStart + leftCount - 1, totalPages) : [],
+      );
+  };
 
   const shouldShowAll = totalPages <= leftCount + rightCount;
 

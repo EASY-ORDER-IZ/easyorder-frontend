@@ -141,6 +141,42 @@ export const newClothes = [
     img: img1,
   },
   { id: 14, name: 'T-shirt', stars: 1.3, price: 33, discount: 9, img: img3 },
+  {
+    id: 3,
+
+    name: 'CHECKERED SHIRT',
+    stars: 3,
+    price: 12,
+    discount: 0,
+    img: img1,
+  },
+  {
+    id: 3,
+
+    name: 'CHECKERED SHIRT',
+    stars: 3,
+    price: 12,
+    discount: 0,
+    img: img1,
+  },
+  {
+    id: 3,
+
+    name: 'CHECKERED SHIRT',
+    stars: 3,
+    price: 12,
+    discount: 0,
+    img: img1,
+  },
+  {
+    id: 3,
+
+    name: 'CHECKERED SHIRT',
+    stars: 3,
+    price: 12,
+    discount: 0,
+    img: img1,
+  },
 ];
 export const cate = [
   { id: 1, title: 'Casual', img: casual },
