@@ -1,14 +1,29 @@
 import { colors } from '@/store/staticData';
+import { Check } from 'lucide-react';
+import { useState } from 'react';
+import { Badge } from '../ui/badge';
 
 const ColorsComponent = () => {
+  const [selected, setSelected] = useState<string | null>(null);
+
+  const handleColor = (color: string) => {
+    setSelected((prev) => (prev === color ? null : color));
+  };
   return (
     <div className="flex w-full flex-wrap gap-3">
       {colors.map((c, index) => (
-        <div
+        <Badge
+          onClick={() => handleColor(c)}
           key={index}
-          className="h-[37px] w-[37px] rounded-full border-[2px] border-black/20"
+          variant="color"
           style={{ backgroundColor: c }}
-        ></div>
+        >
+          {selected === c && (
+            <div className="flex justify-center p-2">
+              <Check className="text-button-text h-4 w-4" />
+            </div>
+          )}
+        </Badge>
       ))}
     </div>
   );
