@@ -99,8 +99,7 @@ const ProductPagination: React.FC<Props> = ({
               <Button
                 aria-label="jump-pages"
                 onClick={handleEllipsisClick}
-                className="mx-1 inline-flex items-center"
-                style={{ background: 'transparent', border: 'none', cursor: 'pointer' }}
+                className="cursor-pointer items-center border-0 bg-transparent"
               >
                 <PaginationEllipsis />
               </Button>
