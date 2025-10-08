@@ -19,7 +19,7 @@ const ProductCard = ({ product }: { product: Product }) => {
   const finalPrice = (product.price || 0) - dis;
 
   return (
-    <Card className="flex max-w-[240px] flex-col sm:max-w-[200px] md:max-w-[250px] lg:max-w-[400px]">
+    <Card className="flex max-w-[250px] flex-col sm:max-w-[200px] md:max-w-[250px] lg:max-w-[400px]">
       <CardHeader className="flex flex-col">
         <img
           src={product.img}
