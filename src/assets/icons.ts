@@ -15,6 +15,7 @@ import img_1 from './images/image_1.svg';
 import img_2 from './images/image_2.svg';
 import img_3 from './images/image_5.svg';
 import img_4 from './images/image_6.svg';
+import filter from './images/filter.svg';
 export {
   cart,
   down_arrow,
@@ -33,4 +34,5 @@ export {
   img_2,
   img_3,
   img_4,
+  filter,
 };

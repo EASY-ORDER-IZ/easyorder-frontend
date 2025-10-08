@@ -1,11 +1,13 @@
-import React from 'react';
+import React from "react"
 import {
   Breadcrumb,
   BreadcrumbItem,
   BreadcrumbLink,
   BreadcrumbList,
+  BreadcrumbPage,
   BreadcrumbSeparator,
-} from '@/components/ui/breadcrumb';
+} from "@/components/ui/breadcrumb"
+import { href } from "react-router"
 
 const PagePath = () => {
   return (
@@ -24,11 +26,14 @@ const PagePath = () => {
         </BreadcrumbItem>
         <BreadcrumbSeparator />
         <BreadcrumbItem>
-          <BreadcrumbLink className="text-black">T-shirt</BreadcrumbLink>
+          <BreadcrumbLink className="text-black" href="/shop/men/t-shirt">
+            T-shirt
+          </BreadcrumbLink>
         </BreadcrumbItem>
       </BreadcrumbList>
     </Breadcrumb>
-  );
-};
+  )
+  
+}
 
-export default PagePath;
+export default PagePath

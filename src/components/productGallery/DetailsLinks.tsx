@@ -6,7 +6,7 @@ const DetailsLinks = () => {
   const [activeLink, setActiveLink] = useState<string>('rating&reviews');
 
   return (
-    <div className="p-20">
+    <div className="text-xl p-26">
       <div className="flex gap-0 border-b border-gray-300">
         <Button
           variant="ghost"
