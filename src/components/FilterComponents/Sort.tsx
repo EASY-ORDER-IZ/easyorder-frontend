@@ -8,7 +8,7 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
 import React from 'react';
-import { ChevronDown } from 'lucide-react';
+import { ChevronDown, SlidersVertical } from 'lucide-react';
 interface Props {
   title?: string;
   min?: number;
@@ -21,16 +21,18 @@ const Sort = ({ title, min, max, total }: Props) => {
   return (
     <div className="flex w-full justify-between">
       <span className="text-[25px] leading-[100%] font-bold capitalize">{title}</span>
-      <div className="flex gap-3">
+      <div className="mt-2 flex gap-3 sm:mt-1">
         <span className="text-text/60 text-[15px] leading-[100%] font-normal">
           {`Showing ${min}-${max} of ${total}`}
         </span>
-        <div className="flex gap-1">
-          <span className="text-text/60 text-[15px] leading-[100%] font-normal">Sort by:</span>
+        <div className="hidden gap-1 sm:flex">
+          <span className="text-text/60 text-[12px] leading-[100%] font-normal sm:text-[15px]">
+            Sort by:
+          </span>
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
               <div className="flex gap-1">
-                <span className="cursor-pointer text-[15px] leading-[100%] font-normal">
+                <span className="cursor-pointer leading-[100%] font-normal sm:text-[15px]">
                   {position}
                 </span>
                 <ChevronDown className="h-5 w-5" />
@@ -47,6 +49,9 @@ const Sort = ({ title, min, max, total }: Props) => {
             </DropdownMenuContent>
           </DropdownMenu>
         </div>
+      </div>
+      <div className="bg-disabled-bg cursor-pointer rounded-[62px] px-3 py-3 sm:hidden">
+        <SlidersVertical className="h-5 w-5" />
       </div>
     </div>
   );

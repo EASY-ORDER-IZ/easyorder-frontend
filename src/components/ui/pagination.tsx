@@ -66,7 +66,7 @@ function PaginationPrevious({ className, ...props }: React.ComponentProps<typeof
       {...props}
     >
       <ArrowLeft />
-      <span className="hidden text-[14px] leading-5 font-medium sm:block">Previous</span>
+      <span className="text-[14px] leading-5 font-medium sm:block">Previous</span>
     </PaginationLink>
   );
 }
@@ -82,7 +82,7 @@ function PaginationNext({ className, ...props }: React.ComponentProps<typeof Pag
       )}
       {...props}
     >
-      <span className="hidden text-[14px] leading-5 font-medium sm:block">Next</span>
+      <span className="text-[14px] leading-5 font-medium sm:block">Next</span>
       <ArrowRight />
     </PaginationLink>
   );

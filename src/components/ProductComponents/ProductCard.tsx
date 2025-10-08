@@ -18,16 +18,16 @@ const ProductCard = ({ product }: { product: Product }) => {
   const finalPrice = (product.price || 0) - dis;
 
   return (
-    <Card className="flex w-full max-w-[full] flex-col md:max-w-[360px] lg:max-w-[400px]">
+    <Card className="flex max-w-[240px] flex-col sm:max-w-[200px] md:max-w-[250px] lg:max-w-[400px]">
       <CardHeader className="flex flex-col">
         <img
           src={product.img}
           alt={product.name}
-          className="w-full rounded-2xl object-cover sm:h-44 md:h-50 lg:h-57"
+          className="h-55 w-full rounded-2xl object-cover md:h-60 lg:h-73"
         />
 
         <CardTitle>
-          <span className="text-text text-[18px] font-bold tracking-normal md:text-[17px]">
+          <span className="text-text text-[15px] font-bold tracking-normal lg:text-[22px]">
             {product.name}
           </span>
         </CardTitle>
@@ -40,8 +40,10 @@ const ProductCard = ({ product }: { product: Product }) => {
         <div className="mt-2 flex w-full items-center gap-3">
           {hasDiscount ? (
             <>
-              <span className="text-[22px] font-bold">${finalPrice.toFixed(2)}</span>
-              <span className="text-text-300 text-[22px] line-through">${product.price}</span>
+              <span className="text-[15px] font-bold lg:text-[22px]">${finalPrice.toFixed(2)}</span>
+              <span className="text-text-300 text-[15px] line-through lg:text-[22px]">
+                ${product.price}
+              </span>
               <div className="rounded-2xl bg-red-100">
                 <span className="px-3 py-1 text-xs text-red-500">-{product.discount}%</span>
               </div>
