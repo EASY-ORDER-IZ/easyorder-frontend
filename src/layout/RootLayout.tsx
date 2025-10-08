@@ -1,8 +1,9 @@
 import { Outlet } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import SignupBar from '../components/SignupBar';
+import MainPage from '../components/productGallery/MainPage';
 import PagePath from '../components/PagePath';
-import MainPage from '@/components/productGallery/MainPage';
+
 const RootLayout = () => {
   return (
     <div>

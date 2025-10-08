@@ -4,6 +4,7 @@ import RootLayout from '../layout/RootLayout';
 
 import Auth from '../services/Auth';
 import LoginPage from '@/pages/LoginPage';
+import CategoryPage from '@/pages/CategoryPage';
 
 const Router = createBrowserRouter([
   {
@@ -30,6 +31,10 @@ const Router = createBrowserRouter([
       {
         path: 'signup',
         element: <div>Sign Up Page</div>,
+      },
+      {
+        path: 'cate/:title',
+        element: <CategoryPage />,
       },
     ],
   },

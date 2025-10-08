@@ -16,6 +16,7 @@
   --font-satoshi: satoshi, 'sans-serif';
   --font-integral: integral, 'sans-serif';
 
+  --color-text: var(--text);
   --color-text-50: oklch(93.1% 0 0);
   --color-text-100: oklch(78.26% 0 0);
   --color-text-200: oklch(66.98% 0 0);
@@ -27,8 +28,29 @@
   --color-text-800: oklch(16.38% 0 0);
   --color-text-900: oklch(14.96% 0 0);
 
+  --color-bg-badge: oklch(0.6489 0.237 26.97 / 10.2%);
+  --color-text-badge: oklch(0.6489 0.237 26.97);
+
+  --color-custom-green: oklch(0.7041 0.227 144.18);
+  --color-custom-red: oklch(0.6105 0.2487 29.07);
+  --color-custom-yellow: oklch(0.8896 0.1852 101.39);
+  --color-custom-orange: oklch(0.7076 0.1808 51.93);
+  --color-custom-aqua: oklch(0.7767 0.1414 220.61);
+  --color-custom-blue: oklch(0.4827 0.2742 264.27);
+  --color-custom-pruple: oklch(0.5186 0.2831 294.6);
+  --color-custom-pink: oklch(0.6413 0.2663 349.52);
+  --color-custom-black: oklch(0 0 0);
+  --color-cusom-white: oklch(1 0 0);
+
+  --color-disabled-bg: oklch(0.9551 0 0);
+
+  --color-border: oklch(0% 0 0);
+
+  --color-filter-bg: oklch(94.8% 0 0);
   --color-button-text: var(--button-text);
   --color-button-bg: var(--button-bg);
+  --color-button-text-sec: var(--button-text-sec);
+  --color-button-bg-sec: var(--button-bg-sec);
   --color-component-bg: var(--component-bg);
   --color-footer-bg: var(--footer-bg);
   --color-footer-text: var(--footer-text);
@@ -40,6 +62,7 @@
 }
 
 :root {
+  --text: oklch(0% 0 0);
   --button-text: oklch(100% 0 0);
   --button-bg: oklch(0% 0 0);
   --footer-bg: oklch(0% 0 0);
@@ -47,10 +70,15 @@
   --footer-text: oklch(100% 0 0);
   --brand-text: oklch(0% 0 0 / 0.6);
   --footerbottom-bg: #f0f0f0;
+  --button-text-sec: oklch(0% 0 0);
+  --button-bg-sec: oklch(100% 0 0);
   --component-bg: oklch(95.7% 0.003 345.21);
 }
 
 .dark {
+  --text: oklch(100% 0 0);
+  --button-text-sec: oklch(100% 0 0);
+  --button-bg-sec: oklch(0% 0 0);
   --button-text: oklch(0% 0 0);
   --button-bg: oklch(100% 0 0);
   --component-bg: oklch(0% 0 0);
@@ -73,4 +101,15 @@
   * {
     @apply font-satoshi;
   }
+}
+@keyframes slide-up {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+.animate-slide-up {
+  animation: slide-up 0.3s ease-out forwards;
 }

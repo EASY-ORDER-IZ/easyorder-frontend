@@ -1,11 +1,9 @@
 import CommentSection from '@/components/customercomments/CommentSection';
-import Footer from '../components/footer/Footer';
-import LandingBg from '@/components/LandingBg';
+import Footer from '@/components/footer/Footer';
 
 const HomePage = () => {
   return (
     <div className=" flex flex-col gap-30 ">
-      <LandingBg className="" />
       <CommentSection />
       <Footer />
     </div>
