@@ -7,23 +7,23 @@ import git from '../../assets/images/logogithub.png';
 
 const FooterBrand = () => {
   return (
-    <div className="flex flex-col gap-[32px] items-start ">
-      <Logo className="w-[134px] h-[32px]" />
-      <p className="text-sm text-brand-text w-[248px] h-[91px]">
+    <div className="flex flex-col gap-9 items-start ">
+      <Logo className="w-33.5 h-8" />
+      <p className="text-sm text-brand-text w-62 h-23">
         We have clothes that suit your style and which you’re proud to wear. From women to men.
       </p>
       <div className="flex justify-between w-48 h-28">
         <Button variant="acc" size="icon">
-          <img src={Xlogo} alt="X logo" className="w-[11px] h-[9px]" />
+          <img src={Xlogo} alt="X logo" className="w-3 h-2" />
         </Button>
         <Button variant="acc" size="icon">
-          <img src={face} alt="Facebook logo" className="w-[28px] h-[28px]" />
+          <img src={face} alt="Facebook logo" className="w-7 h-7" />
         </Button>
         <Button variant="acc" size="icon">
-          <img src={insta} alt="Instagram logo" className="w-[13px] h-[13px]" />
+          <img src={insta} alt="Instagram logo" className="w-3 h-3" />
         </Button>
         <Button variant="acc" size="icon">
-          <img src={git} alt="GitHub logo" className="w-[12px] h-[12px]" />
+          <img src={git} alt="GitHub logo" className="w-3 h-3" />
         </Button>
       </div>
     </div>

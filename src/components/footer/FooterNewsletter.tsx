@@ -10,11 +10,11 @@ interface FooterNewsletterProps {
 
 const FooterNewsletter = ({ email, setEmail, handleSubscribe }: FooterNewsletterProps) => {
   return (
-    <div className="bg-footer-bg text-footer-text rounded-[20px] lg:w-[1112px] sm:w-[326px] px-4 py-[34px] lg:px-[64px] lg:py-[36px] sm:h-[255px] lg:h-[180px] flex flex-col lg:flex-row sm:gap-4 lg:gap-0 items-center justify-between">
-      <h1 className="font-integral font-bold text-center lg:text-left text-[32px] leading-[35px] w-[297px] h-[105px] lg:text-[35px] lg:leading-[40px] lg:w-[551px] lg:h-[94px]">
+    <div className="bg-footer-bg text-footer-text rounded-[20px] lg:w-278 sm:w-81 px-4 py-8 lg:px-16 lg:py-9 sm:h-64 lg:h-45 flex flex-col lg:flex-row sm:gap-4 lg:gap-0 items-center justify-between">
+      <h1 className="font-integral font-bold text-center lg:text-left text-[32px] leading-[36px] w-74 h-26 lg:text-9 lg:leading-10 lg:w-138 lg:h-23">
         STAY UP TO DATE ABOUT OUR LATEST OFFERS
       </h1>
-      <div className="flex flex-col  items-center gap-[14px] w-full lg:w-[349px] ">
+      <div className="flex flex-col  items-center gap-3 w-full lg:w-87 ">
         <div className="relative ">
           <img
             src={mailicon}
@@ -31,7 +31,7 @@ const FooterNewsletter = ({ email, setEmail, handleSubscribe }: FooterNewsletter
         <Button
           variant="secondary"
           onClick={handleSubscribe}
-          className="w-[279px] h-[18px] lg:w-[317px] lg:h-[40px] lg:px-[16px] lg:py-[12px] rounded-[62px] text-sm lg:text-base "
+          className="w-70 h-5 lg:w-79 lg:h-10 lg:px-4 lg:py-3 rounded-16 text-sm lg:text-base "
         >
           Subscribe to Newsletter
         </Button>

@@ -1,10 +1,11 @@
-import Footer from '../components/footer/Footer';
+import { Footer } from '../components/footer';
 import LandingBg from '@/components/LandingBg';
 
 const HomePage = () => {
   return (
-    <div className=" flex flex-col gap-30 ">
+    <div className="w-full flex flex-col gap-30 ">
       <LandingBg className="" />
+
       <Footer />
     </div>
   );
