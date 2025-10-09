@@ -3,14 +3,13 @@ import { useNavigate } from 'react-router';
 interface Props {
   title?: string;
   img?: string;
-  link?: string;
 }
 
-const CategoryCard = ({ title, img, link }: Props) => {
+const CategoryCard = ({ title, img }: Props) => {
   const navigate = useNavigate();
 
   const handleNavigate = () => {
-    navigate(`${link}`);
+    navigate(`/cate/${title?.toLowerCase()}`);
   };
 
   return (

@@ -1,10 +1,10 @@
 import { Footer } from '../components/footer';
-import LandingBg from '@/components/LandingBg';
-import StylesFilter from '@/components/StylesFilter';
+import LandingBg from '@/components/CommonComponents/LandingBg';
+import StylesFilter from '@/components/ProductComponents/StylesFilter';
 
 const HomePage = () => {
   return (
-    <div className="w-full flex flex-col gap-30 ">
+    <div className="flex w-full flex-col gap-30">
       <LandingBg className="" />
       <StylesFilter />
       <Footer />

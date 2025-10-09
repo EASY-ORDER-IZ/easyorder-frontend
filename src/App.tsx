@@ -5,7 +5,7 @@ import { ThemeProvider } from './themes/theme.provider';
 const App = () => {
   return (
     <ThemeProvider defaultTheme="light" storageKey="vite-ui-theme">
-      <RouterProvider router={Router} />;
+      <RouterProvider router={Router} />
     </ThemeProvider>
   );
 };
