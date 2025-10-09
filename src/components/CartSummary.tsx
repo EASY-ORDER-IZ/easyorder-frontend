@@ -21,7 +21,7 @@ export default function CartSummary({
   onPromoChange,
 }: Props) {
   return (
-    <Card className="w-90 lg:w-128 h-96 lg:h-114 rounded-16 border-border-cards p-4 lg:py-5 lg:px-6 flex flex-col gap-4 lg:gap-6">
+    <Card className="w-90 lg:w-128 h-96 lg:h-114 rounded-16 border-border-cards p-4 lg:py-5 lg:px-6 flex flex-col gap-5 lg:gap-6 shadow-none">
       <h2 className="font-extrabold text-5 lg:text-6">Order Summary</h2>
       <div className="flex flex-col gap-5">
         <div className="flex justify-between text-sm ">

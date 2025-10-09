@@ -14,7 +14,7 @@ type Props = {
 
 const CartCard = ({ item, onIncrement, onDecrement, onDelete }: Props) => {
   return (
-    <Card key={item.id} className="w-[330px] lg:w-[667px] flex flex-row border-0">
+    <Card key={item.id} className="w-[330px] lg:w-[667px] flex flex-row border-0 shadow-none ">
       <div>
         <img
           src={item.image}

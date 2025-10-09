@@ -63,6 +63,9 @@ const CartPage = () => {
     },
   ]);
 
+  // ===========================
+  // Quantity Controls
+  // ===========================
   const increment = (id: number) => {
     setCartItems((prev) =>
       prev.map((item) => (item.id === id ? { ...item, quantity: item.quantity + 1 } : item)),
@@ -76,17 +79,27 @@ const CartPage = () => {
       ),
     );
   };
+
   const removeItem = (id: number) => {
     setCartItems((prev) => prev.filter((item) => item.id !== id));
   };
 
+  // ===========================
+  // Cart Summary
+  // ===========================
   const { subtotal, discount, delivery, total } = useMemo(
     () => cartSummary(cartItems, promo),
     [cartItems, promo],
   );
 
+  // ===========================
+  // Render
+  // ===========================
   return (
-    <div className=" flex flex-col gap-8 w-full">
+    <div className="flex flex-col gap-8 w-full">
+      {/* ===========================
+          Breadcrumb + Header
+      =========================== */}
       <div className="px-4 lg:px-[100px] flex flex-col gap-4 w-full h-full">
         <Breadcrumb>
           <BreadcrumbList>
@@ -102,28 +115,34 @@ const CartPage = () => {
           </BreadcrumbList>
         </Breadcrumb>
 
-        <h1 className="font-integral font-bold  text-left text-[32px] lg:text-[40px] leading-[36px] lg:leading-[46px] w-[268px] lg:w-[654px] h-[72px] lg:h-[58px]">
+        <h1 className="font-integral font-bold text-left text-[32px] lg:text-[40px] leading-[36px] lg:leading-[46px] w-[268px] lg:w-[654px] h-[72px] lg:h-[58px]">
           Your cart
         </h1>
+
+        {/* ===========================
+            Cart Items + Summary
+        =========================== */}
         <div className="flex flex-col lg:flex-row gap-5">
+          {/* Cart Items */}
           <div className="w-[385px] lg:w-[715px] flex flex-col gap-6 border rounded-[20px] p-4 lg:px-[24px] lg:py-[20px] left-[16px] border-border-cards">
             {cartItems.map((item, index) => (
-              <div className="flex flex-col gap-4">
+              <div key={item.id} className="flex flex-col gap-4">
                 <CartCard
-                  key={item.id}
                   item={item}
                   onIncrement={increment}
                   onDecrement={decrement}
                   onDelete={removeItem}
                 />
                 {index !== cartItems.length - 1 && (
-                  <div className="w-full flex justify-center lg:justify-start ">
-                    <div className="w-[330px] lg:w-[667px] h-[1px] bg-[#0000001A] "></div>
+                  <div className="w-full flex justify-center lg:justify-start">
+                    <div className="w-[330px] lg:w-[667px] h-[1px] bg-[#0000001A]" />
                   </div>
                 )}
               </div>
             ))}
           </div>
+
+          {/* Summary */}
           <CartSummary
             subtotal={subtotal}
             discount={discount}
@@ -135,10 +154,14 @@ const CartPage = () => {
         </div>
       </div>
 
+      {/* ===========================
+          Footer
+      =========================== */}
       <div className="mt-30">
         <Footer />
       </div>
     </div>
   );
 };
+
 export default CartPage;
