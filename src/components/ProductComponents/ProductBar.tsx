@@ -41,8 +41,11 @@ const ProductBar = ({ title }: Props) => {
       </div>
 
       <div className="mt-4 flex w-full justify-center sm:w-auto">
-        <Button onClick={handleViewMore} variant="secondary" className="px-19 py-6">
+        <Button onClick={handleViewMore} variant="ghost" className="px-19 py-6">
           {hasMore ? 'View All' : 'View Less'}
+        </Button>
+        <Button size="sm" variant="secondary">
+          s
         </Button>
       </div>
     </div>
