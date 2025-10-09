@@ -12,7 +12,7 @@ const RootLayout = () => {
       <hr className="border-t border-gray-300 mx-22 " />
       <PagePath />
       <MainPage />
-      <Outlet />
+      {/* <Outlet /> */}
     </div>
   );
 };

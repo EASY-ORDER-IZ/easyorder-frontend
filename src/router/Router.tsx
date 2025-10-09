@@ -4,7 +4,7 @@ import RootLayout from '../layout/RootLayout';
 
 import Auth from '../services/Auth';
 import LoginPage from '@/pages/LoginPage';
-import CategoryPage from '@/pages/CategoryPage';
+// import CategoryPage from '@/pages/CategoryPage';
 
 const Router = createBrowserRouter([
   {
@@ -34,7 +34,7 @@ const Router = createBrowserRouter([
       },
       {
         path: 'cate/:title',
-        element: <CategoryPage />,
+        // element: <CategoryPage />,
       },
     ],
   },
