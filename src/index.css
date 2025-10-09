@@ -34,6 +34,11 @@
   --color-button-text-sec: var(--button-text-sec);
   --color-button-bg-sec: var(--button-bg-sec);
   --color-component-bg: var(--component-bg);
+  --color-footer-bg: var(--footer-bg);
+  --color-footer-text: var(--footer-text);
+  --color-input-bg: var(--input-bg);
+  --color-brand-text: var(--brand-text);
+  --color-footerbottom-bg: var(--footerbottom-bg);
   --color-discount-text: oklch(64.89% 0.237 26.97);
   --color-filter-bg: oklch(95.51% 0 0);
 }
@@ -42,6 +47,11 @@
   --text: oklch(0% 0 0);
   --button-text: oklch(100% 0 0);
   --button-bg: oklch(0% 0 0);
+  --footer-bg: oklch(0% 0 0);
+  --input-bg: oklch(100% 0 0);
+  --footer-text: oklch(100% 0 0);
+  --brand-text: oklch(0% 0 0 / 0.6);
+  --footerbottom-bg: #f0f0f0;
   --button-text-sec: oklch(0% 0 0);
   --button-bg-sec: oklch(100% 0 0);
   --component-bg: oklch(95.7% 0.003 345.21);
