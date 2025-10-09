@@ -1,7 +1,6 @@
 import React from 'react';
 import ProductCard from '../ProductComponents/ProductCard';
-import { productCardData } from './data';
-
+import {newClothes} from "../../store/staticData";
 const ProductBar = () => {
     return (
         <>
@@ -14,7 +13,7 @@ const ProductBar = () => {
             <div className="w-full">
                 {/* Mobile slider */}
                 <div className="flex gap-4 overflow-x-auto px-4 sm:px-0 sm:flex-wrap sm:justify-center scrollbar-hide">
-                    {productCardData.map((product, index) => (
+                    {newClothes.map((product, index) => (
                         <div key={index} className="flex-shrink-0 w-[295px]">
                             <ProductCard product={product} />
                         </div>
