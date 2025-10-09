@@ -45,8 +45,8 @@ html {
   --text-table-lg: 1rem; /* 16px (feature table) */
   --text-list: 1rem; /* 16px (feature lists) */
   --text-block-quote: 1rem; /* 16px when using ("") (body-text , product description)  */
-  --text-p: 1.375; /* 22px (body-text , product description)*/
-  --text-h4: 1.375; /* 22px (Small heading , product card title) */
+  --text-p: 1.375rem; /* 22px (body-text , product description)*/
+  --text-h4: 1.375rem; /* 22px (Small heading , product card title) */
   --text-h3: 1.75rem; /* 28px (Sub section Title)   */
   --text-inline-code: 2.25rem; /*  Developer-facing UI or API docs */
   --text-h2: 2.25rem; /* 36px (Section Title) */
