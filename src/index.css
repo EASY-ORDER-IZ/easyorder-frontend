@@ -12,10 +12,56 @@
 
 @custom-variant dark (&:is(.dark *));
 
+html {
+  font-size: 16px; /* for laptop the rem is 1 which is 16px */
+}
+
+@media (max-width: 1024px) {
+  /* for tablet the rem is 1 whch is 15px */
+  html {
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 768px) {
+  /* for mobile the rem is 1 which is 14px */
+  html {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  /* for small mobile the rem is 1 which is 13px */
+  html {
+    font-size: 13px;
+  }
+}
+
 @theme inline {
+  --text-table-sm: 0.9rem; /* 14px (feature table smaller size) */
+  --text-table-lg: 1rem; /* 16px (feature table) */
+  --text-list: 1rem; /* 16px (feature lists) */
+  --text-block-quote: 1rem; /* 16px when using ("") (body-text , product description)  */
+  --text-p: 1.375; /* 22px (body-text , product description)*/
+  --text-h4: 1.375; /* 22px (Small heading , product card title) */
+  --text-h3: 1.75rem; /* 28px (Sub section Title)   */
+  --text-inline-code: 2.25rem; /*  Developer-facing UI or API docs */
+  --text-h2: 2.25rem; /* 36px (Section Title) */
+  --text-h1: 3rem; /* 48px (Page Title) */
+
+  --radius-1: 0.188rem; /* 3px */
+  --radius-2: 0.313rem; /* 5px */
+  --radius-3: 0.375rem; /* 6px */
+  --radius-4: 0.5rem; /* 8px */
+  --radius-5: 1rem; /* 16px */
+  --radius-6: 1.25rem; /* 20px */
+  --radius-7: 2rem; /* 32px */
+  --radius-8: 3.75rem; /* 60px */
+  --radius-9: 3.875rem; /* 62px */
+  --radius-full: 9999px; /* full */
+
   --font-satoshi: satoshi, 'sans-serif';
   --font-integral: integral, 'sans-serif';
-
   --color-text: var(--text);
   --color-text-50: oklch(93.1% 0 0);
   --color-text-100: oklch(78.26% 0 0);
@@ -27,10 +73,8 @@
   --color-text-700: oklch(18.22% 0 0);
   --color-text-800: oklch(16.38% 0 0);
   --color-text-900: oklch(14.96% 0 0);
-
   --color-bg-badge: oklch(0.6489 0.237 26.97 / 10.2%);
   --color-text-badge: oklch(0.6489 0.237 26.97);
-
   --color-custom-green: oklch(0.7041 0.227 144.18);
   --color-custom-red: oklch(0.6105 0.2487 29.07);
   --color-custom-yellow: oklch(0.8896 0.1852 101.39);
@@ -41,11 +85,8 @@
   --color-custom-pink: oklch(0.6413 0.2663 349.52);
   --color-custom-black: oklch(0 0 0);
   --color-cusom-white: oklch(1 0 0);
-
   --color-disabled-bg: oklch(0.9551 0 0);
-
   --color-border: oklch(0% 0 0);
-
   --color-filter-bg: oklch(94.8% 0 0);
   --color-button-text: var(--button-text);
   --color-button-bg: var(--button-bg);

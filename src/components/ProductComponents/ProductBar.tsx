@@ -26,7 +26,7 @@ const ProductBar = ({ title }: Props) => {
   return (
     <div className="flex flex-col gap-8 text-center">
       <div>
-        <span className="font-integral text-[32px] font-bold md:text-[40px]">{title}</span>
+        <span className="font-integral text-h2 font-bold">{title}</span>
       </div>
 
       <div className="hidden gap-3 sm:grid sm:grid-cols-4">
