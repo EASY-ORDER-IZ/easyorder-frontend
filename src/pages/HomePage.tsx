@@ -1,9 +1,9 @@
-import LandingBg from '@/components/LandingBg';
+import StylesFilter from '@/components/StylesFilter';
 
 const HomePage = () => {
   return (
-    <div className="  ">
-      <LandingBg className="" />
+    <div className="flex flex-col px-21 py-10">
+      <StylesFilter />
     </div>
   );
 };
