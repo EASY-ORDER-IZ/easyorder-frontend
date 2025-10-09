@@ -12,16 +12,16 @@ const ProductDetails = () => {
 
   return (
     <div>
-      <h1 className="font-integral text-xl sm:text-3xl font-bold">One Life Graphic T-shirt</h1>
+      <h1 className="font-integral text-xl font-bold sm:text-3xl">One Life Graphic T-shirt</h1>
 
       <div>
         <span>star</span>
         <div className="p-3">
           <div className="flex gap-4">
-            <div className="flex gap-3 font-integral text-2xl font-bold">
+            <div className="font-integral flex gap-3 text-2xl font-bold">
               <span>$260</span> <del className="text-text-200">$300</del>
             </div>
-            <span className="bg-red-100 rounded-full py-1 px-2 text-red-500">-40%</span>
+            <span className="rounded-full bg-red-100 px-2 py-1 text-red-500">-40%</span>
           </div>
           <p className="text-text-300 py-3">
             This graphic t-shirt which is perfect for any occasion. Crafted from a soft and <br />{' '}
@@ -50,13 +50,13 @@ const ProductDetails = () => {
       <hr className="border-t border-gray-300 p-2" />
 
       <div>
-        <span className="text-text-200 font-satoshi p-3 ">Choose Size</span>
+        <span className="text-text-200 font-satoshi p-3">Choose Size</span>
         <div className="flex gap-3 p-2">
           {sizes.map((size) => (
             <Button
               key={size}
               onClick={() => setActiveButton(size)}
-              className={`py-2 px-4 rounded-full w-[86px] cursor-pointer ${
+              className={`min-w-[5.375rem] cursor-pointer rounded-full px-4 py-2 ${
                 activeButton === size ? 'bg-black text-white' : 'bg-gray-100 text-gray-700'
               }`}
             >
@@ -65,12 +65,12 @@ const ProductDetails = () => {
           ))}
         </div>
       </div>
-      <hr className="border-t border-gray-300 p-2 mt-2" />
+      <hr className="mt-2 border-t border-gray-300 p-2" />
 
-      <div className="flex gap-3 items-center">
-        <div className="flex items-center justify-center gap-3 my-4 bg-gray-100 w-[170px] p-2 rounded-full">
+      <div className="flex items-center gap-3">
+        <div className="m:w-[10.625rem] my-4 flex w-full items-center justify-center gap-3 rounded-full bg-gray-100 p-2">
           <Button
-            className="text-5xl cursor-pointer"
+            className="cursor-pointer text-5xl"
             onClick={() => {
               if (counter > 1) setCounter(counter - 1);
             }}
@@ -78,13 +78,13 @@ const ProductDetails = () => {
             -
           </Button>
           <span>{counter}</span>
-          <Button className="text-4xl cursor-pointer" onClick={() => setCounter(counter + 1)}>
+          <Button className="cursor-pointer text-4xl" onClick={() => setCounter(counter + 1)}>
             +
           </Button>
         </div>
 
         <Button
-          className="w-full md:w-[400px] py-6 px-6 rounded-full bg-button-bg text-button-text cursor-pointer"
+          className="bg-button-bg text-button-text w-full cursor-pointer rounded-full px-6 py-6 sm:w-[25rem]"
           onClick={() => console.log('Add to Cart')}
         >
           Add to Cart

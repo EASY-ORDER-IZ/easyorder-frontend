@@ -1,27 +1,24 @@
 import React from 'react';
 import ProductCard from '../ProductComponents/ProductCard';
-import {newClothes} from "../../store/staticData";
+import { newClothes } from '../../store/staticData';
+
 const ProductBar = () => {
-    return (
-        <>
-            <h1 className='text-2xl sm:text-3xl font-bold font-integral text-center mb-9'>
-                You might also like
-            </h1>
-
-
-            {/* Container */}
-            <div className="w-full">
-                {/* Mobile slider */}
-                <div className="flex gap-4 overflow-x-auto px-4 sm:px-0 sm:flex-wrap sm:justify-center scrollbar-hide">
-                    {newClothes.map((product, index) => (
-                        <div key={index} className="flex-shrink-0 w-[295px]">
-                            <ProductCard product={product} />
-                        </div>
-                    ))}
-                </div>
+  return (
+    <>
+      <h1 className="font-integral mb-9 text-center text-2xl font-bold sm:text-3xl">
+        You might also like
+      </h1>
+      <div className="w-full">
+        <div className="scrollbar-hide flex gap-6 overflow-x-auto sm:flex-wrap sm:justify-center sm:overflow-visible">
+          {newClothes.slice(0, 3).map((product, index) => (
+            <div key={index} className="w-[18.4375rem] flex-shrink-0">
+              <ProductCard product={product} />
             </div>
-        </>
-    );
+          ))}
+        </div>
+      </div>
+    </>
+  );
 };
 
 export default ProductBar;

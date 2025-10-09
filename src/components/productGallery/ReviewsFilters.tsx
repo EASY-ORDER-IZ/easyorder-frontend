@@ -19,26 +19,26 @@ const ReviewsFilters = ({ count, sortOption, setSortOption }: ReviewsFiltersProp
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div className="flex items-center justify-between px-6 md:px-22 w-full">
-      <div className="flex gap-2 items-center">
+    <div className="flex w-full items-center justify-between px-6 md:px-22">
+      <div className="flex items-center gap-2">
         <h1 className="text-2xl font-bold">All Reviews</h1>
         <span className="text-text-200">({count})</span>
       </div>
 
       <div className="flex items-center gap-4">
-        <img src={filter} alt="filter" className=" cursor-pointer p-2" />
+        <img src={filter} alt="filter" className="cursor-pointer p-2" />
 
         <Select
           value={sortOption}
           onValueChange={(value) => setSortOption(value as 'latest' | 'oldest' | 'top')}
           onOpenChange={(open) => setIsOpen(open)}
         >
-          <SelectTrigger className="flex items-center justify-between gap-2 px-4 py-2 border border-gray-300 rounded-full w-[140px] [&>svg]:hidden">
+          <SelectTrigger className="flex w-[140px] items-center justify-between gap-2 rounded-full border border-gray-300 px-4 py-2 [&>svg]:hidden">
             <SelectValue placeholder="Sort by" />
             <img
               src={down_arrow}
               alt="down_arrow"
-              className={`w-4 h-4 transition-transform duration-300 ${
+              className={`h-4 w-4 transition-transform duration-300 ${
                 isOpen ? 'rotate-180' : 'rotate-0'
               }`}
             />
@@ -52,7 +52,7 @@ const ReviewsFilters = ({ count, sortOption, setSortOption }: ReviewsFiltersProp
         </Select>
 
         <Button
-          className="bg-black text-white font-satoshi px-6 py-2 text-sm rounded-full hover:opacity-80 transition"
+          className="font-satoshi rounded-full bg-black px-6 py-2 text-sm text-white transition hover:opacity-80"
           onClick={() => console.log('Write a review')}
         >
           Write a Review

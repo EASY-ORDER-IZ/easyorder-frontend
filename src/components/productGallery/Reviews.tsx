@@ -12,13 +12,9 @@ const Reviews = () => {
     const sorted = [...reviews];
     switch (sortOption) {
       case 'latest':
-        return sorted.sort(
-          (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
-        );
+        return sorted.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
       case 'oldest':
-        return sorted.sort(
-          (a, b) => new Date(a.date).getTime() - new Date(b.date).getTime()
-        );
+        return sorted.sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
       case 'top':
         return sorted.sort((a, b) => b.rating - a.rating);
       default:
@@ -36,7 +32,7 @@ const Reviews = () => {
         setSortOption={setSortOption}
       />
 
-      <div className="flex flex-wrap gap-22 items-center justify-center mb-6">
+      <div className="mb-6 grid w-6xl w-full grid-cols-1 gap-12 md:grid-cols-2">
         {displayedReviews.map((review) => (
           <ReviewCard
             key={review.id}
@@ -51,7 +47,7 @@ const Reviews = () => {
       {reviews.length > 6 && (
         <Button
           onClick={() => setShowAll(!showAll)}
-          className="bg-white text-xl cursor-pointer hover:opacity-70 py-17"
+          className="cursor-pointer bg-white py-17 text-xl hover:opacity-70"
         >
           {showAll ? 'Load Less' : 'Load More Reviews'}
         </Button>
