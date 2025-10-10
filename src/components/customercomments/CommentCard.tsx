@@ -11,7 +11,7 @@ interface CommentCardProps {
 const CommentCard = ({ name, rating, review }: CommentCardProps) => {
   return (
     <div className="flex justify-center">
-      <Card className="w-[320px] sm:w-[380px]  border border-[#0000001A] rounded-3xl  h-[240px] duration-300">
+      <Card className="w-[358px] sm:w-[400px]  border border-[#0000001A] rounded-3xl  h-[240px] duration-300">
         <CardHeader>
           <div className="flex items-center gap-1.5">
             {Array.from({ length: rating }).map((_, i) => (
@@ -19,7 +19,7 @@ const CommentCard = ({ name, rating, review }: CommentCardProps) => {
                 key={i}
                 src={star}
                 alt="star"
-                className="w-[18px] h-[18px] lg:w-[22px] lg:h-[22px]"
+                className="w-[19px] h-[19px] lg:w-[22.5px] lg:h-[22.5px]"
               />
             ))}
           </div>
