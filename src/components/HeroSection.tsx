@@ -12,16 +12,16 @@ import {
   guccie_logo,
   star,
 } from '@/assets/icons';
-import LandingBg from './LandingBg';
+import LandingBg from './CommonComponents/LandingBg';
 
 const HeroSection: React.FC = () => {
   const { t } = useTranslation();
 
   return (
     <div className="w-full">
-      <div className="flex flex-col md:flex-row bg-component-bg relative min-h-screen">
+      <div className="bg-component-bg relative flex min-h-screen flex-col md:flex-row">
         <div className="flex-1 p-6 md:p-20">
-          <h1 className="font-integral text-4xl sm:text-6xl font-bold mb-6">
+          <h1 className="font-integral mb-6 text-4xl font-bold sm:text-6xl">
             {t('heroSection.title.line1')}
             <br />
             {t('heroSection.title.line2')}
@@ -29,17 +29,17 @@ const HeroSection: React.FC = () => {
             {t('heroSection.title.line3')}
           </h1>
 
-          <p className="text-text-200 py-3 mb-6">
+          <p className="text-text-200 mb-6 py-3">
             {t('heroSection.description.line1')}
             <br />
             {t('heroSection.description.line2')}
           </p>
 
-          <Button className="w-full md:w-[210px] py-6 px-6 rounded-full bg-button-bg text-button-text mb-6">
+          <Button className="bg-button-bg text-button-text mb-6 w-full rounded-full px-6 py-6 md:w-[210px]">
             <Link to="shop">{t('heroSection.button')}</Link>
           </Button>
 
-          <div className="flex flex-col  items-center md:flex-row gap-8 mb-6 font-satoshi">
+          <div className="font-satoshi mb-6 flex flex-col items-center gap-8 md:flex-row">
             <div className="flex gap-8">
               <div>
                 <Counter end={200} /> <br />
@@ -62,13 +62,13 @@ const HeroSection: React.FC = () => {
           <img
             src={star}
             alt=""
-            className="absolute w-[76px] h-[76px] top-4 right-12 sm:top-20 sm:right-20 sm:w-[104px] sm:h-[104px]"
+            className="absolute top-4 right-12 h-[76px] w-[76px] sm:top-20 sm:right-20 sm:h-[104px] sm:w-[104px]"
           />
           <LandingBg className="object-cover" />
           <img
             src={star}
             alt="Star"
-            className="absolute w-[44px] h-[44px] top-26 left-12 sm:top-67 sm:left-7 sm:w-[56px] sm:h-[56px]"
+            className="absolute top-26 left-12 h-[44px] w-[44px] sm:top-67 sm:left-7 sm:h-[56px] sm:w-[56px]"
           />
         </div>
       </div>
@@ -81,21 +81,21 @@ const HeroSection: React.FC = () => {
                 <img
                   src={versace_logo}
                   alt="Versace"
-                  className="w-[116.7px] h-[23.2px] sm:h-8 sm:w-auto mb-2"
+                  className="mb-2 h-[23.2px] w-[116.7px] sm:h-8 sm:w-auto"
                 />
               </div>
               <div className="flex flex-col items-center">
                 <img
                   src={zara_logo}
                   alt="Zara"
-                  className="w-[63.8px] h-[23.2px] sm:h-8 sm:w-auto mb-2"
+                  className="mb-2 h-[23.2px] w-[63.8px] sm:h-8 sm:w-auto"
                 />
               </div>
               <div className="flex flex-col items-center">
                 <img
                   src={guccie_logo}
                   alt="Gucci"
-                  className="w-[109.3px] h-[23.2px] sm:h-8 sm:w-auto mb-2"
+                  className="mb-2 h-[23.2px] w-[109.3px] sm:h-8 sm:w-auto"
                 />
               </div>
             </div>
@@ -105,21 +105,21 @@ const HeroSection: React.FC = () => {
                 <img
                   src={prada_logo}
                   alt="Prada"
-                  className="w-[127px] h-[23.2px] sm:h-8 sm:w-auto mb-2"
+                  className="mb-2 h-[23.2px] w-[127px] sm:h-8 sm:w-auto"
                 />
               </div>
               <div className="flex flex-col items-center">
                 <img
                   src={calvin_klein_logo}
                   alt="Calvin Klein"
-                  className="w-[134.8px] h-[23.2px] sm:h-8 sm:w-auto mb-2"
+                  className="mb-2 h-[23.2px] w-[134.8px] sm:h-8 sm:w-auto"
                 />
               </div>
             </div>
           </div>
         </div>
 
-        <div className="hidden md:flex items-center justify-around overflow-x-auto">
+        <div className="hidden items-center justify-around overflow-x-auto md:flex">
           <img src={versace_logo} alt="Versace" className="h-8 w-auto flex-shrink-0" />
           <img src={zara_logo} alt="Zara" className="h-8 w-auto flex-shrink-0" />
           <img src={guccie_logo} alt="Gucci" className="h-8 w-auto flex-shrink-0" />
