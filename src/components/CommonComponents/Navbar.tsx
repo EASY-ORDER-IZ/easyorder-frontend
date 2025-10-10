@@ -79,15 +79,16 @@ const Navbar: React.FC = () => {
           </div>
         </div>
       ) : (
-        <>
-          <div className="flex items-center justify-between gap-6">
-            <Logo className="h-10 w-42" />
-
+        <div className="flex w-310 items-center justify-between gap-10">
+          <Logo className="h-10 w-42" />
+          <div className="flex w-80 items-center gap-6">
             <div
-              className="flex cursor-pointer items-center gap-2 hover:underline"
+              className="flex w-14 cursor-pointer items-center gap-1 hover:underline"
               onClick={() => setOpenShop((s) => !s)}
             >
-              <NavLink to="/shop">{t('navbar.shop')}</NavLink>
+              <NavLink to="/shop" className="text-[16px]">
+                {t('navbar.shop')}
+              </NavLink>
               <img
                 src={down_arrow}
                 alt="arrow"
@@ -97,26 +98,27 @@ const Navbar: React.FC = () => {
               />
             </div>
 
-            <NavLink to="/onsale" className="hover:underline">
+            <NavLink to="/onsale" className="font-Satoshi w-14 text-[16px] hover:underline">
               {t('navbar.onsale')}
             </NavLink>
-            <NavLink to="/newarrivals" className="hover:underline">
+            <NavLink to="/newarrivals" className="font-Satoshi w-22 text-[16px] hover:underline">
               {t('navbar.newarrivals')}
             </NavLink>
-            <NavLink to="/brands" className="hover:underline">
+            <NavLink to="/brands" className="text-[16px] hover:underline">
               {t('navbar.brands')}
             </NavLink>
           </div>
 
+          <div className="flex w-140 items-center gap-4 rounded-full bg-gray-100 px-4 py-3">
+            <img src={search_icon} alt="search" className="h-6 w-6" />
+            <input
+              type="text"
+              className="flex-1 bg-transparent text-sm outline-none"
+              placeholder={t('navbar.placeholder') ?? ''}
+            />
+          </div>
+
           <div className="flex items-center gap-4">
-            <div className="flex w-147 items-center gap-4 rounded-full bg-gray-100 px-4 py-3">
-              <img src={search_icon} alt="search" className="h-6 w-6" />
-              <input
-                type="text"
-                className="flex-1 bg-transparent text-sm outline-none"
-                placeholder={t('navbar.placeholder') ?? ''}
-              />
-            </div>
             <NavLink to="/cart">
               <Button variant="ghost" size="icon" aria-label="Cart">
                 <img src={cart} alt="cart" className="h-6 w-6" />
@@ -128,7 +130,7 @@ const Navbar: React.FC = () => {
               </Button>
             </NavLink>
           </div>
-        </>
+        </div>
       )}
 
       {isMobile && mobileMenuOpen && (

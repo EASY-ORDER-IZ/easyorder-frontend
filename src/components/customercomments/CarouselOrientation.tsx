@@ -30,20 +30,20 @@ export function CarouselOrientation({ onReady }: CarouselOrientationProps) {
   );
 
   return (
-    <div className="w-full flex justify-center relative">
+    <div className="relative flex w-full justify-center">
       <Carousel
         opts={{
           align: 'center',
           loop: true,
         }}
         setApi={handleSetApi}
-        className="w-[100%] relative"
+        className="relative w-[100%]"
       >
         <CarouselContent className="-ml-2 md:-ml-4">
           {reviews.map((review) => (
             <CarouselItem
               key={review.id}
-              className="pl-2 md:pl-4 basis-[90%] sm:basis-[45%] md:basis-[28%]"
+              className="basis-[90%] pl-2 sm:basis-[45%] md:basis-[28%] md:pl-4"
             >
               <div className="w-full">
                 <CommentCard name={review.name} rating={review.rating} review={review.review} />
@@ -53,8 +53,8 @@ export function CarouselOrientation({ onReady }: CarouselOrientationProps) {
         </CarouselContent>
       </Carousel>
 
-      <div className="absolute inset-y-0 left-0 w-[70px] bg-gradient-to-r from-white/30 to-transparent backdrop-blur-[1.5px] pointer-events-none "></div>
-      <div className="absolute inset-y-0 right-0 w-[70px] bg-gradient-to-l from-white/30 to-transparent backdrop-blur-[1.5px] pointer-events-none sm:block hidden"></div>
+      <div className="pointer-events-none absolute inset-y-0 left-0 hidden w-[70px] bg-gradient-to-r from-white/30 to-transparent backdrop-blur-[1.5px] sm:block"></div>
+      <div className="pointer-events-none absolute inset-y-0 right-0 hidden w-[70px] bg-gradient-to-l from-white/30 to-transparent backdrop-blur-[1.5px] sm:block"></div>
     </div>
   );
 }
