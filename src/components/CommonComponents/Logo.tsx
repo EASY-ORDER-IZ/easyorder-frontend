@@ -1,5 +1,5 @@
 import type { HTMLAttributes } from 'react';
-import logo from '../assets/images/logo.png';
+import logo from '../../assets/images/logo.png';
 type PropsType = HTMLAttributes<HTMLDivElement>;
 
 const Logo = (props: PropsType) => {

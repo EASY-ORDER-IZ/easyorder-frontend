@@ -5,21 +5,27 @@ export const buttonVariants = cva(
   {
     variants: {
       variant: {
-        default: 'bg-primary text-primary-foreground hover:bg-primary/90 ',
-        destructive:
-          'bg-destructive text-white hover:bg-destructive/90 focus-visible:ring-destructive/20 dark:focus-visible:ring-destructive/40 dark:bg-destructive/60',
-        outline:
-          'border bg-background shadow-xs hover:bg-accent hover:text-accent-foreground dark:bg-input/30 dark:border-input dark:hover:bg-input/50 ',
-        secondary: 'bg-button-text text-button-bg hover:bg-secondary/80',
-        ghost: 'hover:bg-accent hover:text-accent-foreground dark:hover:bg-accent/50',
+        default: 'bg-button-bg  text-button-text cursor-pointer text-medium rounded-[72px]',
+
+        outline: ' text-text-main border border-text-main',
+        primary:
+          'bg-primary-main text-background-100 hover:bg-primary-100 hover:text-text-main disabled:bg-primary-50 disabled:text-text-200',
+        secondary:
+          'bg-secondary-normal text-background-100 hover:bg-secondary-light-hover hover:text-text-main disabled:bg-secondary-light disabled:text-text-200',
+        ghost:
+          'bg-button-bg-sec text-medium  text-[16px] border-1 border-black/10 text-button-text-sec rounded-[72px]',
         link: 'text-primary underline-offset-4 hover:underline',
         acc: 'rounded-full bg-white border border-[#00000033]',
+        pagLinkActive: 'bg-button-bg/10  text-button-bg',
+        pagLinkInActive: 'text-button-bg/50  ',
       },
       size: {
-        default: 'h-9 px-4 py-2 has-[>svg]:px-3',
-        sm: 'h-8 rounded-md gap-1.5 px-3 has-[>svg]:px-2.5',
+        default: 'h-9  px-4 py-2 has-[>svg]:px-3',
+        sm: 'w-button-sm  px-3xl py-md',
         lg: 'h-10 rounded-md px-6 has-[>svg]:px-4',
         icon: 'size-[28px]',
+        icon1: 'size-9',
+        apply: 'px-[54px] py-4',
       },
     },
     defaultVariants: {

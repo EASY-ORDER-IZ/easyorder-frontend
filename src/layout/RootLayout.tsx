@@ -1,10 +1,13 @@
 import { Outlet } from 'react-router-dom';
-import Navbar from '../components/Navbar';
-
+import Navbar from '../components/CommonComponents/Navbar';
+import SignupBar from '../components/SignupBar';
+import HeroSection from '@/components/HeroSection';
 const RootLayout = () => {
   return (
     <div>
+      <SignupBar />
       <Navbar />
+      <HeroSection />
       <Outlet />
     </div>
   );
