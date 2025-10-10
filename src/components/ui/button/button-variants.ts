@@ -18,6 +18,7 @@ export const buttonVariants = cva(
         acc: 'rounded-full bg-white border border-[#00000033]',
         pagLinkActive: 'bg-button-bg/10  text-button-bg',
         pagLinkInActive: 'text-button-bg/50  ',
+        newslatter: 'bg-background-100 text-text-900 rounded-9 ',
       },
       size: {
         default: 'h-9  px-4 py-2 has-[>svg]:px-3',
