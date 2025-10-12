@@ -18,16 +18,26 @@ const CommentSection = () => {
 
   return (
     <div>
-      <div className="flex flex-row items-end justify-between px-6 lg:px-30 py-10">
-        <h1 className="font-integral font-extrabold uppercase tracking-[1px] text-left text-[32px] lg:text-[48px] leading-[36px] lg:leading-[46px] w-[268px] lg:w-[654px] h-[72px] lg:h-[58px]">
+      <div className="flex flex-row items-end justify-between px-6 py-10 lg:px-30">
+        <h1 className="font-integral h-[72px] w-[268px] text-left text-[32px] leading-[36px] font-extrabold tracking-[1px] uppercase lg:h-[58px] lg:w-[654px] lg:text-[48px] lg:leading-[46px]">
           OUR HAPPY CUSTOMERS
         </h1>
         <div className="flex flex-row items-center gap-4">
-          <Button onClick={handlePrev} size="icon" className="w-[24px] h-[24px]">
-            <img src={leftarrow} alt="" className="w-[15px] h-[18px]" />
+          <Button
+            variant="acc"
+            onClick={handlePrev}
+            size="icon"
+            className="h-[24px] w-[24px] border-0"
+          >
+            <img src={leftarrow} alt="" className="h-[18px] w-[15px]" />
           </Button>
-          <Button onClick={handleNext} size="icon" className="w-[24px] h-[24px]">
-            <img src={rightarrow} alt="" className="w-[15px] h-[18px]" />
+          <Button
+            variant="acc"
+            onClick={handleNext}
+            size="icon"
+            className="h-[24px] w-[24px] border-0"
+          >
+            <img src={rightarrow} alt="" className="h-[18px] w-[15px]" />
           </Button>
         </div>
       </div>

@@ -4,6 +4,7 @@ import RootLayout from '../layout/RootLayout';
 import Auth from '../services/Auth';
 import LoginPage from '@/pages/LoginPage';
 import CartPage from '@/pages/CartPage';
+import CategoryPage from '@/pages/CategoryPage';
 
 const Router = createBrowserRouter([
   {
@@ -34,6 +35,10 @@ const Router = createBrowserRouter([
       {
         path: 'cart',
         element: <CartPage />,
+      },
+      {
+        path: 'cate/:title',
+        element: <CategoryPage />,
       },
     ],
   },

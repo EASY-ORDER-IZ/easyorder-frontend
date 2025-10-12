@@ -5,14 +5,16 @@ import googlepay from '../../assets/images/googlepay.png';
 import badge from '../../assets/images/badge.png';
 const FooterBottom = () => {
   return (
-    <div className="w-[1180px] h-[60px] pl-10 lg:pl-32 flex flex-col lg:flex-row justify-between items-start">
-      <p className="text-sm text-brand-text">Shop.co © 2000–2023. All Rights Reserved</p>
-      <div className="flex w-[281px] h-[30px] justify-between items-center">
-        <img src={visa} alt="Visa" className="h-[30px] w-[46px]" />
-        <img src={badge} alt="PayPal" className="h-[30px] w-[46px]" />
-        <img src={paypal} alt="Apple Pay" className="h-[30px] w-[46px]" />
-        <img src={applepay} alt="Google Pay" className="h-[30px] w-[46px]" />
-        <img src={googlepay} alt="Google Pay" className="h-[30px] w-[46px]" />
+    <div className="flex w-full justify-center">
+      <div className="flex h-15 w-89 flex-col items-center justify-between lg:w-310 lg:flex-row">
+        <p className="text-brand-text text-sm">Shop.co © 2000–2023. All Rights Reserved</p>
+        <div className="flex h-7.5 w-70 items-center gap-3">
+          <img src={visa} alt="Visa" className="h-7.6 w-11.5" />
+          <img src={badge} alt="PayPal" className="h-7.5 w-11.5" />
+          <img src={paypal} alt="Apple Pay" className="h-7.5 w-11.5" />
+          <img src={applepay} alt="Google Pay" className="h-7.5 w-11.5" />
+          <img src={googlepay} alt="Google Pay" className="h-7.5 w-11.5" />
+        </div>
       </div>
     </div>
   );

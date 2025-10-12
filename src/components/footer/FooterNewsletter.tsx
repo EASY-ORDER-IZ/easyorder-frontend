@@ -10,16 +10,16 @@ interface FooterNewsletterProps {
 
 const FooterNewsletter = ({ email, setEmail, handleSubscribe }: FooterNewsletterProps) => {
   return (
-    <div className="bg-footer-bg text-footer-text rounded-[20px] lg:w-[1112px] sm:w-[326px] px-4 py-[34px] lg:px-[64px] lg:py-[36px] sm:h-[255px] lg:h-[180px] flex flex-col lg:flex-row sm:gap-4 lg:gap-0 items-center justify-between">
-      <h1 className="font-integral font-bold text-center lg:text-left text-[32px] leading-[35px] w-[297px] h-[105px] lg:text-[35px] lg:leading-[40px] lg:w-[551px] lg:h-[94px]">
-        STAY UP TO DATE ABOUT OUR LATEST OFFERS
+    <div className="bg-footer-bg text-footer-text flex h-74 w-90 flex-col items-center justify-between gap-4 rounded-[20px] px-4 py-6 lg:h-45 lg:w-310 lg:flex-row lg:gap-0 lg:px-16 lg:py-9">
+      <h1 className="lg:font-integral h-26 w-75 text-left text-[30px] leading-[36px] font-bold lg:h-24 lg:w-137 lg:text-[40px] lg:leading-[45px]">
+        STAY UPTO DATE ABOUT OUR LATEST OFFERS
       </h1>
-      <div className="flex flex-col  items-center gap-[14px] w-full lg:w-[349px] ">
-        <div className="relative ">
+      <div className="flex w-full flex-col items-center gap-3 lg:w-87">
+        <div className="relative">
           <img
             src={mailicon}
             alt=""
-            className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 opacity-70"
+            className="absolute top-1/2 left-4 h-5 w-5 -translate-y-1/2 opacity-70"
           />
           <Input
             type="email"
@@ -29,9 +29,9 @@ const FooterNewsletter = ({ email, setEmail, handleSubscribe }: FooterNewsletter
           />
         </div>
         <Button
-          variant="secondary"
+          variant="newslatter"
           onClick={handleSubscribe}
-          className="w-[279px] h-[18px] lg:w-[317px] lg:h-[40px] lg:px-[16px] lg:py-[12px] rounded-[62px] text-sm lg:text-base "
+          className="h-10 w-77 rounded-[62px] text-sm lg:h-12 lg:w-78 lg:px-4 lg:py-3 lg:text-base"
         >
           Subscribe to Newsletter
         </Button>
