@@ -63,6 +63,7 @@ html {
   --color-input-bg: var(--input-bg);
   --color-brand-text: var(--brand-text);
   --color-footerbottom-bg: var(--footerbottom-bg);
+  --color-border-cards: var(--border-cards);
   --color-discount-text: oklch(64.89% 0.237 26.97);
   --color-filter-bg: oklch(95.51% 0 0);
 
@@ -148,6 +149,7 @@ html {
   --footer-text: oklch(100% 0 0);
   --brand-text: oklch(0% 0 0 / 0.6);
   --footerbottom-bg: #f0f0f0;
+  --border-cards: oklch(0% 0 0 / 0.1);
   --button-text-sec: oklch(0% 0 0);
   --button-bg-sec: oklch(100% 0 0);
   --component-bg: oklch(95.7% 0.003 345.21);
