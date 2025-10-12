@@ -1,9 +1,9 @@
 import { Button } from '../ui/button/button';
-import Logo from '../CommonComponents/Logo';
 import Xlogo from '../../assets/images/Xlogo.png';
 import face from '../../assets/images/Facebooklogo.png';
 import insta from '../../assets/images/logoinstagram.png';
 import git from '../../assets/images/logogithub.png';
+import Logo from '../CommonComponents/Logo';
 
 const FooterBrand = () => {
   return (
