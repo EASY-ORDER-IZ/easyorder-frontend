@@ -16,7 +16,7 @@ const InputComponent = ({ placeholder, type, leadingIcon, trailingIcon }: InputP
         <Input
           type={type}
           placeholder={placeholder}
-          className={`w-full ${leadingIcon ? 'pl-11' : ''} ${trailingIcon ? 'pr-10' : ''}`}
+          className={`w-full ${leadingIcon ? 'pl-14' : ''} ${trailingIcon ? 'pr-10' : ''}`}
         />
         {trailingIcon && <div className="absolute inset-y-0 right-4 mt-4">{trailingIcon}</div>}
       </div>

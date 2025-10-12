@@ -6,7 +6,7 @@ import StylesFilter from '@/components/ProductComponents/StylesFilter';
 
 const HomePage = () => {
   return (
-    <div className="flex w-full flex-col gap-10">
+    <div className="flex w-full flex-col">
       <HeroSection />
       <ProductBar title="NEW ARRIVALS" />
       <div className="flex w-full justify-center">
