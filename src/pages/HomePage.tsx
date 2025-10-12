@@ -8,6 +8,7 @@ const HomePage = () => {
   return (
     <div className="flex w-full flex-col gap-10">
       <HeroSection />
+
       <ProductBar title="NEW ARRIVALS" />
       <div className="flex w-full justify-center">
         <div className="h-[1px] w-89 bg-[#0000001A] lg:w-310" />
@@ -17,7 +18,9 @@ const HomePage = () => {
         <StylesFilter />
       </div>
       <CommentSection />
-      <Footer />
+      <div className="mt-32">
+        <Footer />
+      </div>
     </div>
   );
 };

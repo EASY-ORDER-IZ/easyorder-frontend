@@ -10,11 +10,14 @@ interface FooterColumnProps extends HTMLAttributes<HTMLDivElement> {
 const FooterColumn = ({ title, items, className, ...props }: FooterColumnProps) => {
   return (
     <div className={cn('flex flex-col gap-6', className)} {...props}>
-      <h1 className=" font-medium text-4 leading-5 ">{title}</h1>
+      <h1 className="text-4 leading-5 font-medium">{title}</h1>
       <ul className="flex flex-col gap-3">
         {items.map((item, index) => (
           <li key={index}>
-            <NavLink to={item} className={'text-sm text-brand-text hover:underline'}>
+            <NavLink
+              to={`/${item.toLowerCase().replace(/\s+/g, '-')}`}
+              className={'text-brand-text text-sm capitalize hover:underline'}
+            >
               {item}
             </NavLink>
           </li>
