@@ -16,6 +16,7 @@ export const buttonVariants = cva(
           'bg-button-bg-sec text-medium  text-[16px] border-1 border-black/10 text-button-text-sec rounded-[72px]',
         link: 'text-primary underline-offset-4 hover:underline',
         acc: 'rounded-full bg-white border border-[#00000033]',
+        orderbutton: 'rounded-[62px] bg-button-bg text-button-text',
         pagLinkActive: 'bg-button-bg/10  text-button-bg',
         pagLinkInActive: 'text-button-bg/50  ',
         newslatter: 'bg-background-100 text-text-900 rounded-9 ',
