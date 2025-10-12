@@ -10,11 +10,11 @@ interface FooterNewsletterProps {
 
 const FooterNewsletter = ({ email, setEmail, handleSubscribe }: FooterNewsletterProps) => {
   return (
-    <div className="bg-footer-bg text-footer-text flex h-74 w-90 flex-col items-center justify-between gap-4 rounded-[20px] px-4 py-6 lg:h-45 lg:w-310 lg:flex-row lg:gap-0 lg:px-16 lg:py-9">
-      <h1 className="lg:font-integral h-26 w-75 text-left text-[30px] leading-[36px] font-bold lg:h-24 lg:w-137 lg:text-[40px] lg:leading-[45px]">
+    <div className="bg-footer-bg text-footer-text flex h-74 w-90 flex-col items-center justify-between gap-4 rounded-[1.25rem] px-4 py-6 lg:h-45 lg:w-310 lg:flex-row lg:gap-0 lg:px-16 lg:py-9">
+      <h1 className="lg:font-integral text-h2 leading-h1 h-26 w-75 text-left font-bold lg:h-24 lg:w-137">
         STAY UPTO DATE ABOUT OUR LATEST OFFERS
       </h1>
-      <div className="flex w-full flex-col items-center gap-3 lg:w-87">
+      <div className="flex w-87 flex-col items-center gap-3">
         <div className="relative">
           <img
             src={mailicon}
@@ -24,6 +24,7 @@ const FooterNewsletter = ({ email, setEmail, handleSubscribe }: FooterNewsletter
           <Input
             type="email"
             value={email}
+            variant="footer"
             onChange={(e) => setEmail && setEmail(e.target.value)}
             placeholder="Enter your email address"
           />
@@ -31,7 +32,7 @@ const FooterNewsletter = ({ email, setEmail, handleSubscribe }: FooterNewsletter
         <Button
           variant="newslatter"
           onClick={handleSubscribe}
-          className="h-10 w-77 rounded-[62px] text-sm lg:h-12 lg:w-78 lg:px-4 lg:py-3 lg:text-base"
+          className="h-10 w-77 rounded-[62px] text-sm lg:h-12 lg:w-78 lg:px-4 lg:py-3"
         >
           Subscribe to Newsletter
         </Button>
