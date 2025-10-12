@@ -70,7 +70,6 @@ html {
   --width-button-sm: 8.125rem; /* 130px */
   --width-button-md: 13.75rem; /* 220px */
   --width-button-lg: 28.125rem; /* 420px */
-  --radius-button: 3.75rem; /* 60px */
 
   --color-primary-50: oklch(0.9572 0.0146 1.55);
   --color-primary-100: oklch(0.8697 0.0467 2.96);
