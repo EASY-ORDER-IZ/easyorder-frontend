@@ -1,5 +1,5 @@
 import { type HTMLAttributes } from 'react';
-import landingbg from '../assets/images/LandingBg.png';
+import landingbg from '../../assets/images/LandingBg.png';
 type PropsType = HTMLAttributes<HTMLDivElement> & {
   wrapperClassName?: string;
 };
