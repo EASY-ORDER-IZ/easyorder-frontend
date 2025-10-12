@@ -22,8 +22,9 @@ export const buttonVariants = cva(
       },
       size: {
         default: 'h-9  px-4 py-2 has-[>svg]:px-3',
-        sm: 'w-button-sm  px-3xl py-md',
-        lg: 'h-10 rounded-md px-6 has-[>svg]:px-4',
+        sm: 'w-button-sm  px-15 py-4 rounded-[3.75rem] ',
+        md: 'w-button-md  px-15 py-4 rounded-[3.75rem] ',
+        lg: 'w-button-lg  px-15 py-4 rounded-[3.75rem]',
         icon: 'size-[28px]',
         icon1: 'size-9',
         apply: 'px-[54px] py-4',
