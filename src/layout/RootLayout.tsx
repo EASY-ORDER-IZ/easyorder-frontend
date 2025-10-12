@@ -4,7 +4,7 @@ import SignupBar from '../components/SignupBar';
 
 const RootLayout = () => {
   return (
-    <div>
+    <div className="">
       <SignupBar />
       <Navbar />
 
