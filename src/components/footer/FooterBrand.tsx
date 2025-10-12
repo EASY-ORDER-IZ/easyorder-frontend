@@ -1,29 +1,29 @@
 import { Button } from '../ui/button/button';
-import Logo from '../Logo';
 import Xlogo from '../../assets/images/Xlogo.png';
 import face from '../../assets/images/Facebooklogo.png';
 import insta from '../../assets/images/logoinstagram.png';
 import git from '../../assets/images/logogithub.png';
+import Logo from '../CommonComponents/Logo';
 
 const FooterBrand = () => {
   return (
-    <div className="flex flex-col gap-9 items-start ">
-      <Logo className="w-33.5 h-8" />
-      <p className="text-sm text-brand-text w-62 h-23">
+    <div className="flex flex-col items-start gap-9">
+      <Logo className="h-8 w-33.5" />
+      <p className="text-brand-text h-23 w-62 text-sm">
         We have clothes that suit your style and which you’re proud to wear. From women to men.
       </p>
-      <div className="flex justify-between w-48 h-28">
+      <div className="flex h-28 w-48 justify-between">
         <Button variant="acc" size="icon">
-          <img src={Xlogo} alt="X logo" className="w-3 h-2" />
+          <img src={Xlogo} alt="X logo" className="h-2 w-3" />
         </Button>
         <Button variant="acc" size="icon">
-          <img src={face} alt="Facebook logo" className="w-7 h-7" />
+          <img src={face} alt="Facebook logo" className="h-7 w-7" />
         </Button>
         <Button variant="acc" size="icon">
-          <img src={insta} alt="Instagram logo" className="w-3 h-3" />
+          <img src={insta} alt="Instagram logo" className="h-3 w-3" />
         </Button>
         <Button variant="acc" size="icon">
-          <img src={git} alt="GitHub logo" className="w-3 h-3" />
+          <img src={git} alt="GitHub logo" className="h-3 w-3" />
         </Button>
       </div>
     </div>
