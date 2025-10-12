@@ -7,6 +7,7 @@ import { newClothes } from '@/store/staticData';
 import { useState } from 'react';
 import ProductCard from '@/components/ProductComponents/ProductCard';
 import { Separator } from '@/components/ui/separator';
+import { Footer } from '@/components/footer';
 const CategoryPage = () => {
   const { title } = useParams();
   const [currentPage, setCurrentPage] = useState(1);
@@ -21,9 +22,8 @@ const CategoryPage = () => {
   const currentProducts = newClothes.slice(firstIndex, firstIndex + itemsPerPage);
 
   return (
-    <div className="flex flex-col gap-8 px-5">
-      <div className="h-0 w-full border opacity-10"></div>
-
+    <div className="flex flex-col gap-8 px-5 py-8">
+      <Separator />
       <div className="flex w-full gap-6">
         <div className="hidden flex-col gap-5 sm:flex">
           <BreadCrumbComponent cate={title} />
@@ -56,6 +56,7 @@ const CategoryPage = () => {
           </div>
         </div>
       </div>
+      <Footer />
     </div>
   );
 };
