@@ -17,7 +17,7 @@ const badgeVariants = cva(
         outline: 'text-foreground [a&]:hover:bg-accent [a&]:hover:text-accent-foreground',
         discount:
           'rounded-[62px] bg-bg-badge border-0 text-text-badge px-[14px] py-[6px]  text-[12px] font-medium leading-[100%] ',
-        color: 'border-text-200 h-[37px] w-[37px] cursor-pointer rounded-full border-[2px]',
+        color: 'border-text-main/20 h-[37px] w-[37px] cursor-pointer rounded-full border-[2px]',
       },
     },
     defaultVariants: {
