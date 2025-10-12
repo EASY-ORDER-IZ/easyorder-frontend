@@ -6,7 +6,7 @@ const Footer = () => {
       <div className="absolute -top-[90px] left-1/2 z-10 -translate-x-1/2">
         <NewsletterLogic />
       </div>
-      <div className="bg-footerbottom-bg relative flex w-full flex-col items-center justify-between pt-[12.5rem] pb-[0.625rem] lg:pt-[11.25rem] lg:pb-[0.625rem]">
+      <div className="bg-footerbottom-bg relative flex w-full flex-col items-center justify-between pt-50 pb-2.5 lg:pt-45">
         <div className="flex w-full max-w-310 flex-col items-center justify-between gap-6 lg:flex-row lg:gap-0">
           <div className="flex w-full justify-center lg:h-55 lg:w-71 lg:justify-start">
             <FooterBrand />
@@ -15,7 +15,7 @@ const Footer = () => {
             <FooterColumn
               title="Company"
               items={['About', 'Features', 'Forks']}
-              className="h-[11.0625rem] w-[6.5rem]"
+              className="h-44 w-26"
             />
             <FooterColumn
               title="HELP"
@@ -40,7 +40,7 @@ const Footer = () => {
           </div>
         </div>
         <div className="mb-4 flex w-full justify-center">
-          <div className="h-[1px] w-89 bg-[#0000001A] lg:w-310" />
+          <div className="bg-background-600 h-[1px] w-89 lg:w-310" />
         </div>
         <FooterBottom />
       </div>

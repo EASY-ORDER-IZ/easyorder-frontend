@@ -11,7 +11,7 @@ const HomePage = () => {
 
       <ProductBar title="NEW ARRIVALS" />
       <div className="flex w-full justify-center">
-        <div className="h-[1px] w-89 bg-[#0000001A] lg:w-310" />
+        <div className="bg-background-main h-[1px] w-89 lg:w-310" />
       </div>
       <ProductBar title="top selling" />
       <div className="px-4 lg:px-25">

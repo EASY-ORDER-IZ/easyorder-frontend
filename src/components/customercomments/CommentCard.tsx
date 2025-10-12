@@ -17,7 +17,7 @@ const CommentCard = ({ name, rating, review }: CommentCardProps) => {
             <StarsRating rating={rating} className="h-5 w-5" />
           </div>
         </CardHeader>
-        <div>
+        <div className="flex flex-col gap-3">
           <CardTitle className="font-satoshi text-h4 leading-text-p">
             <div className="flex items-center gap-1">
               {name}
