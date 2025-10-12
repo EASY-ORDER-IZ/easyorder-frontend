@@ -10,7 +10,7 @@ interface FooterNewsletterProps {
 
 const FooterNewsletter = ({ email, setEmail, handleSubscribe }: FooterNewsletterProps) => {
   return (
-    <div className="bg-footer-bg text-footer-text rounded-6 flex h-74 w-90 flex-col items-center justify-between gap-4 px-4 py-6 lg:h-45 lg:w-310 lg:flex-row lg:gap-0 lg:px-16 lg:py-9">
+    <div className="bg-footer-bg text-footer-text flex h-74 w-90 flex-col items-center justify-between gap-4 rounded-[1.25rem] px-4 py-6 lg:h-45 lg:w-310 lg:flex-row lg:gap-0 lg:px-16 lg:py-9">
       <h1 className="lg:font-integral text-h2 leading-h1 h-26 w-75 text-left font-bold lg:h-24 lg:w-137">
         STAY UPTO DATE ABOUT OUR LATEST OFFERS
       </h1>
@@ -24,6 +24,7 @@ const FooterNewsletter = ({ email, setEmail, handleSubscribe }: FooterNewsletter
           <Input
             type="email"
             value={email}
+            variant="footer"
             onChange={(e) => setEmail && setEmail(e.target.value)}
             placeholder="Enter your email address"
           />

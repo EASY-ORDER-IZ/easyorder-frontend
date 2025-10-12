@@ -96,7 +96,7 @@ const CartPage = () => {
 
         <div className="flex flex-col gap-5 lg:flex-row">
           {/* Cart Items */}
-          <div className="rounded-6 border-border-cards left-[16px] flex w-[358px] flex-col gap-6 border p-4 lg:w-[715px] lg:px-[24px] lg:py-[20px]">
+          <div className="border-border-cards left-[16px] flex w-[358px] flex-col gap-6 rounded-[1.25rem] border p-4 lg:w-[715px] lg:px-[24px] lg:py-[20px]">
             {cartItems.map((item, index) => (
               <div key={item.id} className="flex flex-col gap-4">
                 <CartCard

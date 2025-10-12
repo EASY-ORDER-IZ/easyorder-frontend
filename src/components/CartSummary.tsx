@@ -21,7 +21,7 @@ export default function CartSummary({
   onPromoChange,
 }: Props) {
   return (
-    <Card className="rounded-6 border-border-cards flex h-96 w-90 flex-col gap-5 border-1 p-4 shadow-none lg:h-114 lg:w-128 lg:gap-6 lg:px-6 lg:py-5">
+    <Card className="border-border-cards flex h-96 w-90 flex-col gap-5 rounded-[1.25rem] border-1 p-4 shadow-none lg:h-114 lg:w-128 lg:gap-6 lg:px-6 lg:py-5">
       <h2 className="text-5 lg:text-6 font-extrabold">Order Summary</h2>
       <div className="flex flex-col gap-5">
         <div className="flex justify-between text-sm">
@@ -53,6 +53,7 @@ export default function CartSummary({
           <Input
             placeholder="Enter promo code"
             value={promo}
+            variant="footer"
             onChange={(e) => onPromoChange(e.target.value)}
             className="bg-background-main placeholder:text-text-200 h-12 w-54 border-0 leading-none focus-visible:ring-0 focus-visible:ring-offset-0"
           />
