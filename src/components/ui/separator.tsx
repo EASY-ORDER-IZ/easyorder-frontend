@@ -14,10 +14,7 @@ function Separator({
       data-slot="separator"
       decorative={decorative}
       orientation={orientation}
-      className={cn(
-        'bg-text/10 shrink-0 data-[orientation=horizontal]:h-px data-[orientation=horizontal]:w-full data-[orientation=vertical]:h-full data-[orientation=vertical]:w-px',
-        className,
-      )}
+      className={cn('h-0 w-full border opacity-10', className)}
       {...props}
     />
   );
