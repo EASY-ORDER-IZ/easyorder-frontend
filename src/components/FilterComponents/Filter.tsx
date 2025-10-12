@@ -10,7 +10,7 @@ import { Separator } from '@/components/ui/separator';
 
 const FliterComponent = () => {
   return (
-    <div className="border-button-bg/10 flex w-full flex-col gap-6 sm:w-[290px] sm:rounded-[20px] sm:border md:px-6 md:py-5">
+    <div className="border-button-bg/10 flex w-full flex-col gap-6 border px-6 py-5 sm:w-[290px] sm:rounded-[20px] sm:border">
       <div className="flex w-full justify-between">
         <span className="text-[20px] leading-[100%] font-bold">Filters</span>
         <SlidersVertical className="size-6 opacity-40" />
