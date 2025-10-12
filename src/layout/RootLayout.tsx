@@ -1,17 +1,15 @@
 import { Outlet } from 'react-router-dom';
 import Navbar from '../components/CommonComponents/Navbar';
 import SignupBar from '../components/SignupBar';
-import { Button } from '@/components/ui/button/button';
+import { Input } from '@/components/ui/input';
 
 const RootLayout = () => {
   return (
-    <div>
+    <div className="p-10">
       <SignupBar />
       <Navbar />
       <div className="mt-100 flex justify-center">
-        <Button variant="primary" size="lg">
-          Placeholder
-        </Button>
+        <Input type="password" placeholder="Password" />
       </div>
 
       <Outlet />
