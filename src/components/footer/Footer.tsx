@@ -1,24 +1,21 @@
-import NewsletterLogic from '@/components/footer/NewsletterLogic';
-import FooterBrand from './FooterBrand';
-import FooterColumn from './FooterColumn';
-import FooterBottom from './FooterBottom';
+import { FooterBrand, FooterColumn, FooterBottom, NewsletterLogic } from './index';
 
 const Footer = () => {
   return (
-    <div className="relative w-full bg-white">
-      <div className="absolute left-1/2 -translate-x-1/2 -top-[90px] z-10">
+    <div className="relative w-full items-center justify-between bg-white">
+      <div className="absolute -top-[90px] left-1/2 z-10 -translate-x-1/2">
         <NewsletterLogic />
       </div>
-      <div className="flex flex-col bg-footerbottom-bg relative pt-[200px] lg:pt-[180px] pb-[10px] lg:pb-[10px] max-w-[1440px] w-full mx-auto">
-        <div className="max-w-[1240px] w-full mx-auto flex flex-col lg:flex-row justify-between items-center lg:items-start gap-6  mb-[10px] lg:gap-0 px-4 sm:px-6 lg:pl-20">
-          <div className="flex justify-center lg:justify-start w-full lg:w-[248px] lg:h-[220px]">
+      <div className="bg-footerbottom-bg relative flex w-full flex-col items-center justify-between pt-50 pb-2.5 lg:pt-45">
+        <div className="flex w-full max-w-310 flex-col items-center justify-between gap-6 lg:flex-row lg:gap-0">
+          <div className="flex w-full justify-center lg:h-55 lg:w-71 lg:justify-start">
             <FooterBrand />
           </div>
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-x-10 gap-y-10 text-center lg:text-left w-full lg:w-[820px]  ">
+          <div className="grid w-full grid-cols-2 justify-between gap-10 gap-y-10 text-center lg:w-200 lg:grid-cols-4 lg:text-left">
             <FooterColumn
               title="Company"
-              items={['About', 'Features', 'Works']}
-              className="w-[104px] h-[177px]"
+              items={['About', 'Features', 'Forks']}
+              className="h-44 w-26"
             />
             <FooterColumn
               title="HELP"
@@ -28,22 +25,22 @@ const Footer = () => {
                 'Terms & Conditions',
                 'Privacy Policy',
               ]}
-              className="w-[136px] h-[177px]"
+              className="h-44.5 w-34"
             />
             <FooterColumn
               title="FAQ"
               items={['Account', 'Manage Deliveries', 'Orders', 'Payments']}
-              className="w-[149px] h-[177px]"
+              className="h-44 w-37"
             />
             <FooterColumn
               title="RESOURCES"
               items={['Free eBooks', 'Development Tutorial', 'How to - Blog', 'YouTube Playlist']}
-              className="w-[149px] h-[177px]"
+              className="h-44 w-37"
             />
           </div>
         </div>
-        <div className="w-full flex justify-center lg:justify-start mb-[20px] mt-0">
-          <div className="w-[358px] lg:w-[1068px] h-[1px] bg-[#0000001A] mx-auto lg:ml-[130px]"></div>
+        <div className="mb-4 flex w-full justify-center">
+          <div className="bg-background-600 h-[1px] w-89 lg:w-310" />
         </div>
         <FooterBottom />
       </div>

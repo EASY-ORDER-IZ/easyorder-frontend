@@ -1,11 +1,10 @@
 import { createBrowserRouter } from 'react-router-dom';
 import HomePage from '../pages/HomePage';
 import RootLayout from '../layout/RootLayout';
-
 import Auth from '../services/Auth';
 import LoginPage from '@/pages/LoginPage';
-import ProductDetailsPage from '@/pages/ProductDetailsPage';
-// import CategoryPage from '@/pages/CategoryPage';
+import CartPage from '@/pages/CartPage';
+import CategoryPage from '@/pages/CategoryPage';
 
 const Router = createBrowserRouter([
   {
@@ -13,7 +12,7 @@ const Router = createBrowserRouter([
     element: <RootLayout />,
     children: [
       {
-        path: '/home',
+        path: '/',
         element: <HomePage />,
         loader: Auth,
       },
@@ -34,13 +33,13 @@ const Router = createBrowserRouter([
         element: <div>Sign Up Page</div>,
       },
       {
-        path: 'cate/:title',
-        // element: <CategoryPage />,
+        path: 'cart',
+        element: <CartPage />,
       },
       {
-        path : '/productDetails',
-        element: <ProductDetailsPage />
-      }
+        path: 'cate/:title',
+        element: <CategoryPage />,
+      },
     ],
   },
 ]);
