@@ -48,7 +48,7 @@ export default function CartSummary({
       </div>
 
       <div className="flex items-center gap-4 lg:hidden">
-        <div className="relative h-12 rounded-[62px]">
+        <div className="relative h-12 rounded-[3.87rem]">
           <Tag size={18} className="text-text-200 -translate-y-1/3.2 absolute top-1/4 left-4" />
           <Input
             placeholder="Enter promo code"

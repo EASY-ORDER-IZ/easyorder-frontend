@@ -7,11 +7,11 @@ const Footer = () => {
         <NewsletterLogic />
       </div>
       <div className="bg-footerbottom-bg relative flex w-full flex-col items-center justify-between pt-50 pb-2.5 lg:pt-45">
-        <div className="flex w-full max-w-310 flex-col items-center justify-between gap-6 lg:flex-row lg:gap-0">
-          <div className="flex w-full justify-center lg:h-55 lg:w-71 lg:justify-start">
+        <div className="flex w-full max-w-310 flex-col items-center justify-between gap-6 p-4 lg:flex-row lg:gap-0 lg:p-0">
+          <div className="flex w-full justify-start lg:h-55 lg:w-71">
             <FooterBrand />
           </div>
-          <div className="grid w-full grid-cols-2 justify-between gap-10 gap-y-10 text-center lg:w-200 lg:grid-cols-4 lg:text-left">
+          <div className="grid w-full grid-cols-2 justify-between gap-10 gap-y-10 text-left lg:w-200 lg:grid-cols-4">
             <FooterColumn
               title="Company"
               items={['About', 'Features', 'Forks']}
