@@ -6,6 +6,10 @@
   font-family: integral;
   src: url('../src/assets/fonts/Fontspring-DEMO-integralcf-regular.otf');
 }
+@font-face {
+  font-family: pop;
+  src: url('../src/assets/fonts/Poppins-Regular.ttf');
+}
 
 @import 'tailwindcss';
 @import 'tw-animate-css';
@@ -40,6 +44,7 @@ html {
 @theme inline {
   --font-satoshi: satoshi, 'sans-serif';
   --font-integral: integral, 'sans-serif';
+  --font-pop: pop, 'sans-serif';
 
   --text-table-sm: 0.9rem; /* 14px (feature table smaller size) */
   --text-table-lg: 1rem; /* 16px (feature table) */
