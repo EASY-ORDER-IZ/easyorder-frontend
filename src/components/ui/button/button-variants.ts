@@ -9,7 +9,7 @@ export const buttonVariants = cva(
 
         outline: ' text-text-main border border-text-main',
         primary:
-          'bg-primary-main text-background-100 hover:bg-primary-100 hover:text-text-main disabled:bg-primary-50 disabled:text-text-200',
+          'bg-primary-main text-[1rem] text-background-100 hover:bg-primary-100 hover:text-text-main disabled:bg-primary-50 disabled:text-text-200',
         secondary:
           'bg-secondary-normal text-background-100 hover:bg-secondary-light-hover hover:text-text-main disabled:bg-secondary-light disabled:text-text-200',
         ghost:

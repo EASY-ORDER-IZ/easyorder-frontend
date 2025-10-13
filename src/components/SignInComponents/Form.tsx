@@ -40,7 +40,7 @@ export function FormComponent() {
   }
 
   return (
-    <div className="flex min-w-105 flex-col gap-8">
+    <div className="flex min-w-105 flex-col gap-6">
       <form id="form-rhf-demo" onSubmit={form.handleSubmit(onSubmit)}>
         <FieldGroup>
           <Controller
@@ -49,7 +49,7 @@ export function FormComponent() {
             render={({ field, fieldState }) => (
               <Field data-invalid={fieldState.invalid}>
                 <FieldLabel htmlFor="form-rhf-demo-email">
-                  Email<span className="text-status-warning">*</span>
+                  Email <span className="text-status-warning">*</span>
                 </FieldLabel>
                 <div className="relative flex w-full items-center">
                   <div className="absolute inset-y-0 left-3 flex items-center">
@@ -83,7 +83,7 @@ export function FormComponent() {
             render={({ field, fieldState }) => (
               <Field data-invalid={fieldState.invalid} className="">
                 <FieldLabel htmlFor="form-rhf-demo-password">
-                  Password<span className="text-status-warning">*</span>
+                  Password <span className="text-status-warning">*</span>
                 </FieldLabel>
                 <div className="relative flex w-full items-center">
                   <div className="absolute inset-y-0 left-3 flex items-center">
@@ -98,17 +98,17 @@ export function FormComponent() {
                     aria-invalid={fieldState.invalid}
                     placeholder="Enter your password"
                     autoComplete="off"
-                    className="border-text-main placeholder:text-text-200 aria-[invalid=true]:border-status-warning aria-[invalid=true]:focus:border-status-warning border pr-10 pl-10 transition-all duration-300 ease-in-out placeholder:text-lg placeholder:leading-[100%] placeholder:font-medium focus:outline-none"
+                    className="border-text-main placeholder:text-text-200 aria-[invalid=true]:border-status-warning aria-[invalid=true]:focus:border-status-warning border pr-10 pl-10 transition-all duration-300 ease-in-out placeholder:text-lg placeholder:text-[1rem] placeholder:leading-[100%] placeholder:font-medium focus:outline-none"
                   />
 
                   <div
-                    className="absolute inset-y-0 right-3 flex cursor-pointer items-center"
+                    className="absolute inset-y-0 right-2 flex cursor-pointer items-center"
                     onClick={() => setShowPassword((prev) => !prev)}
                   >
                     {showPassword ? (
-                      <EyeOff className="text-text-200 h-5 w-5" />
+                      <EyeOff className="text-text-200 h-6 w-6" />
                     ) : (
-                      <Eye className="text-text-200 h-5 w-5" />
+                      <Eye className="text-text-200 h-6 w-6" />
                     )}
                   </div>
                 </div>
@@ -119,21 +119,38 @@ export function FormComponent() {
                     errors={[fieldState.error]}
                   />
                 )}
-                <Link
-                  className="text-status-action font-pop mt-2 text-[0.75rem] leading-6 font-medium underline"
-                  to="/resetpassword"
+                <Field
+                  id="forgot-password"
+                  className="mt-1 flex justify-start"
+                  orientation="horizontal"
                 >
-                  Forgot your password
-                </Link>
+                  <Link
+                    className="text-status-action font-pop text-[0.75rem] leading-6 font-medium underline"
+                    to="/resetpassword"
+                  >
+                    Forgot your password?
+                  </Link>
+                </Field>
               </Field>
             )}
           />
         </FieldGroup>
       </form>
-      <Field id="submit" orientation="horizontal">
-        <Button type="submit" variant="primary" size="lg" form="form-rhf-demo">
-          Sign in
+      <Field className="mt-3" id="submit" orientation="horizontal">
+        <Button className="font-pop" type="submit" variant="primary" size="lg" form="form-rhf-demo">
+          Sign In
         </Button>
+      </Field>
+      <Field className="flex justify-center" id="signup" orientation="horizontal">
+        <span className="font-pop text-text-400 text-[0.75rem] leading-6 font-light">
+          Don't have an account?
+        </span>
+        <Link
+          to="/signup"
+          className="text-status-action font-pop text-[0.75rem] leading-6 font-medium underline"
+        >
+          Sign up
+        </Link>
       </Field>
     </div>
   );

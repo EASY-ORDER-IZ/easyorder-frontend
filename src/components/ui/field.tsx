@@ -44,7 +44,7 @@ function FieldGroup({ className, ...props }: React.ComponentProps<'div'>) {
     <div
       data-slot="field-group"
       className={cn(
-        'group/field-group font-pop text-text-400 @container/field-group flex w-full flex-col gap-4 align-middle leading-8 data-[slot=checkbox-group]:gap-3 [&>[data-slot=field-group]]:gap-4',
+        'group/field-group font-pop text-text-400 @container/field-group flex w-full flex-col gap-6 align-middle leading-8 data-[slot=checkbox-group]:gap-3 [&>[data-slot=field-group]]:gap-4',
         className,
       )}
       {...props}
@@ -103,12 +103,7 @@ function FieldLabel({ className, ...props }: React.ComponentProps<typeof Label>)
   return (
     <Label
       data-slot="field-label"
-      className={cn(
-        'group/field-label peer/field-label font-pop flex w-fit gap-2 p-2.5 text-lg leading-snug font-medium group-data-[disabled=true]/field:opacity-50',
-        'has-[>[data-slot=field]]:w-full has-[>[data-slot=field]]:flex-col has-[>[data-slot=field]]:rounded-md has-[>[data-slot=field]]:border [&>*]:data-[slot=field]:p-4',
-        'has-data-[state=checked]:bg-primary/5 has-data-[state=checked]:border-primary dark:has-data-[state=checked]:bg-primary/10',
-        className,
-      )}
+      className={cn('font-pop text-text-400 p-2.5 text-[1rem] leading-snug font-medium', className)}
       {...props}
     />
   );
