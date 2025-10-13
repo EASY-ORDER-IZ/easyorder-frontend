@@ -1,19 +1,23 @@
 'use client';
 
-import * as React from 'react';
 import { useState } from 'react';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Controller, useForm } from 'react-hook-form';
-import { toast } from 'sonner';
 import * as z from 'zod';
 import { Eye, EyeOff, Lock, Mail } from 'lucide-react';
 
 import { Field, FieldError, FieldGroup, FieldLabel } from '@/components/ui/field';
 import { Input } from '@/components/ui/input';
 import formSchema from '@/validation/formSchema';
+import { Link, useNavigate } from 'react-router-dom';
+import { Button } from '../ui/button/button';
+import { useAuthStore } from '@/store/authStore';
+import { toast } from 'sonner';
 
 export function FormComponent() {
   const [showPassword, setShowPassword] = useState(false);
+  const navigate = useNavigate();
+  const { login } = useAuthStore();
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -25,24 +29,18 @@ export function FormComponent() {
   });
 
   function onSubmit(data: z.infer<typeof formSchema>) {
-    toast('You submitted the following values:', {
-      description: (
-        <pre className="bg-code text-code-foreground mt-2 w-[320px] overflow-x-auto rounded-md p-4">
-          <code>{JSON.stringify(data, null, 2)}</code>
-        </pre>
-      ),
-      position: 'bottom-right',
-      classNames: {
-        content: 'flex flex-col gap-2',
-      },
-      style: {
-        '--border-radius': 'calc(var(--radius) + 4px)',
-      } as React.CSSProperties,
-    });
+    const mockUser = { id: 1, email: 'tesst@example.com', password: 'Moh@12345' };
+    if (data.email === mockUser.email && data.password === mockUser.password) {
+      login(mockUser);
+      navigate('/home');
+      console.log(data);
+    } else {
+      toast.error('Invalid credentials');
+    }
   }
 
   return (
-    <div className="flex w-100 flex-col">
+    <div className="flex min-w-105 flex-col gap-8">
       <form id="form-rhf-demo" onSubmit={form.handleSubmit(onSubmit)}>
         <FieldGroup>
           <Controller
@@ -83,7 +81,7 @@ export function FormComponent() {
             name="password"
             control={form.control}
             render={({ field, fieldState }) => (
-              <Field data-invalid={fieldState.invalid} className={``}>
+              <Field data-invalid={fieldState.invalid} className="">
                 <FieldLabel htmlFor="form-rhf-demo-password">
                   Password<span className="text-status-warning">*</span>
                 </FieldLabel>
@@ -121,11 +119,22 @@ export function FormComponent() {
                     errors={[fieldState.error]}
                   />
                 )}
+                <Link
+                  className="text-status-action font-pop mt-2 text-[0.75rem] leading-6 font-medium underline"
+                  to="/resetpassword"
+                >
+                  Forgot your password
+                </Link>
               </Field>
             )}
           />
         </FieldGroup>
       </form>
+      <Field id="submit" orientation="horizontal">
+        <Button type="submit" variant="primary" size="lg" form="form-rhf-demo">
+          Sign in
+        </Button>
+      </Field>
     </div>
   );
 }

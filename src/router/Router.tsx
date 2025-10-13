@@ -1,7 +1,6 @@
 import { createBrowserRouter } from 'react-router-dom';
 import HomePage from '../pages/HomePage';
 import RootLayout from '../layout/RootLayout';
-import Auth from '../services/Auth';
 import CartPage from '@/pages/CartPage';
 import CategoryPage from '@/pages/CategoryPage';
 import SignInPage from '@/pages/SignInPage';
@@ -14,7 +13,6 @@ const Router = createBrowserRouter([
       {
         path: '/home',
         element: <HomePage />,
-        loader: Auth,
       },
       {
         path: 'about',
