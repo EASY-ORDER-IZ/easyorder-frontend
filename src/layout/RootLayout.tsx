@@ -1,12 +1,8 @@
 import { Outlet } from 'react-router-dom';
-import Navbar from '../components/CommonComponents/Navbar';
-import SignupBar from '../components/SignupBar';
 
 const RootLayout = () => {
   return (
     <div className="">
-      <SignupBar />
-      <Navbar />
       <Outlet />
     </div>
   );

@@ -8,6 +8,7 @@ import { useState } from 'react';
 import ProductCard from '@/components/ProductComponents/ProductCard';
 import { Separator } from '@/components/ui/separator';
 import { Footer } from '@/components/footer';
+
 const CategoryPage = () => {
   const { title } = useParams();
   const [currentPage, setCurrentPage] = useState(1);
@@ -22,37 +23,43 @@ const CategoryPage = () => {
   const currentProducts = newClothes.slice(firstIndex, firstIndex + itemsPerPage);
 
   return (
-    <div className="flex flex-col gap-8 px-5 py-8">
-      <Separator />
+    <div className="flex flex-col gap-6 px-5">
+      <Separator className="max-w-[1065px]" />
+      <BreadCrumbComponent cate={title} />
+
       <div className="flex w-full gap-6">
         <div className="hidden flex-col gap-5 sm:flex">
-          <BreadCrumbComponent cate={title} />
           <FliterComponent />
         </div>
 
-        <div className="flex w-full flex-col">
-          <div className="flex flex-col gap-5 pt-4 sm:gap-0 lg:mt-7">
-            <div className="sm:hidden">
-              <BreadCrumbComponent cate={title} />
+        <div className="flex w-full flex-col gap-5">
+          <div className="flex justify-between">
+            <div className="flex w-full max-w-[755px] justify-between">
+              <Sort min={1} max={10} total={100} title={title} />
             </div>
-
-            <Sort min={1} max={10} total={100} title={title} />
           </div>
 
-          <div className="mt-5 grid grid-cols-2 gap-6 sm:grid-cols-3 sm:justify-center lg:grid-cols-3">
-            {currentProducts.map((p, idx) => (
-              <ProductCard key={idx} product={p} />
-            ))}
+          <div className="flex items-center">
+            <div className="grid grid-cols-2 items-center justify-center gap-4 sm:grid-cols-3">
+              {currentProducts.map((p, idx) => (
+                <ProductCard key={idx} product={p} />
+              ))}
+            </div>
           </div>
-          <Separator className="mt-6" />
 
-          <div className="mt-6 flex justify-center md:mt-5">
-            <ProductPagination
-              totalItems={totalItems}
-              itemsPerPage={itemsPerPage}
-              currentPage={currentPage}
-              setCurrentPage={setCurrentPage}
-            />
+          <div className="flex">
+            <Separator className="max-w-[755px]" />
+          </div>
+
+          <div className="flex">
+            <div className="flex w-full max-w-[755px] justify-center">
+              <ProductPagination
+                totalItems={totalItems}
+                itemsPerPage={itemsPerPage}
+                currentPage={currentPage}
+                setCurrentPage={setCurrentPage}
+              />
+            </div>
           </div>
         </div>
       </div>

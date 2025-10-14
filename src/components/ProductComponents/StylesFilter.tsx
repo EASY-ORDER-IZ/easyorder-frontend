@@ -5,8 +5,8 @@ import CategoryCard from './CategoryCard';
 
 const StylesFilter = () => {
   return (
-    <div className="rounded-1xl flex flex-col items-center justify-center gap-12 px-5 py-10">
-      <span className="font-integral text-text flex text-center text-lg leading-[100%] font-bold">
+    <div className="rounded-1xl flex flex-col items-center justify-center gap-10 px-5 py-10">
+      <span className="font-integral text-text flex max-w-60 text-center text-lg leading-[36px] font-bold sm:max-w-full">
         BROWSE BY dress STYLE
       </span>
       <div className="hidden sm:flex">

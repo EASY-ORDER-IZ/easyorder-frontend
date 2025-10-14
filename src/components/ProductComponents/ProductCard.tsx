@@ -21,7 +21,7 @@ const ProductCard = ({ product }: { product: Product }) => {
   return (
     <Card>
       <CardContent className="flex w-full flex-col justify-center">
-        <img src={product.img} alt={product.name} className="rounded-1xl size-56" />
+        <img src={product.img} alt={product.name} className="rounded-1xl size-60" />
         <CardTitle className="font-card-title">{product.name}</CardTitle>
         <CardTitle className="flex gap-3">
           <StarsRating rating={product.stars || 0} />

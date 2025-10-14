@@ -20,7 +20,7 @@ interface Props {
 const Sort = ({ title, min, max, total }: Props) => {
   const [position, setPosition] = React.useState('Most Popular');
   return (
-    <div className="flex w-full justify-between">
+    <div className="flex w-full items-center justify-between">
       <span className="text-[25px] leading-[100%] font-bold capitalize">{title}</span>
       <div className="mt-2 flex gap-3 sm:mt-1">
         <span className="text-text/60 text-[15px] leading-[100%] font-normal">

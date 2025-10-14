@@ -23,21 +23,21 @@ html {
 @media (max-width: 1024px) {
   /* for tablet the rem is 1 whch is 15px */
   html {
-    font-size: 13px;
+    font-size: 12px;
   }
 }
 
 @media (max-width: 768px) {
   /* for mobile the rem is 1 which is 14px */
   html {
-    font-size: 12px;
+    font-size: 10px;
   }
 }
 
 @media (max-width: 480px) {
   /* for small mobile the rem is 1 which is 13px */
   html {
-    font-size: 11px;
+    font-size: 9px;
   }
 }
 
@@ -51,6 +51,7 @@ html {
   --text-table-lg: 1rem; /* 16px (feature table) */
   --text-list: 1rem; /* 16px (feature lists) */
   --text-block-quote: 1rem; /* 16px when using ("") (body-text , product description)  */
+  --text-md: 1.125rem; /* 18px (medium text) */
   --text-p: 1.375rem; /* 22px (body-text , product description)*/
   --text-h4: 1.375rem; /* 22px (Small heading , product card title) */
   --text-h3: 1.75rem; /* 28px (Sub section Title)   */
