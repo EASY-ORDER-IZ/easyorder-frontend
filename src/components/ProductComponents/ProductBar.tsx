@@ -24,7 +24,7 @@ const ProductBar = ({ title }: Props) => {
   const visibleProductsMobile = newClothes.slice(0, visibleCountMobile);
 
   return (
-    <div className="flex flex-col gap-8 px-4 text-center lg:px-25">
+    <div className="flex flex-col items-center gap-8 px-2">
       <div>
         <span className="font-integral text-h2 font-bold">{title}</span>
       </div>
@@ -40,8 +40,8 @@ const ProductBar = ({ title }: Props) => {
         ))}
       </div>
 
-      <div className="mt-4 flex w-full justify-center sm:w-auto">
-        <Button onClick={handleViewMore} variant="ghost" className="px-19 py-6">
+      <div className="flex w-full justify-center sm:w-auto">
+        <Button onClick={handleViewMore} variant="primary" size="md">
           {hasMore ? 'View All' : 'View Less'}
         </Button>
       </div>

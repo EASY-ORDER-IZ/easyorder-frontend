@@ -23,21 +23,21 @@ html {
 @media (max-width: 1024px) {
   /* for tablet the rem is 1 whch is 15px */
   html {
-    font-size: 15px;
+    font-size: 13px;
   }
 }
 
 @media (max-width: 768px) {
   /* for mobile the rem is 1 which is 14px */
   html {
-    font-size: 14px;
+    font-size: 12px;
   }
 }
 
 @media (max-width: 480px) {
   /* for small mobile the rem is 1 which is 13px */
   html {
-    font-size: 13px;
+    font-size: 11px;
   }
 }
 
@@ -46,6 +46,7 @@ html {
   --font-integral: integral, 'sans-serif';
   --font-pop: pop, 'sans-serif';
 
+  --text-xs: 0.75rem; /* 12px (extra small text) */
   --text-table-sm: 0.9rem; /* 14px (feature table smaller size) */
   --text-table-lg: 1rem; /* 16px (feature table) */
   --text-list: 1rem; /* 16px (feature lists) */
@@ -56,6 +57,19 @@ html {
   --text-inline-code: 2.25rem; /*  Developer-facing UI or API docs */
   --text-h2: 2.25rem; /* 36px (Section Title) */
   --text-h1: 3rem; /* 48px (Page Title) */
+
+  --radius-sm: 0.25rem; /* 4px */
+  --radius-md: 0.5rem; /* 8px */
+  --radius-lg: 0.75rem; /* 12px */
+  --radius-xl: 1rem; /* 16px */
+  --radius-1xl: 1.25rem; /* 20px */
+  --radius-2xl: 1.5rem; /* 24px */
+  --radius-3xl: 2rem; /* 32px */
+  --radius-4xl: 2.5rem; /* 40px */
+  --radius-5xl: 3rem; /* 48px */
+  --radius-6xl: 3.5rem; /* 56px */
+  --radius-7xl: 4rem; /* 64px */
+  --radius-full: 9999px; /* Full */
 
   --color-filter-bg: oklch(94.8% 0 0);
   --color-button-text: var(--button-text);
@@ -178,4 +192,14 @@ html {
 }
 .animate-slide-up {
   animation: slide-up 0.3s ease-out forwards;
+}
+.font-card-title {
+  font-family: 'satoshi', sans-serif;
+  font-size: 1.3rem;
+
+  font-weight: 700;
+  line-height: 100%;
+  vertical-align: middle;
+  color: var(--text);
+  text-align: left;
 }

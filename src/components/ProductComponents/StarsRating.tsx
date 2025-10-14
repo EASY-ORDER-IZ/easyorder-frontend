@@ -5,13 +5,13 @@ interface Rating {
   className?: string;
 }
 
-const StarsRating = ({ rating, className = 'h-4 w-4' }: Rating) => {
+const StarsRating = ({ rating, className = 'size-4' }: Rating) => {
   rating = Math.round(rating * 2) / 2;
   const fullStars = Math.floor(rating);
   const hasHalfStar = rating % 1 === 0.5;
   // const emptyStars = 5 - fullStars - (hasHalfStar ? 1 : 0);
   return (
-    <div className="flex gap-1">
+    <div className="flex gap-1.5">
       {[...Array(fullStars)].map((_, i) => (
         <Star key={`full-${i}`} className={`${className} fill-yellow-400 text-yellow-400`} />
       ))}
