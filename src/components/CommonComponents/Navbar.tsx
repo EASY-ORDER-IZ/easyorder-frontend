@@ -26,62 +26,65 @@ const Navbar: React.FC = () => {
   }, [location]);
 
   useEffect(() => {
-    const handleKey = (e: KeyboardEvent) => {
+    const handleEscape = (e: KeyboardEvent) => {
       if (e.key === 'Escape') setMobileMenuOpen(false);
     };
-    window.addEventListener('keydown', handleKey);
-    return () => window.removeEventListener('keydown', handleKey);
+
+    window.addEventListener('keydown', handleEscape);
+    return () => {
+      window.removeEventListener('keydown', handleEscape);
+    };
   }, []);
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      const target = event.target as HTMLElement;
-      if (mobileMenuOpen && !target.closest('nav')) {
+      const target = event.target as HTMLElement | null;
+      if (mobileMenuOpen && target && !target.closest('.mobile-menu')) {
         setMobileMenuOpen(false);
       }
     };
+
     document.addEventListener('mousedown', handleClickOutside);
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, [mobileMenuOpen]);
 
   return (
-    <nav className="font-satoshi relative z-50 flex w-full items-center justify-between bg-white px-22 py-4 text-base">
+    <nav
+      className={`font-satoshi bg-input-bg relative z-50 flex w-full items-center justify-between ${isMobile ? 'p-2' : 'px-22 py-4'} text-base`}
+    >
       {isMobile ? (
-        <div className="flex w-full items-center justify-between">
-          <Button
-            variant="ghost"
-            size="icon"
-            aria-label={mobileMenuOpen ? 'Close menu' : 'Open menu'}
-            aria-expanded={mobileMenuOpen}
-            onClick={() => setMobileMenuOpen((s) => !s)}
-          >
-            <img src={menu} alt="menu" className="h-6 w-6" />
-          </Button>
+        <div className="flex w-full justify-between">
+          <div className="flex items-center gap-1">
+            <div
+              role="button"
+              aria-label={mobileMenuOpen ? 'Close menu' : 'Open menu'}
+              aria-expanded={mobileMenuOpen}
+              onClick={() => setMobileMenuOpen((s) => !s)}
+              className="flex cursor-pointer items-center justify-center p-2"
+            >
+              <img src={menu} alt="menu" className="h-6 w-6" />
+            </div>
 
-          <div className="flex flex-1 justify-center">
-            <Logo className="h-8 w-34" />
+            <div className="flex flex-1 justify-center">
+              <Logo className="h-8 w-34" />
+            </div>
           </div>
 
           <div className="flex items-center gap-2">
-            <Button variant="ghost" size="icon" aria-label="Search">
-              <img src={black_search_icon} alt="search" className="h-6 w-6 opacity-80" />
-            </Button>
+            <img src={black_search_icon} alt="search" className="h-6 w-6 opacity-80" />
             <NavLink to="/cart" aria-label="Cart">
-              <Button variant="ghost" size="icon">
-                <img src={cart} alt="cart" className="h-6 w-6" />
-              </Button>
+              <img src={cart} alt="cart" className="h-6 w-6" />
             </NavLink>
             <NavLink to="/profile" aria-label="Profile">
-              <Button variant="ghost" size="icon">
-                <img src={profile_icon} alt="profile" className="h-6 w-6" />
-              </Button>
+              <img src={profile_icon} alt="profile" className="h-6 w-6" />
             </NavLink>
           </div>
         </div>
       ) : (
-        <div className="flex w-310 items-center justify-between gap-10">
-          <Logo className="h-10 w-42" />
-          <div className="flex w-80 items-center gap-6">
+        <div className="mx-auto flex w-full max-w-7xl items-center justify-between gap-4 lg:gap-10">
+          <Logo className="h-8 w-auto lg:h-10" />
+
+          <div className="hidden items-center gap-6 md:flex">
             <div
               className="flex w-14 cursor-pointer items-center gap-1 hover:underline"
               onClick={() => setOpenShop((s) => !s)}
@@ -109,7 +112,7 @@ const Navbar: React.FC = () => {
             </NavLink>
           </div>
 
-          <div className="flex w-140 items-center gap-4 rounded-full bg-gray-100 px-4 py-3">
+          <div className="hidden w-140 items-center gap-4 rounded-full bg-gray-100 px-4 py-2 lg:flex">
             <img src={search_icon} alt="search" className="h-6 w-6" />
             <input
               type="text"
@@ -120,14 +123,10 @@ const Navbar: React.FC = () => {
 
           <div className="flex items-center gap-4">
             <NavLink to="/cart">
-              <Button variant="ghost" size="icon" aria-label="Cart">
-                <img src={cart} alt="cart" className="h-6 w-6" />
-              </Button>
+              <img src={cart} alt="cart" className="h-6 w-6" />
             </NavLink>
             <NavLink to="/profile">
-              <Button variant="ghost" size="icon" aria-label="Profile">
-                <img src={profile_icon} alt="profile" className="h-6 w-6" />
-              </Button>
+              <img src={profile_icon} alt="profile" className="h-6 w-6" />
             </NavLink>
           </div>
         </div>
