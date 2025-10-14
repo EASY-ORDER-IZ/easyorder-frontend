@@ -7,6 +7,10 @@ import ImageDisplay from '@/components/productGallery/ImageDisplay';
 import ProductDetails from '@/components/productGallery/ProductDetails';
 import DetailsLinks from '@/components/productGallery/DetailsLinks';
 import ProductBar from '@/components/productGallery/ProductBar';
+import ImageDisplay from '@/components/productGallery/ImageDisplay';
+import ProductDetails from '@/components/productGallery/ProductDetails';
+import DetailsLinks from '@/components/productGallery/DetailsLinks';
+import ProductBar from '@/components/productGallery/ProductBar';
 const ProductPage = () => {
   return (
     <div>
