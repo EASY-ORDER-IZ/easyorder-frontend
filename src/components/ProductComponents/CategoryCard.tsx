@@ -14,10 +14,12 @@ const CategoryCard = ({ title, img }: Props) => {
 
   return (
     <div className="cursor-pointer" onClick={handleNavigate}>
-      <div className="absolute flex items-center justify-center p-4">
-        <span className="text-text text-[22px] font-bold">{title}</span>
+      <div className="flex">
+        <div className="absolute flex items-center justify-center p-4">
+          <span className="text-text text-p font-bold">{title}</span>
+        </div>
+        <img className="rounded-1xl max-h-46 w-[100%]" src={img} alt={title} />
       </div>
-      <img className="rounded-3xl" src={img} alt={title} />
     </div>
   );
 };

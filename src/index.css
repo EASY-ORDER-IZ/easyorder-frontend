@@ -54,6 +54,7 @@ html {
   --text-p: 1.375rem; /* 22px (body-text , product description)*/
   --text-h4: 1.375rem; /* 22px (Small heading , product card title) */
   --text-h3: 1.75rem; /* 28px (Sub section Title)   */
+  --text-lg: 2rem; /* 32px (Large text) */
   --text-inline-code: 2.25rem; /*  Developer-facing UI or API docs */
   --text-h2: 2.25rem; /* 36px (Section Title) */
   --text-h1: 3rem; /* 48px (Page Title) */
@@ -202,4 +203,40 @@ html {
   vertical-align: middle;
   color: var(--text);
   text-align: left;
+}
+.category-card {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: 15px;
+  width: 100%;
+  height: 100%;
+  grid-template-areas:
+    'A B B'
+    'C C D';
+}
+
+.category-card > div {
+  width: 100%;
+  height: 100%;
+}
+
+.category-card .A {
+  grid-area: A;
+}
+.category-card .B {
+  grid-area: B;
+}
+.category-card .C {
+  grid-area: C;
+}
+.category-card .D {
+  grid-area: D;
+}
+
+/* make all cards equal height visually */
+.category-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
