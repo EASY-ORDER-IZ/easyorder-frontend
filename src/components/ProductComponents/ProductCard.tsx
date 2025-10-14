@@ -19,7 +19,7 @@ const ProductCard = ({ product }: { product: Product }) => {
   const finalPrice = (product.price || 0) - dis;
 
   return (
-    <Card>
+    <Card className="inline-block">
       <CardContent className="flex w-full flex-col justify-center">
         <img src={product.img} alt={product.name} className="rounded-1xl size-60" />
         <CardTitle className="font-card-title">{product.name}</CardTitle>

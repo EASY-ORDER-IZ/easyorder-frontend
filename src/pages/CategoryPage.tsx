@@ -7,7 +7,6 @@ import { newClothes } from '@/store/staticData';
 import { useState } from 'react';
 import ProductCard from '@/components/ProductComponents/ProductCard';
 import { Separator } from '@/components/ui/separator';
-import { Footer } from '@/components/footer';
 
 const CategoryPage = () => {
   const { title } = useParams();
@@ -24,7 +23,6 @@ const CategoryPage = () => {
 
   return (
     <div className="flex flex-col gap-6 px-5">
-      <Separator className="max-w-[800px] sm:max-w-[1065px]" />
       <BreadCrumbComponent cate={title} />
 
       <div className="flex w-full gap-6">
@@ -33,37 +31,36 @@ const CategoryPage = () => {
         </div>
 
         <div className="flex w-full flex-col gap-5">
-          <div className="flex justify-between">
-            <div className="flex w-full max-w-[280px] justify-between sm:max-w-[755px]">
-              <Sort min={1} max={10} total={100} title={title} />
-            </div>
-          </div>
+          <div className="inline-block w-full">
+            <div className="inline-block w-auto align-top">
+              <div className="mb-4 flex w-full justify-between">
+                <div className="w-full">
+                  <Sort min={1} max={10} total={100} title={title} />
+                </div>
+              </div>
 
-          <div className="flex items-center">
-            <div className="grid grid-cols-2 items-center justify-center gap-4 sm:grid-cols-3">
-              {currentProducts.map((p, idx) => (
-                <ProductCard key={idx} product={p} />
-              ))}
-            </div>
-          </div>
+              <div className="grid grid-cols-2 gap-4 sm:grid-cols-3">
+                {currentProducts.map((p, idx) => (
+                  <ProductCard key={idx} product={p} />
+                ))}
+              </div>
 
-          <div className="flex">
-            <Separator className="max-w-[280px] sm:max-w-[755px]" />
-          </div>
+              <div className="mt-6">
+                <Separator />
+              </div>
 
-          <div className="flex">
-            <div className="flex w-full max-w-[280px] justify-center sm:max-w-[755px]">
-              <ProductPagination
-                totalItems={totalItems}
-                itemsPerPage={itemsPerPage}
-                currentPage={currentPage}
-                setCurrentPage={setCurrentPage}
-              />
+              <div className="mt-4 flex justify-center">
+                <ProductPagination
+                  totalItems={totalItems}
+                  itemsPerPage={itemsPerPage}
+                  currentPage={currentPage}
+                  setCurrentPage={setCurrentPage}
+                />
+              </div>
             </div>
           </div>
         </div>
       </div>
-      <Footer />
     </div>
   );
 };

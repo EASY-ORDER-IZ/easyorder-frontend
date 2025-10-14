@@ -21,19 +21,17 @@ const Sort = ({ title, min, max, total }: Props) => {
   const [position, setPosition] = React.useState('Most Popular');
   return (
     <div className="flex w-full items-center justify-between">
-      <span className="text-[25px] leading-[100%] font-bold capitalize">{title}</span>
+      <span className="text-2md leading-[100%] font-bold capitalize">{title}</span>
       <div className="mt-2 flex gap-3 sm:mt-1">
-        <span className="text-text/60 text-[15px] leading-[100%] font-normal">
+        <span className="text-text/60 text-list leading-[100%] font-normal">
           {`Showing ${min}-${max} of ${total}`}
         </span>
         <div className="hidden gap-1 sm:flex">
-          <span className="text-text/60 text-[12px] leading-[100%] font-normal sm:text-[15px]">
-            Sort by:
-          </span>
+          <span className="text-text/60 text-list leading-[100%] font-normal">Sort by:</span>
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
               <div className="flex gap-1">
-                <span className="cursor-pointer leading-[100%] font-normal sm:text-[15px]">
+                <span className="text-list cursor-pointer leading-[100%] font-normal">
                   {position}
                 </span>
                 <ChevronDown className="h-5 w-5" />
