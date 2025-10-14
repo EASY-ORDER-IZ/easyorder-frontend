@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import ColorCircle from './ColorCircle';
 import { Button } from '../ui/button/button';
-
+import { useTranslation } from 'react-i18next';
 const ProductDetails = () => {
   const [activeButton, setActiveButton] = useState<string>('');
   const [activeColor, setActiveColor] = useState<string>('');
   const [counter, setCounter] = useState<number>(1);
-
+  const { t } = useTranslation();
   const sizes = ['small', 'medium', 'large', 'x-large'];
   const colors = ['#000000', '#39040aff', '#020a1aff'];
 
@@ -87,7 +87,7 @@ const ProductDetails = () => {
           className="bg-button-bg text-button-text w-full cursor-pointer rounded-full px-6 py-6 sm:w-[25rem]"
           onClick={() => console.log('Add to Cart')}
         >
-          Add to Cart
+          {t('addToCart')}
         </Button>
       </div>
     </div>

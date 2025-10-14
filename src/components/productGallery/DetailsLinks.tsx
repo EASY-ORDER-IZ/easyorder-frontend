@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import { Button } from '../ui/button/button';
 import Reviews from './Reviews';
+import { useTranslation } from 'react-i18next';
 
 const DetailsLinks = () => {
   const [activeLink, setActiveLink] = useState<string>('rating&reviews');
+  const { t } = useTranslation();
 
   return (
     <div className="p-4 text-base sm:p-8 sm:text-lg lg:p-26 lg:text-xl">
@@ -17,7 +19,7 @@ const DetailsLinks = () => {
           }`}
           onClick={() => setActiveLink('productDetails')}
         >
-          Product Details
+          {t('productDetails')}
         </Button>
 
         <Button
@@ -29,7 +31,7 @@ const DetailsLinks = () => {
           }`}
           onClick={() => setActiveLink('rating&reviews')}
         >
-          Rating & Reviews
+          {t('rating&reviews')}
         </Button>
       </div>
 

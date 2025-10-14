@@ -23,5 +23,20 @@
     "counter": "International Brands",
     "counter2": "High-Quality Products",
     "counter3": "Happy Customers"
+  },
+  "ProductDetails" : "Product Details",
+  "RatingAndReviews" : "Rating & Reviews",
+  "addToCart" : "Add to Cart",
+  "select" : {
+    "latest" : "Latest",
+    "oldest" : "Oldest",
+    "top" : "Top"
+  },
+  "WriteReview" : "Write a Review",
+  "breadcrumb" : {
+    "Home" : "Home",
+    "shop" : "Shop",
+    "men" : "Men",
+    "TShirt" : "T-Shirt"
   }
 }

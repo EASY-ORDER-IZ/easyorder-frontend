@@ -8,6 +8,7 @@ import {
   SelectContent,
   SelectItem,
 } from '@/components/ui/select';
+import { useTranslation } from 'react-i18next';
 
 interface ReviewsFiltersProps {
   count: number;
@@ -17,7 +18,7 @@ interface ReviewsFiltersProps {
 
 const ReviewsFilters = ({ count, sortOption, setSortOption }: ReviewsFiltersProps) => {
   const [isOpen, setIsOpen] = useState(false);
-
+  const { t } = useTranslation();
   return (
     <div className="flex w-full items-center justify-between px-6 md:px-22">
       <div className="flex items-center gap-2">
@@ -30,8 +31,8 @@ const ReviewsFilters = ({ count, sortOption, setSortOption }: ReviewsFiltersProp
 
         <Select
           value={sortOption}
-          onValueChange={(value) => setSortOption(value as 'latest' | 'oldest' | 'top')}
-          onOpenChange={(open) => setIsOpen(open)}
+          onValueChange={(value : any) => setSortOption(value as 'latest' | 'oldest' | 'top')}
+          onOpenChange={(open : any) => setIsOpen(open)}
         >
           <SelectTrigger className="flex w-[140px] items-center justify-between gap-2 rounded-full border border-gray-300 px-4 py-2 [&>svg]:hidden">
             <SelectValue placeholder="Sort by" />
@@ -45,9 +46,9 @@ const ReviewsFilters = ({ count, sortOption, setSortOption }: ReviewsFiltersProp
           </SelectTrigger>
 
           <SelectContent>
-            <SelectItem value="latest">Latest</SelectItem>
-            <SelectItem value="oldest">Oldest</SelectItem>
-            <SelectItem value="top">Most Ratings</SelectItem>
+            <SelectItem value="latest">{t('select.latest')}</SelectItem>
+            <SelectItem value="oldest">{t('select.oldest')}</SelectItem>
+            <SelectItem value="top">{t('select.top')}</SelectItem>
           </SelectContent>
         </Select>
 
@@ -55,7 +56,7 @@ const ReviewsFilters = ({ count, sortOption, setSortOption }: ReviewsFiltersProp
           className="font-satoshi rounded-full bg-black px-6 py-2 text-sm text-white transition hover:opacity-80"
           onClick={() => console.log('Write a review')}
         >
-          Write a Review
+          {t('writeReview')}
         </Button>
       </div>
     </div>
