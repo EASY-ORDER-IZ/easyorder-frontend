@@ -22,6 +22,7 @@ export const buttonVariants = cva(
         newslatter: 'bg-background-100 text-text-900 rounded-9 ',
         toggle:
           'bg-primary-main  transition-all duration-200 ease-in-out disabled:bg-primary-50 cursor-pointer',
+        carticon: 'bg-background-main text-text-900 rounded-9 ',
       },
       size: {
         toggle: 'w-[70px] h-[36px] rounded-full p-0.5',

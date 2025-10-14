@@ -2,16 +2,9 @@ import CartCard from '@/components/CartCard';
 import CartSummary from '@/components/CartSummary';
 import type { CartItem } from '@/types/Carttypes';
 import cartSummary from '@/utils/cartsummary';
-import {
-  Breadcrumb,
-  BreadcrumbItem,
-  BreadcrumbLink,
-  BreadcrumbList,
-  BreadcrumbPage,
-  BreadcrumbSeparator,
-} from '@/components/ui/breadcrumb';
 import { useState, useMemo } from 'react';
 import Footer from '@/components/footer/Footer';
+import BreadCrumbComponent from '@/components/FilterComponents/BreadCrumb';
 
 const CartPage = () => {
   const [promo, setPromo] = useState('');
@@ -92,39 +85,18 @@ const CartPage = () => {
     [cartItems, promo],
   );
 
-  // ===========================
-  // Render
-  // ===========================
   return (
-    <div className="flex flex-col gap-8 w-full">
-      {/* ===========================
-          Breadcrumb + Header
-      =========================== */}
-      <div className="px-4 lg:px-[100px] flex flex-col gap-4 w-full h-full">
-        <Breadcrumb>
-          <BreadcrumbList>
-            <BreadcrumbItem>
-              <BreadcrumbLink href="/" className="text-brand-text">
-                Home
-              </BreadcrumbLink>
-            </BreadcrumbItem>
-            <BreadcrumbSeparator />
-            <BreadcrumbItem>
-              <BreadcrumbPage>Breadcrumb</BreadcrumbPage>
-            </BreadcrumbItem>
-          </BreadcrumbList>
-        </Breadcrumb>
+    <div className="flex w-full flex-col gap-8">
+      <div className="flex h-full w-full flex-col gap-4 px-25">
+        <BreadCrumbComponent cate="cart" />
 
-        <h1 className="font-integral font-bold text-left text-[32px] lg:text-[40px] leading-[36px] lg:leading-[46px] w-[268px] lg:w-[654px] h-[72px] lg:h-[58px]">
+        <h1 className="font-integral text-h2 leading-h1 h-18 w-67 text-left font-bold lg:h-14.5 lg:w-163.5">
           Your cart
         </h1>
 
-        {/* ===========================
-            Cart Items + Summary
-        =========================== */}
-        <div className="flex flex-col lg:flex-row gap-5">
+        <div className="flex flex-col gap-5 lg:flex-row">
           {/* Cart Items */}
-          <div className="w-[385px] lg:w-[715px] flex flex-col gap-6 border rounded-[20px] p-4 lg:px-[24px] lg:py-[20px] left-[16px] border-border-cards">
+          <div className="border-border-cards left-4 flex w-89.5 flex-col gap-6 rounded-[1.25rem] border p-4 lg:w-179 lg:px-6 lg:py-5">
             {cartItems.map((item, index) => (
               <div key={item.id} className="flex flex-col gap-4">
                 <CartCard
@@ -134,8 +106,8 @@ const CartPage = () => {
                   onDelete={removeItem}
                 />
                 {index !== cartItems.length - 1 && (
-                  <div className="w-full flex justify-center lg:justify-start">
-                    <div className="w-[330px] lg:w-[667px] h-[1px] bg-[#0000001A]" />
+                  <div className="flex w-full justify-center lg:justify-start">
+                    <div className="bg-background-main h-[1px] w-82 lg:w-167" />
                   </div>
                 )}
               </div>
