@@ -27,11 +27,8 @@ const ProductPagination: React.FC<Props> = ({
   const leftCount = 3;
   const rightCount = 3;
 
-  const range = (start: number, end: number) => {
-    const arr: number[] = [];
-    for (let i = start; i <= end; i++) arr.push(i);
-    return arr;
-  };
+  const range = (start: number, end: number) =>
+    Array.from({ length: end - start + 1 }, (_, i) => start + i);
 
   const handleEllipsisClick = () => {
     if (currentPage <= leftCount) {

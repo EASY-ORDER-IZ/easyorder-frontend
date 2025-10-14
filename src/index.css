@@ -6,6 +6,10 @@
   font-family: integral;
   src: url('../src/assets/fonts/Fontspring-DEMO-integralcf-regular.otf');
 }
+@font-face {
+  font-family: pop;
+  src: url('../src/assets/fonts/Poppins-Regular.ttf');
+}
 
 @import 'tailwindcss';
 @import 'tw-animate-css';
@@ -19,38 +23,56 @@ html {
 @media (max-width: 1024px) {
   /* for tablet the rem is 1 whch is 15px */
   html {
-    font-size: 15px;
+    font-size: 13px;
   }
 }
 
 @media (max-width: 768px) {
   /* for mobile the rem is 1 which is 14px */
   html {
-    font-size: 14px;
+    font-size: 10px;
   }
 }
 
 @media (max-width: 480px) {
   /* for small mobile the rem is 1 which is 13px */
   html {
-    font-size: 13px;
+    font-size: 9px;
   }
 }
 
 @theme inline {
   --font-satoshi: satoshi, 'sans-serif';
   --font-integral: integral, 'sans-serif';
+  --font-pop: pop, 'sans-serif';
 
+  --text-xs: 0.75rem; /* 12px (extra small text) */
   --text-table-sm: 0.9rem; /* 14px (feature table smaller size) */
   --text-table-lg: 1rem; /* 16px (feature table) */
   --text-list: 1rem; /* 16px (feature lists) */
   --text-block-quote: 1rem; /* 16px when using ("") (body-text , product description)  */
+  --text-md: 1.125rem; /* 18px (medium text) */
   --text-p: 1.375rem; /* 22px (body-text , product description)*/
   --text-h4: 1.375rem; /* 22px (Small heading , product card title) */
+  --text-2md: 1.5rem; /* 24px (Sort dropdown) */
   --text-h3: 1.75rem; /* 28px (Sub section Title)   */
+  --text-lg: 2rem; /* 32px (Large text) */
   --text-inline-code: 2.25rem; /*  Developer-facing UI or API docs */
   --text-h2: 2.25rem; /* 36px (Section Title) */
   --text-h1: 3rem; /* 48px (Page Title) */
+
+  --radius-sm: 0.25rem; /* 4px */
+  --radius-md: 0.5rem; /* 8px */
+  --radius-lg: 0.75rem; /* 12px */
+  --radius-xl: 1rem; /* 16px */
+  --radius-1xl: 1.25rem; /* 20px */
+  --radius-2xl: 1.5rem; /* 24px */
+  --radius-3xl: 2rem; /* 32px */
+  --radius-4xl: 2.5rem; /* 40px */
+  --radius-5xl: 3rem; /* 48px */
+  --radius-6xl: 3.5rem; /* 56px */
+  --radius-7xl: 4rem; /* 64px */
+  --radius-full: 9999px; /* Full */
 
   --color-filter-bg: oklch(94.8% 0 0);
   --color-button-text: var(--button-text);
@@ -116,6 +138,7 @@ html {
   --color-text-900: oklch(0.2018 0.0025 325.67);
 
   --color-status-success: oklch(0.7184 0.1677 156.03);
+  --color-status-action: oklch(0.7694 0.1136 250.59);
   --color-status-warning: oklch(0.6546 0.2017 24.64);
   --color-status-warning-2: oklch(0.8088 0.17 75.26);
 }
@@ -172,4 +195,50 @@ html {
 }
 .animate-slide-up {
   animation: slide-up 0.3s ease-out forwards;
+}
+.font-card-title {
+  font-family: 'satoshi', sans-serif;
+  font-size: 1.3rem;
+
+  font-weight: 700;
+  line-height: 100%;
+  vertical-align: middle;
+  color: var(--text);
+  text-align: left;
+}
+.category-card {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: 15px;
+  width: 100%;
+  height: 100%;
+  grid-template-areas:
+    'A B B'
+    'C C D';
+}
+
+.category-card > div {
+  width: 100%;
+  height: 100%;
+}
+
+.category-card .A {
+  grid-area: A;
+}
+.category-card .B {
+  grid-area: B;
+}
+.category-card .C {
+  grid-area: C;
+}
+.category-card .D {
+  grid-area: D;
+}
+
+/* make all cards equal height visually */
+.category-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }

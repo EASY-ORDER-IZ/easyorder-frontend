@@ -19,8 +19,8 @@ const ColorsComponent = () => {
           style={{ backgroundColor: c }}
         >
           {selected === c && (
-            <div className="flex justify-center p-2">
-              <Check className="text-button-text h-4 w-4" />
+            <div className="mt-1 flex items-center justify-center p-2 align-middle">
+              <Check className="text-button-text size-7" />
             </div>
           )}
         </Badge>

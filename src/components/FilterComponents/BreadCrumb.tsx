@@ -17,7 +17,7 @@ const BreadCrumbComponent = ({ cate }: Props) => {
       <BreadcrumbList>
         <BreadcrumbItem>
           <BreadcrumbLink asChild>
-            <NavLink className="text-list leading-[100%] opacity-60" to="/">
+            <NavLink className="text-md leading-[100%] opacity-60" to="/home">
               Home
             </NavLink>
           </BreadcrumbLink>
@@ -26,9 +26,7 @@ const BreadCrumbComponent = ({ cate }: Props) => {
           <>
             <BreadcrumbSeparator />
             <BreadcrumbItem>
-              <BreadcrumbPage className="text-list leading-[100%] capitalize">
-                {cate}
-              </BreadcrumbPage>
+              <BreadcrumbPage className="text-md leading-[100%] capitalize">{cate}</BreadcrumbPage>
             </BreadcrumbItem>
           </>
         )}

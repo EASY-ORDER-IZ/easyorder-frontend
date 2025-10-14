@@ -14,11 +14,11 @@ const Size = () => {
           <Button
             onClick={() => handleSelect(index)}
             key={index}
-            variant="default"
-            className={`flex cursor-pointer gap-[12px] rounded-[62px] border px-5 py-[18px] ${
+            variant="primary"
+            className={`text-p flex cursor-pointer gap-[12px] rounded-[62px] border px-5 py-[18px] ${
               isActive
-                ? 'bg-button-bg text-button-text border-transparent'
-                : 'bg-disabled-bg text-text/60 border-disabled-bg'
+                ? 'text-button-text border-transparent bg-black'
+                : 'text-text/60 border-[#F0F0F0] bg-[#F0F0F0]'
             } `}
           >
             {s.title}
