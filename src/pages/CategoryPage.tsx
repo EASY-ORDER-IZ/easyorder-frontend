@@ -24,7 +24,7 @@ const CategoryPage = () => {
 
   return (
     <div className="flex flex-col gap-6 px-5">
-      <Separator className="max-w-[1065px]" />
+      <Separator className="max-w-[800px] sm:max-w-[1065px]" />
       <BreadCrumbComponent cate={title} />
 
       <div className="flex w-full gap-6">
@@ -34,7 +34,7 @@ const CategoryPage = () => {
 
         <div className="flex w-full flex-col gap-5">
           <div className="flex justify-between">
-            <div className="flex w-full max-w-[755px] justify-between">
+            <div className="flex w-full max-w-[280px] justify-between sm:max-w-[755px]">
               <Sort min={1} max={10} total={100} title={title} />
             </div>
           </div>
@@ -48,11 +48,11 @@ const CategoryPage = () => {
           </div>
 
           <div className="flex">
-            <Separator className="max-w-[755px]" />
+            <Separator className="max-w-[280px] sm:max-w-[755px]" />
           </div>
 
           <div className="flex">
-            <div className="flex w-full max-w-[755px] justify-center">
+            <div className="flex w-full max-w-[280px] justify-center sm:max-w-[755px]">
               <ProductPagination
                 totalItems={totalItems}
                 itemsPerPage={itemsPerPage}
