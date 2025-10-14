@@ -90,9 +90,7 @@ const CartPage = () => {
       <div className="flex h-full w-full flex-col gap-4 px-25">
         <BreadCrumbComponent cate="cart" />
 
-        <h1 className="font-integral text-h2 leading-h1 h-18 w-67 text-left font-bold lg:h-14.5 lg:w-163.5">
-          Your cart
-        </h1>
+        <h1 className="font-integral text-h2 leading-h1 text-left font-bold">Your cart</h1>
 
         <div className="flex flex-col gap-5 lg:flex-row">
           {/* Cart Items */}
@@ -107,7 +105,7 @@ const CartPage = () => {
                 />
                 {index !== cartItems.length - 1 && (
                   <div className="flex w-full justify-center lg:justify-start">
-                    <div className="bg-background-main h-[1px] w-82 lg:w-167" />
+                    <div className="bg-background-main h-[1px] w-[96%]" />
                   </div>
                 )}
               </div>

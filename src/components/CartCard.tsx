@@ -15,7 +15,7 @@ const CartCard = ({ item, onIncrement, onDecrement, onDelete }: Props) => {
   return (
     <Card key={item.id} className="flex w-82 flex-row border-0 shadow-none lg:w-167">
       <div>
-        <img src={item.image} alt={item.title} className="h-25 w-25 lg:h-31 lg:w-31" />
+        <img src={item.image} alt={item.title} className="size-25 lg:size-31" />
       </div>
       <div className="flex w-[70%] flex-col justify-between lg:w-[85%]">
         <div className="flex w-[80%] flex-col gap-0.5 sm:w-[96%]">
@@ -26,7 +26,7 @@ const CartCard = ({ item, onIncrement, onDecrement, onDelete }: Props) => {
             <Button
               variant="ghost"
               size={'icon'}
-              className="h-6 w-6 border-0"
+              className="size-6 border-0"
               onClick={() => onDelete(item.id)}
             >
               <Trash2 size={19} className="scale-[0.8] text-red-500 lg:scale-100" />
@@ -46,7 +46,7 @@ const CartCard = ({ item, onIncrement, onDecrement, onDelete }: Props) => {
           <div className="bg-background-main flex h-8 w-26 items-center justify-center gap-5 rounded-[3.87rem] px-5 py-4 lg:h-11 lg:w-32 lg:py-3">
             <Button
               size={'icon'}
-              className="h-5 w-4"
+              className="size-5"
               variant="carticon"
               onClick={() => onDecrement(item.id)}
             >
@@ -55,7 +55,7 @@ const CartCard = ({ item, onIncrement, onDecrement, onDelete }: Props) => {
             <span className="w-6 text-center font-medium">{item.quantity}</span>
             <Button
               size={'icon'}
-              className="h-5 w-5"
+              className="size-5"
               variant="carticon"
               onClick={() => onIncrement(item.id)}
             >

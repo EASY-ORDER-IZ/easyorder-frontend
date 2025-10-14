@@ -22,7 +22,7 @@ export default function CartSummary({
 }: Props) {
   return (
     <Card className="border-border-cards flex h-96 w-90 flex-col gap-5 rounded-[1.25rem] border-1 p-4 shadow-none lg:h-114 lg:w-128 lg:gap-6 lg:px-6 lg:py-5">
-      <h2 className="text-5 lg:text-6 font-extrabold">Order Summary</h2>
+      <h2 className="text-6 font-extrabold">Order Summary</h2>
       <div className="flex flex-col gap-5">
         <div className="flex justify-between text-sm">
           <span className="text-brand-text">Subtotal</span>
@@ -39,7 +39,7 @@ export default function CartSummary({
           <span className="font-extrabold">${delivery.toFixed(2)}</span>
         </div>
         <div className="flex w-full justify-center lg:justify-start">
-          <div className="bg-border-cards h-[1px] w-[330px] lg:w-[667px]"></div>
+          <div className="bg-border-cards h-[1px] w-full"></div>
         </div>
         <div className="font-sm flex justify-between text-base">
           <span>Total</span>
@@ -55,7 +55,7 @@ export default function CartSummary({
             value={promo}
             variant="footer"
             onChange={(e) => onPromoChange(e.target.value)}
-            className="bg-background-main placeholder:text-text-200 h-12 w-54 border-0 leading-none focus-visible:ring-0 focus-visible:ring-offset-0"
+            className="bg-background-main placeholder:text-text-200 h-12 w-54 border-0 leading-none"
           />
         </div>
         <Button variant="orderbutton" className="h-12 w-22 px-4 py-3">
@@ -63,7 +63,7 @@ export default function CartSummary({
         </Button>
       </div>
 
-      <Button variant={'orderbutton'} className="h-14 w-full px-14 py-4 lg:h-16">
+      <Button variant={'orderbutton'} className="h-14 px-14 py-4 lg:h-16">
         <div className="flex items-center justify-center gap-3">
           <span>Go to Checkout</span>
           <ArrowRight size={16} className="scale-[0.8] lg:scale-100" />
