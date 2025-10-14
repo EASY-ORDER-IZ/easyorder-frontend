@@ -7,7 +7,7 @@ const SignupBar = () => {
   if (!visible) return null;
 
   return (
-    <div className="bg-button-bg text-button-text relative flex w-full items-center justify-center px-4 py-2 text-xs sm:text-sm">
+    <div className="bg-component-bg text-button-text relative flex w-full items-center justify-center px-4 py-2 text-xs sm:text-sm">
       <span className="text-text-50">
         Sign up and get 20% off your first order.{' '}
         <Link to="/signin" className="font-medium underline transition hover:text-gray-200">
