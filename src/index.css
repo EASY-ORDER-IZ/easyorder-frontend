@@ -23,7 +23,7 @@ html {
 @media (max-width: 1024px) {
   /* for tablet the rem is 1 whch is 15px */
   html {
-    font-size: 12px;
+    font-size: 13px;
   }
 }
 

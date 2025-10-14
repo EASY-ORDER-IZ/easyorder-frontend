@@ -22,7 +22,7 @@ const CategoryPage = () => {
   const currentProducts = newClothes.slice(firstIndex, firstIndex + itemsPerPage);
 
   return (
-    <div className="flex flex-col gap-6 px-5">
+    <div className="flex flex-col gap-6">
       <BreadCrumbComponent cate={title} />
 
       <div className="flex w-full gap-6">
@@ -30,7 +30,7 @@ const CategoryPage = () => {
           <FliterComponent />
         </div>
 
-        <div className="flex w-full flex-col gap-5">
+        <div className="flex flex-col items-center justify-center gap-5">
           <div className="inline-block w-full">
             <div className="inline-block w-auto align-top">
               <div className="mb-4 flex w-full justify-between">
