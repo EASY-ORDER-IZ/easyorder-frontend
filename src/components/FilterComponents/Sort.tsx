@@ -9,7 +9,6 @@ import {
 } from '@/components/ui/dropdown-menu';
 import React from 'react';
 import { ChevronDown } from 'lucide-react';
-import DialogComponent from './Dialog';
 interface Props {
   title?: string;
   min?: number;
@@ -34,7 +33,7 @@ const Sort = ({ title, min, max, total }: Props) => {
                 <span className="text-list cursor-pointer leading-[100%] font-normal">
                   {position}
                 </span>
-                <ChevronDown className="h-5 w-5" />
+                <ChevronDown className="size-5" />
               </div>
             </DropdownMenuTrigger>
             <DropdownMenuContent className="w-45" side="bottom" align="start" sideOffset={4}>
@@ -49,7 +48,6 @@ const Sort = ({ title, min, max, total }: Props) => {
           </DropdownMenu>
         </div>
       </div>
-      <DialogComponent />
     </div>
   );
 };
