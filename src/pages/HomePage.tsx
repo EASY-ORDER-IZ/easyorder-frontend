@@ -1,5 +1,4 @@
 import CommentSection from '@/components/customercomments/CommentSection';
-import { Footer } from '../components/footer';
 import HeroSection from '@/components/HeroSection';
 import ProductBar from '@/components/ProductComponents/ProductBar';
 import StylesFilter from '@/components/ProductComponents/StylesFilter';
@@ -18,9 +17,6 @@ const HomePage = () => {
         <StylesFilter />
       </div>
       <CommentSection />
-      <div className="mt-32">
-        <Footer />
-      </div>
     </div>
   );
 };
