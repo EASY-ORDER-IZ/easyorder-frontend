@@ -7,7 +7,7 @@ import { newClothes } from '@/store/staticData';
 import { useState } from 'react';
 import ProductCard from '@/components/ProductComponents/ProductCard';
 import { Separator } from '@/components/ui/separator';
-import { Footer } from '@/components/footer';
+
 const CategoryPage = () => {
   const { title } = useParams();
   const [currentPage, setCurrentPage] = useState(1);
@@ -22,43 +22,45 @@ const CategoryPage = () => {
   const currentProducts = newClothes.slice(firstIndex, firstIndex + itemsPerPage);
 
   return (
-    <div>
-      <div className="flex flex-col gap-8 px-5 py-8">
-        <Separator />
-        <div className="flex w-full gap-6">
-          <div className="hidden flex-col gap-5 sm:flex">
-            <BreadCrumbComponent cate={title} />
-            <FliterComponent />
-          </div>
+    <div className="flex flex-col gap-6">
+      <BreadCrumbComponent cate={title} />
 
-          <div className="flex w-full flex-col">
-            <div className="flex flex-col gap-5 pt-4 sm:gap-0 lg:mt-7">
-              <div className="sm:hidden">
-                <BreadCrumbComponent cate={title} />
+      <div className="flex w-full gap-6">
+        <div className="hidden flex-col gap-5 sm:flex">
+          <FliterComponent />
+        </div>
+
+        <div className="flex flex-col items-center justify-center gap-5">
+          <div className="inline-block w-full">
+            <div className="inline-block w-auto align-top">
+              <div className="mb-4 flex w-full justify-between">
+                <div className="w-full">
+                  <Sort min={1} max={10} total={100} title={title} />
+                </div>
               </div>
 
-              <Sort min={1} max={10} total={100} title={title} />
-            </div>
+              <div className="grid grid-cols-2 gap-4 sm:grid-cols-3">
+                {currentProducts.map((p, idx) => (
+                  <ProductCard key={idx} product={p} />
+                ))}
+              </div>
 
-            <div className="mt-5 grid grid-cols-2 gap-6 sm:grid-cols-3 sm:justify-center lg:grid-cols-3">
-              {currentProducts.map((p, idx) => (
-                <ProductCard key={idx} product={p} />
-              ))}
-            </div>
-            <Separator className="mt-6" />
+              <div className="mt-6">
+                <Separator />
+              </div>
 
-            <div className="mt-6 flex justify-center md:mt-5">
-              <ProductPagination
-                totalItems={totalItems}
-                itemsPerPage={itemsPerPage}
-                currentPage={currentPage}
-                setCurrentPage={setCurrentPage}
-              />
+              <div className="mt-4 flex justify-center">
+                <ProductPagination
+                  totalItems={totalItems}
+                  itemsPerPage={itemsPerPage}
+                  currentPage={currentPage}
+                  setCurrentPage={setCurrentPage}
+                />
+              </div>
             </div>
           </div>
         </div>
       </div>
-      <Footer />
     </div>
   );
 };

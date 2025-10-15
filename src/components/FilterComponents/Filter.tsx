@@ -10,9 +10,9 @@ import { Separator } from '@/components/ui/separator';
 
 const FliterComponent = () => {
   return (
-    <div className="border-button-bg/10 flex w-full flex-col gap-6 border px-6 py-5 sm:w-[290px] sm:rounded-[20px] sm:border">
+    <div className="border-button-bg/10 rounded-1xl flex w-full max-w-[290px] flex-col gap-6 border px-6 py-5">
       <div className="flex w-full justify-between">
-        <span className="text-[20px] leading-[100%] font-bold">Filters</span>
+        <span className="text-2md leading-[100%] font-bold">Filters</span>
         <SlidersVertical className="size-6 opacity-40" />
       </div>
       <Separator />
@@ -26,8 +26,8 @@ const FliterComponent = () => {
       <Separator />
       <CollapsibleComponent title="Dress Style" component={<TypeFilter type={cate} />} />
 
-      <Button className="text-button-text rounded-[62px]" size="apply" variant="default">
-        <span className="text-[14px] leading-[100%] tracking-normal">Apply Filter</span>
+      <Button className="text-button-text rounded-7xl" size="apply" variant="default">
+        <span className="text-table-sm leading-[100%] tracking-normal">Apply Filter</span>
       </Button>
     </div>
   );

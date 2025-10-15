@@ -1,9 +1,14 @@
 import { redirect } from 'react-router-dom';
 
-const Auth = () => {
+interface User {
+  email: string;
+  password: string;
+}
+
+const Auth = ({ email, password }: User) => {
   const user = {
-    name: 'John Doe',
-    email: 'john@example',
+    email: email,
+    password: password,
   };
   if (!user) {
     return redirect('/signup');
