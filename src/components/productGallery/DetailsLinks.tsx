@@ -13,12 +13,12 @@ const DetailsLinks = () => {
         <Link
           to="#"
           className={`font-satoshi w-full rounded-none py-3 text-base transition-all duration-200 sm:w-[25.875rem] sm:text-lg flex justify-center items-center ${activeLink === 'productDetails'
-            ? 'border-b-2 border-black font-semibold text-black'
+            ? 'border-b-2 border-black font-semibold text-text-main'
             : 'text-text-200 border-b-2 border-transparent sm:border-b-2'
             }`}
           onClick={() => setActiveLink('productDetails')}
         >
-          {t('productDetails')}
+          {t('ProductDetails')}
         </Link>
         <Link
           to="#"
@@ -28,7 +28,7 @@ const DetailsLinks = () => {
             }`}
           onClick={() => setActiveLink('rating&reviews')}
         >
-          {t('rating&reviews')}
+          {t('RatingAndReviews')}
         </Link>
       </div>
 

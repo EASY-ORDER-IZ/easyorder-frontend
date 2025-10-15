@@ -56,9 +56,10 @@ const ProductDetails = () => {
             <Button
               key={size}
               onClick={() => setActiveButton(size)}
-              className={`min-w-[5.375rem] cursor-pointer rounded-full px-4 py-2 ${
-                activeButton === size ? 'bg-black text-white' : 'bg-gray-100 text-gray-700'
-              }`}
+              className={`min-w-[5.375rem] cursor-pointer rounded-full px-4 py-2 transition-colors duration-200 ${activeButton === size
+                  ? 'bg-black text-white'
+                  : 'bg-gray-100 text-gray-700'
+                }`}
             >
               {size}
             </Button>
@@ -70,7 +71,7 @@ const ProductDetails = () => {
       <div className="flex items-center gap-3">
         <div className="m:w-[10.625rem] my-4 flex w-full items-center justify-center gap-3 rounded-full bg-gray-100 p-2">
           <Button
-            className="cursor-pointer text-5xl"
+            className="cursor-pointer text-3xl bg-gray-100"
             onClick={() => {
               if (counter > 1) setCounter(counter - 1);
             }}
@@ -78,7 +79,7 @@ const ProductDetails = () => {
             -
           </Button>
           <span>{counter}</span>
-          <Button className="cursor-pointer text-4xl" onClick={() => setCounter(counter + 1)}>
+          <Button className="cursor-pointer text-2xl bg-gray-100" onClick={() => setCounter(counter + 1)}>
             +
           </Button>
         </div>
