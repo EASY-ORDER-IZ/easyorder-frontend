@@ -3,7 +3,6 @@ import CartSummary from '@/components/CartSummary';
 import type { CartItem } from '@/types/Carttypes';
 import cartSummary from '@/utils/cartsummary';
 import { useState, useMemo } from 'react';
-import Footer from '@/components/footer/Footer';
 import BreadCrumbComponent from '@/components/FilterComponents/BreadCrumb';
 
 const CartPage = () => {
@@ -122,13 +121,6 @@ const CartPage = () => {
             onPromoChange={setPromo}
           />
         </div>
-      </div>
-
-      {/* ===========================
-          Footer
-      =========================== */}
-      <div className="mt-30">
-        <Footer />
       </div>
     </div>
   );
