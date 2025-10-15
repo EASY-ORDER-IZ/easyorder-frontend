@@ -9,7 +9,7 @@ export default function DrawerComponent() {
     <Drawer shouldScaleBackground={true}>
       <DrawerTrigger asChild>
         <div className="bg-disabled-bg rounded-7xl flex cursor-pointer px-3 py-3 sm:hidden">
-          <SlidersVertical className="h-5 w-5" />
+          <SlidersVertical size={20} />
         </div>
       </DrawerTrigger>
 
