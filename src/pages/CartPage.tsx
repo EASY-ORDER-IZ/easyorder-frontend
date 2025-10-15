@@ -3,7 +3,6 @@ import CartSummary from '@/components/CartSummary';
 import type { CartItem } from '@/types/Carttypes';
 import cartSummary from '@/utils/cartsummary';
 import { useState, useMemo } from 'react';
-import Footer from '@/components/footer/Footer';
 import BreadCrumbComponent from '@/components/FilterComponents/BreadCrumb';
 
 const CartPage = () => {
@@ -94,7 +93,7 @@ const CartPage = () => {
 
         <div className="flex flex-col gap-5 lg:flex-row">
           {/* Cart Items */}
-          <div className="border-border-cards left-4 flex w-89.5 flex-col gap-6 rounded-[1.25rem] border p-4 lg:w-179 lg:px-6 lg:py-5">
+          <div className="border-border-cards rounded-1xl left-4 flex w-89.5 flex-col gap-6 border p-4 lg:w-179 lg:px-6 lg:py-5">
             {cartItems.map((item, index) => (
               <div key={item.id} className="flex flex-col gap-4">
                 <CartCard
@@ -122,13 +121,6 @@ const CartPage = () => {
             onPromoChange={setPromo}
           />
         </div>
-      </div>
-
-      {/* ===========================
-          Footer
-      =========================== */}
-      <div className="mt-30">
-        <Footer />
       </div>
     </div>
   );

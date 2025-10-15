@@ -15,12 +15,10 @@ export const buttonVariants = cva(
         ghost:
           'bg-button-bg-sec text-medium  text-[16px] border-1 border-black/10 text-button-text-sec rounded-[72px]',
         link: 'text-primary underline-offset-4 hover:underline',
-        acc: 'rounded-full bg-white border border-text-100',
+        acc: 'rounded-full bg-white border border-text-100 size-6 border-0',
         orderbutton: 'rounded-[62px] bg-button-bg text-button-text',
         pagLinkActive: 'bg-button-bg/10  text-button-bg',
         pagLinkInActive: 'text-button-bg/50  ',
-        newslatter: 'bg-background-100 text-text-900  ',
-        carticon: 'bg-background-main text-text-900  ',
         newslatter: 'bg-background-100 text-text-900 rounded-9 ',
         toggle:
           'bg-primary-main  transition-all duration-200 ease-in-out disabled:bg-primary-50 cursor-pointer',

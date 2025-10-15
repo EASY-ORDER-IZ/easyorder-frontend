@@ -16,24 +16,25 @@ const CommentSection = () => {
   };
 
   return (
-    <div>
-      <div className="flex flex-row items-end justify-between px-6 py-10 lg:px-30">
-        <h1 className="font-integral text-h2 leading-h2 lg:text-h1 lg:leading-h1 text-left font-extrabold tracking-[1px] uppercase">
-          OUR HAPPY CUSTOMERS
-        </h1>
-        <div className="flex flex-row items-center gap-4">
-          <Button variant="acc" onClick={handlePrev} size="icon" className="h-6 w-6 border-0">
-            <ArrowLeft className="h-4 w-4" />
-          </Button>
-          <Button variant="acc" onClick={handleNext} size="icon" className="h-6 w-6 border-0">
-            <ArrowRight className="*: h-4 w-4" />
-          </Button>
+    <div className="flex w-full justify-center">
+      <div className="w-full max-w-[1240px]">
+        <div className="flex flex-row items-end justify-between px-6 py-10 lg:px-0">
+          <h1 className="font-integral text-h1 leading-h1 text-left font-extrabold tracking-[1px] uppercase">
+            OUR HAPPY CUSTOMERS
+          </h1>
+          <div className="flex flex-row items-center gap-4">
+            <Button variant="acc" onClick={handlePrev} size="icon">
+              <ArrowLeft size={16} />
+            </Button>
+            <Button variant="acc" onClick={handleNext} size="icon">
+              <ArrowRight size={16} />
+            </Button>
+          </div>
         </div>
-      </div>
 
-      <CarouselOrientation onReady={(api) => (carouselApi.current = api)} />
+        <CarouselOrientation onReady={(api) => (carouselApi.current = api)} />
+      </div>
     </div>
   );
 };
-
 export default CommentSection;

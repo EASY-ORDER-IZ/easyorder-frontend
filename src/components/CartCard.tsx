@@ -43,7 +43,7 @@ const CartCard = ({ item, onIncrement, onDecrement, onDelete }: Props) => {
         </div>
         <CardFooter className="flex w-[80%] justify-between sm:w-[100%]">
           <p className="text-h4 font-extrabold">${(item.price * item.quantity).toFixed(2)}</p>
-          <div className="bg-background-main flex h-8 w-26 items-center justify-center gap-5 rounded-[3.87rem] px-5 py-4 lg:h-11 lg:w-32 lg:py-3">
+          <div className="bg-background-main rounded-7xl flex h-8 w-26 items-center justify-center gap-5 px-5 py-4 lg:h-11 lg:w-32 lg:py-3">
             <Button
               size={'icon'}
               className="size-5"

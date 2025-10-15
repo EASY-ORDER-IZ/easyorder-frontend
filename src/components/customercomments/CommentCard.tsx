@@ -11,18 +11,18 @@ interface CommentCardProps {
 const CommentCard = ({ name, rating, review }: CommentCardProps) => {
   return (
     <div className="flex justify-center">
-      <Card className="border-border-cards h-60 w-100 rounded-[1.25rem] border px-8 py-7 duration-300">
+      <Card className="border-border-cards rounded-1xl h-60 w-100 border px-8 py-7 duration-300">
         <CardHeader className="mb-3 p-0">
           <div className="flex items-center gap-1.5">
-            <StarsRating rating={rating} className="h-5 w-5" />
+            <StarsRating rating={rating} className="size-5" />
           </div>
         </CardHeader>
         <div className="flex flex-col gap-3">
           <CardTitle className="font-satoshi text-h4 leading-text-p">
             <div className="flex items-center gap-1">
               {name}
-              <div className="flex h-5 w-5 items-center justify-center rounded-full bg-[#00B140]">
-                <Check className="h-3 w-3 text-white" strokeWidth={3} />
+              <div className="flex size-5 items-center justify-center rounded-full bg-[#00B140]">
+                <Check size={12} className="text-white" strokeWidth={3} />
               </div>
             </div>
           </CardTitle>
