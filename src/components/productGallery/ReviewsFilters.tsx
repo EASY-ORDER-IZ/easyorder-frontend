@@ -34,7 +34,7 @@ const ReviewsFilters = ({ count, sortOption, setSortOption }: ReviewsFiltersProp
           onValueChange={(value : any) => setSortOption(value as 'latest' | 'oldest' | 'top')}
           onOpenChange={(open : any) => setIsOpen(open)}
         >
-          <SelectTrigger className="flex w-[140px] items-center justify-between gap-2 rounded-full border border-gray-300 px-4 py-2 [&>svg]:hidden">
+          <SelectTrigger className="flex w-[8.75rem] items-center justify-between gap-2 rounded-full border border-gray-300 px-4 py-2 [&>svg]:hidden">
             <SelectValue placeholder="Sort by" />
             <img
               src={down_arrow}
