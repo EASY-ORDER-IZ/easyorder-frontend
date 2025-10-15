@@ -9,6 +9,7 @@ import {
 } from '@/components/ui/dropdown-menu';
 import React from 'react';
 import { ChevronDown } from 'lucide-react';
+import DrawerComponent from './Drawer';
 interface Props {
   title?: string;
   min?: number;
@@ -48,6 +49,7 @@ const Sort = ({ title, min, max, total }: Props) => {
           </DropdownMenu>
         </div>
       </div>
+      <DrawerComponent />
     </div>
   );
 };
