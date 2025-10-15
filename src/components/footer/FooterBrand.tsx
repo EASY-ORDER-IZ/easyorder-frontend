@@ -23,19 +23,19 @@ const FooterBrand = () => {
 
           <NavLink to="https://facebook.com" target="_blank" rel="noopener noreferrer">
             <Button variant="acc" size="icon">
-              <img src={face} alt="Facebook logo" className="h-7 w-7" />
+              <img src={face} alt="Facebook logo" className="size-7" />
             </Button>
           </NavLink>
 
           <NavLink to="https://instagram.com" target="_blank" rel="noopener noreferrer">
             <Button variant="acc" size="icon">
-              <img src={insta} alt="Instagram logo" className="h-3 w-3" />
+              <img src={insta} alt="Instagram logo" className="size-3" />
             </Button>
           </NavLink>
 
           <NavLink to="https://github.com" target="_blank" rel="noopener noreferrer">
             <Button variant="acc" size="icon">
-              <img src={git} alt="GitHub logo" className="h-3 w-3" />
+              <img src={git} alt="GitHub logo" className="size-3" />
             </Button>
           </NavLink>
         </div>

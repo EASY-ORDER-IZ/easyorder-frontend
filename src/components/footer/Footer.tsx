@@ -8,11 +8,11 @@ const Footer = () => {
           <NewsletterLogic />
         </div>
         <div className="bg-footerbottom-bg relative flex w-full flex-col items-center justify-between gap-4 p-4 pt-50 pb-2.5 lg:pt-45">
-          <div className="flex w-full max-w-310 flex-col items-center justify-between gap-6 lg:flex-row lg:gap-0">
+          <div className="flex w-[95%] max-w-310 flex-col items-center justify-between gap-6 lg:flex-row lg:gap-0">
             <div className="mr-10 lg:mr-0 lg:w-71">
               <FooterBrand />
             </div>
-            <div className="grid grid-cols-2 justify-center gap-10 gap-y-10 text-left lg:w-200 lg:grid-cols-4">
+            <div className="grid grid-cols-2 justify-center gap-10 gap-y-10 text-left md:w-200 md:grid-cols-4">
               <FooterColumn title="Company" items={['About', 'Features', 'Forks']} />
               <FooterColumn
                 title="HELP"
@@ -34,7 +34,7 @@ const Footer = () => {
             </div>
           </div>
           <div className="flex w-full justify-center">
-            <div className="bg-background-600 h-[1px] w-[95%] sm:w-[30%] lg:w-[95%]" />
+            <div className="bg-background-600 h-[1px] w-89 md:w-220 lg:w-310" />
           </div>
 
           <FooterBottom />
