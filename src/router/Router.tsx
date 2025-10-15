@@ -5,6 +5,7 @@ import Auth from '../services/Auth';
 import LoginPage from '@/pages/LoginPage';
 import CartPage from '@/pages/CartPage';
 import CategoryPage from '@/pages/CategoryPage';
+import ProductDetailsPage from '@/pages/ProductDetailsPage'
 
 const Router = createBrowserRouter([
   {
