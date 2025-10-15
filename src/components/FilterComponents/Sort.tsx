@@ -34,7 +34,7 @@ const Sort = ({ title, min, max, total }: Props) => {
                 <span className="text-list cursor-pointer leading-[100%] font-normal">
                   {position}
                 </span>
-                <ChevronDown className="size-5" />
+                <ChevronDown className="size-[20]" />
               </div>
             </DropdownMenuTrigger>
             <DropdownMenuContent className="w-45" side="bottom" align="start" sideOffset={4}>
