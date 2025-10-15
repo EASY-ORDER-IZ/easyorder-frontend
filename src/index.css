@@ -136,10 +136,12 @@ html {
   --color-text-700: oklch(0.269 0.0018 286.28);
   --color-text-800: oklch(0.2323 0.0024 325.65);
   --color-text-900: oklch(0.2018 0.0025 325.67);
-
+  /*last version*/
   --color-accent-primary: oklch(0.606 0.1637 10.7);
   --color-disabled: oklch(0.8638 0 0);
   --color-primary-primary: oklch(1 0 0);
+
+  /*last version*/
 
   --color-status-success: oklch(0.7184 0.1677 156.03);
   --color-status-action: oklch(0.7694 0.1136 250.59);
