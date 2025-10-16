@@ -13,8 +13,8 @@ export default function DrawerComponent() {
         </div>
       </DrawerTrigger>
 
-      <DrawerContent className="flex h-[90vh] flex-col items-center justify-center !border-0 !bg-transparent">
-        <div className="bg-background-main scrollbar-thin scrollbar-thumb-gray-50 scrollbar-track-transparen rounded-t-1xl flex h-[95vh] justify-center overflow-y-auto">
+      <DrawerContent>
+        <div className="bg-background-main">
           <FilterComponent />
         </div>
       </DrawerContent>
