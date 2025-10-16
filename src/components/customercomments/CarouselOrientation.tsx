@@ -30,14 +30,14 @@ export function CarouselOrientation({ onReady }: CarouselOrientationProps) {
   );
 
   return (
-    <div className="relative flex w-full justify-center">
+    <div className="relative flex w-full items-center justify-center">
       <Carousel
         opts={{
           align: 'center',
           loop: true,
         }}
         setApi={handleSetApi}
-        className="relative w-[100%]"
+        className="relative w-full"
       >
         <CarouselContent className="-ml-2 md:-ml-4">
           {reviews.map((review) => (
