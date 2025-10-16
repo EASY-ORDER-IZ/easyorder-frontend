@@ -9,7 +9,7 @@ import {
 } from '@/components/ui/dropdown-menu';
 import React from 'react';
 import { ChevronDown } from 'lucide-react';
-import DialogComponent from './Dialog';
+import DrawerComponent from './Drawer';
 interface Props {
   title?: string;
   min?: number;
@@ -21,20 +21,20 @@ const Sort = ({ title, min, max, total }: Props) => {
   const [position, setPosition] = React.useState('Most Popular');
   return (
     <div className="flex w-full items-center justify-between">
-      <span className="text-2md leading-[100%] font-bold capitalize">{title}</span>
+      <span className="text-2md leading-full font-bold capitalize">{title}</span>
       <div className="mt-2 flex gap-3 sm:mt-1">
-        <span className="text-text/60 text-list leading-[100%] font-normal">
+        <span className="text-text/60 text-list leading-full font-normal">
           {`Showing ${min}-${max} of ${total}`}
         </span>
         <div className="hidden gap-1 sm:flex">
-          <span className="text-text/60 text-list leading-[100%] font-normal">Sort by:</span>
+          <span className="text-text/60 text-list leading-full font-normal">Sort by:</span>
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
               <div className="flex gap-1">
-                <span className="text-list cursor-pointer leading-[100%] font-normal">
+                <span className="text-list leading-full cursor-pointer font-normal">
                   {position}
                 </span>
-                <ChevronDown className="h-5 w-5" />
+                <ChevronDown size={20} />
               </div>
             </DropdownMenuTrigger>
             <DropdownMenuContent className="w-45" side="bottom" align="start" sideOffset={4}>
@@ -49,7 +49,7 @@ const Sort = ({ title, min, max, total }: Props) => {
           </DropdownMenu>
         </div>
       </div>
-      <DialogComponent />
+      <DrawerComponent />
     </div>
   );
 };

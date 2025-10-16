@@ -12,8 +12,8 @@ const FliterComponent = () => {
   return (
     <div className="border-button-bg/10 rounded-1xl flex w-full max-w-[290px] flex-col gap-6 border px-6 py-5">
       <div className="flex w-full justify-between">
-        <span className="text-2md leading-[100%] font-bold">Filters</span>
-        <SlidersVertical className="size-6 opacity-40" />
+        <span className="text-h3 leading-full flex font-bold">Filters</span>
+        <SlidersVertical size={24} className="opacity-40" />
       </div>
       <Separator />
       <TypeFilter type={clotherCate} />
@@ -27,7 +27,7 @@ const FliterComponent = () => {
       <CollapsibleComponent title="Dress Style" component={<TypeFilter type={cate} />} />
 
       <Button className="text-button-text rounded-7xl" size="apply" variant="default">
-        <span className="text-table-sm leading-[100%] tracking-normal">Apply Filter</span>
+        <span className="text-table-sm leading-full tracking-normal">Apply Filter</span>
       </Button>
     </div>
   );
