@@ -63,7 +63,7 @@ export function FormComponent() {
                     type="email"
                     placeholder="canan@example.com"
                     autoComplete="off"
-                    className="border-text-main placeholder:text-text-200 aria-[invalid=true]:border-status-warning aria-[invalid=true]:focus:border-status-warning border pr-10 pl-10 transition-all duration-300 ease-in-out placeholder:text-lg placeholder:leading-[100%] placeholder:font-medium"
+                    className="border-text-main placeholder:text-text-200 aria-[invalid=true]:border-status-warning aria-[invalid=true]:focus:border-status-warning placeholder:text-list border pr-10 pl-10 transition-all duration-300 ease-in-out placeholder:leading-[100%] placeholder:font-medium"
                   />
                 </div>
 
@@ -98,7 +98,7 @@ export function FormComponent() {
                     aria-invalid={fieldState.invalid}
                     placeholder="Enter your password"
                     autoComplete="off"
-                    className="border-text-main placeholder:text-text-200 aria-[invalid=true]:border-status-warning aria-[invalid=true]:focus:border-status-warning border pr-10 pl-10 transition-all duration-300 ease-in-out placeholder:text-lg placeholder:text-[1rem] placeholder:leading-[100%] placeholder:font-medium focus:outline-none"
+                    className="border-text-main placeholder:text-text-200 aria-[invalid=true]:border-status-warning aria-[invalid=true]:focus:border-status-warning placeholder:text-list border pr-10 pl-10 transition-all duration-300 ease-in-out placeholder:leading-[100%] placeholder:font-medium focus:outline-none"
                   />
 
                   <div
