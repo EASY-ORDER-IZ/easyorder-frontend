@@ -1,9 +1,18 @@
-import { Switch } from '@/components/ui/switch';
-
+import { Label } from '@/components/ui/label';
+import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 const SignInPage = () => {
   return (
     <div className="flex w-full flex-col items-center justify-center gap-5 p-10">
-      <Switch className="" />
+      <RadioGroup defaultValue="option-one">
+        <div className="flex items-center space-x-2">
+          <RadioGroupItem value="option-one" id="option-one" />
+          <Label htmlFor="option-one">Option One</Label>
+        </div>
+        <div className="flex items-center space-x-2">
+          <RadioGroupItem value="option-two" id="option-two" />
+          <Label htmlFor="option-two">Option Two</Label>
+        </div>
+      </RadioGroup>
     </div>
   );
 };
