@@ -14,7 +14,7 @@ export default function DrawerComponent() {
       </DrawerTrigger>
 
       <DrawerContent>
-        <div className="bg-background-main">
+        <div className="bg-background-main h-full overflow-y-auto pb-5">
           <FilterComponent />
         </div>
       </DrawerContent>
