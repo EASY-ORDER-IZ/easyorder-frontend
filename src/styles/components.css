@@ -1,0 +1,58 @@
+.font-card-title {
+  font-family: 'satoshi', sans-serif;
+  font-size: 1.3rem;
+
+  font-weight: 700;
+  line-height: 100%;
+  vertical-align: middle;
+  color: var(--text);
+  text-align: left;
+}
+.category-card {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: 15px;
+  width: 100%;
+  height: 100%;
+  grid-template-areas:
+    'A B B'
+    'C C D';
+}
+
+.category-card > div {
+  width: 100%;
+  height: 100%;
+}
+
+.category-card .A {
+  grid-area: A;
+}
+.category-card .B {
+  grid-area: B;
+}
+.category-card .C {
+  grid-area: C;
+}
+.category-card .D {
+  grid-area: D;
+}
+
+/* make all cards equal height visually */
+.category-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.CarouselItem:not(:nth-child(n)) {
+  filter: blur(5px);
+  opacity: 0.5;
+  transition:
+    filter 0.3s ease,
+    opacity 0.3s ease;
+}
+
+.CarouselItem:nth-child(n + 1) {
+  filter: none;
+  opacity: 1;
+}

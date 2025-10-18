@@ -1,0 +1,12 @@
+@font-face {
+  font-family: satoshi;
+  src: url('../src/assets/fonts/Satoshi-Regular.otf');
+}
+@font-face {
+  font-family: integral;
+  src: url('../src/assets/fonts/Fontspring-DEMO-integralcf-regular.otf');
+}
+@font-face {
+  font-family: pop;
+  src: url('../src/assets/fonts/Poppins-Regular.ttf');
+}
