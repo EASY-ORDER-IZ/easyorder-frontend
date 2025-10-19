@@ -1,13 +1,3 @@
-.font-card-title {
-  font-family: 'satoshi', sans-serif;
-  font-size: 1.3rem;
-
-  font-weight: 700;
-  line-height: 100%;
-  vertical-align: middle;
-  color: var(--text);
-  text-align: left;
-}
 .category-card {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -19,12 +9,6 @@
     'A B B'
     'C C D';
 }
-
-.category-card > div {
-  width: 100%;
-  height: 100%;
-}
-
 .category-card .A {
   grid-area: A;
 }
@@ -38,7 +22,6 @@
   grid-area: D;
 }
 
-/* make all cards equal height visually */
 .category-card img {
   width: 100%;
   height: 100%;
