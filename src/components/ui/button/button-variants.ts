@@ -12,9 +12,6 @@ export const buttonVariants = cva(
       },
       size: {
         default: '',
-        sm: 'w-button-sm',
-        md: 'w-button-md ',
-        lg: 'w-button-lg',
       },
     },
     defaultVariants: {
