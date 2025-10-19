@@ -11,6 +11,10 @@
 
   --text-title: 3rem /* 48px */;
 
+  --width-button-sm: 8.125rem; /* 130px */
+  --width-button-md: 13.75rem; /* 220px */
+  --width-button-lg: 26.125rem; /* 418px */
+
   --color-background: var(--background);
   --color-background-tertiary: var(--background-tertiary);
   --color-text-primary: var(--text-primary);
