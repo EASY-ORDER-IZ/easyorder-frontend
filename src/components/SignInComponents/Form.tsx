@@ -140,9 +140,14 @@ export function FormComponent() {
         </FieldGroup>
       </form>
       <Field className="mt-3" id="submit" orientation="horizontal">
-        <Button className="font-pop" type="submit" variant="primary" form="form-rhf-demo">
-          Login
-        </Button>
+        <div className="flex w-full flex-col gap-2.5">
+          <Button type="submit" variant="primary" form="form-rhf-demo">
+            Login
+          </Button>
+          <Button type="submit" variant="secondary" form="form-rhf-demo">
+            Login With Google
+          </Button>
+        </div>
       </Field>
       <Field className="flex justify-center" id="signup" orientation="horizontal">
         <span className="font-pop text-text-400 text-[0.75rem] leading-6 font-light">
