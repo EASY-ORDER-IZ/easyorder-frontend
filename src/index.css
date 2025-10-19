@@ -7,26 +7,41 @@
 @custom-variant dark (&:is(.dark *));
 
 html {
-  font-size: 16px; /* for laptop the rem is 1 which is 16px */
+  font-size: 16px;
 }
 
-@media (max-width: 1024px) {
-  /* for tablet the rem is 1 whch is 15px */
+@media (max-width: 2560px) {
   html {
-    font-size: 13px;
+    font-size: 18px;
   }
 }
-
+@media (max-width: 1440px) {
+  html {
+    font-size: 16px;
+  }
+}
+@media (max-width: 1024px) {
+  html {
+    font-size: 14px;
+  }
+}
 @media (max-width: 768px) {
-  /* for mobile the rem is 1 which is 14px */
+  html {
+    font-size: 12px;
+  }
+}
+@media (max-width: 425px) {
   html {
     font-size: 10px;
   }
 }
-
-@media (max-width: 480px) {
-  /* for small mobile the rem is 1 which is 13px */
+@media (max-width: 375px) {
   html {
     font-size: 9px;
+  }
+}
+@media (max-width: 320px) {
+  html {
+    font-size: 8px;
   }
 }

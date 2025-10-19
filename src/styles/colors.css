@@ -1,18 +1,4 @@
 :root {
-  --text: oklch(0% 0 0);
-  --button-text: oklch(100% 0 0);
-  --button-bg: oklch(0% 0 0);
-  --footer-bg: oklch(0% 0 0);
-  --input-bg: oklch(100% 0 0);
-  --footer-text: oklch(100% 0 0);
-  --brand-text: oklch(0% 0 0 / 0.6);
-  --footerbottom-bg: #f0f0f0;
-  --border-cards: oklch(0% 0 0 / 0.1);
-  --button-text-sec: oklch(0% 0 0);
-  --button-bg-sec: oklch(100% 0 0);
-  --component-bg: oklch(95.7% 0.003 345.21);
-
-  /*Last version*/
   --background: oklch(0.9967 0.0013 106.42);
   --background-tertiary: oklch(0.9886 0.0017 67.8);
   --text-primary: oklch(0.303 0.0038 308.32);
@@ -25,19 +11,9 @@
   --status-warning: oklch(0.7787 0.1358 76.25);
   --status-action: oklch(0.4751 0.0588 212.99);
   --status-action-hover: oklch(0.4414 0.0482 213.45);
-
-  /* last version*/
 }
 
 .dark {
-  --text: oklch(100% 0 0);
-  --button-text-sec: oklch(100% 0 0);
-  --button-bg-sec: oklch(0% 0 0);
-  --button-text: oklch(0% 0 0);
-  --button-bg: oklch(100% 0 0);
-  --component-bg: oklch(0% 0 0);
-
-  /*Last version*/
   --background: oklch(0.2018 0.0025 325.67);
   --background-tertiary: oklch(0.2323 0.0024 325.65);
   --text-primary: oklch(0.9392 0.004 106.48);
@@ -50,6 +26,4 @@
   --status-warning: oklch(0.8547 0.1492 82.53);
   --status-action: oklch(0.6341 0.0724 213.67);
   --status-action-hover: oklch(0.5878 0.0666 214.31);
-
-  /* last version*/
 }
