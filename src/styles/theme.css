@@ -1,3 +1,5 @@
+@import './colors.css';
+
 @theme inline {
   --font-satoshi: satoshi, 'sans-serif';
   --font-integral: integral, 'sans-serif';
