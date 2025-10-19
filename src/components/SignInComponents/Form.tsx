@@ -13,11 +13,13 @@ import { Link, useNavigate } from 'react-router-dom';
 import { Button } from '../ui/button/button';
 import { useAuthStore } from '@/store/authStore';
 import { toast } from 'sonner';
+import LogoSVG from '@/assets/svg/logo';
 
 export function FormComponent() {
   const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
   const { login } = useAuthStore();
+  const [isDisabled] = useState(false);
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -41,6 +43,7 @@ export function FormComponent() {
 
   return (
     <div className="flex min-w-105 flex-col gap-6">
+      <LogoSVG />
       <form id="form-rhf-demo" onSubmit={form.handleSubmit(onSubmit)}>
         <FieldGroup>
           <Controller
@@ -121,7 +124,7 @@ export function FormComponent() {
                 )}
                 <Field
                   id="forgot-password"
-                  className="mt-1 flex justify-start"
+                  className="mt-1 flex justify-end"
                   orientation="horizontal"
                 >
                   <Link
@@ -137,8 +140,8 @@ export function FormComponent() {
         </FieldGroup>
       </form>
       <Field className="mt-3" id="submit" orientation="horizontal">
-        <Button className="font-pop" type="submit" variant="primary" size="lg" form="form-rhf-demo">
-          Sign In
+        <Button className="font-pop" type="submit" variant="primary" form="form-rhf-demo">
+          Login
         </Button>
       </Field>
       <Field className="flex justify-center" id="signup" orientation="horizontal">
@@ -146,8 +149,10 @@ export function FormComponent() {
           Don't have an account?
         </span>
         <Link
-          to="/signup"
-          className="text-status-action font-pop text-[0.75rem] leading-6 font-medium underline"
+          to={isDisabled ? '#' : '/signup'}
+          aria-disabled={isDisabled}
+          className={`link-text ${isDisabled ? 'disabled-link' : ''}`}
+          tabIndex={isDisabled ? -1 : undefined}
         >
           Sign up
         </Link>

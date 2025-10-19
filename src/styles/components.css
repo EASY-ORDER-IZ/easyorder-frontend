@@ -39,3 +39,24 @@
   filter: none;
   opacity: 1;
 }
+.button-text {
+  font-size: 1rem;
+  line-height: 1.6;
+  letter-spacing: 0rem;
+}
+.link-text {
+  font-size: 0.75rem;
+  text-decoration: underline;
+  line-height: 1.125rem;
+  color: var(--color-status-action);
+  transition: color 0.2s ease;
+}
+
+.link-text:hover {
+  color: var(--color-status-action-hover);
+}
+.link-text.disabled-link,
+.link-text[aria-disabled='true'] {
+  color: var(--color-text-disabled);
+  cursor: not-allowed;
+}

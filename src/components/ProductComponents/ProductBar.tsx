@@ -42,7 +42,7 @@ const ProductBar = ({ title }: Props) => {
       </div>
 
       <div className="flex w-full items-center justify-center sm:w-auto">
-        <Button onClick={handleViewMore} size="md" variant="secondary">
+        <Button onClick={handleViewMore} variant="secondary">
           {hasMore ? 'View All' : 'View Less'}
           <ChevronRight />
         </Button>
