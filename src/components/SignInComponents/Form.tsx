@@ -15,6 +15,7 @@ import { useAuthStore } from '@/store/authStore';
 import { toast } from 'sonner';
 import LogoSVG from '@/assets/svg/logo';
 import WelcomeBack from '@/assets/svg/welcomeback';
+import SearchComponent from '../CommonComponents/Search';
 
 export function FormComponent() {
   const [showPassword, setShowPassword] = useState(false);
@@ -67,7 +68,6 @@ export function FormComponent() {
                       <Mail className="text-text-secondary h-4.5 w-4.5" />
                     </div>
                     <Input
-                      variant="default"
                       {...field}
                       id="form-rhf-demo-email"
                       aria-invalid={fieldState.invalid}
@@ -109,7 +109,6 @@ export function FormComponent() {
 
                   <Input
                     type={showPassword ? 'text' : 'password'}
-                    variant="default"
                     {...field}
                     disabled
                     id="form-rhf-demo-password"
@@ -177,6 +176,7 @@ export function FormComponent() {
           Sign up
         </Link>
       </Field>
+      <SearchComponent />
     </div>
   );
 }
