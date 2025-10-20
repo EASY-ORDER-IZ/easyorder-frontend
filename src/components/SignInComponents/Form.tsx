@@ -14,6 +14,7 @@ import { Button } from '../ui/button/button';
 import { useAuthStore } from '@/store/authStore';
 import { toast } from 'sonner';
 import LogoSVG from '@/assets/svg/logo';
+import WelcomeBack from '@/assets/svg/welcomeback';
 
 export function FormComponent() {
   const [showPassword, setShowPassword] = useState(false);
@@ -42,8 +43,13 @@ export function FormComponent() {
   }
 
   return (
-    <div className="flex min-w-105 flex-col gap-6">
-      <LogoSVG />
+    <div className="flex min-w-105 flex-col gap-3">
+      <div>
+        <WelcomeBack />
+
+        <LogoSVG />
+      </div>
+
       <form id="form-rhf-demo" onSubmit={form.handleSubmit(onSubmit)}>
         <FieldGroup>
           <Controller
@@ -51,28 +57,35 @@ export function FormComponent() {
             control={form.control}
             render={({ field, fieldState }) => (
               <Field data-invalid={fieldState.invalid}>
-                <FieldLabel htmlFor="form-rhf-demo-email">
-                  Email <span className="text-status-warning">*</span>
-                </FieldLabel>
-                <div className="relative flex w-full items-center">
-                  <div className="absolute inset-y-0 left-3 flex items-center">
-                    <Mail className="text-text-200 h-6 w-6" />
+                <div>
+                  <FieldLabel htmlFor="form-rhf-demo-email">
+                    <span
+                      className={`button-text ${fieldState.invalid ? 'text-status-danger' : 'text-text-primary'}`}
+                    >
+                      Email
+                    </span>{' '}
+                    <span className="text-status-danger">*</span>
+                  </FieldLabel>
+                  <div className="relative flex w-full items-center">
+                    <div className="absolute inset-y-0 left-3 flex items-center">
+                      <Mail className="text-text-disabled h-6 w-6" />
+                    </div>
+                    <Input
+                      variant="default"
+                      {...field}
+                      id="form-rhf-demo-email"
+                      aria-invalid={fieldState.invalid}
+                      type="email"
+                      placeholder="canan@example.com"
+                      autoComplete="off"
+                      className="border-text-main placeholder:text-text-200 placeholder:text-list aria-[invalid=true]:bg-status-danger/5 border pr-10 pl-10 transition-all duration-300 ease-in-out placeholder:leading-[100%] placeholder:font-medium"
+                    />
                   </div>
-                  <Input
-                    variant="form"
-                    {...field}
-                    id="form-rhf-demo-email"
-                    aria-invalid={fieldState.invalid}
-                    type="email"
-                    placeholder="canan@example.com"
-                    autoComplete="off"
-                    className="border-text-main placeholder:text-text-200 aria-[invalid=true]:border-status-warning aria-[invalid=true]:focus:border-status-warning placeholder:text-list border pr-10 pl-10 transition-all duration-300 ease-in-out placeholder:leading-[100%] placeholder:font-medium"
-                  />
                 </div>
 
                 {fieldState.invalid && (
                   <FieldError
-                    className="text-status-warning peer-aria-invalid:text-status-warning mt-1"
+                    className="text-status-danger peer-aria-invalid:text-status-danger mt-1"
                     errors={[fieldState.error]}
                   />
                 )}
@@ -86,22 +99,27 @@ export function FormComponent() {
             render={({ field, fieldState }) => (
               <Field data-invalid={fieldState.invalid} className="">
                 <FieldLabel htmlFor="form-rhf-demo-password">
-                  Password <span className="text-status-warning">*</span>
+                  <span
+                    className={`button-text ${fieldState.invalid ? 'text-status-danger' : 'text-text-primary'}`}
+                  >
+                    Password
+                  </span>{' '}
+                  <span className="text-status-danger">*</span>
                 </FieldLabel>
                 <div className="relative flex w-full items-center">
                   <div className="absolute inset-y-0 left-3 flex items-center">
-                    <Lock className="text-text-200 h-6 w-6" />
+                    <Lock className="text-text-disabled h-6 w-6" />
                   </div>
 
                   <Input
                     type={showPassword ? 'text' : 'password'}
-                    variant="form"
+                    variant="default"
                     {...field}
                     id="form-rhf-demo-password"
                     aria-invalid={fieldState.invalid}
                     placeholder="Enter your password"
                     autoComplete="off"
-                    className="border-text-main placeholder:text-text-200 aria-[invalid=true]:border-status-warning aria-[invalid=true]:focus:border-status-warning placeholder:text-list border pr-10 pl-10 transition-all duration-300 ease-in-out placeholder:leading-[100%] placeholder:font-medium focus:outline-none"
+                    className="border-text-main aria-[invalid=true]:bg-status-danger/5 placeholder:text-text-200 aria-[invalid=true]:border-status-danger aria-[invalid=true]:focus:border-status-danger placeholder:text-list border pr-10 pl-10 transition-all duration-300 ease-in-out placeholder:leading-[100%] placeholder:font-medium focus:outline-none"
                   />
 
                   <div
@@ -109,16 +127,16 @@ export function FormComponent() {
                     onClick={() => setShowPassword((prev) => !prev)}
                   >
                     {showPassword ? (
-                      <EyeOff className="text-text-200 h-6 w-6" />
+                      <EyeOff className="text-text-disabled h-6 w-6" />
                     ) : (
-                      <Eye className="text-text-200 h-6 w-6" />
+                      <Eye className="text-text-disabled h-6 w-6" />
                     )}
                   </div>
                 </div>
 
                 {fieldState.invalid && (
                   <FieldError
-                    className="text-status-warning peer-aria-invalid:text-status-warning mt-1"
+                    className="text-status-danger peer-aria-invalid:text-status-danger mt-1"
                     errors={[fieldState.error]}
                   />
                 )}
