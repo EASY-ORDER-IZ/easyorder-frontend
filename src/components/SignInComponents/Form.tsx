@@ -59,16 +59,12 @@ export function FormComponent() {
               <Field data-invalid={fieldState.invalid}>
                 <div>
                   <FieldLabel htmlFor="form-rhf-demo-email">
-                    <span
-                      className={`button-text ${fieldState.invalid ? 'text-status-danger' : 'text-text-primary'}`}
-                    >
-                      Email
-                    </span>{' '}
+                    <span className={`button-text text-text-primary`}>Email</span>{' '}
                     <span className="text-status-danger">*</span>
                   </FieldLabel>
                   <div className="relative flex w-full items-center">
-                    <div className="absolute inset-y-0 left-3 flex items-center">
-                      <Mail className="text-text-disabled h-6 w-6" />
+                    <div className="absolute inset-y-0 left-2 flex items-center">
+                      <Mail className="text-text-secondary h-4.5 w-4.5" />
                     </div>
                     <Input
                       variant="default"
@@ -78,7 +74,7 @@ export function FormComponent() {
                       type="email"
                       placeholder="canan@example.com"
                       autoComplete="off"
-                      className="border-text-main placeholder:text-text-200 placeholder:text-list aria-[invalid=true]:bg-status-danger/5 border pr-10 pl-10 transition-all duration-300 ease-in-out placeholder:leading-[100%] placeholder:font-medium"
+                      className="px-8"
                     />
                   </div>
                 </div>
@@ -107,19 +103,20 @@ export function FormComponent() {
                   <span className="text-status-danger">*</span>
                 </FieldLabel>
                 <div className="relative flex w-full items-center">
-                  <div className="absolute inset-y-0 left-3 flex items-center">
-                    <Lock className="text-text-disabled h-6 w-6" />
+                  <div className="absolute inset-y-0 left-2 flex items-center">
+                    <Lock className="text-text-secondary h-4.5 w-4.5" />
                   </div>
 
                   <Input
                     type={showPassword ? 'text' : 'password'}
                     variant="default"
                     {...field}
+                    disabled
                     id="form-rhf-demo-password"
                     aria-invalid={fieldState.invalid}
                     placeholder="Enter your password"
                     autoComplete="off"
-                    className="border-text-main aria-[invalid=true]:bg-status-danger/5 placeholder:text-text-200 aria-[invalid=true]:border-status-danger aria-[invalid=true]:focus:border-status-danger placeholder:text-list border pr-10 pl-10 transition-all duration-300 ease-in-out placeholder:leading-[100%] placeholder:font-medium focus:outline-none"
+                    className="px-8"
                   />
 
                   <div
@@ -127,9 +124,9 @@ export function FormComponent() {
                     onClick={() => setShowPassword((prev) => !prev)}
                   >
                     {showPassword ? (
-                      <EyeOff className="text-text-disabled h-6 w-6" />
+                      <EyeOff className="text-text-secondary h-4.5 w-4.5" />
                     ) : (
-                      <Eye className="text-text-disabled h-6 w-6" />
+                      <Eye className="text-text-secondary h-4.5 w-4.5" />
                     )}
                   </div>
                 </div>

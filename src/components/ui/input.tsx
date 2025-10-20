@@ -2,11 +2,11 @@ import * as React from 'react';
 import { cn } from '@/lib/utils';
 import { cva, type VariantProps } from 'class-variance-authority';
 
-const inputVariants = cva('w-full rounded-sm h-12  ', {
+const inputVariants = cva('w-full rounded-sm h-12 p-2 bg-background border flex   ', {
   variants: {
     variant: {
       default:
-        'aria-[invalid=true]:border-status-danger aria-[invalid=true]:focus:border-status-danger border ',
+        ' placeholder:button-text button-text placeholder:text-text-secondary disabled:bg-text-disabled aria-[invalid=true]:border-status-danger focus:border-status-action focus:outline-none border-text-secondary  aria-[invalid=true]:focus:border-status-danger border ',
     },
   },
   defaultVariants: {
