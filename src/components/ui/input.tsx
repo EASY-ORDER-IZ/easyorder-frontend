@@ -6,7 +6,7 @@ const inputVariants = cva('w-full rounded-sm h-12 p-2 bg-background border flex 
   variants: {
     variant: {
       default:
-        ' placeholder:button-text button-text placeholder:text-text-secondary disabled:bg-text-disabled aria-[invalid=true]:border-status-danger focus:border-status-action focus:outline-none border-text-secondary  aria-[invalid=true]:focus:border-status-danger border ',
+        ' placeholder:button-text button-text placeholder:text-text-secondary disabled:border-0 disabled:bg-text-disabled aria-[invalid=true]:border-status-danger focus:border-status-action focus:outline-none border-text-secondary  aria-[invalid=true]:focus:border-status-danger border ',
     },
   },
   defaultVariants: {
