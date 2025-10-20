@@ -9,7 +9,14 @@ const SearchComponent = () => {
         <div className="absolute inset-y-0 left-2 flex items-center">
           <Search className="text-text-secondary h-4.5 w-4.5" />
         </div>
-        <Input type="search" placeholder="Search for products..." className="px-8" />
+        <Input
+          onChange={() => {
+            console.log('setValue');
+          }}
+          type="search"
+          placeholder="Search for products..."
+          className="px-8"
+        />
         <div className="absolute inset-y-0 right-2 flex cursor-pointer items-center">
           <Camera className="text-text-secondary h-4.5 w-4.5" />{' '}
         </div>
