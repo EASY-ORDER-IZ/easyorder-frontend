@@ -1,6 +1,5 @@
 import { Input } from '@/components/ui/input';
 import { Camera, Search } from 'lucide-react';
-import { Link } from 'react-router-dom';
 
 const SearchComponent = () => {
   return (
@@ -15,17 +14,13 @@ const SearchComponent = () => {
           }}
           type="search"
           placeholder="Search for products..."
-          className="px-8"
+          className="no-cancel px-8"
         />
         <div className="absolute inset-y-0 right-2 flex cursor-pointer items-center">
           <Camera className="text-text-secondary h-4.5 w-4.5" />{' '}
         </div>
       </div>
-      <div className="flex items-center justify-end">
-        <Link className="link-text" to="#">
-          PlaceHolder
-        </Link>
-      </div>
+      <div className="flex items-center justify-end"></div>
     </div>
   );
 };
