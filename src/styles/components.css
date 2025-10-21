@@ -44,6 +44,12 @@
   line-height: 1.6;
   letter-spacing: 0rem;
 }
+.suggestion-text {
+  font-size: 0.875rem;
+  font-weight: 500;
+  line-height: 1.5;
+  letter-spacing: 0rem;
+}
 .link-text {
   font-size: 0.75rem;
   text-decoration: underline;
@@ -63,4 +69,7 @@
 
 .no-cancel::-webkit-search-cancel-button {
   display: none;
+}
+.custom-shadow {
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.12);
 }
