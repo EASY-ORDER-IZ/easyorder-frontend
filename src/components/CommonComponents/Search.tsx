@@ -13,10 +13,10 @@ const SearchComponent = () => {
     fetch('https://jsonplaceholder.typicode.com/users')
       .then((response) => response.json() as Promise<User[]>)
       .then((data) => {
-        const q = value.toLowerCase();
-        const filtered = data.filter((user) => user.name?.toLowerCase().includes(q));
+        const result = value.toLowerCase();
+        const filtered = data.filter((user) => user.name?.toLowerCase().includes(result));
         setResults(filtered);
-        setShowBox(true); // show suggestions once user starts typing
+        setShowBox(true);
       })
       .catch((err) => console.error(err));
   };
@@ -24,7 +24,7 @@ const SearchComponent = () => {
   const handleChange = (value: string) => {
     setInput(value);
     if (value.trim() === '') {
-      setShowBox(false); // hide when input is cleared
+      setShowBox(false);
       setResults([]);
     } else {
       fetchData(value);
@@ -32,7 +32,7 @@ const SearchComponent = () => {
   };
 
   return (
-    <div className="flex flex-col gap-1">
+    <div className="relative flex flex-col gap-1">
       <div className="relative flex w-full items-center">
         <div className="absolute inset-y-0 left-2 flex items-center">
           <Search className="text-text-secondary h-4.5 w-4.5" />
@@ -50,7 +50,7 @@ const SearchComponent = () => {
       </div>
 
       {showBox && (
-        <div className="custom-shadow flex max-h-60 flex-col gap-2 overflow-y-scroll rounded-sm p-2">
+        <div className="custom-shadow bg-background absolute top-full right-0 left-0 z-10 mt-2 flex max-h-60 flex-col gap-2 overflow-y-scroll rounded-sm p-2">
           <span className="suggestion-text text-text-secondary">Suggestions</span>
           <div className="flex w-full flex-col gap-1.5">
             {results.length > 0 ? (
