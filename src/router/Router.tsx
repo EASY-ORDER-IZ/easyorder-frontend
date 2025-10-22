@@ -4,6 +4,7 @@ import RootLayout from '../layout/RootLayout';
 import CartPage from '@/pages/CartPage';
 import CategoryPage from '@/pages/CategoryPage';
 import SignInPage from '@/pages/SignInPage';
+import Placeholder from '@/components/Placeholder';
 
 const Router = createBrowserRouter([
   {
@@ -37,6 +38,10 @@ const Router = createBrowserRouter([
       {
         path: 'cate/:title',
         element: <CategoryPage />,
+      },
+      {
+        path: '/placeholder',
+        element: <Placeholder />,
       },
     ],
   },
