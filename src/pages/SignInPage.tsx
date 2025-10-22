@@ -4,6 +4,13 @@ import { Spinner } from '@/components/ui/spinner';
 import { ChevronRight, Lock } from 'lucide-react';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Badge } from '@/components/ui/badge';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuTrigger,
+} from '@/components/ui/dropdown-menu';
 const SignInPage = () => {
   return (
     <div className="flex flex-col items-center justify-center gap-5">
@@ -29,6 +36,16 @@ const SignInPage = () => {
       <Badge prefixIcon={true} variant="secondary">
         -20%
       </Badge>
+      <DropdownMenu>
+        <DropdownMenuTrigger />
+        <DropdownMenuContent>
+          <DropdownMenuLabel>Suggestions</DropdownMenuLabel>
+          <DropdownMenuItem>Placeholder option 01</DropdownMenuItem>
+          <DropdownMenuItem>Placeholder option 01</DropdownMenuItem>
+          <DropdownMenuItem>Placeholder option 01</DropdownMenuItem>
+          <DropdownMenuItem>Placeholder option 01</DropdownMenuItem>
+        </DropdownMenuContent>
+      </DropdownMenu>
     </div>
   );
 };
