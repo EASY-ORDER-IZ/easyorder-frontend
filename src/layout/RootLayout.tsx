@@ -8,7 +8,10 @@ const RootLayout = () => {
     <div className="flex flex-col items-center justify-center">
       <SignupBar />
       <Navbar />
-      <Outlet />
+      <div className="flex justify-center">
+        {' '}
+        <Outlet />
+      </div>
       <Footer />
     </div>
   );

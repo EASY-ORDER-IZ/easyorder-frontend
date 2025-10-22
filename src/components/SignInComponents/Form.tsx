@@ -12,7 +12,6 @@ import { Button } from '../ui/button/button';
 import { useAuthStore } from '@/store/authStore';
 import { toast } from 'sonner';
 import LogoSVG from '@/assets/svg/logo';
-import SearchComponent from '../CommonComponents/Search';
 
 export function FormComponent() {
   const [showPassword, setShowPassword] = useState(false);
@@ -115,26 +114,25 @@ export function FormComponent() {
         </FieldGroup>
       </form>
       <Field id="submit" orientation="horizontal">
-        <div className="flex w-full flex-col gap-2.5">
+        <div className="flex w-full flex-col gap-2">
           <Button type="submit" variant="primary" form="form-rhf-demo">
             Login
           </Button>
+          <Field className="flex justify-center gap-1" id="signup" orientation="horizontal">
+            <span className="text-text-secondary leading-leading-lg text-sm font-light">
+              Don't have an account?
+            </span>
+            <Link
+              to={isDisabled ? '#' : '/signup'}
+              aria-disabled={isDisabled}
+              className={`link-text ${isDisabled ? 'disabled-link' : ''}`}
+              tabIndex={isDisabled ? -1 : undefined}
+            >
+              Sign up
+            </Link>
+          </Field>
         </div>
       </Field>
-      <Field className="flex justify-center" id="signup" orientation="horizontal">
-        <span className="text-text-secondary leading-leading-lg text-sm font-light">
-          Don't have an account?
-        </span>
-        <Link
-          to={isDisabled ? '#' : '/signup'}
-          aria-disabled={isDisabled}
-          className={`link-text ${isDisabled ? 'disabled-link' : ''}`}
-          tabIndex={isDisabled ? -1 : undefined}
-        >
-          Sign up
-        </Link>
-      </Field>
-      <SearchComponent />
     </div>
   );
 }
