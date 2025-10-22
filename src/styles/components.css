@@ -47,7 +47,7 @@
 .suggestion-text {
   font-size: 0.875rem;
   font-weight: 500;
-  line-height: 1.5;
+  line-height: 1.5rem;
   letter-spacing: 0rem;
 }
 .link-text {
@@ -55,6 +55,14 @@
   text-decoration: underline;
   line-height: 1.125rem;
   color: var(--color-status-action);
+  transition: color 0.2s ease;
+}
+.tabs-text {
+  font-size: 1.125rem;
+  line-height: 1.688rem;
+  text-align: center;
+  font-weight: 500;
+  color: var(--color-background-tertiary);
   transition: color 0.2s ease;
 }
 

@@ -8,7 +8,8 @@
   --radius-md: 1rem; /* 16px */
   --radius-lg: 3.75rem; /* 60px */
   --radius-full: 9999px; /* Full */
-
+  --text-sm: 0.75rem;
+  --text-md: 1.125rem;
   --text-title: 3rem /* 48px */;
 
   --color-background: var(--background);
