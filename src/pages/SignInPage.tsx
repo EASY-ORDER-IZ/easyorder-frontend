@@ -3,6 +3,7 @@ import { Button } from '@/components/ui/button/button';
 import { Spinner } from '@/components/ui/spinner';
 import { ChevronRight, Lock } from 'lucide-react';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { Badge } from '@/components/ui/badge';
 const SignInPage = () => {
   return (
     <div className="flex flex-col items-center justify-center gap-5">
@@ -25,6 +26,9 @@ const SignInPage = () => {
         <TabsContent value="account">Make changes to your account here.</TabsContent>
         <TabsContent value="password">Change your password here.</TabsContent>
       </Tabs>
+      <Badge showIcon={true} variant="secondary">
+        -20%
+      </Badge>
     </div>
   );
 };
