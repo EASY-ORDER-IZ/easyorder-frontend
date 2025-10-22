@@ -35,17 +35,25 @@ const badgeBackgrounds: Record<string, string> = {
 
 interface BadgeProps extends React.ComponentProps<'span'>, VariantProps<typeof badgeVariants> {
   asChild?: boolean;
-  showIcon?: boolean;
+  prefixIcon?: boolean;
+  suffixIcon?: boolean;
 }
 
-function Badge({ className, variant, asChild = false, showIcon = true, ...props }: BadgeProps) {
+function Badge({
+  className,
+  variant,
+  asChild = false,
+  prefixIcon = false,
+  suffixIcon = false,
+  ...props
+}: BadgeProps) {
   const Comp = asChild ? Slot : 'span';
 
   const safeVariant: NonNullable<typeof variant> = variant ?? 'default';
 
   return (
     <div className={cn('flex items-center rounded-full px-2 py-1', badgeBackgrounds[safeVariant])}>
-      {showIcon && (
+      {prefixIcon && (
         <CircleCheck
           className={`h-4 w-4 ${variant === 'default' ? 'text-text-secondary' : 'text-background'} `}
         />
@@ -55,6 +63,11 @@ function Badge({ className, variant, asChild = false, showIcon = true, ...props 
         className={cn(badgeVariants({ variant: safeVariant }), className)}
         {...props}
       />
+      {suffixIcon && (
+        <CircleCheck
+          className={`h-4 w-4 ${variant === 'default' ? 'text-text-secondary' : 'text-background'} `}
+        />
+      )}
     </div>
   );
 }

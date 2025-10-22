@@ -26,7 +26,7 @@ const SignInPage = () => {
         <TabsContent value="account">Make changes to your account here.</TabsContent>
         <TabsContent value="password">Change your password here.</TabsContent>
       </Tabs>
-      <Badge showIcon={true} variant="secondary">
+      <Badge prefixIcon={true} variant="secondary">
         -20%
       </Badge>
     </div>
