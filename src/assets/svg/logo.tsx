@@ -2,15 +2,15 @@ const LogoSVG = () => {
   return (
     <div className="flex items-center justify-center">
       <svg
-        width="276"
-        height="40"
+        width="201"
+        height="30"
         viewBox="0 0 276 40"
-        fill="#D24560"
+        fill="#2F2E30"
         xmlns="http://www.w3.org/2000/svg"
       >
         <path
           d="M0.557617 0H111.194V5.66274H7.30799V12.5904H17.6404V18.2532H7.30799V39.4441H0.557617V0Z"
-          fill="#D24560"
+          fill="#2F2E30"
         />
         <path d="M24.5674 9.57568H31.3178V39.444H24.5674V9.57568Z" fill="#2F2E30" />
         <path

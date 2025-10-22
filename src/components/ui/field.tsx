@@ -103,7 +103,7 @@ function FieldLabel({ className, ...props }: React.ComponentProps<typeof Label>)
   return (
     <Label
       data-slot="field-label"
-      className={cn('font-pop text-text-400 p-2.5 text-[1rem] leading-snug font-medium', className)}
+      className={cn('font-pop text-text-400 text-[1rem] leading-snug font-medium', className)}
       {...props}
     />
   );
