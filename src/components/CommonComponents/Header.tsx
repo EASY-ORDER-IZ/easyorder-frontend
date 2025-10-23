@@ -6,7 +6,7 @@ const Header = () => {
   const [visible, setVisible] = useState(true);
   if (!visible) return null;
   return (
-    <div className="bg-accent-primary flex w-full items-center justify-between py-2">
+    <div className="bg-accent-primary flex w-full items-center justify-between px-3 py-2">
       <div className=""></div>
       <div className="flex items-center gap-2">
         <span className="header-text">Sign up and get 20% off to your first order</span>

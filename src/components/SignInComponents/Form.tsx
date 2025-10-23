@@ -39,7 +39,7 @@ export function FormComponent() {
     }
   }
   return (
-    <div className="bg-background flex w-full max-w-[50%] flex-col gap-9 p-4">
+    <div className="bg-background flex w-full flex-col justify-center gap-9 md:max-w-[80%] lg:max-w-[65%]">
       <div className="flex w-full items-center justify-center gap-4">
         <LogoSVG className="flex max-w-[60%] items-center" />
       </div>

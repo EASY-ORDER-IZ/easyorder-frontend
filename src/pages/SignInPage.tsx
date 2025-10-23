@@ -3,7 +3,7 @@ import { FormComponent } from '@/components/SignInComponents/Form';
 
 const SignInPage = () => {
   return (
-    <div className="bg-background custom-shadow flex w-full justify-between p-4">
+    <div className="flex w-full justify-center gap-4 lg:justify-between">
       <SignInPic />
       <FormComponent />
     </div>

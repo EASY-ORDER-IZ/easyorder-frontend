@@ -5,6 +5,7 @@
   --font-pop: pop, 'sans-serif';
 
   --radius-sm: 0.313rem; /* 5px */
+  --radius-dialog: 0.688rem; /*11px*/
   --radius-md: 1rem; /* 16px */
   --radius-lg: 3.75rem; /* 60px */
   --radius-full: 9999px; /* Full */
