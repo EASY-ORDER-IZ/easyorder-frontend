@@ -59,7 +59,9 @@ function Input({
             {...props}
           />
         </div>
-        <div>{suffixIcon && <span className="text-text-secondary">{suffixIcon}</span>}</div>
+        <div className="flex items-center">
+          {suffixIcon && <span className="text-text-secondary">{suffixIcon}</span>}
+        </div>
       </div>
       <div className={`flex ${error ? 'justify-between' : 'justify-end'} items-center`}>
         <div>{invalid && error && <p className="text-status-danger text-sm">{error}</p>}</div>

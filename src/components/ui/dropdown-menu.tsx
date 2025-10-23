@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as DropdownMenuPrimitive from '@radix-ui/react-dropdown-menu';
-import { CheckIcon, ChevronDown, ChevronRightIcon, CircleIcon } from 'lucide-react';
+import { CheckIcon, ChevronRightIcon, CircleIcon } from 'lucide-react';
 
 import { cn } from '@/lib/utils';
 
@@ -14,17 +14,25 @@ function DropdownMenuPortal({
   return <DropdownMenuPrimitive.Portal data-slot="dropdown-menu-portal" {...props} />;
 }
 
-function DropdownMenuTrigger({
-  ...props
-}: React.ComponentProps<typeof DropdownMenuPrimitive.Trigger>) {
+type DropdownMenuTriggerProps = React.ComponentProps<typeof DropdownMenuPrimitive.Trigger> & {
+  label?: string;
+  icon?: React.ReactNode;
+};
+
+function DropdownMenuTrigger({ label, icon, ...props }: DropdownMenuTriggerProps) {
   return (
     <DropdownMenuPrimitive.Trigger
-      className="button-text text-text-disabled data-[state=open]:border-status-action border-text-disabled hover:border-text-secondary bg-background flex w-full items-center justify-between rounded-sm border p-2"
+      className={cn(
+        'button-text text-text-disabled data-[state=open]:border-status-action border-text-disabled hover:border-text-secondary bg-background flex w-full items-center justify-between rounded-sm border p-2',
+        props.className,
+      )}
       data-slot="dropdown-menu-trigger"
       {...props}
     >
-      Placeholder
-      <ChevronDown size={18} className="text-text-disabled" />
+      <div className="flex items-center gap-2">
+        {icon && <span>{icon}</span>}
+        {label && <span>{label}</span>}
+      </div>
     </DropdownMenuPrimitive.Trigger>
   );
 }

@@ -1,6 +1,9 @@
-const LogoSVG = () => {
+interface Props {
+  className: string;
+}
+const LogoSVG = ({ className }: Props) => {
   return (
-    <div className="flex items-center justify-center">
+    <div className={className}>
       <svg
         width="201"
         height="30"

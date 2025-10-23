@@ -1,18 +1,19 @@
-import { Outlet } from 'react-router-dom';
-import Navbar from '../components/CommonComponents/Navbar';
-import SignupBar from '../components/SignupBar';
-import { Footer } from '@/components/footer';
+import Header from '@/components/CommonComponents/Header';
+import NavbarV2 from '@/components/CommonComponents/NavbarV2';
+import { Outlet } from 'react-router';
 
 const RootLayout = () => {
   return (
-    <div className="flex flex-col items-center justify-center">
-      <SignupBar />
-      <Navbar />
-      <div className="flex justify-center">
-        {' '}
+    <div className="flex w-full flex-col">
+      <div className="flex w-full items-center">
+        <Header />
+      </div>
+      <div className="flex w-full px-7">
+        <NavbarV2 />
+      </div>
+      <div>
         <Outlet />
       </div>
-      <Footer />
     </div>
   );
 };

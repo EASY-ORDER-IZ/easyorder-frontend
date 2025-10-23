@@ -41,7 +41,7 @@ export function FormComponent() {
   return (
     <div className="bg-background flex w-full max-w-[50%] flex-col gap-9 p-4">
       <div className="flex w-full items-center justify-center gap-4">
-        <LogoSVG />
+        <LogoSVG className="flex max-w-[60%] items-center" />
       </div>
 
       <form id="form-rhf-demo" onSubmit={form.handleSubmit(onSubmit)}>

@@ -32,22 +32,16 @@ const SearchComponent = () => {
   };
 
   return (
-    <div className="relative flex flex-col gap-1">
-      <div className="relative flex w-full items-center">
-        <div className="absolute inset-y-0 left-2 flex items-center">
-          <Search className="text-text-secondary h-4.5 w-4.5" />
-        </div>
-        <Input
-          value={input}
-          onChange={(e) => handleChange(e.target.value)}
-          type="search"
-          placeholder="Search for products..."
-          className="no-cancel px-8"
-        />
-        <div className="absolute inset-y-0 right-2 flex cursor-pointer items-center">
-          <Camera className="text-text-secondary h-4.5 w-4.5" />
-        </div>
-      </div>
+    <div className="flex w-full flex-col items-center gap-1">
+      <Input
+        prefixIcon={<Search size={18} className="text-text-secondary" />}
+        suffixIcon={<Camera size={18} className="text-text-secondary" />}
+        value={input}
+        onChange={(e) => handleChange(e.target.value)}
+        type="search"
+        placeholder="Search for products..."
+        className="no-cancel"
+      />
 
       {showBox && (
         <div className="custom-shadow bg-background absolute top-full right-0 left-0 z-10 mt-2 flex max-h-60 flex-col gap-2 overflow-y-scroll rounded-sm p-2">
