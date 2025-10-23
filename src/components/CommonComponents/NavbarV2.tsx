@@ -1,7 +1,7 @@
 import LogoSVG from '@/assets/svg/logo';
 import { NavLink } from 'react-router';
 import SearchComponent from './Search';
-import { Heart, MenuIcon, ShoppingCart } from 'lucide-react';
+import { ChevronDown, Heart, MenuIcon, ShoppingCart } from 'lucide-react';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -43,7 +43,10 @@ const NavbarV2 = () => {
       </div>
 
       <div className="hidden min-w-80 gap-5 lg:flex">
-        <NavLink to={'/'}>Shop</NavLink>
+        <div className="flex cursor-pointer items-center">
+          <NavLink to={'/'}>Shop</NavLink>
+          <ChevronDown />
+        </div>
         <NavLink to={''}>On Sale</NavLink>
         <NavLink to={''}>New Arrivals</NavLink>
         <NavLink to={''}>Brands</NavLink>

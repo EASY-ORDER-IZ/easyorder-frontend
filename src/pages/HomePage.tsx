@@ -1,24 +1,5 @@
-import CommentSection from '@/components/customercomments/CommentSection';
-import HeroSection from '@/components/HeroSection';
-import ProductBar from '@/components/ProductComponents/ProductBar';
-import StylesFilter from '@/components/ProductComponents/StylesFilter';
-
 const HomePage = () => {
-  return (
-    <div className="flex w-full flex-col gap-10">
-      <HeroSection />
-
-      <ProductBar title="NEW ARRIVALS" />
-      <div className="flex w-full justify-center">
-        <div className="bg-background-main h-[1px] w-89 lg:w-310" />
-      </div>
-      <ProductBar title="top selling" />
-      <div className="px-4 lg:px-25">
-        <StylesFilter />
-      </div>
-      <CommentSection />
-    </div>
-  );
+  return <div className="flex w-full flex-col"></div>;
 };
 
 export default HomePage;

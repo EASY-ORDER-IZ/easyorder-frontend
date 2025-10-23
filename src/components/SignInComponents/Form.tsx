@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Controller, useForm } from 'react-hook-form';
 import * as z from 'zod';
-import { Eye, EyeOff, Lock, Mail } from 'lucide-react';
+import { Chromium, Eye, EyeOff, Lock, Mail } from 'lucide-react';
 import { Field, FieldGroup } from '@/components/ui/field';
 import { Input } from '@/components/ui/input';
 import formSchema from '@/validation/formSchema';
@@ -11,13 +11,12 @@ import { Link, useNavigate } from 'react-router-dom';
 import { Button } from '../ui/button/button';
 import { useAuthStore } from '@/store/authStore';
 import { toast } from 'sonner';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'; // import LogoSVG from '@/assets/svg/logo';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 
 export function FormComponent() {
   const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
   const { login } = useAuthStore();
-  const [isDisabled] = useState(false);
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -28,24 +27,27 @@ export function FormComponent() {
     },
   });
 
+  const email = form.watch('email');
+  const password = form.watch('password');
+  const isDisabled = !email || !password;
+
   function onSubmit(data: z.infer<typeof formSchema>) {
     const mockUser = { id: 1, email: 'tesst@example.com', password: 'Moh@12345' };
     if (data.email === mockUser.email && data.password === mockUser.password) {
       login(mockUser);
+
       navigate('/');
       console.log(data);
     } else {
       toast.error('Invalid credentials');
     }
   }
+
   return (
     <div className="bg-background flex w-full flex-col justify-center gap-3 py-2 lg:max-w-[65%]">
-      {/* <div className="flex w-full items-center justify-center gap-4">
-        <LogoSVG className="flex max-w-[60%] items-center" />
-      </div> */}
       <div className="flex w-full items-center justify-center">
         <span className="text-text-primary text-lg leading-7 font-medium">
-          Log In to Your Account{' '}
+          Log In to Your Account
         </span>
       </div>
       <div className="flex w-full items-center justify-center">
@@ -86,12 +88,8 @@ export function FormComponent() {
             name="password"
             control={form.control}
             render={({ field, fieldState }) => (
-              <Field data-invalid={fieldState.invalid} className="">
-                <div className=""></div>
-
+              <Field data-invalid={fieldState.invalid}>
                 <div className="relative flex w-full items-center">
-                  <div className="absolute inset-y-0 left-2 flex items-center"></div>
-
                   <Input
                     suffixIcon={
                       showPassword ? (
@@ -127,14 +125,24 @@ export function FormComponent() {
           />
         </FieldGroup>
       </form>
+
       <Field id="submit" orientation="horizontal">
-        <div className="flex w-full flex-col gap-2">
-          <Button type="submit" variant="primary" form="form-rhf-demo">
-            Login
-          </Button>
-          <Button type="submit" variant="secondary" form="form-rhf-demo">
-            Sign in With Google
-          </Button>
+        <div className="flex w-full flex-col gap-1">
+          <Button
+            disabled={isDisabled}
+            title="Login"
+            type="submit"
+            variant="primary"
+            form="form-rhf-demo"
+          />
+          <div className="text-text-secondary flex items-center justify-center">or</div>
+          <Button
+            prefixIcon={<Chromium size={18} className="text-accent-primary" />}
+            title="Sign in With Google"
+            type="submit"
+            variant="secondary"
+            form="form-rhf-demo"
+          />
           <Field className="flex justify-center gap-1" id="signup" orientation="horizontal">
             <span className="text-text-secondary leading-leading-lg text-sm font-light">
               Don't have an account?
