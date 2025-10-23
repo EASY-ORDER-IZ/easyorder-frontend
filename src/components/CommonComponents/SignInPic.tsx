@@ -1,8 +1,8 @@
 import img from '../../assets/images/signinpic.png';
 const SignInPic = () => {
   return (
-    <div className="hidden w-full lg:flex">
-      <img src={img} className="h-full w-full object-cover" />
+    <div className="relative hidden w-full lg:flex">
+      <img src={img} className="relative h-full w-full object-cover" />
     </div>
   );
 };

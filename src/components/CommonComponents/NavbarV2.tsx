@@ -13,7 +13,7 @@ import Modal from './Modal';
 
 const NavbarV2 = () => {
   return (
-    <div className="flex w-full items-center justify-between gap-6 px-3 py-3 lg:justify-center lg:gap-10">
+    <div className="s flex w-full items-center justify-between gap-6 px-3 lg:justify-center lg:gap-10">
       <div className="flex gap-3">
         <div className="flex lg:hidden">
           <DropdownMenu>

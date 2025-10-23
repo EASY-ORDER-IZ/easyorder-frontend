@@ -11,7 +11,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { Button } from '../ui/button/button';
 import { useAuthStore } from '@/store/authStore';
 import { toast } from 'sonner';
-import LogoSVG from '@/assets/svg/logo';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'; // import LogoSVG from '@/assets/svg/logo';
 
 export function FormComponent() {
   const [showPassword, setShowPassword] = useState(false);
@@ -39,9 +39,23 @@ export function FormComponent() {
     }
   }
   return (
-    <div className="bg-background flex w-full flex-col justify-center gap-9 md:max-w-[80%] lg:max-w-[65%]">
-      <div className="flex w-full items-center justify-center gap-4">
+    <div className="bg-background flex w-full flex-col justify-center gap-3 py-2 lg:max-w-[65%]">
+      {/* <div className="flex w-full items-center justify-center gap-4">
         <LogoSVG className="flex max-w-[60%] items-center" />
+      </div> */}
+      <div className="flex w-full items-center justify-center">
+        <span className="text-text-primary text-lg leading-7 font-medium">
+          Log In to Your Account{' '}
+        </span>
+      </div>
+      <div className="flex w-full items-center justify-center">
+        <Tabs defaultValue="account">
+          <TabsList>
+            <TabsTrigger value="email">Email</TabsTrigger>
+            <TabsTrigger value="password">Phone Number</TabsTrigger>
+          </TabsList>
+          <TabsContent value={'email'}></TabsContent>
+        </Tabs>
       </div>
 
       <form id="form-rhf-demo" onSubmit={form.handleSubmit(onSubmit)}>
@@ -117,6 +131,9 @@ export function FormComponent() {
         <div className="flex w-full flex-col gap-2">
           <Button type="submit" variant="primary" form="form-rhf-demo">
             Login
+          </Button>
+          <Button type="submit" variant="secondary" form="form-rhf-demo">
+            Sign in With Google
           </Button>
           <Field className="flex justify-center gap-1" id="signup" orientation="horizontal">
             <span className="text-text-secondary leading-leading-lg text-sm font-light">
