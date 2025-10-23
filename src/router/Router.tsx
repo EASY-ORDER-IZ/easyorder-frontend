@@ -5,6 +5,7 @@ import CartPage from '@/pages/CartPage';
 import CategoryPage from '@/pages/CategoryPage';
 import SignInPage from '@/pages/SignInPage';
 import Placeholder from '@/components/Placeholder';
+import PaymentForm from '@/components/PaymentForm';
 
 const Router = createBrowserRouter([
   {
@@ -42,6 +43,10 @@ const Router = createBrowserRouter([
       {
         path: '/placeholder',
         element: <Placeholder />,
+      },
+      {
+        path: '/payment',
+        element: <PaymentForm />,
       },
     ],
   },
