@@ -1,5 +1,5 @@
 import { Button } from '@/components/ui/button/button';
-import { ArrowLeft, ArrowRight } from 'lucide-react';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { CarouselOrientation } from './CarouselOrientation';
 import { useRef } from 'react';
 import type { CarouselApi } from '@/components/ui/carousel';
@@ -17,17 +17,17 @@ const CommentSection = () => {
 
   return (
     <div className="flex w-full justify-center">
-      <div className="w-full max-w-[1240px]">
-        <div className="flex flex-row items-end justify-between px-6 py-10 lg:px-0">
-          <h1 className="font-integral text-h1 leading-h1 text-left font-extrabold tracking-[1px] uppercase">
+      <div className="w-full max-w-306">
+        <div className="flex flex-row items-center justify-between px-6 py-10 lg:px-0">
+          <h1 className="text-h1 leading-h1 text-left font-extrabold tracking-[1px] uppercase">
             OUR HAPPY CUSTOMERS
           </h1>
           <div className="flex flex-row items-center gap-4">
             <Button variant="acc" onClick={handlePrev} size="icon">
-              <ArrowLeft size={16} />
+              <ChevronLeft size={16} />
             </Button>
             <Button variant="acc" onClick={handleNext} size="icon">
-              <ArrowRight size={16} />
+              <ChevronRight size={16} />
             </Button>
           </div>
         </div>
