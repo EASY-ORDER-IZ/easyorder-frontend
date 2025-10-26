@@ -52,6 +52,7 @@ const Form: React.FC<FormProps> = ({ type }) => {
     toast.success(`${type === 'email' ? 'Email' : 'Phone'} registered successfully!`);
     console.log(data);
   };
+  const [checked, setChecked] = useState(false);
 
   return (
     <div className="flex w-full justify-center">
@@ -131,36 +132,38 @@ const Form: React.FC<FormProps> = ({ type }) => {
             )}
           />
           <Field>
-            <div className="flex w-full flex-col items-center gap-2">
+            <div className="flex w-full flex-col items-center justify-center gap-2">
               <div className="flex w-full items-center gap-1">
-                <Checkbox />
+                <Checkbox checked={checked} onClick={() => setChecked(!checked)} />
                 <Label>Create your own store?</Label>
               </div>
               <div className="flex w-full flex-col gap-1">
-                <Controller
-                  name="store"
-                  control={form.control}
-                  render={({ field, fieldState }) => (
-                    <Field data-invalid={fieldState.invalid}>
-                      <Input
-                        type="text"
-                        suffixIcon={
-                          isfilled && (
-                            <CircleX
-                              onClick={() => field.onChange('')}
-                              size={18}
-                              className="bg-text-disabled text-background cursor-pointer"
-                            />
-                          )
-                        }
-                        label="Name your store"
-                        placeholder="Enter your name store"
-                        {...field}
-                        error={fieldState.error?.message}
-                      />
-                    </Field>
-                  )}
-                />
+                {checked && (
+                  <Controller
+                    name="store"
+                    control={form.control}
+                    render={({ field, fieldState }) => (
+                      <Field data-invalid={fieldState.invalid}>
+                        <Input
+                          type="text"
+                          suffixIcon={
+                            isfilled && (
+                              <CircleX
+                                onClick={() => field.onChange('')}
+                                size={18}
+                                className="bg-text-disabled text-background cursor-pointer"
+                              />
+                            )
+                          }
+                          label="Name your store"
+                          placeholder="Enter your name store"
+                          {...field}
+                          error={fieldState.error?.message}
+                        />
+                      </Field>
+                    )}
+                  />
+                )}
               </div>
             </div>
           </Field>
