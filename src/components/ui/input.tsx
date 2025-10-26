@@ -8,7 +8,7 @@ const inputVariants = cva('  ', {
   variants: {
     variant: {
       default:
-        'flex w-full outline-none items-center  placeholder:button-text button-text placeholder:text-text-disabled  ',
+        'flex w-full outline-none items-center text-text-primary text-input leading-5  placeholder:button-text button-text placeholder:text-text-disabled  ',
     },
   },
   defaultVariants: {
