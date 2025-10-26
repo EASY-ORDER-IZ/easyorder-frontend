@@ -134,7 +134,7 @@ export function FormComponent() {
             variant="primary"
             form="form-rhf-demo"
           />
-          <div className="flex items-center justify-between">
+          <div className="flex items-center justify-center gap-2">
             <Separator />
             <div className="text-text-disabled flex w-full items-center justify-center text-sm">
               or sign in with

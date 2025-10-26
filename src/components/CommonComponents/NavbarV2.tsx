@@ -55,7 +55,7 @@ const NavbarV2 = () => {
         <NavLink to={''}>New Arrivals</NavLink>
         <NavLink to={''}>Brands</NavLink>
       </div>
-      <div className="hidden min-w-[35%] lg:flex">
+      <div className="hidden min-w-[25%] lg:flex">
         <SearchComponent />
       </div>
       <div className="flex gap-6">

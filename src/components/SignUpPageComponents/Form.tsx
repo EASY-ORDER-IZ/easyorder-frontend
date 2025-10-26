@@ -6,7 +6,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { toast } from 'sonner';
 import { Input } from '@/components/ui/input';
 import { Field, FieldGroup } from '@/components/ui/field';
-import { Chromium, Eye, EyeOff, Lock, Mail, Phone } from 'lucide-react';
+import { ChevronDown, Chromium, Eye, EyeOff, Lock, Mail } from 'lucide-react';
 import { Button } from '@/components/ui/button/button';
 import { Separator } from '@/components/ui/separator';
 import { Link } from 'react-router-dom';
@@ -81,9 +81,9 @@ const Form: React.FC<FormProps> = ({ type }) => {
               render={({ field, fieldState }) => (
                 <Field data-invalid={fieldState.invalid}>
                   <Input
-                    prefixIcon={<Phone size={18} className="text-text-primary" />}
+                    prefixIcon={<ChevronDown size={18} className="text-text-primary" />}
                     label="Phone Number"
-                    placeholder="Enter your phone number"
+                    placeholder="+972"
                     required
                     {...field}
                     error={fieldState.error?.message}
@@ -137,7 +137,7 @@ const Form: React.FC<FormProps> = ({ type }) => {
             variant="primary"
             form="form-rhf-demo"
           />
-          <div className="flex items-center justify-between">
+          <div className="flex items-center justify-center gap-2">
             <Separator />
             <div className="text-text-disabled flex w-full items-center justify-center text-sm">
               or sign up with
