@@ -4,7 +4,7 @@ import RootLayout from '../layout/RootLayout';
 import CartPage from '@/pages/CartPage';
 import CategoryPage from '@/pages/CategoryPage';
 import SignInPage from '@/pages/SignInPage';
-
+import PaymentPage from '@/pages/SonnerTesting';
 const Router = createBrowserRouter([
   {
     path: '/',
@@ -37,6 +37,10 @@ const Router = createBrowserRouter([
       {
         path: 'cate/:title',
         element: <CategoryPage />,
+      },
+      {
+        path: '/toasts',
+        element: <PaymentPage />,
       },
     ],
   },
