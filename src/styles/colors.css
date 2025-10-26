@@ -1,6 +1,7 @@
 :root {
   --background: oklch(0.9967 0.0013 106.42);
   --background-tertiary: oklch(0.9886 0.0017 67.8);
+  --background-card: oklch(0.9672 0 0);
   --text-primary: oklch(0.303 0.0038 308.32);
   --text-secondary: oklch(0.4412 0.0041 325.65);
   --text-disabled: oklch(0.8089 0.0018 325.59);

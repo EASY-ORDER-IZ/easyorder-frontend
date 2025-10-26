@@ -4,6 +4,7 @@ import RootLayout from '../layout/RootLayout';
 import CartPage from '@/pages/CartPage';
 import CategoryPage from '@/pages/CategoryPage';
 import SignInPage from '@/pages/SignInPage';
+import SignUpPage from '@/pages/SignUpPage';
 
 const Router = createBrowserRouter([
   {
@@ -23,12 +24,16 @@ const Router = createBrowserRouter([
         element: <div>Help Page</div>,
       },
       {
-        path: 'signin',
+        path: 'sign-in',
         element: <SignInPage />,
       },
       {
-        path: 'signup',
-        element: <div>Sign Up Page</div>,
+        path: 'sign-up',
+        element: (
+          <div>
+            <SignUpPage />
+          </div>
+        ),
       },
       {
         path: 'cart',

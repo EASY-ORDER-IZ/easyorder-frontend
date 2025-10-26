@@ -1,7 +1,7 @@
 import LogoSVG from '@/assets/svg/logo';
 import { NavLink } from 'react-router';
 import SearchComponent from './Search';
-import { ChevronDown, Heart, MenuIcon, ShoppingCart } from 'lucide-react';
+import { ChevronDown, CircleUserRound, Heart, MenuIcon, ShoppingCart } from 'lucide-react';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -10,17 +10,21 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
 import Modal from './Modal';
+import SignInPage from '@/pages/SignInPage';
+import { useState } from 'react';
 
 const NavbarV2 = () => {
+  const [open, setOpen] = useState(false);
+
   return (
-    <div className="s flex w-full items-center justify-between gap-6 px-3 lg:justify-center lg:gap-10">
+    <div className="flex w-full items-center justify-between gap-6 px-5 py-4 lg:gap-10">
       <div className="flex gap-3">
         <div className="flex lg:hidden">
           <DropdownMenu>
             <DropdownMenuTrigger
               className="!border-0"
               icon={<MenuIcon className="text-text-secondary cursor-pointer" size={18} />}
-            ></DropdownMenuTrigger>
+            />
             <DropdownMenuContent>
               <DropdownMenuSeparator />
               <DropdownMenuItem>
@@ -51,13 +55,18 @@ const NavbarV2 = () => {
         <NavLink to={''}>New Arrivals</NavLink>
         <NavLink to={''}>Brands</NavLink>
       </div>
-      <div className="hidden lg:flex">
+      <div className="hidden min-w-[35%] lg:flex">
         <SearchComponent />
       </div>
       <div className="flex gap-6">
         <ShoppingCart size={18} className="text-text-secondary cursor-pointer" />
         <Heart size={18} className="text-text-secondary cursor-pointer" />
-        <Modal />
+        <Modal
+          open={open}
+          setOpen={setOpen}
+          trigger={<CircleUserRound size={18} className="text-text-secondary cursor-pointer" />}
+          page={<SignInPage />}
+        />
       </div>
     </div>
   );

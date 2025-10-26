@@ -9,8 +9,9 @@
   --radius-md: 1rem; /* 16px */
   --radius-lg: 3.75rem; /* 60px */
   --radius-full: 9999px; /* Full */
-  --text-sm: 0.75rem; /*16px*/
+  --text-sm: 0.75rem; /*12px*/
   --text-label: 0.875rem;
+  --text-button: 1rem;
   --text-leading-md: 1.313rem;
   --text-leading-lg: 1.5rem;
   --text-md: 1.125rem; /*18px*/
@@ -19,6 +20,7 @@
 
   --color-background: var(--background);
   --color-background-tertiary: var(--background-tertiary);
+  --color-background-card: var(--background-card);
   --color-text-primary: var(--text-primary);
   --color-text-secondary: var(--text-secondary);
   --color-text-disabled: var(--text-disabled);

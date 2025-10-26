@@ -1,9 +1,9 @@
-import SignInPic from '../components/CommonComponents/SignInPic';
+import SignInPic from '../components/SignInComponents/SignInPic';
 import { FormComponent } from '@/components/SignInComponents/Form';
 
 const SignInPage = () => {
   return (
-    <div className="flex w-full justify-center gap-2 lg:justify-between">
+    <div className="flex w-full gap-2">
       <SignInPic />
 
       <FormComponent />

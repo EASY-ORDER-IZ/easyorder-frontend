@@ -44,21 +44,19 @@ export function FormComponent() {
   }
 
   return (
-    <div className="bg-background flex w-full flex-col justify-center gap-3 py-2 lg:max-w-[65%]">
-      <div className="flex w-full items-center justify-center">
+    <div className="bg-background flex w-full flex-col gap-3 p-5 lg:max-w-[50%]">
+      <div className="flex w-full justify-center">
         <span className="text-text-primary text-lg leading-7 font-medium">
           Log In to Your Account
         </span>
       </div>
-      <div className="flex w-full items-center justify-center">
-        <Tabs defaultValue="account">
-          <TabsList>
-            <TabsTrigger value="email">Email</TabsTrigger>
-            <TabsTrigger value="password">Phone Number</TabsTrigger>
-          </TabsList>
-          <TabsContent value={'email'}></TabsContent>
-        </Tabs>
-      </div>
+      <Tabs defaultValue="account">
+        <TabsList>
+          <TabsTrigger value="email">Email</TabsTrigger>
+          <TabsTrigger value="phone">Phone Number</TabsTrigger>
+        </TabsList>
+        <TabsContent value={'email'}></TabsContent>
+      </Tabs>
 
       <form id="form-rhf-demo" onSubmit={form.handleSubmit(onSubmit)}>
         <FieldGroup className="flex flex-col">
@@ -69,7 +67,7 @@ export function FormComponent() {
               <Field data-invalid={fieldState.invalid}>
                 <div>
                   <Input
-                    prefixIcon={<Mail size={18} className="text-text-disabled" />}
+                    prefixIcon={<Mail size={18} className="text-text-primary" />}
                     label="Email"
                     required={true}
                     {...field}
@@ -95,18 +93,18 @@ export function FormComponent() {
                       showPassword ? (
                         <EyeOff
                           onClick={() => setShowPassword((prev) => !prev)}
-                          className="text-text-disabled cursor-pointer"
+                          className="text-text-primary cursor-pointer"
                           size={18}
                         />
                       ) : (
                         <Eye
                           onClick={() => setShowPassword((prev) => !prev)}
-                          className="text-text-disabled cursor-pointer"
+                          className="text-text-primary cursor-pointer"
                           size={18}
                         />
                       )
                     }
-                    prefixIcon={<Lock size={18} className="text-text-disabled" />}
+                    prefixIcon={<Lock size={18} className="text-text-primary" />}
                     label="Password"
                     link="/resetpassword"
                     type={showPassword ? 'text' : 'password'}
@@ -147,12 +145,7 @@ export function FormComponent() {
             <span className="text-text-secondary leading-leading-lg text-sm font-light">
               Don't have an account?
             </span>
-            <Link
-              to={isDisabled ? '#' : '/signup'}
-              aria-disabled={isDisabled}
-              className={`link-text ${isDisabled ? 'disabled-link' : ''}`}
-              tabIndex={isDisabled ? -1 : undefined}
-            >
+            <Link to={'/sign-up'} className="link-text">
               Sign up
             </Link>
           </Field>

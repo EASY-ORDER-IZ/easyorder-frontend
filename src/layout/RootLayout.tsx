@@ -4,10 +4,14 @@ import { Outlet } from 'react-router';
 
 const RootLayout = () => {
   return (
-    <div className="flex w-full flex-col">
-      <Header />
-      <NavbarV2 />
-      <Outlet />
+    <div className="flex w-full justify-center">
+      <div className="flex w-full max-w-[2000px] flex-col">
+        <div className="flex flex-col justify-center">
+          <Header />
+          <NavbarV2 />
+        </div>
+        <Outlet />
+      </div>
     </div>
   );
 };
