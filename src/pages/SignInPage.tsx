@@ -3,9 +3,10 @@ import { FormComponent } from '@/components/SignInComponents/Form';
 
 const SignInPage = () => {
   return (
-    <div className="flex w-full gap-2">
+    <div className="flex w-full justify-between gap-2">
       <SignInPic />
       <FormComponent />
+      <div className=""></div>
     </div>
   );
 };

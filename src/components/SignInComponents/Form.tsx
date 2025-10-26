@@ -45,7 +45,7 @@ export function FormComponent() {
   }
 
   return (
-    <div className="bg-background flex w-full flex-col gap-3 p-5 lg:max-w-[50%]">
+    <div className="bg-background flex w-full flex-col gap-3 p-5 lg:max-w-[59%]">
       <div className="flex w-full justify-center">
         <span className="text-text-primary text-lg leading-7 font-medium">
           Log In to Your Account
