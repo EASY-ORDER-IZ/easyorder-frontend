@@ -5,7 +5,6 @@ const SignInPage = () => {
   return (
     <div className="flex w-full gap-2">
       <SignInPic />
-
       <FormComponent />
     </div>
   );

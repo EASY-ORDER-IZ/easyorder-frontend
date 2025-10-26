@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Controller, useForm } from 'react-hook-form';
 import * as z from 'zod';
-import { Chromium, Eye, EyeOff, Lock, Mail } from 'lucide-react';
+import { ChevronDown, Chromium, Eye, EyeOff, Lock, Mail } from 'lucide-react';
 import { Field, FieldGroup } from '@/components/ui/field';
 import { Input } from '@/components/ui/input';
 import formSchema from '@/validation/formSchema';
@@ -51,79 +51,146 @@ export function FormComponent() {
           Log In to Your Account
         </span>
       </div>
-      <Tabs defaultValue="account">
+      <Tabs defaultValue="email">
         <TabsList>
           <TabsTrigger value="email">Email</TabsTrigger>
           <TabsTrigger value="phone">Phone Number</TabsTrigger>
         </TabsList>
-        <TabsContent value={'email'}></TabsContent>
+        <TabsContent value={'email'}>
+          <form id="form-rhf-demo" onSubmit={form.handleSubmit(onSubmit)}>
+            <FieldGroup className="flex flex-col">
+              <Controller
+                name="email"
+                control={form.control}
+                render={({ field, fieldState }) => (
+                  <Field data-invalid={fieldState.invalid}>
+                    <div>
+                      <Input
+                        prefixIcon={<Mail size={18} className="text-text-primary" />}
+                        label="Email"
+                        required={true}
+                        {...field}
+                        id="form-rhf-demo-email"
+                        aria-invalid={fieldState.invalid}
+                        type="email"
+                        placeholder="canan@example.com"
+                        autoComplete="off"
+                        error="please Enter you email correctly "
+                      />
+                    </div>
+                  </Field>
+                )}
+              />
+              <Controller
+                name="password"
+                control={form.control}
+                render={({ field, fieldState }) => (
+                  <Field data-invalid={fieldState.invalid}>
+                    <div className="relative flex w-full items-center">
+                      <Input
+                        suffixIcon={
+                          showPassword ? (
+                            <EyeOff
+                              onClick={() => setShowPassword((prev) => !prev)}
+                              className="text-text-primary cursor-pointer"
+                              size={18}
+                            />
+                          ) : (
+                            <Eye
+                              onClick={() => setShowPassword((prev) => !prev)}
+                              className="text-text-primary cursor-pointer"
+                              size={18}
+                            />
+                          )
+                        }
+                        prefixIcon={<Lock size={18} className="text-text-primary" />}
+                        label="Password"
+                        link="/resetpassword"
+                        type={showPassword ? 'text' : 'password'}
+                        {...field}
+                        id="form-rhf-demo-password"
+                        aria-invalid={fieldState.invalid}
+                        placeholder="Enter your password"
+                        autoComplete="off"
+                        linklabel="Forgot password?"
+                        required={true}
+                        error="Enter your pass"
+                      />
+                    </div>
+                  </Field>
+                )}
+              />
+            </FieldGroup>
+          </form>
+        </TabsContent>
+        <TabsContent value={'phone'}>
+          <form id="form-rhf-demo" onSubmit={form.handleSubmit(onSubmit)}>
+            <FieldGroup className="flex flex-col">
+              <Controller
+                name="email"
+                control={form.control}
+                render={({ field, fieldState }) => (
+                  <Field data-invalid={fieldState.invalid}>
+                    <div>
+                      <Input
+                        prefixIcon={<ChevronDown size={18} className="text-text-primary" />}
+                        label="Phone number"
+                        required={true}
+                        {...field}
+                        id="form-rhf-demo-email"
+                        aria-invalid={fieldState.invalid}
+                        type="email"
+                        placeholder="+972"
+                        autoComplete="off"
+                        error="please Enter you email correctly "
+                      />
+                    </div>
+                  </Field>
+                )}
+              />
+              <Controller
+                name="password"
+                control={form.control}
+                render={({ field, fieldState }) => (
+                  <Field data-invalid={fieldState.invalid}>
+                    <div className="relative flex w-full items-center">
+                      <Input
+                        suffixIcon={
+                          showPassword ? (
+                            <EyeOff
+                              onClick={() => setShowPassword((prev) => !prev)}
+                              className="text-text-primary cursor-pointer"
+                              size={18}
+                            />
+                          ) : (
+                            <Eye
+                              onClick={() => setShowPassword((prev) => !prev)}
+                              className="text-text-primary cursor-pointer"
+                              size={18}
+                            />
+                          )
+                        }
+                        prefixIcon={<Lock size={18} className="text-text-primary" />}
+                        label="Password"
+                        link="/resetpassword"
+                        type={showPassword ? 'text' : 'password'}
+                        {...field}
+                        id="form-rhf-demo-password"
+                        aria-invalid={fieldState.invalid}
+                        placeholder="Enter your password"
+                        autoComplete="off"
+                        linklabel="Forgot password?"
+                        required={true}
+                        error="Enter your pass"
+                      />
+                    </div>
+                  </Field>
+                )}
+              />
+            </FieldGroup>
+          </form>
+        </TabsContent>
       </Tabs>
-
-      <form id="form-rhf-demo" onSubmit={form.handleSubmit(onSubmit)}>
-        <FieldGroup className="flex flex-col">
-          <Controller
-            name="email"
-            control={form.control}
-            render={({ field, fieldState }) => (
-              <Field data-invalid={fieldState.invalid}>
-                <div>
-                  <Input
-                    prefixIcon={<Mail size={18} className="text-text-primary" />}
-                    label="Email"
-                    required={true}
-                    {...field}
-                    id="form-rhf-demo-email"
-                    aria-invalid={fieldState.invalid}
-                    type="email"
-                    placeholder="canan@example.com"
-                    autoComplete="off"
-                    error="please Enter you email correctly "
-                  />
-                </div>
-              </Field>
-            )}
-          />
-          <Controller
-            name="password"
-            control={form.control}
-            render={({ field, fieldState }) => (
-              <Field data-invalid={fieldState.invalid}>
-                <div className="relative flex w-full items-center">
-                  <Input
-                    suffixIcon={
-                      showPassword ? (
-                        <EyeOff
-                          onClick={() => setShowPassword((prev) => !prev)}
-                          className="text-text-primary cursor-pointer"
-                          size={18}
-                        />
-                      ) : (
-                        <Eye
-                          onClick={() => setShowPassword((prev) => !prev)}
-                          className="text-text-primary cursor-pointer"
-                          size={18}
-                        />
-                      )
-                    }
-                    prefixIcon={<Lock size={18} className="text-text-primary" />}
-                    label="Password"
-                    link="/resetpassword"
-                    type={showPassword ? 'text' : 'password'}
-                    {...field}
-                    id="form-rhf-demo-password"
-                    aria-invalid={fieldState.invalid}
-                    placeholder="Enter your password"
-                    autoComplete="off"
-                    linklabel="Forgot password?"
-                    required={true}
-                    error="Enter your pass"
-                  />
-                </div>
-              </Field>
-            )}
-          />
-        </FieldGroup>
-      </form>
 
       <Field id="submit" orientation="horizontal">
         <div className="flex w-full flex-col gap-1">

@@ -6,10 +6,12 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { toast } from 'sonner';
 import { Input } from '@/components/ui/input';
 import { Field, FieldGroup } from '@/components/ui/field';
-import { ChevronDown, Chromium, Eye, EyeOff, Lock, Mail } from 'lucide-react';
+import { ChevronDown, Chromium, CircleX, Eye, EyeOff, Lock, Mail } from 'lucide-react';
 import { Button } from '@/components/ui/button/button';
 import { Separator } from '@/components/ui/separator';
 import { Link } from 'react-router-dom';
+import { Checkbox } from '@/components/ui/checkbox';
+import { Label } from '../ui/label';
 
 interface FormProps {
   type: 'email' | 'phone';
@@ -23,13 +25,13 @@ const signupSchema = z.object({
     .regex(/^\+?\d{7,15}$/, 'Enter a valid phone number')
     .optional(),
   password: z.string().min(6, 'Password must be at least 6 characters'),
+  store: z.string().optional(),
 });
 
 type SignupFormValues = z.infer<typeof signupSchema>;
 
 const Form: React.FC<FormProps> = ({ type }) => {
   const [showPassword, setShowPassword] = useState(false);
-
   const form = useForm<SignupFormValues>({
     resolver: zodResolver(signupSchema),
     mode: 'onChange',
@@ -37,9 +39,10 @@ const Form: React.FC<FormProps> = ({ type }) => {
       email: '',
       phone: '',
       password: '',
+      store: '',
     },
   });
-
+  const isfilled = form.watch('store');
   const isDisabled =
     type === 'email'
       ? !form.watch('email') || !form.watch('password')
@@ -127,6 +130,40 @@ const Form: React.FC<FormProps> = ({ type }) => {
               </Field>
             )}
           />
+          <Field>
+            <div className="flex w-full flex-col items-center gap-2">
+              <div className="flex w-full items-center gap-1">
+                <Checkbox />
+                <Label>Create your own store?</Label>
+              </div>
+              <div className="flex w-full flex-col gap-1">
+                <Controller
+                  name="store"
+                  control={form.control}
+                  render={({ field, fieldState }) => (
+                    <Field data-invalid={fieldState.invalid}>
+                      <Input
+                        type="text"
+                        suffixIcon={
+                          isfilled && (
+                            <CircleX
+                              onClick={() => field.onChange('')}
+                              size={18}
+                              className="bg-text-disabled text-background cursor-pointer"
+                            />
+                          )
+                        }
+                        label="Name your store"
+                        placeholder="Enter your name store"
+                        {...field}
+                        error={fieldState.error?.message}
+                      />
+                    </Field>
+                  )}
+                />
+              </div>
+            </div>
+          </Field>
         </FieldGroup>
 
         <div className="flex w-full flex-col gap-2">
