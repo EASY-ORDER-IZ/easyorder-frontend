@@ -12,6 +12,7 @@ import { Button } from '../ui/button/button';
 import { useAuthStore } from '@/store/authStore';
 import { toast } from 'sonner';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { Separator } from '../ui/separator';
 
 export function FormComponent() {
   const [showPassword, setShowPassword] = useState(false);
@@ -128,12 +129,18 @@ export function FormComponent() {
         <div className="flex w-full flex-col gap-1">
           <Button
             disabled={isDisabled}
-            title="Login"
+            title="Sign In"
             type="submit"
             variant="primary"
             form="form-rhf-demo"
           />
-          <div className="text-text-secondary flex items-center justify-center">or</div>
+          <div className="flex items-center justify-between">
+            <Separator />
+            <div className="text-text-disabled flex w-full items-center justify-center text-sm">
+              or sign in with
+            </div>
+            <Separator />
+          </div>{' '}
           <Button
             prefixIcon={<Chromium size={18} className="text-accent-primary" />}
             title="Sign in With Google"

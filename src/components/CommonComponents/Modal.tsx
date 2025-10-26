@@ -11,7 +11,7 @@ const Modal = ({ page, trigger, open, setOpen }: Props) => {
       <Dialog open={open} onOpenChange={setOpen}>
         <DialogTrigger asChild>{trigger}</DialogTrigger>
 
-        <DialogContent className="w-[85%] md:w-[55%]">
+        <DialogContent className="w-[85%] md:w-[56%]">
           <DialogHeader></DialogHeader>
           {page}
         </DialogContent>

@@ -8,7 +8,7 @@ const SignUpPage = () => {
         <img src={signuppic} className="object-cover" />
       </div>
 
-      <div className="flex w-full flex-col p-2 lg:max-w-[60%]">
+      <div className="flex w-full flex-col p-2 lg:max-w-[50%]">
         <div className="flex w-full flex-col gap-2">
           <span className="text-text-primary items-center text-center align-middle text-lg leading-8 font-medium">
             Join the world of FirstChance
