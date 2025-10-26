@@ -17,17 +17,17 @@ const Select: React.FC<SelectProps> = ({ placeholder }) => {
     <div className="flex flex-col gap-2">
       <span>{placeholder}</span>
       <UISelect>
-        <SelectTrigger className="w-[180px]">
+        <SelectTrigger className="w-auto min-w-[11.25rem]">
           <SelectValue placeholder="Select" className="text-color-text-100" />
         </SelectTrigger>
         <SelectContent className="max-h-60 overflow-y-auto rounded-md border-none bg-white shadow-lg">
-          {selectData.map((item, index) => (
+          {selectData.map((item) => (
             <SelectItem
-              key={index}
-              value={item}
-              className="cursor-pointer px-3 py-2 text-gray-400 hover:bg-[#D24560] hover:text-white"
+              key={item.id}
+              value={item.value}
+              className="px-3 py-2 whitespace-nowrap text-gray-400 hover:bg-[#D24560] hover:text-white"
             >
-              {item}
+              {item.lable}
             </SelectItem>
           ))}
         </SelectContent>
