@@ -26,7 +26,7 @@ const NavbarV2 = ({ isModalOpen }: NavbarProps) => {
         open || isModalOpen ? '' : 'sticky top-0 z-70'
       } flex w-full items-center justify-between gap-6 px-5 py-4 lg:gap-10`}
     >
-      <div className="flex gap-3">
+      <div className="flex w-full max-w-[70%] gap-3 lg:w-auto">
         <div className="flex lg:hidden">
           <DropdownMenu>
             <DropdownMenuTrigger
@@ -51,7 +51,7 @@ const NavbarV2 = ({ isModalOpen }: NavbarProps) => {
         </div>
         <LogoSVG className="mb-1 flex max-w-[50%] lg:max-w-[100%]" />
       </div>
-      <div className="hidden min-w-80 gap-5 lg:flex">
+      <div className="hidden min-w-80 gap-3 lg:flex">
         <div className="flex cursor-pointer items-center">
           <NavLink to="/">Shop</NavLink>
           <ChevronDown />

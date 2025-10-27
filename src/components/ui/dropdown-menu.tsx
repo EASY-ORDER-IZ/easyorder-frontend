@@ -23,7 +23,7 @@ function DropdownMenuTrigger({ label, icon, ...props }: DropdownMenuTriggerProps
   return (
     <DropdownMenuPrimitive.Trigger
       className={cn(
-        'button-text text-text-secondary data-[state=open]:border-status-action border-text-disabled hover:border-text-secondary flex w-full items-center justify-between rounded-sm p-2',
+        'button-text text-text-secondary data-[state=open]:border-status-action border-text-disabled hover:border-text-secondary flex w-full items-center justify-between rounded-sm pr-1',
         props.className,
       )}
       data-slot="dropdown-menu-trigger"
