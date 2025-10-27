@@ -29,9 +29,9 @@ const NavbarV2 = ({ isModalOpen }: NavbarProps) => {
       <div className="flex gap-3">
         <div className="flex lg:hidden">
           <DropdownMenu>
-            <DropdownMenuTrigger>
-              <MenuIcon className="text-text-secondary cursor-pointer" size={18} />
-            </DropdownMenuTrigger>
+            <DropdownMenuTrigger
+              icon={<MenuIcon className="text-text-secondary cursor-pointer" size={18} />}
+            />
             <DropdownMenuContent>
               <DropdownMenuSeparator />
               <DropdownMenuItem>
