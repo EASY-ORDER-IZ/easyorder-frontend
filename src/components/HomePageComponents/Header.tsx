@@ -10,7 +10,7 @@ const Header = () => {
   return (
     <>
       <div className="flex w-full items-center justify-between px-5 py-8">
-        <div className="gap flex flex-col gap-14">
+        <div className="flex flex-col items-center justify-center gap-14">
           <div className="flex w-full flex-col items-center gap-4 lg:max-w-[62%]">
             <span className="text-text-primary text-title align-middle leading-14 font-bold">
               FIND CLOTHES THAT MATCHES YOUR STYLE
@@ -20,7 +20,7 @@ const Header = () => {
               out your individuality and cater to your sense of style.
             </span>
           </div>
-          <div className="flex max-w-[27%]">
+          <div className="flex w-full max-w-[80%] justify-center lg:max-w-[27%]">
             <Button variant="primary" title="Shop Now!"></Button>
           </div>
           <div className="flex w-full gap-5">
