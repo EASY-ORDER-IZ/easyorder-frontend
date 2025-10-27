@@ -10,9 +10,9 @@ const Header = () => {
   return (
     <>
       <div className="flex w-full items-center justify-between px-5 py-8">
-        <div className="flex flex-col items-center justify-center gap-14">
-          <div className="flex w-full flex-col items-center gap-4 lg:max-w-[62%]">
-            <span className="text-text-primary text-title align-middle leading-14 font-bold">
+        <div className="flex flex-col items-center gap-14 lg:items-start">
+          <div className="flex w-full flex-col items-center justify-center gap-4 lg:max-w-[62%]">
+            <span className="text-text-primary text-title leading-14 font-bold">
               FIND CLOTHES THAT MATCHES YOUR STYLE
             </span>
             <span className="button-text text-text-secondary">
