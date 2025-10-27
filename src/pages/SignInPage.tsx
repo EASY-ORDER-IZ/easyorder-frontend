@@ -15,7 +15,7 @@ const SignInPage = () => {
         <Tabs defaultValue="email" className="w-full">
           <TabsList>
             <TabsTrigger value="email">Email</TabsTrigger>
-            <TabsTrigger value="phone">Phone Number</TabsTrigger>
+            <TabsTrigger value="phone">Phone</TabsTrigger>
           </TabsList>
           <TabsContent value="email">
             <FormComponent type="email" />

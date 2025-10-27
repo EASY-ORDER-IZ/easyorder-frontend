@@ -8,10 +8,10 @@ const HomePage = () => {
       <Header />
       <div className="flex w-full flex-col gap-13">
         <div className="flex w-full flex-col gap-6">
-          <ProductBar array={newClothes} buttonTitle="View All" title="New In" />
+          <ProductBar initialVisible={4} array={newClothes} title="New In" />
         </div>
         <div className="flex w-full flex-col gap-5">
-          <ProductBar array={topSelling} buttonTitle="View All" title="Top Selling" />
+          <ProductBar initialVisible={4} array={topSelling} title="Top Selling" />
         </div>
       </div>
     </div>

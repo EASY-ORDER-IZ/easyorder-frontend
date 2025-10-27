@@ -6,12 +6,12 @@ import { UserRound } from 'lucide-react';
 import Title from '@/components/SignInComponents/Title';
 const SignUpPage = () => {
   return (
-    <div className="flex w-full justify-center gap-2 p-1 lg:h-[100vh] lg:justify-between">
+    <div className="flex w-full justify-center gap-2 p-1 lg:justify-between">
       <div className="hidden h-full w-full lg:flex">
-        <img src={signuppic} className="object-fit" />
+        <img src={signuppic} className="object-cover" />
       </div>
 
-      <div className="flex w-full flex-col p-2 lg:max-w-[40%]">
+      <div className="custom-scroll flex h-170 w-full flex-col overflow-y-auto p-2 lg:max-w-[50%]">
         <div className="flex w-full flex-col gap-6">
           <Title title="Sign Up" desc="Enter your credentials to create your account" />
           <Input
