@@ -100,3 +100,8 @@
   background-color: var(--color-accent-primary);
   border-radius: 8px;
 }
+.title-text {
+  font-weight: 500;
+  line-height: 60px;
+  color: var(--color-text-secondary);
+}

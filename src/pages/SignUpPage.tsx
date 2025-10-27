@@ -6,7 +6,7 @@ import { UserRound } from 'lucide-react';
 import Title from '@/components/SignInComponents/Title';
 const SignUpPage = () => {
   return (
-    <div className="flex h-[100vh] w-full justify-center gap-2 p-1 lg:justify-between">
+    <div className="flex w-full justify-center gap-2 p-1 lg:h-[100vh] lg:justify-between">
       <div className="hidden h-full w-full lg:flex">
         <img src={signuppic} className="object-fit" />
       </div>

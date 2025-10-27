@@ -33,9 +33,9 @@ function Button({
         <div className="flex items-center gap-3">
           {prefixIcon && <span className="">{prefixIcon}</span>}
           {title}
+          {suffixIcon && <span className="text-text-secondary">{suffixIcon}</span>}
         </div>
       </Comp>
-      {suffixIcon && <span className="text-text-secondary">{suffixIcon}</span>}
     </div>
   );
 }
