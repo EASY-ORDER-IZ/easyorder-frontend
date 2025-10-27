@@ -9,7 +9,7 @@ export const buttonVariants = cva(
         primary:
           'bg-accent-primary text-background disabled:text-text-secondary  disabled:bg-text-disabled  ',
         secondary:
-          ' bg-accent-primary/15 text-accent-primary hover:text-background hover:border-0 disabled:text-text-disabled disabled:border-text-disabled ',
+          ' bg-backgrount text-text-primary border border-text-secondary hover:text-background hover:border-0 disabled:text-text-disabled disabled:border-text-disabled ',
       },
       size: {
         default: '',
