@@ -2,6 +2,7 @@ const Pailroots = () => {
   return (
     <div>
       <svg
+        className="max-w-[80%]"
         width="208"
         height="28"
         viewBox="0 0 208 28"

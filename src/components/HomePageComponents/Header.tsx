@@ -9,9 +9,9 @@ import aa from '../../assets/images/rula.png';
 const Header = () => {
   return (
     <>
-      <div className="flex w-full items-center justify-between px-5 py-4">
+      <div className="flex w-full items-center justify-between px-5 py-8">
         <div className="gap flex flex-col gap-14">
-          <div className="flex max-w-[60%] flex-col items-center gap-4">
+          <div className="flex w-full flex-col items-center gap-4 lg:max-w-[62%]">
             <span className="text-text-primary text-title align-middle leading-14 font-bold">
               FIND CLOTHES THAT MATCHES YOUR STYLE
             </span>
@@ -20,7 +20,7 @@ const Header = () => {
               out your individuality and cater to your sense of style.
             </span>
           </div>
-          <div className="flex max-w-[31%]">
+          <div className="flex max-w-[27%]">
             <Button variant="primary" title="Shop Now!"></Button>
           </div>
           <div className="flex w-full gap-5">
@@ -46,16 +46,26 @@ const Header = () => {
             </div>
           </div>
         </div>
-        <div className="max-w-[60%]">
+        <div className="mb-[-34px] max-w-[65%]">
           <img src={bb} className="hidden object-cover lg:flex" />
         </div>
-        <div className=""></div>
+        <div className="hidden w-20 lg:flex"></div>
       </div>
-      <div className="bg-text-secondary grid grid-cols-2 items-center gap-6 p-6 lg:flex lg:justify-evenly lg:gap-0">
-        <Pailroots />
-        <Collecttive />
-        <Watan />
-        <img src={aa} />
+      <div className="bg-text-secondary">
+        <div className="grid grid-cols-2 items-center justify-items-center gap-6 p-6 lg:ml-0 lg:flex lg:justify-evenly">
+          <div className="flex">
+            <Pailroots />
+          </div>
+          <div className="flex">
+            <Collecttive />
+          </div>
+          <div className="flex">
+            <Watan />
+          </div>
+          <div className="mt-2.5 flex">
+            <img className="max-w-[80%]" src={aa} />
+          </div>
+        </div>
       </div>
     </>
   );

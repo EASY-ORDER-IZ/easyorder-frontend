@@ -2,6 +2,7 @@ const Collecttive = () => {
   return (
     <div>
       <svg
+        className="max-w-[80%]"
         width="200"
         height="40"
         viewBox="0 0 200 40"

@@ -17,7 +17,7 @@ const NavbarV2 = () => {
   const [open, setOpen] = useState(false);
 
   return (
-    <div className="bg-background sticky top-0 z-50 flex w-full items-center justify-between gap-6 px-5 py-4 lg:gap-10">
+    <div className="bg-background sticky top-0 z-70 flex w-full items-center justify-between gap-6 px-5 py-4 lg:gap-10">
       <div className="flex gap-3">
         <div className="flex lg:hidden">
           <DropdownMenu>
