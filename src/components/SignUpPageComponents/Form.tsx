@@ -17,7 +17,6 @@ interface FormProps {
   type: 'email' | 'phone';
 }
 
-// Zod schema for validation
 const signupSchema = z.object({
   email: z.string().email('Enter a valid email address').optional(),
   phone: z
@@ -134,8 +133,8 @@ const Form: React.FC<FormProps> = ({ type }) => {
           <Field>
             <div className="flex w-full flex-col items-center justify-center gap-2">
               <div className="flex w-full items-center gap-1">
-                <Checkbox checked={checked} onClick={() => setChecked(!checked)} />
-                <Label>Create your own store?</Label>
+                <Checkbox onClick={() => setChecked(!checked)} checked={checked} />
+                <Label onClick={() => setChecked(!checked)}>Create your own store?</Label>
               </div>
               <div className="flex w-full flex-col gap-1">
                 {checked && (
@@ -151,7 +150,7 @@ const Form: React.FC<FormProps> = ({ type }) => {
                               <CircleX
                                 onClick={() => field.onChange('')}
                                 size={18}
-                                className="bg-text-disabled text-background cursor-pointer"
+                                className="text-text-primary cursor-pointer"
                               />
                             )
                           }
@@ -193,7 +192,7 @@ const Form: React.FC<FormProps> = ({ type }) => {
             form="form-rhf-demo"
           />
         </div>
-        <Field className="flex justify-center gap-1" id="signup" orientation="horizontal">
+        <Field className="flex justify-center gap-1" id="signin" orientation="horizontal">
           <span className="text-text-secondary leading-leading-lg text-sm font-light">
             Already have an account?
           </span>

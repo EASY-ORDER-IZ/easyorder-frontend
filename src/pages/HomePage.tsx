@@ -41,7 +41,7 @@ const HomePage = () => {
           </div>
         </div>
         <div className="max-w-[60%]">
-          <img src={bb} className="object-cover" />
+          <img src={bb} className="hidden object-cover lg:flex" />
         </div>
         <div className=""></div>
       </div>
