@@ -1,5 +1,5 @@
 import LogoSVG from '@/assets/svg/logo';
-import { NavLink } from 'react-router';
+import { NavLink } from 'react-router-dom';
 import SearchComponent from './Search';
 import { ChevronDown, CircleUserRound, Heart, MenuIcon, ShoppingCart } from 'lucide-react';
 import {
@@ -13,47 +13,52 @@ import Modal from './Modal';
 import SignInPage from '@/pages/SignInPage';
 import { useState } from 'react';
 
-const NavbarV2 = () => {
-  const [open, setOpen] = useState(false);
+interface NavbarProps {
+  isModalOpen: boolean;
+}
+
+const NavbarV2 = ({ isModalOpen }: NavbarProps) => {
+  const [open, setOpen] = useState<boolean>(false);
 
   return (
-    <div className="bg-background sticky top-0 z-70 flex w-full items-center justify-between gap-6 px-5 py-4 lg:gap-10">
+    <div
+      className={`bg-background ${
+        open || isModalOpen ? '' : 'sticky top-0 z-70'
+      } flex w-full items-center justify-between gap-6 px-5 py-4 lg:gap-10`}
+    >
       <div className="flex gap-3">
         <div className="flex lg:hidden">
           <DropdownMenu>
-            <DropdownMenuTrigger
-              className="!border-0"
-              icon={<MenuIcon className="text-text-secondary cursor-pointer" size={18} />}
-            />
+            <DropdownMenuTrigger>
+              <MenuIcon className="text-text-secondary cursor-pointer" size={18} />
+            </DropdownMenuTrigger>
             <DropdownMenuContent>
               <DropdownMenuSeparator />
               <DropdownMenuItem>
-                <NavLink to={'/'}>Shop</NavLink>
+                <NavLink to="/">Shop</NavLink>
               </DropdownMenuItem>
               <DropdownMenuItem>
-                <NavLink to={''}>On Sale</NavLink>
+                <NavLink to="">On Sale</NavLink>
               </DropdownMenuItem>
               <DropdownMenuItem>
-                <NavLink to={''}>New Arrivals</NavLink>
+                <NavLink to="">New Arrivals</NavLink>
               </DropdownMenuItem>
               <DropdownMenuItem>
-                <NavLink to={''}>Brands</NavLink>
+                <NavLink to="">Brands</NavLink>
               </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
         </div>
-
         <LogoSVG className="mb-1 flex max-w-[50%] lg:max-w-[100%]" />
       </div>
-
       <div className="hidden min-w-80 gap-5 lg:flex">
         <div className="flex cursor-pointer items-center">
-          <NavLink to={'/'}>Shop</NavLink>
+          <NavLink to="/">Shop</NavLink>
           <ChevronDown />
         </div>
-        <NavLink to={''}>On Sale</NavLink>
-        <NavLink to={''}>New Arrivals</NavLink>
-        <NavLink to={''}>Brands</NavLink>
+        <NavLink to="">On Sale</NavLink>
+        <NavLink to="">New Arrivals</NavLink>
+        <NavLink to="">Brands</NavLink>
       </div>
       <div className="hidden min-w-[25%] lg:flex">
         <SearchComponent />

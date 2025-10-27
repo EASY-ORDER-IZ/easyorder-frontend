@@ -3,21 +3,27 @@ import { useState } from 'react';
 import Modal from './Modal';
 import SignUpPage from '@/pages/SignUpPage';
 
-const Header = () => {
-  const [visible, setVisible] = useState(true);
-  const [open, setOpen] = useState(false);
+interface HeaderProps {
+  setIsModalOpen: (value: boolean) => void;
+}
+
+const Header: React.FC<HeaderProps> = ({ setIsModalOpen }) => {
+  const [visible, setVisible] = useState<boolean>(true);
+  const [open, setOpen] = useState<boolean>(false);
 
   if (!visible) return null;
 
   return (
     <div className="bg-accent-primary flex w-full items-center justify-between px-3 py-2">
       <div></div>
-
       <div className="flex items-center justify-center gap-2">
         <span className="header-text">Sign up and get 20% off your first order</span>
         <Modal
           open={open}
-          setOpen={setOpen}
+          setOpen={(val: boolean) => {
+            setOpen(val);
+            setIsModalOpen(val);
+          }}
           page={<SignUpPage />}
           trigger={
             <span
@@ -29,7 +35,6 @@ const Header = () => {
           }
         />
       </div>
-
       <div>
         <XIcon
           onClick={() => setVisible(false)}
