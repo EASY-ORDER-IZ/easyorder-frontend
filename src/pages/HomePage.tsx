@@ -4,7 +4,6 @@ const HomePage = () => {
   return (
     <div className="flex flex-col justify-center">
       <Header />
-      <Header /> <Header /> <Header /> <Header />
     </div>
   );
 };

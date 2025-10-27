@@ -9,7 +9,7 @@ import aa from '../../assets/images/rula.png';
 const Header = () => {
   return (
     <>
-      <div className="flex w-full items-center justify-between px-5 py-8">
+      <div className="flex w-full items-center justify-between px-5 py-4 lg:py-0">
         <div className="flex flex-col items-center gap-14 lg:items-start">
           <div className="flex w-full flex-col items-center justify-center gap-4 lg:max-w-[62%]">
             <span className="text-text-primary text-title leading-14 font-bold">
@@ -23,7 +23,7 @@ const Header = () => {
           <div className="flex w-full max-w-[80%] justify-center lg:max-w-[27%]">
             <Button variant="primary" title="Shop Now!"></Button>
           </div>
-          <div className="flex w-full gap-5">
+          <div className="flex w-full justify-center gap-5 lg:justify-start">
             <div className="flex flex-col items-center justify-center">
               <Counter end={200} />
               <span className="lg:text-input text-text-secondary leading-5">
@@ -46,24 +46,24 @@ const Header = () => {
             </div>
           </div>
         </div>
-        <div className="mb-[-34px] max-w-[65%]">
+        <div className="max-w-[65%]">
           <img src={bb} className="hidden object-cover lg:flex" />
         </div>
         <div className="hidden w-20 lg:flex"></div>
       </div>
       <div className="bg-text-secondary">
-        <div className="grid grid-cols-2 items-center justify-items-center gap-6 p-6 lg:ml-0 lg:flex lg:justify-evenly">
-          <div className="flex">
+        <div className="grid grid-cols-2 items-center p-6 lg:flex lg:justify-evenly lg:p-6">
+          <div className="flex justify-center">
             <Pailroots />
           </div>
-          <div className="flex">
+          <div className="flex justify-center">
             <Collecttive />
           </div>
-          <div className="flex">
+          <div className="flex justify-center">
             <Watan />
           </div>
-          <div className="mt-2.5 flex">
-            <img className="max-w-[80%]" src={aa} />
+          <div className="mt-2.5 flex justify-center">
+            <img className="max-w-[82%]" src={aa} />
           </div>
         </div>
       </div>
