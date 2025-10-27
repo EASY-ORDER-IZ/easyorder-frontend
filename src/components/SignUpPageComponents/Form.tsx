@@ -6,12 +6,13 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { toast } from 'sonner';
 import { Input } from '@/components/ui/input';
 import { Field, FieldGroup } from '@/components/ui/field';
-import { ChevronDown, Chromium, CircleX, Eye, EyeOff, Lock, Mail } from 'lucide-react';
+import { ChevronDown, CircleX, Eye, EyeOff, Lock, Mail, Store } from 'lucide-react';
 import { Button } from '@/components/ui/button/button';
 import { Separator } from '@/components/ui/separator';
 import { Link } from 'react-router-dom';
 import { Checkbox } from '@/components/ui/checkbox';
 import { Label } from '../ui/label';
+import Google from '@/assets/svg/Google';
 
 interface FormProps {
   type: 'email' | 'phone';
@@ -67,7 +68,7 @@ const Form: React.FC<FormProps> = ({ type }) => {
               render={({ field, fieldState }) => (
                 <Field data-invalid={fieldState.invalid}>
                   <Input
-                    prefixIcon={<Mail size={18} className="text-text-primary" />}
+                    prefixIcon={<Mail size={18} />}
                     label="Email Address"
                     placeholder="Enter your email"
                     required
@@ -84,7 +85,7 @@ const Form: React.FC<FormProps> = ({ type }) => {
               render={({ field, fieldState }) => (
                 <Field data-invalid={fieldState.invalid}>
                   <Input
-                    prefixIcon={<ChevronDown size={18} className="text-text-primary" />}
+                    prefixIcon={<ChevronDown size={18} />}
                     label="Phone Number"
                     placeholder="+972"
                     required
@@ -103,7 +104,7 @@ const Form: React.FC<FormProps> = ({ type }) => {
               <Field data-invalid={fieldState.invalid}>
                 <div className="relative flex w-full items-center">
                   <Input
-                    prefixIcon={<Lock size={18} className="text-text-primary" />}
+                    prefixIcon={<Lock size={18} />}
                     label="Password"
                     placeholder="Enter your password"
                     type={showPassword ? 'text' : 'password'}
@@ -111,13 +112,13 @@ const Form: React.FC<FormProps> = ({ type }) => {
                       showPassword ? (
                         <EyeOff
                           onClick={() => setShowPassword((prev) => !prev)}
-                          className="text-text-primary cursor-pointer"
+                          className="cursor-pointer"
                           size={18}
                         />
                       ) : (
                         <Eye
                           onClick={() => setShowPassword((prev) => !prev)}
-                          className="text-text-primary cursor-pointer"
+                          className="cursor-pointer"
                           size={18}
                         />
                       )
@@ -132,10 +133,16 @@ const Form: React.FC<FormProps> = ({ type }) => {
           />
           <Field>
             <div className="flex w-full flex-col items-center justify-center gap-2">
-              <div className="flex w-full items-center gap-1">
-                <Checkbox onClick={() => setChecked(!checked)} checked={checked} />
-                <Label onClick={() => setChecked(!checked)}>Create your own store?</Label>
+              <div className="flex w-full flex-col">
+                <div className="flex w-full items-center gap-1">
+                  <Checkbox onClick={() => setChecked(!checked)} checked={checked} />
+                  <Label onClick={() => setChecked(!checked)}>Create your own store?</Label>
+                </div>
+                <span className="text-text-secondary text-sm">
+                  Use this option to open your store on FirstChance.
+                </span>
               </div>
+
               <div className="flex w-full flex-col gap-1">
                 {checked && (
                   <Controller
@@ -144,13 +151,14 @@ const Form: React.FC<FormProps> = ({ type }) => {
                     render={({ field, fieldState }) => (
                       <Field data-invalid={fieldState.invalid}>
                         <Input
+                          prefixIcon={<Store />}
                           type="text"
                           suffixIcon={
                             isfilled && (
                               <CircleX
                                 onClick={() => field.onChange('')}
                                 size={18}
-                                className="text-text-primary cursor-pointer"
+                                className="cursor-pointer"
                               />
                             )
                           }
@@ -185,7 +193,7 @@ const Form: React.FC<FormProps> = ({ type }) => {
           </div>
 
           <Button
-            prefixIcon={<Chromium size={18} className="text-accent-primary" />}
+            prefixIcon={<Google />}
             title="Google"
             type="submit"
             variant="secondary"

@@ -3,18 +3,17 @@ import signuppic from '../assets/images/signuppic.png';
 import Form from '@/components/SignUpPageComponents/Form';
 import { Input } from '@/components/ui/input';
 import { UserRound } from 'lucide-react';
+import Title from '@/components/SignInComponents/Title';
 const SignUpPage = () => {
   return (
-    <div className="flex h-full w-full justify-center gap-2 p-1 lg:justify-between">
+    <div className="flex h-[100vh] w-full justify-center gap-2 p-1 lg:justify-between">
       <div className="hidden h-full w-full lg:flex">
-        <img src={signuppic} className="object-cover" />
+        <img src={signuppic} className="object-fit" />
       </div>
 
       <div className="flex w-full flex-col p-2 lg:max-w-[55%]">
-        <div className="flex w-full flex-col gap-2">
-          <span className="text-text-primary items-center text-center align-middle text-lg leading-8 font-medium">
-            Join the world of FirstChance
-          </span>
+        <div className="flex w-full flex-col gap-6">
+          <Title title="Sign Up" desc="Enter your credentials to create your account" />
           <Input
             prefixIcon={<UserRound />}
             label="Username"

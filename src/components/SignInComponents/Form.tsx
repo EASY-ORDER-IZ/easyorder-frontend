@@ -71,7 +71,7 @@ export function FormComponent({ type }: FormProps) {
               render={({ field, fieldState }) => (
                 <Field data-invalid={fieldState.invalid}>
                   <Input
-                    prefixIcon={<Mail size={18} className="text-text-primary" />}
+                    prefixIcon={<Mail size={18} />}
                     label="Email"
                     placeholder="canan@example.com"
                     required
@@ -88,7 +88,7 @@ export function FormComponent({ type }: FormProps) {
               render={({ field, fieldState }) => (
                 <Field data-invalid={fieldState.invalid}>
                   <Input
-                    prefixIcon={<ChevronDown size={18} className="text-text-primary" />}
+                    prefixIcon={<ChevronDown size={18} />}
                     label="Phone"
                     placeholder="+972"
                     required
@@ -111,18 +111,18 @@ export function FormComponent({ type }: FormProps) {
                       showPassword ? (
                         <EyeOff
                           onClick={() => setShowPassword((prev) => !prev)}
-                          className="text-text-primary cursor-pointer"
+                          className="cursor-pointer"
                           size={18}
                         />
                       ) : (
                         <Eye
                           onClick={() => setShowPassword((prev) => !prev)}
-                          className="text-text-primary cursor-pointer"
+                          className="cursor-pointer"
                           size={18}
                         />
                       )
                     }
-                    prefixIcon={<Lock size={18} className="text-text-primary" />}
+                    prefixIcon={<Lock size={18} />}
                     label="Password"
                     link="/resetpassword"
                     type={showPassword ? 'text' : 'password'}

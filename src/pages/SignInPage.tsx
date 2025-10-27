@@ -11,7 +11,7 @@ const SignInPage = () => {
       </div>
 
       <div className="flex w-full flex-col gap-4 p-2 lg:max-w-[50%]">
-        <Title />
+        <Title title="Sign In" desc=" Enter your credentials to access your account" />
         <Tabs defaultValue="email" className="w-full">
           <TabsList>
             <TabsTrigger value="email">Email</TabsTrigger>

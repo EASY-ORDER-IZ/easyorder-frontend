@@ -8,12 +8,13 @@ const authSchema = z
       .email('Please enter a valid email address')
       .toLowerCase()
       .trim()
-      .optional(), // optional because phone may be used instead
+      .optional(),
 
     phone: z
       .string()
       .regex(/^\+?\d{7,15}$/, 'Enter a valid phone number')
-      .optional(), // optional because email may be used instead
+      .optional(),
+    username: z.string().min(1, 'Username is required'),
 
     password: z
       .string()
@@ -26,7 +27,7 @@ const authSchema = z
   })
   .refine((data) => data.email || data.phone, {
     message: 'Either email or phone must be provided',
-    path: ['email'], // this will display error at email field
+    path: ['email'],
   });
 
 export default authSchema;

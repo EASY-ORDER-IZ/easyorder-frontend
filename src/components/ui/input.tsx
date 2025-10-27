@@ -8,7 +8,7 @@ const inputVariants = cva('  ', {
   variants: {
     variant: {
       default:
-        'flex w-full outline-none items-center text-text-primary text-input leading-5  placeholder:button-text button-text placeholder:text-text-disabled  ',
+        'flex w-full outline-none  items-center text-text-primary text-input leading-5  placeholder:button-text button-text placeholder:text-text-disabled  ',
     },
   },
   defaultVariants: {
@@ -38,11 +38,9 @@ function Input({
   linklabel,
   required,
   type,
-  'aria-invalid': ariaInvalid,
   variant,
   ...props
 }: InputProps) {
-  const invalid = ariaInvalid === true || ariaInvalid === 'true';
   return (
     <div className="flex w-full flex-col gap-1.5">
       <FieldLabel htmlFor="form-rhf-demo-email">
@@ -50,8 +48,8 @@ function Input({
         {required && <span className="text-status-danger">*</span>}
       </FieldLabel>
       <div className="bg-background focus-within:border-status-action border-text-secondary aria-[invalid=true]:focus:border-status-danger disabled:bg-text-disabled aria-[invalid=true]:border-status-danger focus:border-status-action flex w-full justify-between gap-1 rounded-sm border p-2 focus:outline-none disabled:border-0">
-        <div className="flex w-full items-center justify-center gap-2">
-          {prefixIcon && <span className="text-text-secondary">{prefixIcon}</span>}
+        <div className="flex w-full items-center justify-center gap-2 py-1.5">
+          {prefixIcon && <span className="text-text-disabled">{prefixIcon}</span>}
           <input
             type={type}
             data-slot="input"
@@ -60,11 +58,11 @@ function Input({
           />
         </div>
         <div className="flex items-center">
-          {suffixIcon && <span className="text-text-secondary">{suffixIcon}</span>}
+          {suffixIcon && <span className="text-text-disabled">{suffixIcon}</span>}
         </div>
       </div>
       <div className={`flex ${error ? 'justify-between' : 'justify-end'} items-center`}>
-        <div>{invalid && error && <p className="text-status-danger text-sm">{error}</p>}</div>
+        <div>{error && <p className="text-status-danger text-sm">{error}</p>}</div>
         <div className="flex justify-end">
           <Link
             className="text-status-action text-sm leading-6 font-medium underline"
