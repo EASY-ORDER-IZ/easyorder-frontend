@@ -11,7 +11,7 @@ const SignUpPage = () => {
         <img src={signuppic} className="object-fit" />
       </div>
 
-      <div className="flex w-full flex-col p-2 lg:max-w-[55%]">
+      <div className="flex w-full flex-col p-2 lg:max-w-[40%]">
         <div className="flex w-full flex-col gap-6">
           <Title title="Sign Up" desc="Enter your credentials to create your account" />
           <Input

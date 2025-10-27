@@ -11,7 +11,7 @@ const Modal = ({ page, trigger, open, setOpen }: Props) => {
       <Dialog open={open} onOpenChange={setOpen}>
         <DialogTrigger asChild>{trigger}</DialogTrigger>
 
-        <DialogContent className="max-h-[80vh] w-[85%] max-w-[850px] overflow-y-auto md:w-[56%] lg:w-[70%]">
+        <DialogContent className="max-h-[80vh] w-[85%] max-w-[850px] overflow-y-auto md:w-[56%] lg:w-[100%]">
           <DialogHeader></DialogHeader>
           {page}
         </DialogContent>
