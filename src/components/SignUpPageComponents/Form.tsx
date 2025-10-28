@@ -158,7 +158,7 @@ const Form: React.FC<FormProps> = ({ type }) => {
                               <CircleX
                                 onClick={() => field.onChange('')}
                                 size={18}
-                                className="cursor-pointer"
+                                className="fill-text-disabled text-background cursor-pointer"
                               />
                             )
                           }

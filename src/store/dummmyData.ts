@@ -10,6 +10,12 @@ import cate1 from '../assets/images/cate1.png';
 import cate2 from '../assets/images/cate2.png';
 import cate3 from '../assets/images/cate3.png';
 import cate4 from '../assets/images/cate4.png';
+interface Review {
+  id: number;
+  name: string;
+  comment: string;
+  rate: number;
+}
 export const newClothes = [
   { id: 1, name: 'Classic White T-Shirt', stars: 4.5, price: 25.99, discount: 10, img: new1 },
   { id: 2, name: 'Denim Jacket', stars: 4.8, price: 59.99, discount: 15, img: new2 },
@@ -39,4 +45,36 @@ export const cate = [
   { id: 6, name: 'Islamic', img: top2 },
   { id: 7, name: 'Men', img: top3 },
   { id: 8, name: 'Women', img: top4 },
+];
+export const reviews: Review[] = [
+  {
+    id: 1,
+    name: 'Ahmad Khalil',
+    comment: 'Great quality and fast delivery! Totally recommend it .',
+    rate: 4.5,
+  },
+  { id: 2, name: 'Sara Ali', comment: 'Good overall but packaging could be better.', rate: 4 },
+  {
+    id: 3,
+    name: 'Mohammed Tamimi',
+    comment: 'Average experience, item came slightly delayed.',
+    rate: 3,
+  },
+  {
+    id: 4,
+    name: 'Lina Hasan',
+    comment: 'Excellent customer support and quality product!',
+    rate: 5,
+  },
+  { id: 5, name: 'Yousef Odeh', comment: 'Not what I expected, color was a bit off.', rate: 2 },
+  { id: 6, name: 'Rana Qasem', comment: 'Loved it! Will definitely order again.', rate: 5 },
+  { id: 7, name: 'Omar Saeed', comment: 'Good for the price, but not the best quality.', rate: 3 },
+  {
+    id: 8,
+    name: 'Fatima Saleh',
+    comment: 'Item arrived earlier than expected, great service!',
+    rate: 4,
+  },
+  { id: 9, name: 'Hadi Nasser', comment: 'Did not meet my expectations, disappointed.', rate: 2 },
+  { id: 10, name: 'Nour Khalaf', comment: 'Perfect in every way! Highly recommend.', rate: 5 },
 ];
