@@ -10,7 +10,7 @@ const Header = () => {
   return (
     <>
       <div className="">
-        <div className="flex w-full items-center justify-between py-4 lg:py-0">
+        <div className="flex w-full items-center justify-between px-5 py-4 lg:py-0">
           <div className="flex flex-col items-center gap-5 lg:items-start">
             <div className="flex w-full flex-col items-center justify-center gap-4 lg:max-w-[62%]">
               <span className="text-text-primary text-title leading-14 font-bold">

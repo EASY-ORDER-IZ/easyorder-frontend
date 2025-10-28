@@ -4,7 +4,7 @@ import { newClothes, topSelling } from '@/store/dummmyData';
 
 const HomePage = () => {
   return (
-    <div className="flex w-full flex-col justify-center gap-10 px-5">
+    <div className="flex w-full flex-col justify-center gap-10">
       <Header />
       <div className="flex w-full flex-col gap-13">
         <div className="flex w-full flex-col gap-6">

@@ -98,7 +98,7 @@
 
 .custom-scroll::-webkit-scrollbar-thumb {
   background-color: var(--color-accent-primary);
-  border-radius: 8px;
+  border-radius: 3px;
 }
 .title-text {
   font-weight: 500;
