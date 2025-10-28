@@ -33,7 +33,7 @@ const ProductBar = ({ title, array, initialVisible = 4 }: Props) => {
         <span className="title-text text-title">{title}</span>
       </div>
 
-      <div className="grid grid-cols-4 gap-2 p-4">
+      <div className="grid grid-cols-2 gap-2 p-4 lg:grid-cols-4">
         {visibleProducts.map((p) => (
           <CategoryCard key={p.id} img={p.img} alt={p.name} title={p.name} />
         ))}
