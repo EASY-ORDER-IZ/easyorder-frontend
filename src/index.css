@@ -46,6 +46,7 @@ html {
   --font-integral: integral, 'sans-serif';
   --font-pop: pop, 'sans-serif';
 
+  --text-xxs: 0.6rem;
   --text-xs: 0.75rem; /* 12px (extra small text) */
   --text-table-sm: 0.9rem; /* 14px (feature table smaller size) */
   --text-table-lg: 1rem; /* 16px (feature table) */
@@ -145,6 +146,11 @@ html {
   --color-status-action: oklch(0.7694 0.1136 250.59);
   --color-status-warning: oklch(0.6546 0.2017 24.64);
   --color-status-warning-2: oklch(0.8088 0.17 75.26);
+
+  --color-toast-success: oklch(44.6% 0.078 206.3);
+  --color-toast-action: oklch(0.8089 0.0018 325.59);
+  --color-toast-warning: oklch(0.7787 0.1358 76.25);
+  --color-toast-danger: oklch(0.6584 0.218 24.47);
 }
 
 :root {

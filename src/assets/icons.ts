@@ -11,6 +11,16 @@ import guccie_logo from './images/gucci-logo.svg';
 import star from './images/star.svg';
 import menu from './images/menu.svg';
 import black_search_icon from './images/black-search-icon.svg';
+import watan from './images/watan.svg';
+import relactouture from './images/rulactourture.svg';
+import imanol from './images/imanol.svg';
+import mainStar from './images/mainStar.svg';
+import heroSectionImg from './images/hero-section-img.png';
+import paliroots from './images/paliroots.svg';
+import trash from './images/Trash2.svg';
+import emailWarning from './images/MailWarning.svg';
+import errorImg from './images/CircleAlert.svg';
+import verified from './images/CircleCheck.svg';
 export {
   cart,
   down_arrow,
@@ -25,4 +35,14 @@ export {
   star,
   menu,
   black_search_icon,
+  watan,
+  relactouture,
+  imanol,
+  mainStar,
+  paliroots,
+  heroSectionImg,
+  trash,
+  emailWarning,
+  errorImg,
+  verified,
 };
