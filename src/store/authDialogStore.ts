@@ -1,6 +1,6 @@
 import { create } from 'zustand';
 
-type DialogType = 'signin' | 'signup' | 'forgot' | null;
+type DialogType = 'sign-in' | 'sign-up' | 'forgot-password' | 'email-verfiy' | null;
 
 interface AuthDialogState {
   activeDialog: DialogType;

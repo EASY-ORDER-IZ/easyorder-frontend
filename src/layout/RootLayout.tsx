@@ -1,3 +1,4 @@
+// import AuthDialogController from '@/components/AuthDialogController';
 import Header from '@/components/CommonComponents/Header';
 import NavbarV2 from '@/components/CommonComponents/NavbarV2';
 import { useState } from 'react';
@@ -12,6 +13,7 @@ const RootLayout: React.FC = () => {
         <Header setIsModalOpen={setIsModalOpen} />
         <NavbarV2 isModalOpen={isModalOpen} />
         <Outlet />
+        {/* <AuthDialogController /> */}
       </div>
     </div>
   );
