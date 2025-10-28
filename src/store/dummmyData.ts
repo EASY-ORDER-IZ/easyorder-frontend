@@ -6,6 +6,10 @@ import top1 from '../assets/images/top1.png';
 import top2 from '../assets/images/top2.png';
 import top3 from '../assets/images/top3.png';
 import top4 from '../assets/images/top4.png';
+import cate1 from '../assets/images/cate1.png';
+import cate2 from '../assets/images/cate2.png';
+import cate3 from '../assets/images/cate3.png';
+import cate4 from '../assets/images/cate4.png';
 export const newClothes = [
   { id: 1, name: 'Classic White T-Shirt', stars: 4.5, price: 25.99, discount: 10, img: new1 },
   { id: 2, name: 'Denim Jacket', stars: 4.8, price: 59.99, discount: 15, img: new2 },
@@ -25,4 +29,14 @@ export const topSelling = [
   { id: 6, name: 'Denim Jacket', stars: 4.8, price: 59.99, discount: 15, img: new2 },
   { id: 7, name: 'Casual Hoodie', stars: 4.6, price: 45.5, discount: 20, img: new3 },
   { id: 8, name: 'Slim Fit Jeans', stars: 4.7, price: 65.0, discount: 5, img: new4 },
+];
+export const cate = [
+  { id: 1, name: 'Formal', img: cate1 },
+  { id: 2, name: 'Casual', img: cate2 },
+  { id: 3, name: 'Sports', img: cate3 },
+  { id: 4, name: 'Modest', img: cate4 },
+  { id: 5, name: 'Classic', img: top1 },
+  { id: 6, name: 'Islamic', img: top2 },
+  { id: 7, name: 'Men', img: top3 },
+  { id: 8, name: 'Women', img: top4 },
 ];

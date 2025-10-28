@@ -64,7 +64,7 @@ const Header = () => {
             <div className="flex justify-center">
               <Watan />
             </div>
-            <div className="mt-2.5 flex justify-center">
+            <div className="flex justify-center">
               <img className="max-w-[82%]" src={aa} />
             </div>
           </div>
