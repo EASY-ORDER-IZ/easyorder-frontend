@@ -52,7 +52,10 @@ function Input({
         <span className={`button-text text-text-primary`}>{label}</span>{' '}
         {required && <span className="text-status-danger">*</span>}
       </FieldLabel>
-      <div className="bg-background focus-within:border-status-action border-text-secondary aria-[invalid=true]:focus:border-status-danger disabled:bg-text-disabled aria-[invalid=true]:border-status-danger focus:border-status-action flex w-full justify-between gap-1 rounded-sm border p-2 focus:outline-none disabled:border-0">
+      <div
+        aria-invalid={!!error}
+        className="bg-background border-text-secondary focus-within:border-status-action aria-[invalid=true]:border-status-danger disabled:bg-text-disabled flex w-full justify-between gap-1 rounded-sm border p-2 disabled:border-0"
+      >
         <div className="flex w-full items-center justify-center gap-2 py-1.5">
           {prefixIcon && <span className="text-text-disabled">{prefixIcon}</span>}
           <input
