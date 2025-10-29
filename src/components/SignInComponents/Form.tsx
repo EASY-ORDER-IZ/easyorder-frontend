@@ -7,7 +7,7 @@ import { Eye, EyeOff, Lock, Mail, ChevronDown } from 'lucide-react';
 import { Field } from '@/components/ui/field';
 import { Input } from '@/components/ui/input';
 import formSchema from '@/validation/formSchema';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 import { Button } from '../ui/button/button';
 import { useAuthStore } from '@/store/authStore';
 import { toast } from 'sonner';
@@ -19,6 +19,11 @@ interface FormProps {
 }
 
 export function FormComponent({ type }: FormProps) {
+  const [, setSearchParams] = useSearchParams();
+
+  const switchDialog = (target: 'sign-in' | 'sign-up' | 'forget-password' | 'email-verfiy') => {
+    setSearchParams({ auth: target });
+  };
   const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
   const { login } = useAuthStore();
@@ -122,9 +127,9 @@ export function FormComponent({ type }: FormProps) {
                         />
                       )
                     }
+                    target="forget-password"
                     prefixIcon={<Lock size={18} />}
                     label="Password"
-                    link="/resetpassword"
                     type={showPassword ? 'text' : 'password'}
                     {...field}
                     placeholder="Enter your password"
@@ -166,9 +171,9 @@ export function FormComponent({ type }: FormProps) {
             <span className="text-text-secondary leading-leading-lg text-sm font-light">
               Don't have an account?
             </span>
-            <Link to={'/sign-up'} className="link-text">
+            <span onClick={() => switchDialog('sign-up')} className="link-text cursor-pointer">
               Sign up
-            </Link>
+            </span>
           </Field>
         </div>
       </Field>

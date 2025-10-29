@@ -2,7 +2,7 @@ import * as React from 'react';
 import { cn } from '@/lib/utils';
 import { cva, type VariantProps } from 'class-variance-authority';
 import { FieldLabel } from './field';
-import { Link } from 'react-router-dom';
+import { useSearchParams } from 'react-router-dom';
 
 const inputVariants = cva('  ', {
   variants: {
@@ -24,7 +24,7 @@ interface InputProps
   prefixIcon?: React.ReactNode;
   suffixIcon?: React.ReactNode;
   linklabel?: string;
-  link?: string;
+  target?: 'sign-in' | 'sign-up' | 'forget-password' | 'email-verfiy';
   error?: string | null;
 }
 
@@ -33,14 +33,19 @@ function Input({
   prefixIcon,
   suffixIcon,
   label,
-  link,
   error,
+  target,
   linklabel,
   required,
   type,
   variant,
   ...props
 }: InputProps) {
+  const [, setSearchParams] = useSearchParams();
+
+  const switchDialog = (target: 'sign-in' | 'sign-up' | 'forget-password' | 'email-verfiy') => {
+    setSearchParams({ auth: target });
+  };
   return (
     <div className="flex w-full flex-col gap-1.5">
       <FieldLabel htmlFor="form-rhf-demo-email">
@@ -64,12 +69,12 @@ function Input({
       <div className={`flex ${error ? 'justify-between' : 'justify-end'} items-center`}>
         <div>{error && <p className="text-status-danger text-sm">{error}</p>}</div>
         <div className="flex justify-end">
-          <Link
-            className="text-status-action text-sm leading-6 font-medium underline"
-            to={`./${link}`}
+          <span
+            onClick={() => (target ? switchDialog(target) : undefined)}
+            className="link-text cursor-pointer"
           >
             {linklabel}
-          </Link>
+          </span>
         </div>
       </div>
     </div>

@@ -1,5 +1,5 @@
 import LogoSVG from '@/assets/svg/logo';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useSearchParams } from 'react-router-dom';
 import SearchComponent from './Search';
 import { ChevronDown, CircleUserRound, Heart, MenuIcon, ShoppingCart } from 'lucide-react';
 import {
@@ -9,21 +9,22 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
-import Modal from './Modal';
-import SignInPage from '@/pages/SignInPage';
-import { useState } from 'react';
 
 interface NavbarProps {
   isModalOpen: boolean;
 }
 
 const NavbarV2 = ({ isModalOpen }: NavbarProps) => {
-  const [open, setOpen] = useState<boolean>(false);
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  const switchDialog = (target: 'sign-in' | 'sign-up' | 'forget-password' | 'email-verfiy') => {
+    setSearchParams({ auth: target });
+  };
 
   return (
     <div
       className={`bg-background ${
-        open || isModalOpen ? '' : 'sticky top-0 z-70'
+        searchParams || isModalOpen ? '' : 'sticky top-0 z-70'
       } flex w-full items-center justify-between gap-6 px-5 py-4 lg:gap-10`}
     >
       <div className="flex w-full max-w-[70%] gap-3 lg:w-auto">
@@ -66,11 +67,10 @@ const NavbarV2 = ({ isModalOpen }: NavbarProps) => {
       <div className="flex gap-6">
         <ShoppingCart size={18} className="text-text-secondary cursor-pointer" />
         <Heart size={18} className="text-text-secondary cursor-pointer" />
-        <Modal
-          open={open}
-          setOpen={setOpen}
-          trigger={<CircleUserRound size={18} className="text-text-secondary cursor-pointer" />}
-          page={<SignInPage />}
+        <CircleUserRound
+          onClick={() => switchDialog('sign-in')}
+          size={18}
+          className="text-text-secondary cursor-pointer"
         />
       </div>
     </div>

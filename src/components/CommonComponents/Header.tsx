@@ -1,16 +1,14 @@
 import { XIcon } from 'lucide-react';
 import { useState } from 'react';
-import Modal from './Modal';
-import SignUpPage from '@/pages/SignUpPage';
+import { useSearchParams } from 'react-router-dom';
 
-interface HeaderProps {
-  setIsModalOpen: (value: boolean) => void;
-}
-
-const Header: React.FC<HeaderProps> = ({ setIsModalOpen }) => {
+const Header = () => {
   const [visible, setVisible] = useState<boolean>(true);
-  const [open, setOpen] = useState<boolean>(false);
+  const [, setSearchParams] = useSearchParams();
 
+  const switchDialog = (target: 'sign-in' | 'sign-up' | 'forget-password' | 'email-verfiy') => {
+    setSearchParams({ auth: target });
+  };
   if (!visible) return null;
 
   return (
@@ -18,22 +16,13 @@ const Header: React.FC<HeaderProps> = ({ setIsModalOpen }) => {
       <div></div>
       <div className="flex items-center justify-center gap-2">
         <span className="header-text">Sign up and get 20% off your first order</span>
-        <Modal
-          open={open}
-          setOpen={(val: boolean) => {
-            setOpen(val);
-            setIsModalOpen(val);
-          }}
-          page={<SignUpPage />}
-          trigger={
-            <span
-              onClick={() => setOpen(true)}
-              className="link-text !text-background cursor-pointer"
-            >
-              Join Now
-            </span>
-          }
-        />
+
+        <span
+          onClick={() => switchDialog('sign-up')}
+          className="link-text !text-background cursor-pointer"
+        >
+          Join Now
+        </span>
       </div>
       <div>
         <XIcon

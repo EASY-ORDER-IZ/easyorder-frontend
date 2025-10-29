@@ -9,7 +9,7 @@ import { Field, FieldGroup } from '@/components/ui/field';
 import { ChevronDown, CircleX, Eye, EyeOff, Lock, Mail, Store } from 'lucide-react';
 import { Button } from '@/components/ui/button/button';
 import { Separator } from '@/components/ui/separator';
-import { Link } from 'react-router-dom';
+import { useSearchParams } from 'react-router-dom';
 import { Checkbox } from '@/components/ui/checkbox';
 import { Label } from '../ui/label';
 import Google from '@/assets/svg/Google';
@@ -31,6 +31,11 @@ const signupSchema = z.object({
 type SignupFormValues = z.infer<typeof signupSchema>;
 
 const Form: React.FC<FormProps> = ({ type }) => {
+  const [, setSearchParams] = useSearchParams();
+
+  const switchDialog = (target: 'sign-in' | 'sign-up' | 'forget-password' | 'email-verfiy') => {
+    setSearchParams({ auth: target });
+  };
   const [showPassword, setShowPassword] = useState(false);
   const form = useForm<SignupFormValues>({
     resolver: zodResolver(signupSchema),
@@ -204,9 +209,9 @@ const Form: React.FC<FormProps> = ({ type }) => {
           <span className="text-text-secondary leading-leading-lg text-sm font-light">
             Already have an account?
           </span>
-          <Link to={'/sign-in'} className="link-text">
+          <span onClick={() => switchDialog('sign-in')} className="link-text cursor-pointer">
             Sign In
-          </Link>
+          </span>
         </Field>
       </form>
     </div>
