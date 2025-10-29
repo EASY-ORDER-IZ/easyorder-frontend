@@ -35,13 +35,13 @@ const ProductBar = ({ title, array, initialVisible = 4 }: Props) => {
       </div>
 
       <div className="hidden grid-cols-4 gap-20 p-4 lg:grid">
-        {visibleProducts.map((p) => (
-          <ProductCard key={p.id} img={p.img} alt={p.name} title={p.name} />
+        {visibleProducts.map((p, index) => (
+          <ProductCard key={index} img={p.img} alt={p.name} title={p.name} />
         ))}
       </div>
       <div className="grid grid-cols-2 gap-20 p-4 lg:hidden">
-        {visibleProductsMobile.map((p) => (
-          <ProductCard key={p.id} img={p.img} alt={p.name} title={p.name} />
+        {visibleProductsMobile.map((p, index) => (
+          <ProductCard key={index} img={p.img} alt={p.name} title={p.name} />
         ))}
       </div>
 

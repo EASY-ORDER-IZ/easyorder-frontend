@@ -10,7 +10,6 @@ import formSchema from '@/validation/formSchema';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { Button } from '../ui/button/button';
 import { useAuthStore } from '@/store/authStore';
-import { toast } from 'sonner';
 import { Separator } from '../ui/separator';
 import Google from '@/assets/svg/Google';
 
@@ -58,10 +57,11 @@ export function FormComponent({ type }: FormProps) {
       data.password === mockUser.password
     ) {
       login(mockUser);
-      navigate('/');
+      setSearchParams({});
+      navigate('/forgot-password');
       console.log(data);
     } else {
-      toast.error('Invalid credentials');
+      console.log('error');
     }
   }
 
@@ -141,42 +141,42 @@ export function FormComponent({ type }: FormProps) {
               </Field>
             )}
           />
-        </div>
-      </form>
-
-      <Field id="submit" orientation="horizontal">
-        <div className="flex w-full flex-col gap-4">
-          <Button
-            disabled={isDisabled}
-            title="Sign In"
-            type="submit"
-            variant="primary"
-            form="form-rhf-demo"
-          />
-          <div className="flex items-center justify-center gap-2">
-            <Separator />
-            <div className="text-text-disabled flex w-full items-center justify-center text-sm">
-              or sign in with
+          <Field id="submit" orientation="horizontal">
+            <div className="flex w-full flex-col gap-4">
+              <Button
+                disabled={isDisabled}
+                title="Sign In"
+                type="submit"
+                onClick={form.handleSubmit(onSubmit)}
+                variant="primary"
+                form="form-rhf-demo"
+              />
+              <div className="flex items-center justify-center gap-2">
+                <Separator />
+                <div className="text-text-disabled flex w-full items-center justify-center text-sm">
+                  or sign in with
+                </div>
+                <Separator />
+              </div>
+              <Button
+                prefixIcon={<Google />}
+                title="Google"
+                type="submit"
+                variant="secondary"
+                form="form-rhf-demo"
+              />
+              <Field className="flex justify-center gap-1" id="signup" orientation="horizontal">
+                <span className="text-text-secondary leading-leading-lg text-sm font-light">
+                  Don't have an account?
+                </span>
+                <span onClick={() => switchDialog('sign-up')} className="link-text cursor-pointer">
+                  Sign up
+                </span>
+              </Field>
             </div>
-            <Separator />
-          </div>
-          <Button
-            prefixIcon={<Google />}
-            title="Google"
-            type="submit"
-            variant="secondary"
-            form="form-rhf-demo"
-          />
-          <Field className="flex justify-center gap-1" id="signup" orientation="horizontal">
-            <span className="text-text-secondary leading-leading-lg text-sm font-light">
-              Don't have an account?
-            </span>
-            <span onClick={() => switchDialog('sign-up')} className="link-text cursor-pointer">
-              Sign up
-            </span>
           </Field>
         </div>
-      </Field>
+      </form>
     </div>
   );
 }

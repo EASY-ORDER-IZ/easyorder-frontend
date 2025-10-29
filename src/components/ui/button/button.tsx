@@ -24,19 +24,18 @@ function Button({
   const Comp = asChild ? Slot : 'button';
 
   return (
-    <div className="flex w-full items-center justify-center gap-2">
-      <Comp
-        data-slot="button"
-        className={cn(buttonVariants({ variant, size, className }))}
-        {...props}
-      >
-        <div className="flex items-center gap-3">
-          {prefixIcon && <span className="">{prefixIcon}</span>}
-          {title}
-          {suffixIcon && <span className="text-text-secondary">{suffixIcon}</span>}
-        </div>
-      </Comp>
-    </div>
+    <Comp
+      data-slot="button"
+      className={cn(
+        'flex w-full items-center justify-center gap-2',
+        buttonVariants({ variant, size, className }),
+      )}
+      {...props}
+    >
+      {prefixIcon && <span>{prefixIcon}</span>}
+      {title}
+      {suffixIcon && <span className="text-text-secondary">{suffixIcon}</span>}
+    </Comp>
   );
 }
 

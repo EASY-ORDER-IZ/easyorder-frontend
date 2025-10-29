@@ -1,4 +1,4 @@
-import { Dialog, DialogContent, DialogHeader, DialogTrigger } from '@/components/ui/dialog';
+import { Dialog, DialogContent, DialogTrigger } from '@/components/ui/dialog';
 interface Props {
   page?: React.ReactNode;
   trigger?: React.ReactNode;
@@ -11,10 +11,7 @@ const Modal = ({ page, trigger, open, setOpen }: Props) => {
       <Dialog open={open} onOpenChange={setOpen}>
         <DialogTrigger asChild>{trigger}</DialogTrigger>
 
-        <DialogContent className="w-[85%] md:w-[56%] lg:w-[100%]">
-          <DialogHeader></DialogHeader>
-          {page}
-        </DialogContent>
+        <DialogContent className="w-[85%] md:w-[56%] lg:w-[100%]">{page}</DialogContent>
       </Dialog>
     </>
   );
