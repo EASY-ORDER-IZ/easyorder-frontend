@@ -6,9 +6,7 @@ export const DeleteSonner = () => {
     <div className="flex w-[26rem] items-center gap-3 rounded-lg border border-[var(--color-toast-action)] bg-[var(--popover)] bg-white p-3">
       <img src={trash} alt="Error" className="mt-0.5 h-[1.5rem] w-[1.5rem]" />
       <div>
-        <p className="font-semibold text-gray-700">
-          Your email address hasn’t been receiving emails.
-        </p>
+        <p className="font-semibold text-gray-700">Your selected items has been deleted</p>
         <p className="text-xs text-gray-700">
           Placeholder Description, please check whatever placeholder.
         </p>

@@ -7,7 +7,7 @@ export const SuccessSonner = () => {
       <img src={verified} alt="Error" className="mt-0.5 h-[1.5rem] w-[1.5rem]" />
       <div>
         <p className="font-semibold text-[var(--color-toast-success)]">
-          Your email address hasn’t been receiving emails.
+          Your changes have been saved successfully!
         </p>
         <p className="text-xs text-gray-700">
           Placeholder Description, please check whatever placeholder.

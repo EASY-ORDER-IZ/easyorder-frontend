@@ -7,7 +7,7 @@ export const ErrorSonner = () => {
       <img src={errorImg} alt="Error" className="mt-0.5 h-[1.5rem] w-[1.5rem]" />
       <div>
         <p className="font-semibold text-[var(--color-toast-danger)]">
-          Your email address hasn’t been receiving emails.
+          There’s something wrong with your payment.
         </p>
         <p className="text-xs text-gray-700">
           Placeholder Description, please check whatever placeholder.
