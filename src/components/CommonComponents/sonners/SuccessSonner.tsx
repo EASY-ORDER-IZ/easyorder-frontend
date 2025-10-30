@@ -1,27 +1,18 @@
-import React from 'react';
 import { toast } from 'sonner';
 import { verified } from '@/assets/icons';
 
 export const SuccessSonner = () => {
-  toast(
-    <div className="flex w-[30rem] items-start gap-3">
-      <img src={verified} alt="verified" className="mt-0.5 h-[1.5rem] w-[1.5rem]" />
+  toast.custom(() => (
+    <div className="flex w-[26rem] items-center gap-3 rounded-lg border border-[var(--color-toast-success)] bg-[var(--popover)] bg-white p-3">
+      <img src={verified} alt="Error" className="mt-0.5 h-[1.5rem] w-[1.5rem]" />
       <div>
-        <p className="text-[var(--color-toast-success)]">
-          Your changes have been saved successfully!
+        <p className="font-semibold text-[var(--color-toast-success)]">
+          Your email address hasn’t been receiving emails.
         </p>
-        <p className="text-xxs text-[var(--color-toast-success)]">
-          Placeholder description, please check whatever placeholder.
+        <p className="text-xs text-gray-700">
+          Placeholder Description, please check whatever placeholder.
         </p>
       </div>
-    </div>,
-    {
-      style: {
-        border: '1px solid var(--color-toast-success)',
-      },
-      duration: 4000,
-    },
-  );
+    </div>
+  ));
 };
-
-export default SuccessSonner;
