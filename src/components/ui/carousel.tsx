@@ -149,7 +149,7 @@ function CarouselItem({ className, ...props }: React.ComponentProps<'div'>) {
       aria-roledescription="slide"
       data-slot="carousel-item"
       className={cn(
-        'min-w-0 shrink-0 grow-0 basis-full',
+        'min-w-0 shrink-0 grow',
         orientation === 'horizontal' ? 'pl-4' : 'pt-4',
         className,
       )}
@@ -160,8 +160,7 @@ function CarouselItem({ className, ...props }: React.ComponentProps<'div'>) {
 
 function CarouselPrevious({
   className,
-  variant = 'outline',
-  size = 'icon',
+
   ...props
 }: React.ComponentProps<typeof Button>) {
   const { orientation, scrollPrev, canScrollPrev } = useCarousel();
@@ -169,8 +168,6 @@ function CarouselPrevious({
   return (
     <Button
       data-slot="carousel-previous"
-      variant={variant}
-      size={size}
       className={cn(
         'absolute size-8 rounded-full',
         orientation === 'horizontal'
@@ -188,19 +185,12 @@ function CarouselPrevious({
   );
 }
 
-function CarouselNext({
-  className,
-  variant = 'outline',
-  size = 'icon',
-  ...props
-}: React.ComponentProps<typeof Button>) {
+function CarouselNext({ className, ...props }: React.ComponentProps<typeof Button>) {
   const { orientation, scrollNext, canScrollNext } = useCarousel();
 
   return (
     <Button
       data-slot="carousel-next"
-      variant={variant}
-      size={size}
       className={cn(
         'absolute size-8 rounded-full',
         orientation === 'horizontal'
