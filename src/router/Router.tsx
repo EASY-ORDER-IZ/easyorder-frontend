@@ -4,8 +4,7 @@ import RootLayout from '../layout/RootLayout';
 import CartPage from '@/pages/CartPage';
 import CategoryPage from '@/pages/CategoryPage';
 import SignInPage from '@/pages/SignInPage';
-import SignUpPage from '@/pages/SignUpPage';
-
+import CardItem from '@/components/CommonComponents/CardItem/CardSlider';
 const Router = createBrowserRouter([
   {
     path: '/',
@@ -42,6 +41,10 @@ const Router = createBrowserRouter([
       {
         path: 'cate/:title',
         element: <CategoryPage />,
+      },
+      {
+        path: '/card',
+        element: <CardItem />,
       },
     ],
   },

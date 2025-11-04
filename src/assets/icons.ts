@@ -15,6 +15,10 @@ import trash from './images/Trash2.svg';
 import emailWarning from './images/MailWarning.svg';
 import errorImg from './images/CircleAlert.svg';
 import verified from './images/CircleCheck.svg';
+import img101 from './images/img101.png';
+import img102 from './images/img102.png';
+import img103 from './images/img103.png';
+import img104 from './images/img104.png';
 export {
   cart,
   down_arrow,
@@ -33,4 +37,8 @@ export {
   emailWarning,
   errorImg,
   verified,
+  img101,
+  img102,
+  img103,
+  img104,
 };
