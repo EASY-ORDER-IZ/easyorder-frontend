@@ -5,7 +5,7 @@ import StylesFilter from '@/components/ProductComponents/StylesFilter';
 
 const HomePage = () => {
   return (
-    <div className="flex w-full flex-col gap-10">
+    <div className="relative flex w-full flex-col gap-10 overflow-visible">
       <HeroSection />
 
       <ProductBar title="NEW ARRIVALS" />
@@ -16,6 +16,7 @@ const HomePage = () => {
       <div className="px-4 lg:px-25">
         <StylesFilter />
       </div>
+
       <CommentSection />
     </div>
   );

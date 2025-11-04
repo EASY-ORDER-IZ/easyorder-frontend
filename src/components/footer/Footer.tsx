@@ -3,7 +3,7 @@ import { FooterBrand, FooterColumn, FooterBottom, NewsletterLogic } from './inde
 const Footer = () => {
   return (
     <div className="flex w-full flex-col items-center justify-center pt-55 lg:pt-45">
-      <div className="relative flex w-full flex-col items-center justify-between gap-3 gap-20 bg-white">
+      <div className="relative flex w-full flex-col items-center justify-between gap-3 bg-white">
         <div className="flex items-center justify-center">
           <NewsletterLogic />
         </div>

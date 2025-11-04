@@ -197,6 +197,13 @@ html {
     transform: translateY(0);
   }
 }
+[data-radix-portal] {
+  position: fixed !important;
+  inset: 0 !important;
+  z-index: 9999 !important;
+  pointer-events: auto;
+}
+
 .animate-slide-up {
   animation: slide-up 0.3s ease-out forwards;
 }
