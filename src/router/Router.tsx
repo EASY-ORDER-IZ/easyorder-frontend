@@ -4,7 +4,7 @@ import RootLayout from '../layout/RootLayout';
 import CartPage from '@/pages/CartPage';
 import CategoryPage from '@/pages/CategoryPage';
 import SignInPage from '@/pages/SignInPage';
-import CardItem from '@/components/CommonComponents/CardItem/CardItem';
+import CardItem from '@/components/CommonComponents/CardItem/CardSlider';
 const Router = createBrowserRouter([
   {
     path: '/',
