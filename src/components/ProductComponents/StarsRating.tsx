@@ -5,7 +5,7 @@ interface Rating {
   className?: string;
 }
 
-const StarsRating = ({ rating, className = 'size-4' }: Rating) => {
+const StarsRating = ({ rating, className }: Rating) => {
   rating = Math.round(rating * 2) / 2;
   const fullStars = Math.floor(rating);
   const hasHalfStar = rating % 1 === 0.5;
@@ -13,10 +13,14 @@ const StarsRating = ({ rating, className = 'size-4' }: Rating) => {
   return (
     <div className="flex gap-1.5">
       {[...Array(fullStars)].map((_, i) => (
-        <Star key={`full-${i}`} className={`${className} fill-yellow-400 text-yellow-400`} />
+        <Star
+          size={12}
+          key={`full-${i}`}
+          className={`${className} fill-status-warning text-status-warning`}
+        />
       ))}
 
-      {hasHalfStar && <StarHalf className="h-4 w-4 fill-yellow-400 text-yellow-400" />}
+      {hasHalfStar && <StarHalf size={12} className="fill-status-warning text-status-warning" />}
     </div>
   );
 };

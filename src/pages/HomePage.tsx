@@ -1,22 +1,15 @@
-import CommentSection from '@/components/customercomments/CommentSection';
-import HeroSection from '@/components/HeroSection';
-import ProductBar from '@/components/ProductComponents/ProductBar';
-import StylesFilter from '@/components/ProductComponents/StylesFilter';
+import Body from '@/components/HomePageComponents/Body';
+import Rate from '@/components/HomePageComponents/Rate';
+import Header from '@/components/HomePageComponents/Header';
+import Footer from '@/components/HomePageComponents/Footer';
 
 const HomePage = () => {
   return (
-    <div className="flex w-full flex-col gap-10">
-      <HeroSection />
-
-      <ProductBar title="NEW ARRIVALS" />
-      <div className="flex w-full justify-center">
-        <div className="bg-background-main h-[1px] w-89 lg:w-310" />
-      </div>
-      <ProductBar title="top selling" />
-      <div className="px-4 lg:px-25">
-        <StylesFilter />
-      </div>
-      <CommentSection />
+    <div className="flex w-full flex-col justify-center gap-10 pb-4">
+      <Header />
+      <Body />
+      <Rate />
+      <Footer />
     </div>
   );
 };

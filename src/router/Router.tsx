@@ -23,12 +23,16 @@ const Router = createBrowserRouter([
         element: <div>Help Page</div>,
       },
       {
-        path: 'signin',
+        path: 'sign-in',
         element: <SignInPage />,
       },
       {
-        path: 'signup',
-        element: <div>Sign Up Page</div>,
+        path: 'sign-up',
+        element: (
+          <div>
+            <SignUpPage />
+          </div>
+        ),
       },
       {
         path: 'cart',
