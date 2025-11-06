@@ -16,12 +16,13 @@ const CardImg: React.FC<cardProps> = ({ title, img, price, discount, rating, sal
   return (
     <div className="relative h-96 w-[16.5rem] overflow-hidden rounded-[0.3rem] text-white shadow-lg">
       <img src={img} alt="Product" className="absolute top-0 left-0 h-full w-full object-cover" />
-
-      <div className="absolute right-0 bottom-0 left-0 h-24 bg-gradient-to-t from-black/60 via-black/30 to-transparent"></div>
-
       <div className="absolute top-3 right-5 left-2 flex items-center justify-between">
         <div
-          className={`${sale == 'sale' ? 'bg-[var(--color-primary-main)]/80' : 'new_bg'} w-[4.75rem] rounded-[0.4rem] px-3 py-1 text-center text-sm`}
+          className={`${
+            sale?.toLowerCase() === 'sale'
+              ? 'bg-[var(--color-primary-main)]/80'
+              : 'bg-[linear-gradient(to_right,oklch(0.35_0.11_200deg/_0.54),oklch(0.43_0.13_195deg/_0.91))]'
+          } w-[4.75rem] rounded-[0.4rem] px-3 py-1 text-center text-sm`}
         >
           <span>{sale}</span>
         </div>

@@ -18,7 +18,7 @@ const CardSlider: React.FC = () => {
         spaceBetween={20}
         slidesPerView={1}
         loop={true}
-        className="custom-pagination h-full w-full overflow-hidden rounded-[0.3rem]"
+        className="custom-pagination h-full w-full overflow-hidden rounded-[0.6rem]"
       >
         {cardData.slice(0, 4).map((card, index) => (
           <SwiperSlide key={index}>
