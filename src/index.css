@@ -28,7 +28,8 @@ html {
 @media (max-width: 768px) {
   html {
     font-size: 12px;
-
+  }
+}
 @theme inline {
   --font-satoshi: satoshi, 'sans-serif';
   --font-integral: integral, 'sans-serif';
@@ -131,9 +132,10 @@ html {
   --color-primary-primary: oklch(1 0 0);
 
   --color-status-success: oklch(0.7184 0.1677 156.03);
-  --color-status-action: oklch(0.7694 0.1136 250.59);
+  --color-status-action: oklch(0.4751 0.0588 212.99);
   --color-status-warning: oklch(0.6546 0.2017 24.64);
   --color-status-warning-2: oklch(0.8088 0.17 75.26);
+  --color-status-danger: oklch(0.6584 0.218 24.47);
 
   --color-toast-success: oklch(44.6% 0.078 206.3);
   --color-toast-action: oklch(0.8089 0.0018 325.59);
@@ -176,6 +178,13 @@ html {
 .CarouselItem:nth-child(n + 1) {
   filter: none;
   opacity: 1;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 
 @layer base {
