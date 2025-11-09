@@ -20,7 +20,9 @@ interface FormProps {
 export function FormComponent({ type }: FormProps) {
   const [, setSearchParams] = useSearchParams();
 
-  const switchDialog = (target: 'sign-in' | 'sign-up' | 'forget-password' | 'email-verfiy') => {
+  const switchDialog = (
+    target: 'sign-in' | 'sign-up' | 'forget-password' | 'reset_pass' | 'email-verfiy',
+  ) => {
     setSearchParams({ auth: target });
   };
   const [showPassword, setShowPassword] = useState(false);
@@ -82,6 +84,7 @@ export function FormComponent({ type }: FormProps) {
                     required
                     {...field}
                     error={fieldState.error?.message}
+                    className="h-3"
                   />
                 </Field>
               )}
@@ -99,6 +102,7 @@ export function FormComponent({ type }: FormProps) {
                     required
                     {...field}
                     error={fieldState.error?.message}
+                    className="h-3"
                   />
                 </Field>
               )}
@@ -136,6 +140,7 @@ export function FormComponent({ type }: FormProps) {
                     linklabel="Forgot password?"
                     required
                     error={fieldState.error?.message}
+                    className="h-3"
                   />
                 </div>
               </Field>
@@ -147,9 +152,10 @@ export function FormComponent({ type }: FormProps) {
                 disabled={isDisabled}
                 title="Sign In"
                 type="submit"
-                onClick={form.handleSubmit(onSubmit)}
+                onSubmit={form.handleSubmit(onSubmit)}
                 variant="primary"
                 form="form-rhf-demo"
+                className="rounded-7xl h-12"
               />
               <div className="flex items-center justify-center gap-2">
                 <Separator />
@@ -164,6 +170,7 @@ export function FormComponent({ type }: FormProps) {
                 type="submit"
                 variant="secondary"
                 form="form-rhf-demo"
+                className="rounded-7xl h-12"
               />
               <Field className="flex justify-center gap-1" id="signup" orientation="horizontal">
                 <span className="text-text-secondary leading-leading-lg text-sm font-light">

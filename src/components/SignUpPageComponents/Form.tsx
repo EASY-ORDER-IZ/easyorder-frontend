@@ -16,24 +16,28 @@ import Google from '@/assets/svg/Google';
 
 interface FormProps {
   type: 'email' | 'phone';
+  username: string;
 }
 
 const signupSchema = z.object({
+  username1: z.string().min(2, 'Username must be at least 3 characters'),
   email: z.string().email('Enter a valid email address').optional(),
   phone: z
     .string()
     .regex(/^\+?\d{7,15}$/, 'Enter a valid phone number')
     .optional(),
-  password: z.string().min(6, 'Password must be at least 6 characters'),
+  password: z.string().min(8, 'Password must be at least 6 characters'),
   store: z.string().optional(),
 });
 
 type SignupFormValues = z.infer<typeof signupSchema>;
 
-const Form: React.FC<FormProps> = ({ type }) => {
+const Form: React.FC<FormProps> = ({ type, username }) => {
   const [, setSearchParams] = useSearchParams();
 
-  const switchDialog = (target: 'sign-in' | 'sign-up' | 'forget-password' | 'email-verfiy') => {
+  const switchDialog = (
+    target: 'sign-in' | 'sign-up' | 'forget-password' | 'reset_pass' | 'email-verfiy',
+  ) => {
     setSearchParams({ auth: target });
   };
   const [showPassword, setShowPassword] = useState(false);
@@ -41,6 +45,7 @@ const Form: React.FC<FormProps> = ({ type }) => {
     resolver: zodResolver(signupSchema),
     mode: 'onChange',
     defaultValues: {
+      username1: username,
       email: '',
       phone: '',
       password: '',
@@ -50,8 +55,8 @@ const Form: React.FC<FormProps> = ({ type }) => {
   const isfilled = form.watch('store');
   const isDisabled =
     type === 'email'
-      ? !form.watch('email') || !form.watch('password')
-      : !form.watch('phone') || !form.watch('password');
+      ? !form.watch('email') || !form.watch('password') || !username
+      : !form.watch('phone') || !form.watch('password') || !username;
 
   const onSubmit = (data: SignupFormValues) => {
     toast.success(`${type === 'email' ? 'Email' : 'Phone'} registered successfully!`);
@@ -79,6 +84,7 @@ const Form: React.FC<FormProps> = ({ type }) => {
                     required
                     {...field}
                     error={fieldState.error?.message}
+                    className="h-3"
                   />
                 </Field>
               )}
@@ -96,6 +102,7 @@ const Form: React.FC<FormProps> = ({ type }) => {
                     required
                     {...field}
                     error={fieldState.error?.message}
+                    className="h-3"
                   />
                 </Field>
               )}
@@ -131,6 +138,7 @@ const Form: React.FC<FormProps> = ({ type }) => {
                     required
                     {...field}
                     error={fieldState.error?.message}
+                    className="h-3"
                   />
                 </div>
               </Field>
@@ -156,7 +164,7 @@ const Form: React.FC<FormProps> = ({ type }) => {
                     render={({ field, fieldState }) => (
                       <Field data-invalid={fieldState.invalid}>
                         <Input
-                          prefixIcon={<Store />}
+                          prefixIcon={<Store size={16} />}
                           type="text"
                           suffixIcon={
                             isfilled && (
@@ -171,6 +179,7 @@ const Form: React.FC<FormProps> = ({ type }) => {
                           placeholder="Enter your name store"
                           {...field}
                           error={fieldState.error?.message}
+                          className="h-3"
                         />
                       </Field>
                     )}
@@ -188,6 +197,7 @@ const Form: React.FC<FormProps> = ({ type }) => {
             type="submit"
             variant="primary"
             form="form-rhf-demo"
+            className="rounded-7xl h-12"
           />
           <div className="flex items-center justify-center gap-2">
             <Separator />
@@ -203,6 +213,7 @@ const Form: React.FC<FormProps> = ({ type }) => {
             type="submit"
             variant="secondary"
             form="form-rhf-demo"
+            className="rounded-7xl h-12"
           />
         </div>
         <Field className="flex justify-center gap-1" id="signin" orientation="horizontal">

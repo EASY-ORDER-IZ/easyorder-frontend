@@ -23,18 +23,7 @@ const Router = createBrowserRouter([
         path: 'help',
         element: <div>Help Page</div>,
       },
-      {
-        path: 'sign-in',
-        element: <SignInPage />,
-      },
-      {
-        path: 'sign-up',
-        element: (
-          <div>
-            <SignUpPage />
-          </div>
-        ),
-      },
+
       {
         path: 'cart',
         element: <CartPage />,
