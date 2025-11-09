@@ -6,13 +6,14 @@ import CategoryPage from '@/pages/CategoryPage';
 import SignInPage from '@/pages/SignInPage';
 import CardItem from '@/components/CommonComponents/CardItem/CardSlider';
 import SignUpPage from '@/pages/SignUpPage';
+import OTPPage from '@/pages/OTPPage';
 const Router = createBrowserRouter([
   {
     path: '/',
     element: <RootLayout />,
     children: [
       {
-        path: '/',
+        index: true,
         element: <HomePage />,
       },
       {
@@ -46,6 +47,10 @@ const Router = createBrowserRouter([
       {
         path: '/card',
         element: <CardItem />,
+      },
+      {
+        path: '/email-verify',
+        element: <OTPPage />,
       },
     ],
   },

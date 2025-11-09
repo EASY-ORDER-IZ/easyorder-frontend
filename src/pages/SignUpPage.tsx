@@ -4,7 +4,10 @@ import Form from '@/components/SignUpPageComponents/Form';
 import { Input } from '@/components/ui/input';
 import { UserRound } from 'lucide-react';
 import Title from '@/components/SignInComponents/Title';
+import { useState } from 'react';
 const SignUpPage = () => {
+  const [username, setUsername] = useState('');
+
   return (
     <div className="flex w-full justify-center gap-2 p-1 lg:justify-between">
       <div className="hidden h-full w-full lg:flex">
@@ -19,6 +22,8 @@ const SignUpPage = () => {
             label="Username"
             required
             placeholder="Enter Your username"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
           />
 
           <Tabs defaultValue="email">
@@ -27,10 +32,10 @@ const SignUpPage = () => {
               <TabsTrigger value="phone">Phone Number</TabsTrigger>
             </TabsList>
             <TabsContent value={'email'}>
-              <Form type="email" />
+              <Form type="email" username={username} />
             </TabsContent>
             <TabsContent value="phone" className="w-full">
-              <Form type="phone" />
+              <Form type="phone" username={username} />
             </TabsContent>
           </Tabs>
         </div>
