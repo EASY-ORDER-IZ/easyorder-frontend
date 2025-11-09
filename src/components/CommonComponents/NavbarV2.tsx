@@ -17,7 +17,9 @@ interface NavbarProps {
 const NavbarV2 = ({ isModalOpen }: NavbarProps) => {
   const [searchParams, setSearchParams] = useSearchParams();
 
-  const switchDialog = (target: 'sign-in' | 'sign-up' | 'forget-password' | 'email-verfiy') => {
+  const switchDialog = (
+    target: 'sign-in' | 'sign-up' | 'forget-password' | 'reset_pass' | 'email-verfiy',
+  ) => {
     setSearchParams({ auth: target });
   };
 

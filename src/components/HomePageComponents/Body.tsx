@@ -11,8 +11,8 @@ const Body = () => {
       <div className="flex w-full flex-col gap-5">
         <ProductBar array={topSelling} title="Top Selling" />
       </div>
-      <div className="flex w-full flex-col gap-5">
-        <CategoryBar array={cate} title="Shop by categories" />
+      <div className="flex w-full justify-center">
+        <CategoryBar array={cate} title="Shop by category" />
       </div>
     </div>
   );

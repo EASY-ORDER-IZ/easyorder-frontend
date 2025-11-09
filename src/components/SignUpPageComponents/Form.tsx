@@ -13,51 +13,77 @@ import { useSearchParams } from 'react-router-dom';
 import { Checkbox } from '@/components/ui/checkbox';
 import { Label } from '../ui/label';
 import Google from '@/assets/svg/Google';
+import { useRegister } from '@/hooks/registration';
 
 interface FormProps {
   type: 'email' | 'phone';
+  username: string;
 }
 
 const signupSchema = z.object({
+  username: z.string().min(3, 'Username must be at least 3 characters'),
   email: z.string().email('Enter a valid email address').optional(),
   phone: z
     .string()
     .regex(/^\+?\d{7,15}$/, 'Enter a valid phone number')
     .optional(),
-  password: z.string().min(6, 'Password must be at least 6 characters'),
+  password: z.string().min(8, 'Password must be at least 8 characters'),
+  confirmedPassword: z.string().min(8, 'Confirm password must be at least 8 characters'),
   store: z.string().optional(),
 });
 
 type SignupFormValues = z.infer<typeof signupSchema>;
 
-const Form: React.FC<FormProps> = ({ type }) => {
+const Form: React.FC<FormProps> = ({ type, username }) => {
   const [, setSearchParams] = useSearchParams();
+  const registrationMutation = useRegister();
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmedPassword, setShowConfirmedPassword] = useState(false);
+  const [checked, setChecked] = useState(false);
 
-  const switchDialog = (target: 'sign-in' | 'sign-up' | 'forget-password' | 'email-verfiy') => {
+  const switchDialog = (
+    target: 'sign-in' | 'sign-up' | 'forget-password' | 'reset_pass' | 'email-verfiy',
+  ) => {
     setSearchParams({ auth: target });
   };
-  const [showPassword, setShowPassword] = useState(false);
+
   const form = useForm<SignupFormValues>({
     resolver: zodResolver(signupSchema),
     mode: 'onChange',
     defaultValues: {
+      username: username,
       email: '',
       phone: '',
       password: '',
       store: '',
+      confirmedPassword: '',
     },
   });
+
   const isfilled = form.watch('store');
   const isDisabled =
     type === 'email'
-      ? !form.watch('email') || !form.watch('password')
-      : !form.watch('phone') || !form.watch('password');
+      ? !form.watch('email') || !form.watch('password') || !username
+      : !form.watch('phone') || !form.watch('password') || !username;
 
-  const onSubmit = (data: SignupFormValues) => {
-    toast.success(`${type === 'email' ? 'Email' : 'Phone'} registered successfully!`);
-    console.log(data);
+  const onSubmit = async (data: SignupFormValues) => {
+    try {
+      const payload = {
+        username: data.username,
+        email: data.email || '',
+        password: data.password,
+        confirmPassword: data.confirmedPassword,
+        createStore: checked ? 'yes' : 'no',
+        storeName: checked ? data.store : undefined,
+      };
+
+      const response = await registrationMutation.mutateAsync(payload);
+      console.log('Server response:', response);
+      toast.success('Registration successful!');
+    } catch (error) {
+      toast.error(error.response?.data?.message || 'Registration failed');
+    }
   };
-  const [checked, setChecked] = useState(false);
 
   return (
     <div className="flex w-full justify-center">
@@ -79,6 +105,7 @@ const Form: React.FC<FormProps> = ({ type }) => {
                     required
                     {...field}
                     error={fieldState.error?.message}
+                    className="h-3"
                   />
                 </Field>
               )}
@@ -96,6 +123,7 @@ const Form: React.FC<FormProps> = ({ type }) => {
                     required
                     {...field}
                     error={fieldState.error?.message}
+                    className="h-3"
                   />
                 </Field>
               )}
@@ -131,11 +159,49 @@ const Form: React.FC<FormProps> = ({ type }) => {
                     required
                     {...field}
                     error={fieldState.error?.message}
+                    className="h-3"
                   />
                 </div>
               </Field>
             )}
           />
+
+          <Controller
+            name="confirmedPassword"
+            control={form.control}
+            render={({ field, fieldState }) => (
+              <Field data-invalid={fieldState.invalid}>
+                <div className="relative flex w-full items-center">
+                  <Input
+                    prefixIcon={<Lock size={18} />}
+                    label="Confirm Password"
+                    placeholder="Confirm your password"
+                    type={showConfirmedPassword ? 'text' : 'password'}
+                    suffixIcon={
+                      showConfirmedPassword ? (
+                        <EyeOff
+                          onClick={() => setShowConfirmedPassword((prev) => !prev)}
+                          className="cursor-pointer"
+                          size={18}
+                        />
+                      ) : (
+                        <Eye
+                          onClick={() => setShowConfirmedPassword((prev) => !prev)}
+                          className="cursor-pointer"
+                          size={18}
+                        />
+                      )
+                    }
+                    required
+                    {...field}
+                    error={fieldState.error?.message}
+                    className="h-3"
+                  />
+                </div>
+              </Field>
+            )}
+          />
+
           <Field>
             <div className="flex w-full flex-col items-center justify-center gap-2">
               <div className="flex w-full flex-col">
@@ -156,7 +222,7 @@ const Form: React.FC<FormProps> = ({ type }) => {
                     render={({ field, fieldState }) => (
                       <Field data-invalid={fieldState.invalid}>
                         <Input
-                          prefixIcon={<Store />}
+                          prefixIcon={<Store size={16} />}
                           type="text"
                           suffixIcon={
                             isfilled && (
@@ -168,9 +234,10 @@ const Form: React.FC<FormProps> = ({ type }) => {
                             )
                           }
                           label="Name your store"
-                          placeholder="Enter your name store"
+                          placeholder="Enter your store name"
                           {...field}
                           error={fieldState.error?.message}
+                          className="h-3"
                         />
                       </Field>
                     )}
@@ -183,11 +250,11 @@ const Form: React.FC<FormProps> = ({ type }) => {
 
         <div className="flex w-full flex-col gap-2">
           <Button
-            disabled={isDisabled}
-            title="Get Started"
+            disabled={isDisabled || registrationMutation.isLoading}
+            title="Sign Up"
             type="submit"
             variant="primary"
-            form="form-rhf-demo"
+            className="rounded-7xl h-12"
           />
           <div className="flex items-center justify-center gap-2">
             <Separator />
@@ -202,9 +269,10 @@ const Form: React.FC<FormProps> = ({ type }) => {
             title="Google"
             type="submit"
             variant="secondary"
-            form="form-rhf-demo"
+            className="rounded-7xl h-12"
           />
         </div>
+
         <Field className="flex justify-center gap-1" id="signin" orientation="horizontal">
           <span className="text-text-secondary leading-leading-lg text-sm font-light">
             Already have an account?
