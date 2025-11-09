@@ -1,7 +1,7 @@
 import { ChevronRight } from 'lucide-react';
 import { Button } from '../ui/button/button';
-import ProductCard from './ProductCard';
 import { useState } from 'react';
+import CardSlider from '../CommonComponents/CardItem/CardSlider';
 
 export interface Product {
   id: number;
@@ -35,13 +35,13 @@ const ProductBar = ({ title, array, initialVisible = 4 }: Props) => {
       </div>
 
       <div className="hidden grid-cols-4 gap-20 p-4 lg:grid">
-        {visibleProducts.map((p, index) => (
-          <ProductCard key={index} img={p.img} alt={p.name} title={p.name} />
+        {visibleProducts.map(() => (
+          <CardSlider />
         ))}
       </div>
       <div className="grid grid-cols-2 gap-20 p-4 lg:hidden">
-        {visibleProductsMobile.map((p, index) => (
-          <ProductCard key={index} img={p.img} alt={p.name} title={p.name} />
+        {visibleProductsMobile.map(() => (
+          <CardSlider />
         ))}
       </div>
 
