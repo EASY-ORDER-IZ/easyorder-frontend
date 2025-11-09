@@ -1,61 +1,109 @@
-import React, { useState } from 'react';
-import { useSearchParams, useNavigate } from 'react-router-dom';
+import React, { useMemo, useState } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import InputOTPPattern from '@/components/SignUpPageComponents/OTP';
 import { Button } from '@/components/ui/button/button';
 import { OTP_img } from '@/assets/icons';
 import { Link } from 'react-router-dom';
+import OTPTimer from '@/components/SignUpPageComponents/OTPTimer';
+import axios from 'axios';
 
-const OTPPage = () => {
+const OTPPage: React.FC = () => {
   const [otp, setOtp] = useState('');
   const [searchParams] = useSearchParams();
-  const navigate = useNavigate();
-  const email = searchParams.get('email');
+  const email = searchParams.get('email') ?? 'example@email.com';
+  const [touched, setTouched] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
+  const hasSix = otp.length === 6;
+  const hasError = useMemo(() => submitted && hasSix, [submitted, hasSix]);
+
+  const handleExpire = () => {
+    alert('OTP Expired');
+  };
 
   const handleConfirm = () => {
-    // For now, just simulate success
-    console.log('Entered OTP:', otp);
-    navigate('/success'); // change later when backend is ready
+    const payload = {
+      email,
+      otp,
+    };
+
+    try {
+      const response = axios.post(
+        'http://localhost:3000/api-docs/#/Auth/post_api_v1_auth_verify_otp',
+        payload,
+      );
+      console.log('success', response);
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   return (
-    <div className="flex min-h-screen w-full items-center justify-center gap-8 p-4 lg:justify-between lg:p-8">
-      <div className="hidden h-full w-full max-w-2xl lg:flex">
-        <img
-          src={OTP_img}
-          alt="OTP Verification"
-          className="h-full w-full rounded-2xl object-cover"
-        />
+    <div className="flex w-full items-stretch gap-6 p-4 lg:p-6">
+      <div className="hidden w-[360px] shrink-0 lg:block">
+        <div className="relative h-[520px] w-full overflow-hidden rounded-2xl">
+          <img
+            src={OTP_img}
+            alt="OTP Verification"
+            className="absolute inset-0 h-full w-full object-cover"
+          />
+          <div className="absolute inset-0 bg-black/10" />
+          <div className="absolute bottom-4 left-4">
+            <div className="rounded-md bg-black/30 px-3 py-1 text-sm font-semibold tracking-wide text-white">
+              FIRSTCHANCE
+            </div>
+          </div>
+        </div>
       </div>
 
-      <div className="flex w-full max-w-md flex-col items-center justify-center space-y-8">
-        <div className="w-full space-y-4 text-center">
-          <h3 className="text-2xl font-bold text-gray-900">Verify your email</h3>
+      <div className="mx-auto flex w-full max-w-[440px] flex-col justify-center">
+        <div className="space-y-2 text-center">
+          <h3 className="text-[28px] leading-8 font-semibold text-gray-900">Verify your email</h3>
           <p className="text-gray-600">
-            We sent a code to <strong>{email}</strong>{' '}
+            We sent a code to <strong className="font-semibold">{email}</strong>{' '}
             <Link to="#" className="font-medium text-[var(--color-primary-main)] hover:underline">
               Change Email
             </Link>
           </p>
         </div>
 
-        <div className="w-full">
-          <InputOTPPattern value={otp} onChange={setOtp} />
+        <div className="mt-6">
+          <InputOTPPattern
+            value={otp}
+            onChange={(v: string) => {
+              if (!touched) setTouched(true);
+              setSubmitted(false);
+              setOtp(v);
+            }}
+          />
+          {hasError && (
+            <p className="mt-2 rounded-md border border-red-600 p-2 text-center text-sm font-medium text-red-600">
+              Incorrect OTP. Please try again.
+            </p>
+          )}
         </div>
 
-        {otp.length === 6 && (
-          <div className="text-center text-sm text-green-600">Ready to confirm.</div>
-        )}
-
-        <div className="w-full space-y-4">
-          <Button className="w-full" disabled={otp.length !== 6} onClick={handleConfirm}>
+        <div className="mt-6 space-y-4">
+          <Button
+            className="w-full"
+            disabled={!hasSix || hasError}
+            aria-disabled={!hasSix || hasError}
+            onClick={handleConfirm}
+            title="Confirm"
+          >
             Confirm
           </Button>
 
           <div className="text-center text-sm text-gray-600">
-            Didn’t receive the code?
-            <span className="cursor-pointer font-medium text-[var(--color-primary-main)] hover:underline">
-              resend code in 1:43
-            </span>
+            Didn’t receive the code?{' '}
+            <button
+              type="button"
+              className="font-medium text-[var(--color-primary-main)] hover:underline"
+              onClick={() => {
+                setSubmitted(false);
+              }}
+            >
+              <OTPTimer initialMinutes={15} onExpire={handleExpire} />
+            </button>
           </div>
         </div>
       </div>
