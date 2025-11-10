@@ -4,7 +4,7 @@ import RootLayout from '../layout/RootLayout';
 import CartPage from '@/pages/CartPage';
 import CategoryPage from '@/pages/CategoryPage';
 import CardItem from '@/components/CommonComponents/CardItem/CardSlider';
-import OTPPage from '@/pages/OTPPage';
+
 const Router = createBrowserRouter([
   {
     path: '/',
@@ -34,10 +34,6 @@ const Router = createBrowserRouter([
       {
         path: '/card',
         element: <CardItem />,
-      },
-      {
-        path: '/email-verify',
-        element: <OTPPage />,
       },
     ],
   },

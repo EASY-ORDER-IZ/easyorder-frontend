@@ -3,15 +3,17 @@ import { useState } from 'react';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Controller, useForm } from 'react-hook-form';
 import * as z from 'zod';
-import { Eye, EyeOff, Lock, Mail, ChevronDown } from 'lucide-react';
+import { Eye, EyeOff, Lock, Mail } from 'lucide-react';
 import { Field } from '@/components/ui/field';
 import { Input } from '@/components/ui/input';
-import formSchema from '@/validation/formSchema';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { Button } from '../ui/button/button';
 import { useAuthStore } from '@/store/authStore';
 import { Separator } from '../ui/separator';
 import Google from '@/assets/svg/Google';
+import { useMutation } from '@tanstack/react-query';
+import axios from 'axios';
+import PhoneInput from 'react-phone-input-2';
 
 interface FormProps {
   type: 'email' | 'phone';
@@ -29,6 +31,21 @@ export function FormComponent({ type }: FormProps) {
   const navigate = useNavigate();
   const { login } = useAuthStore();
 
+  const formSchema = z
+    .object({
+      email: z.string().email().optional().or(z.literal('')),
+      phone: z
+        .string()
+        .regex(/^\+?\d{7,15}$/)
+        .optional()
+        .or(z.literal('')),
+      password: z.string().min(6, 'Password must be at least 6 characters'),
+    })
+    .refine((data) => data.email || data.phone, {
+      message: 'Please enter either email or phone',
+      path: ['email'],
+    });
+
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     mode: 'onChange',
@@ -45,27 +62,29 @@ export function FormComponent({ type }: FormProps) {
 
   const isDisabled = type === 'email' ? !email || !password : !phone || !password;
 
-  function onSubmit(data: z.infer<typeof formSchema>) {
-    const mockUser = {
-      id: 1,
-      email: 'tesst@example.com',
-      phone: '+972123456789',
-      password: 'Moh@12345',
-    };
+  type Formdata = z.infer<typeof formSchema>;
+  const mutation = useMutation({
+    mutationFn: async (data: Formdata) => {
+      const payload = {
+        password: data.password,
+        ...(type === 'email' ? { email: data.email } : { phone: data.phone }),
+      };
 
-    if (
-      (type === 'email' ? data.email : data.phone) ===
-        (type === 'email' ? mockUser.email : mockUser.phone) &&
-      data.password === mockUser.password
-    ) {
-      login(mockUser);
-      setSearchParams({});
-      navigate('/forgot-password');
-      console.log(data);
-    } else {
-      console.log('error');
-    }
-  }
+      const response = await axios.post('http://localhost:3000/api/v1/auth/login', payload);
+      return response.data;
+    },
+    onSuccess: (response) => {
+      login(response);
+      navigate('/');
+    },
+    onError: (error) => {
+      console.error('Login failed:', error.response?.data || error.message);
+    },
+  });
+
+  const onSubmit = (data: z.infer<typeof formSchema>) => {
+    mutation.mutate(data);
+  };
 
   return (
     <div className="flex w-full flex-col gap-3 p-5">
@@ -93,18 +112,20 @@ export function FormComponent({ type }: FormProps) {
             <Controller
               name="phone"
               control={form.control}
-              render={({ field, fieldState }) => (
-                <Field data-invalid={fieldState.invalid}>
-                  <Input
-                    prefixIcon={<ChevronDown size={18} />}
-                    label="Phone"
-                    placeholder="+972"
-                    required
-                    {...field}
-                    error={fieldState.error?.message}
-                    className="h-3"
-                  />
-                </Field>
+              render={({ field }) => (
+                <PhoneInput
+                  country="ps"
+                  value={field.value}
+                  onChange={(value) => field.onChange(value)}
+                  inputProps={{
+                    name: field.name,
+                    required: true,
+                    autoFocus: false,
+                  }}
+                  buttonClass="bg-transparent"
+                  containerClass="w-full"
+                  inputClass="!w-full !h-11 !text-base !rounded-md !border !border-gray-300 focus:!border-[var(--color-primary-main)]"
+                />
               )}
             />
           )}
@@ -152,10 +173,10 @@ export function FormComponent({ type }: FormProps) {
                 disabled={isDisabled}
                 title="Sign In"
                 type="submit"
-                onSubmit={form.handleSubmit(onSubmit)}
                 variant="primary"
                 form="form-rhf-demo"
                 className="rounded-7xl h-12"
+                onClick={() => onSubmit(form.getValues())}
               />
               <div className="flex items-center justify-center gap-2">
                 <Separator />

@@ -45,6 +45,8 @@ const AuthDialogController = () => {
       <OTPPage />
     ) : auth === 'verified' ? (
       <Verified />
+    ) : auth === 'reset-pass-otp' ? (
+      <OTPPage />
     ) : null;
 
   return <Modal open={!!auth} setOpen={(v) => !v && closeDialog()} page={page} />;
