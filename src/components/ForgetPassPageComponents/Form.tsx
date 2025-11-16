@@ -7,7 +7,9 @@ import { Input } from '@/components/ui/input';
 import { Field, FieldGroup } from '@/components/ui/field';
 import { ChevronDown, Mail } from 'lucide-react';
 import { Button } from '@/components/ui/button/button';
-import { useSearchParams } from 'react-router-dom';
+import { data, useSearchParams } from 'react-router-dom';
+import { useMutation } from '@tanstack/react-query';
+import axios from 'axios';
 
 interface FormProps {
   type: 'email' | 'phone';
@@ -21,7 +23,7 @@ const signupSchema = z.object({
     .optional(),
 });
 
-type SignupFormValues = z.infer<typeof signupSchema>;
+type resetPassFormValues = z.infer<typeof signupSchema>;
 
 const Form: React.FC<FormProps> = ({ type }) => {
   const [, setSearchParams] = useSearchParams();
@@ -39,7 +41,19 @@ const Form: React.FC<FormProps> = ({ type }) => {
     setSearchParams(params);
   };
 
-  const form = useForm<SignupFormValues>({
+  const forgetPassMutation = useMutation({
+    mutationFn: async (data: resetPassFormValues) => {
+      const payload = type === 'email' ? { email: data.email } : { phone: data.phone };
+
+      const res = await axios.post('http://localhost:3000/api/v1/auth/forgot-password', payload);
+      return res.data;
+    },
+    onSuccess: () => {
+      setSearchParams({ auth: 'reset-pass-otp', email: data.email });
+    },
+  });
+
+  const form = useForm<resetPassFormValues>({
     resolver: zodResolver(signupSchema),
     mode: 'onChange',
     defaultValues: {
@@ -48,16 +62,28 @@ const Form: React.FC<FormProps> = ({ type }) => {
     },
   });
 
-  const isDisabled = type === 'email' ? !form.watch('email') : !form.watch('phone');
+  // const submitData = (data: resetPassFormValues) => {
+  //   try {
+  //     const payload =
+  //       type === 'email'
+  //         ? { email: data.email }
+  //         : { phone: data.phone };
+  //     const res = axios.post('http://localhost:3000/api/v1/auth/forgot-password', payload);
+  //     setSearchParams({ auth: 'set-new-password' });
 
-  const onSubmit = (data: SignupFormValues) => {
-    console.log(data);
-  };
+  //     console.log(res);
+
+  //   } catch (err) {
+  //     console.error(err);
+  //   }
+  // }
+
+  const isDisabled = type === 'email' ? !form.watch('email') : !form.watch('phone');
 
   return (
     <div className="flex w-full items-center justify-center">
       <form
-        onSubmit={form.handleSubmit(onSubmit)}
+        onSubmit={form.handleSubmit((data) => forgetPassMutation.mutate(data))}
         className="flex w-full flex-col items-center justify-center gap-4"
       >
         <FieldGroup className="flex flex-col gap-4">
@@ -108,7 +134,7 @@ const Form: React.FC<FormProps> = ({ type }) => {
             variant="primary"
             form="form-rhf-demo"
             className="rounded-7xl h-12"
-            onClick={() => switchDialog('reset_pass')}
+            onClick={() => forgetPassMutation.mutate(form.getValues())}
           />
         </div>
         <Field className="flex justify-center gap-1" id="signin" orientation="horizontal">

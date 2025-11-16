@@ -1,3 +1,4 @@
+'use client';
 import React, { useState } from 'react';
 import { useForm, Controller } from 'react-hook-form';
 import * as z from 'zod';
@@ -15,60 +16,55 @@ import Google from '@/assets/svg/Google';
 import axios from 'axios';
 import { useRegister } from '@/hooks/registration';
 import PhoneInputField from './PhoneInput';
+
 interface FormProps {
   type: 'email' | 'phone';
   username: string;
 }
-
-const signupSchema = z
-  .object({
-    username: z
-      .string()
-      .min(3, 'Username must be at least 3 characters')
-      .max(20, 'Username must be at most 20 characters'),
-    email: z.string().email('Enter a valid email address'),
-    password: z.string().min(8, 'Password must be at least 8 characters'),
-    confirmPassword: z.string().min(8, 'Confirm password is required'),
-    storeName: z.string().optional(),
-  })
-  .refine((data) => data.password === data.confirmPassword, {
-    message: "Passwords don't match",
-    path: ['confirmPassword'],
-  });
+const signupSchema = z.object({
+  username: z
+    .string()
+    .min(3, 'Username must be at least 3 characters')
+    .max(20, 'Username must be at most 20 characters'),
+  email: z.string().email('Enter a valid email address').optional(),
+  phone: z.string().optional(),
+  password: z.string().min(8, 'Password must be at least 8 characters'),
+  storeName: z.string().optional(),
+});
 
 type SignupFormValues = z.infer<typeof signupSchema>;
 
 const Form: React.FC<FormProps> = ({ type, username }) => {
   const [, setSearchParams] = useSearchParams();
   const [showPassword, setShowPassword] = useState(false);
-  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [checked, setChecked] = useState(false);
+
   const form = useForm<SignupFormValues>({
     resolver: zodResolver(signupSchema),
     mode: 'onChange',
     defaultValues: {
       email: '',
+      phone: '',
       password: '',
-      confirmPassword: '',
       storeName: '',
     },
   });
 
+  const { mutate } = useRegister();
+
   const isDisabled =
     !username ||
-    (type === 'email' ? !form.watch('email') : false) ||
-    !!form.formState.errors.password ||
-    !!form.formState.errors.confirmPassword;
-
-  const { mutate } = useRegister();
+    !form.watch('password') ||
+    (type === 'email' ? !form.watch('email') : !form.watch('phone')) ||
+    !!form.formState.errors.password;
 
   const submitData = (data: SignupFormValues) => {
     const payload = {
       username,
-      email: data.email,
       password: data.password,
-      confirmPassword: data.confirmPassword,
+      confirmPassword: data.password,
       createStore: checked ? 'yes' : 'no',
+      ...(type === 'email' ? { email: data.email } : { phone: data.phone }),
       ...(checked && { storeName: data.storeName }),
     };
 
@@ -78,17 +74,9 @@ const Form: React.FC<FormProps> = ({ type, username }) => {
       onSuccess: (response) => {
         toast.success('Registered successfully!');
         console.log('Backend response:', response);
-
-        setSearchParams({ auth: 'email-verify', email: data.email });
-
-        // setTimeout(() => {
-        //   Navigate(`/email-verify?email=${encodeURIComponent(data.email)}`);
-        // }, 800);
-
-        // setTimeout(() => {
-        //   switchDialog('email-verify');
-        //   setSearchParams({ auth: 'email-verify', email: data.email });
-        // }, 8000);
+        if (type === 'email' && data.email) {
+          setSearchParams({ auth: 'email-verify', email: data.email });
+        }
       },
       onError: (error) => {
         if (axios.isAxiosError(error)) {
@@ -137,8 +125,8 @@ const Form: React.FC<FormProps> = ({ type, username }) => {
               render={({ field, fieldState }) => (
                 <Field data-invalid={fieldState.invalid}>
                   <PhoneInputField
-                    // prefixIcon={<Phone size={18} />}
                     label="Phone Number"
+                    placeholder="Enter your phone number"
                     required
                     {...field}
                     error={fieldState.error?.message}
@@ -181,50 +169,15 @@ const Form: React.FC<FormProps> = ({ type, username }) => {
             )}
           />
 
-          <Controller
-            name="confirmPassword"
-            control={form.control}
-            render={({ field, fieldState }) => (
-              <Field data-invalid={fieldState.invalid}>
-                <Input
-                  prefixIcon={<Lock size={18} />}
-                  label="Confirm Password"
-                  placeholder="Re-enter your password"
-                  type={showConfirmPassword ? 'text' : 'password'}
-                  suffixIcon={
-                    showConfirmPassword ? (
-                      <EyeOff
-                        onClick={() => setShowConfirmPassword((prev) => !prev)}
-                        className="cursor-pointer"
-                        size={18}
-                      />
-                    ) : (
-                      <Eye
-                        onClick={() => setShowConfirmPassword((prev) => !prev)}
-                        className="cursor-pointer"
-                        size={18}
-                      />
-                    )
-                  }
-                  required
-                  {...field}
-                  error={fieldState.error?.message}
-                />
-              </Field>
-            )}
-          />
-
           <Field>
-            <div className="flex w-full flex-col items-center justify-center gap-2">
-              <div className="flex w-full flex-col">
-                <div className="flex w-full items-center gap-1">
-                  <Checkbox onClick={() => setChecked(!checked)} checked={checked} />
-                  <Label onClick={() => setChecked(!checked)}>Create your own store?</Label>
-                </div>
-                <span className="text-text-secondary text-sm">
-                  Use this option to open your store on FirstChance.
-                </span>
+            <div className="flex w-full flex-col gap-2">
+              <div className="flex items-center gap-1">
+                <Checkbox onClick={() => setChecked(!checked)} checked={checked} />
+                <Label onClick={() => setChecked(!checked)}>Create your own store?</Label>
               </div>
+              <span className="text-text-secondary text-sm">
+                Use this option to open your store on FirstChance.
+              </span>
 
               {checked && (
                 <Controller
@@ -263,14 +216,11 @@ const Form: React.FC<FormProps> = ({ type, username }) => {
             </div>
             <Separator />
           </div>
-
           <Button prefixIcon={<Google />} title="Google" type="button" variant="secondary" />
         </div>
 
         <Field className="flex justify-center gap-1" id="signin" orientation="horizontal">
-          <span className="text-text-secondary leading-leading-lg text-sm font-light">
-            Already have an account?
-          </span>
+          <span className="text-text-secondary text-sm font-light">Already have an account?</span>
           <span onClick={() => switchDialog('sign-in')} className="link-text cursor-pointer">
             Sign In
           </span>
