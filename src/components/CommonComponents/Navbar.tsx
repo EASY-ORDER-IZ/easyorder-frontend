@@ -87,25 +87,18 @@ const Navbar: React.FC = () => {
               onClick={() => setOpenShop((s) => !s)}
             >
               <NavLink to="/shop" className="text-[16px]">
-                {t('navbar.shop')}
+                Home
               </NavLink>
-              <img
-                src={down_arrow}
-                alt="arrow"
-                className={`h-4 w-4 transition-transform duration-300 ${
-                  openShop ? 'rotate-180' : ''
-                }`}
-              />
             </div>
 
             <NavLink to="/onsale" className="font-Satoshi w-14 text-[16px] hover:underline">
-              {t('navbar.onsale')}
+              New In
             </NavLink>
             <NavLink to="/newarrivals" className="font-Satoshi w-22 text-[16px] hover:underline">
-              {t('navbar.newarrivals')}
+              Best sellers
             </NavLink>
             <NavLink to="/brands" className="text-[16px] hover:underline">
-              {t('navbar.brands')}
+              Categories
             </NavLink>
           </div>
 
