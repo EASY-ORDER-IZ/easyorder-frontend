@@ -1,7 +1,7 @@
 import LogoSVG from '@/assets/svg/logo';
 import { NavLink, useSearchParams } from 'react-router-dom';
 import SearchComponent from './Search';
-import { ChevronDown, CircleUserRound, Heart, MenuIcon, ShoppingCart } from 'lucide-react';
+import { CircleUserRound, Heart, MenuIcon, ShoppingCart } from 'lucide-react';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -17,9 +17,7 @@ interface NavbarProps {
 const NavbarV2 = ({ isModalOpen }: NavbarProps) => {
   const [searchParams, setSearchParams] = useSearchParams();
 
-  const switchDialog = (
-    target: 'sign-in' | 'sign-up' | 'forget-password' | 'reset_pass' | 'email-verfiy',
-  ) => {
+  const switchDialog = (target: 'sign-in' | 'sign-up' | 'forget-password' | 'email-verfiy') => {
     setSearchParams({ auth: target });
   };
 
@@ -38,40 +36,56 @@ const NavbarV2 = ({ isModalOpen }: NavbarProps) => {
             <DropdownMenuContent>
               <DropdownMenuSeparator />
               <DropdownMenuItem>
-                <NavLink to="/">Shop</NavLink>
+                <NavLink to="" className="cursor-pointer hover:text-[var(--color-primary-main)]">
+                  Home
+                </NavLink>
               </DropdownMenuItem>
               <DropdownMenuItem>
-                <NavLink to="">On Sale</NavLink>
+                <NavLink to="" className="cursor-pointer hover:text-[var(--color-primary-main)]">
+                  New In
+                </NavLink>
               </DropdownMenuItem>
               <DropdownMenuItem>
-                <NavLink to="">New Arrivals</NavLink>
+                <NavLink to="" className="cursor-pointer hover:text-[var(--color-primary-main)]">
+                  Best sellers
+                </NavLink>
               </DropdownMenuItem>
               <DropdownMenuItem>
-                <NavLink to="">Brands</NavLink>
+                <NavLink to="" className="cursor-pointer hover:text-[var(--color-primary-main)]">
+                  Categories
+                </NavLink>
               </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
         </div>
         <LogoSVG className="mb-1 flex max-w-[50%] lg:max-w-[100%]" />
       </div>
-      <div className="hidden min-w-80 gap-3 lg:flex">
+      <div className="hidden min-w-80 gap-6 lg:flex">
         <div className="flex cursor-pointer items-center">
-          <NavLink to="/">Shop</NavLink>
-          <ChevronDown />
+          <NavLink to="" className="cursor-pointer hover:text-[var(--color-primary-main)]">
+            Home
+          </NavLink>
         </div>
-        <NavLink to="">On Sale</NavLink>
-        <NavLink to="">New Arrivals</NavLink>
-        <NavLink to="">Brands</NavLink>
+        <NavLink to="" className="cursor-pointer hover:text-[var(--color-primary-main)]">
+          New In
+        </NavLink>
+
+        <NavLink to="" className="cursor-pointer hover:text-[var(--color-primary-main)]">
+          Best sellers
+        </NavLink>
+        <NavLink to="" className="cursor-pointer hover:text-[var(--color-primary-main)]">
+          Categories
+        </NavLink>
       </div>
-      <div className="hidden min-w-[25%] lg:flex">
+      <div className="hidden min-w-[35%] lg:flex">
         <SearchComponent />
       </div>
       <div className="flex gap-6">
-        <ShoppingCart size={18} className="text-text-secondary cursor-pointer" />
-        <Heart size={18} className="text-text-secondary cursor-pointer" />
+        <ShoppingCart size={24} className="text-text-secondary cursor-pointer" />
+        <Heart size={24} className="text-text-secondary cursor-pointer" />
         <CircleUserRound
           onClick={() => switchDialog('sign-in')}
-          size={18}
+          size={24}
           className="text-text-secondary cursor-pointer"
         />
       </div>
