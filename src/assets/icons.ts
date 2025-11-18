@@ -12,6 +12,10 @@ import star from './images/star.svg';
 import menu from './images/menu.svg';
 import black_search_icon from './images/black-search-icon.svg';
 import profilephoto from './images/profilephoto.png';
+import LandingBg from './images/LandingBg.png';
+import footer1 from './images/footer1.png';
+import logo from './images/logo.png';
+import navbarlogo from './images/navbarlogo.png';
 export {
   cart,
   down_arrow,
@@ -27,4 +31,8 @@ export {
   menu,
   black_search_icon,
   profilephoto,
+  LandingBg,
+  footer1,
+  logo,
+  navbarlogo,
 };

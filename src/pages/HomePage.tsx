@@ -2,6 +2,8 @@ import CommentSection from '@/components/customercomments/CommentSection';
 import HeroSection from '@/components/HeroSection';
 import ProductBar from '@/components/ProductComponents/ProductBar';
 import StylesFilter from '@/components/ProductComponents/StylesFilter';
+import { Footer } from '@/components/footer';
+import { footer1 } from '../assets/icons';
 
 const HomePage = () => {
   return (
@@ -18,6 +20,7 @@ const HomePage = () => {
       </div>
 
       <CommentSection />
+      <Footer src={footer1} alt="Footer Background" className="h-[363px]"></Footer>
     </div>
   );
 };

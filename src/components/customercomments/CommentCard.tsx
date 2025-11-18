@@ -8,7 +8,7 @@ interface CommentCardProps {
   name: string;
   rating: number;
   review: string;
-  reviewId?: string; // optional if you have unique review pages
+  reviewId?: string;
 }
 
 const CommentCard = ({ name, rating, review, reviewId }: CommentCardProps) => {
@@ -44,11 +44,11 @@ const CommentCard = ({ name, rating, review, reviewId }: CommentCardProps) => {
             “{expanded ? review : preview}”
           </CardDescription>
 
-          <div className="flex items-center justify-between">
+          <div className="flex items-center gap-2">
             <StarsRating rating={rating} className="size-3" />
 
             {isLong && (
-              <button onClick={handleReadFull} className="text-xs text-[#306570] underline">
+              <button onClick={handleReadFull} className="text-text-100 text-xs underline">
                 Read full review
               </button>
             )}
