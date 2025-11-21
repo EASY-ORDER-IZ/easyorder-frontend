@@ -140,6 +140,8 @@ html {
     --color-toast-action: oklch(0.8089 0.0018 325.59);
     --color-toast-warning: oklch(0.7787 0.1358 76.25);
     --color-toast-danger: oklch(0.6584 0.218 24.47);
+
+    --color-green-card: oklch(0.4751 0.0588 212.99);
   }
 
   :root {

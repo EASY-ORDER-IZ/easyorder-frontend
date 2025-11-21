@@ -6,6 +6,7 @@ import CategoryPage from '@/pages/CategoryPage';
 import SignInPage from '@/pages/SignInPage';
 import CardItem from '@/components/CommonComponents/CardItem/CardSlider';
 import SignUpPage from '@/pages/SignUpPage';
+import StorePage from '@/pages/StorePage';
 const Router = createBrowserRouter([
   {
     path: '/',
@@ -46,6 +47,10 @@ const Router = createBrowserRouter([
       {
         path: '/card',
         element: <CardItem />,
+      },
+      {
+        path: '/store',
+        element: <StorePage />,
       },
     ],
   },

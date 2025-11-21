@@ -77,7 +77,7 @@ const NavbarV2 = ({ isModalOpen }: NavbarProps) => {
           Categories
         </NavLink>
       </div>
-      <div className="hidden min-w-[35%] lg:flex">
+      <div className="hidden min-w-[30%] lg:flex">
         <SearchComponent />
       </div>
       <div className="flex gap-6">
