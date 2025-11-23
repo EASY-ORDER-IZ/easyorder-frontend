@@ -1,16 +1,31 @@
 import React, { useMemo, useState } from 'react';
 import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { products } from '@/store/productData';
+import { useProductStore } from '@/store/productStore';
+import { TableRowAction } from './TableRowAction';
 
 type TabValue = 'all' | 'active' | 'draft' | 'archived';
 
 const StoreProductTable = () => {
   const [tab, setTab] = useState<TabValue>('all');
 
+  const products = useProductStore((state) => state.products);
+
   const filteredProducts = useMemo(() => {
     if (tab === 'all') return products;
     return products.filter((p) => p.status === tab);
-  }, [tab]);
+  }, [products, tab]);
+
+  const demoProduct = {
+    id: 'demo',
+    name: 'Demo Product',
+    img: 'https://via.placeholder.com/80',
+    price: 30,
+    services: 3,
+    status: 'active',
+    createdAt: 'Nov 21, 2025',
+  };
+
+  const finalProducts = [demoProduct, ...filteredProducts];
 
   return (
     <div className="mt-6 rounded-2xl bg-white">
@@ -38,10 +53,11 @@ const StoreProductTable = () => {
                 <th className="py-3 text-left font-normal">Price</th>
                 <th className="py-3 text-left font-normal">Total Services</th>
                 <th className="py-3 text-left font-normal">Created at</th>
+                <th className="w-10 py-3 text-left font-normal"></th>
               </tr>
             </thead>
             <tbody>
-              {filteredProducts.map((p) => (
+              {finalProducts.map((p) => (
                 <tr key={p.id} className="items-center border-b border-gray-300 last:border-0">
                   <td className="flex items-center gap-6 py-3">
                     <img src={p.img} alt="" className="h-18 w-16 rounded" />
@@ -51,6 +67,9 @@ const StoreProductTable = () => {
                   <td className="py-3">{p.price}</td>
                   <td className="py-3">{p.services}</td>
                   <td className="py-3">{p.createdAt}</td>
+                  <td className="relative w-10 py-3 text-right">
+                    <TableRowAction />
+                  </td>
                 </tr>
               ))}
             </tbody>

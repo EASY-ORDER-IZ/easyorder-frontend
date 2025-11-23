@@ -4,19 +4,19 @@ import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm, Controller } from 'react-hook-form';
 import { Input } from '../ui/input';
-import { Textarea } from '../ui/textarea';
 import { Upload } from 'lucide-react';
 import { useState } from 'react';
 import InputUpload from './InputUpload';
 import { Button } from '../ui/button/button';
+import { useProductStore } from '@/store/productStore';
 
 const MAX_FILE_SIZE = 2 * 1024 * 1024;
 const ACCEPTED_FILE_TYPES = ['image/jpeg', 'image/png', 'image/jpg'];
 
 const productFormSchema = z.object({
   productName: z.string().min(2),
-  discription: z.string().min(2),
-  stock: z.coerce.number().min(0),
+  price: z.coerce.number().min(0),
+  services: z.coerce.number().min(0),
   category: z.string().min(1),
   images: z
     .custom<FileList>()
@@ -44,6 +44,26 @@ const ProductForm = () => {
 
   const disable = !form.formState.isValid;
 
+  const addProduct = useProductStore((state) => state.addProduct);
+
+  const onSubmit = (data: ProductFormType) => {
+    const payload = {
+      id: crypto.randomUUID(),
+      name: data.productName,
+      img: preview[0],
+      price: data.price,
+      status: 'active' as const,
+      services: data.services,
+      createdAt: new Date().toLocaleDateString('en-US', {
+        month: 'short',
+        day: 'numeric',
+        year: 'numeric',
+      }),
+    };
+
+    addProduct(payload);
+  };
+
   return (
     <>
       <InputUpload
@@ -51,15 +71,14 @@ const ProductForm = () => {
         close={() => setOpen(false)}
         onSelectedFile={(files) => {
           form.setValue('images', toFileList(files), { shouldValidate: true });
-
           setPreview(files.map((file) => URL.createObjectURL(file)));
         }}
       />
 
       <div className="mx-auto max-w-2xl p-6">
-        <form className="space-y-6">
+        <form onSubmit={form.handleSubmit(() => onSubmit)} className="space-y-6">
           <div className="flex flex-col gap-1">
-            <label className="text-text-600 text-md">Product Name</label>
+            <label className="text-md text-gray-600">Product Name</label>
             <Controller
               name="productName"
               control={form.control}
@@ -67,37 +86,37 @@ const ProductForm = () => {
             />
           </div>
 
-          <div className="flex flex-col gap-1">
-            <label className="text-text-600 text-md">Description</label>
-            <Controller
-              name="discription"
-              control={form.control}
-              render={({ field }) => <Textarea {...field} className="h-40" />}
-            />
-          </div>
-
           <div className="grid grid-cols-2 gap-6">
             <div className="flex flex-col gap-1">
-              <label className="text-text-600 text-md">Stock</label>
+              <label className="text-md text-gray-600">Price</label>
               <Controller
-                name="stock"
+                name="price"
                 control={form.control}
                 render={({ field }) => <Input type="number" {...field} />}
               />
             </div>
 
             <div className="flex flex-col gap-1">
-              <label className="text-text-600 text-md">Category</label>
+              <label className="text-md text-gray-600">Services</label>
               <Controller
-                name="category"
+                name="services"
                 control={form.control}
-                render={({ field }) => <Input {...field} />}
+                render={({ field }) => <Input type="number" {...field} />}
               />
             </div>
           </div>
 
           <div className="flex flex-col gap-1">
-            <label className="text-text-600 text-md">Product Images</label>
+            <label className="text-md text-gray-600">Category</label>
+            <Controller
+              name="category"
+              control={form.control}
+              render={({ field }) => <Input {...field} />}
+            />
+          </div>
+
+          <div className="flex flex-col gap-1">
+            <label className="text-md text-gray-600">Product Images</label>
 
             <button
               type="button"
@@ -109,7 +128,7 @@ const ProductForm = () => {
                   <Upload size={18} />
                   <p className="text-sm font-medium">Upload Images</p>
                 </div>
-                <p className="text-text-500 text-xs">Select and upload image for you product</p>
+                <p className="text-text-500 text-xs">Select and upload image for your product</p>
               </div>
             </button>
 
@@ -121,7 +140,13 @@ const ProductForm = () => {
               </div>
             )}
           </div>
-          <Button type="submit" title="Create Product" disabled={disable} />
+
+          <Button
+            type="submit"
+            title="Create Product"
+            disabled={disable}
+            onClick={() => onSubmit(form.getValues())}
+          />
         </form>
       </div>
     </>
