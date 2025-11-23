@@ -27,9 +27,11 @@ const Form: React.FC = () => {
 
   const form = useForm<OtpFormValues>({
     resolver: zodResolver(otpSchema),
-    mode: 'onChange',
+    mode: 'onSubmit',
     defaultValues: { password: '' },
   });
+
+  const [showPassword, setShowPassword] = useState(false);
 
   const onSubmit = () => {
     switchDialog('sign-in');
@@ -37,7 +39,7 @@ const Form: React.FC = () => {
 
   const hasError = !!form.formState.errors.password;
   const isDisabled = form.watch('password').length < 8 || hasError;
-  const [showPassword, setShowPassword] = useState(false);
+
   return (
     <div className="flex w-full items-center justify-center gap-6 p-4">
       <form
@@ -78,10 +80,17 @@ const Form: React.FC = () => {
                     }
                     required
                     {...field}
-                    error={fieldState.error?.message}
-                    className="h-3"
+                    className={`h-3 ${
+                      fieldState.invalid
+                        ? 'border-red-500 text-red-600 focus:border-red-600 focus:ring-red-300'
+                        : ''
+                    }`}
                   />
                 </div>
+
+                {fieldState.error && (
+                  <p className="text-status-danger mt-1 px-1 text-xs">{fieldState.error.message}</p>
+                )}
               </Field>
             )}
           />
