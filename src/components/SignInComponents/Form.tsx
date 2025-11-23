@@ -167,7 +167,7 @@ export function FormComponent({ type }: FormProps) {
               </Field>
             )}
           />
-          <Field id="submit" orientation="horizontal">
+          <Field id="submit" orientation="horizontal" data-invalid={fieldState.invalid}>
             <div className="flex w-full flex-col gap-4">
               <Button
                 disabled={isDisabled}

@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
+
 interface OTPTimerProps {
   initialMinutes?: number;
   onExpire?: () => void;
@@ -10,23 +11,29 @@ const OTPTimer: React.FC<OTPTimerProps> = ({ initialMinutes = 15, onExpire }) =>
   const [time, setTime] = useState(initialMinutes * 60);
   const [searchParams] = useSearchParams();
 
-  const email = searchParams.get('email') ?? 'example@email.com';
+  const email = searchParams.get('email') ?? '';
 
-  const handleResend = () => {
+  const handleResend = async () => {
     try {
-      const response = axios.post(
-        'http://localhost:3000/api-docs/#/Auth/post_api_v1_auth_resend_otp',
-        email,
+      const response = await axios.post(
+        'http://localhost:3000/api/v1/auth/resend-otp',
+        { email },
+        {
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        },
       );
-      console.log('success', response);
+
+      console.log('OTP resent successfully', response.data);
     } catch (error) {
-      console.error(error);
+      console.error('Resend OTP failed:', error);
     }
   };
 
   useEffect(() => {
     if (time <= 0) {
-      if (onExpire) onExpire();
+      onExpire?.();
       return;
     }
 

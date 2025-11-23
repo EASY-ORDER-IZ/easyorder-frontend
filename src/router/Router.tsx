@@ -4,6 +4,8 @@ import RootLayout from '../layout/RootLayout';
 import CartPage from '@/pages/CartPage';
 import CategoryPage from '@/pages/CategoryPage';
 import CardItem from '@/components/CommonComponents/CardItem/CardSlider';
+import VerifiedEmailPage from '@/pages/VerifiedEmailPage';
+import ResetPass from '@/pages/ResetPassPage';
 
 const Router = createBrowserRouter([
   {
@@ -34,6 +36,14 @@ const Router = createBrowserRouter([
       {
         path: '/card',
         element: <CardItem />,
+      },
+      {
+        path: 'verified',
+        element: <VerifiedEmailPage />,
+      },
+      {
+        path: 'reset',
+        element: <ResetPass />,
       },
     ],
   },

@@ -7,7 +7,7 @@ import { Input } from '@/components/ui/input';
 import { Field, FieldGroup } from '@/components/ui/field';
 import { ChevronDown, Mail } from 'lucide-react';
 import { Button } from '@/components/ui/button/button';
-import { data, useSearchParams } from 'react-router-dom';
+import { useSearchParams } from 'react-router-dom';
 import { useMutation } from '@tanstack/react-query';
 import axios from 'axios';
 
@@ -48,8 +48,13 @@ const Form: React.FC<FormProps> = ({ type }) => {
       const res = await axios.post('http://localhost:3000/api/v1/auth/forgot-password', payload);
       return res.data;
     },
-    onSuccess: () => {
-      setSearchParams({ auth: 'reset-pass-otp', email: data.email });
+
+    onSuccess: (_response, variables) => {
+      setSearchParams({
+        auth: 'reset-pass',
+        email: variables.email ?? '',
+        phone: variables.phone ?? '',
+      });
     },
   });
 
@@ -62,28 +67,16 @@ const Form: React.FC<FormProps> = ({ type }) => {
     },
   });
 
-  // const submitData = (data: resetPassFormValues) => {
-  //   try {
-  //     const payload =
-  //       type === 'email'
-  //         ? { email: data.email }
-  //         : { phone: data.phone };
-  //     const res = axios.post('http://localhost:3000/api/v1/auth/forgot-password', payload);
-  //     setSearchParams({ auth: 'set-new-password' });
-
-  //     console.log(res);
-
-  //   } catch (err) {
-  //     console.error(err);
-  //   }
-  // }
+  const handleSubmit = (data: resetPassFormValues) => {
+    forgetPassMutation.mutate(data);
+  };
 
   const isDisabled = type === 'email' ? !form.watch('email') : !form.watch('phone');
 
   return (
     <div className="flex w-full items-center justify-center">
       <form
-        onSubmit={form.handleSubmit((data) => forgetPassMutation.mutate(data))}
+        onSubmit={form.handleSubmit(handleSubmit)}
         className="flex w-full flex-col items-center justify-center gap-4"
       >
         <FieldGroup className="flex flex-col gap-4">

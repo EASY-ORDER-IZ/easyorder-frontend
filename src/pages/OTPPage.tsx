@@ -1,5 +1,5 @@
 import React, { useMemo, useState } from 'react';
-import { useSearchParams } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 import InputOTPPattern from '@/components/SignUpPageComponents/OTP';
 import { Button } from '@/components/ui/button/button';
 import { OTP_img } from '@/assets/icons';
@@ -15,25 +15,24 @@ const OTPPage: React.FC = () => {
   const [submitted, setSubmitted] = useState(false);
   const hasSix = otp.length === 6;
   const hasError = useMemo(() => submitted && hasSix, [submitted, hasSix]);
+  const navigate = useNavigate();
 
   const handleExpire = () => {
     alert('OTP Expired');
   };
 
-  const handleConfirm = () => {
+  const handleConfirm = async () => {
     const payload = {
       email,
-      otp,
+      otpCode: otp,
     };
 
     try {
-      const response = axios.post(
-        'http://localhost:3000/api-docs/#/Auth/post_api_v1_auth_verify_otp',
-        payload,
-      );
-      console.log('success', response);
+      const response = await axios.post('http://localhost:3000/api/v1/auth/verify-otp', payload);
+      console.log('success:', response.data);
+      navigate('verified-email');
     } catch (error) {
-      console.error(error);
+      console.error('Error:', error.response?.data || error.message);
     }
   };
 
