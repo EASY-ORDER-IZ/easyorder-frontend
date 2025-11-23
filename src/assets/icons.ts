@@ -19,6 +19,7 @@ import img101 from './images/img101.png';
 import img102 from './images/img102.png';
 import img103 from './images/img103.png';
 import img104 from './images/img104.png';
+import OTP_img from './images/OTP_image.svg';
 export {
   cart,
   down_arrow,
@@ -41,4 +42,5 @@ export {
   img102,
   img103,
   img104,
+  OTP_img,
 };

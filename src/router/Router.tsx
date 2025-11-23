@@ -3,16 +3,14 @@ import HomePage from '../pages/HomePage';
 import RootLayout from '../layout/RootLayout';
 import CartPage from '@/pages/CartPage';
 import CategoryPage from '@/pages/CategoryPage';
-import SignInPage from '@/pages/SignInPage';
 import CardItem from '@/components/CommonComponents/CardItem/CardSlider';
-import SignUpPage from '@/pages/SignUpPage';
 const Router = createBrowserRouter([
   {
     path: '/',
     element: <RootLayout />,
     children: [
       {
-        path: '/',
+        index: true,
         element: <HomePage />,
       },
       {

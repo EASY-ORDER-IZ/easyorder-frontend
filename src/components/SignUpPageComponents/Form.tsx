@@ -6,68 +6,98 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { toast } from 'sonner';
 import { Input } from '@/components/ui/input';
 import { Field, FieldGroup } from '@/components/ui/field';
-import { ChevronDown, CircleX, Eye, EyeOff, Lock, Mail, Store } from 'lucide-react';
+import { Eye, EyeOff, Lock, Mail, Store } from 'lucide-react';
 import { Button } from '@/components/ui/button/button';
 import { Separator } from '@/components/ui/separator';
 import { useSearchParams } from 'react-router-dom';
 import { Checkbox } from '@/components/ui/checkbox';
 import { Label } from '../ui/label';
 import Google from '@/assets/svg/Google';
+import axios from 'axios';
+import { useRegister } from '@/hooks/registration';
+import PhoneInputField from './PhoneInput';
 
 interface FormProps {
   type: 'email' | 'phone';
   username: string;
 }
-
 const signupSchema = z.object({
-  username1: z.string().min(2, 'Username must be at least 3 characters'),
-  email: z.string().email('Enter a valid email address').optional(),
-  phone: z
+  username: z
     .string()
-    .regex(/^\+?\d{7,15}$/, 'Enter a valid phone number')
-    .optional(),
-  password: z.string().min(8, 'Password must be at least 6 characters'),
-  store: z.string().optional(),
+    .min(3, 'Username must be at least 3 characters')
+    .max(20, 'Username must be at most 20 characters'),
+  email: z.string().email('Enter a valid email address').optional(),
+  phone: z.string().optional(),
+  password: z.string().min(8, 'Password must be at least 8 characters'),
+  storeName: z.string().optional(),
 });
 
 type SignupFormValues = z.infer<typeof signupSchema>;
 
 const Form: React.FC<FormProps> = ({ type, username }) => {
   const [, setSearchParams] = useSearchParams();
-
-  const switchDialog = (
-    target: 'sign-in' | 'sign-up' | 'forget-password' | 'reset_pass' | 'email-verfiy',
-  ) => {
-    setSearchParams({ auth: target });
-  };
   const [showPassword, setShowPassword] = useState(false);
+  const [checked, setChecked] = useState(false);
+
   const form = useForm<SignupFormValues>({
     resolver: zodResolver(signupSchema),
     mode: 'onChange',
     defaultValues: {
-      username1: username,
       email: '',
       phone: '',
       password: '',
-      store: '',
+      storeName: '',
     },
   });
-  const isfilled = form.watch('store');
-  const isDisabled =
-    type === 'email'
-      ? !form.watch('email') || !form.watch('password') || !username
-      : !form.watch('phone') || !form.watch('password') || !username;
 
-  const onSubmit = (data: SignupFormValues) => {
-    toast.success(`${type === 'email' ? 'Email' : 'Phone'} registered successfully!`);
-    console.log(data);
+  const { mutate } = useRegister();
+
+  const isDisabled =
+    !username ||
+    !form.watch('password') ||
+    (type === 'email' ? !form.watch('email') : !form.watch('phone')) ||
+    !!form.formState.errors.password;
+
+  const submitData = (data: SignupFormValues) => {
+    const payload = {
+      username,
+      password: data.password,
+      confirmPassword: data.password,
+      createStore: checked ? 'yes' : 'no',
+      ...(type === 'email' ? { email: data.email } : { phone: data.phone }),
+      ...(checked && { storeName: data.storeName }),
+    };
+
+    console.log('Sending payload:', payload);
+
+    mutate(payload, {
+      onSuccess: (response) => {
+        toast.success('Registered successfully!');
+        console.log('Backend response:', response);
+        if (type === 'email' && data.email) {
+          setSearchParams({ auth: 'email-verify', email: data.email });
+        }
+      },
+      onError: (error) => {
+        if (axios.isAxiosError(error)) {
+          console.error('Backend error:', error.response?.data);
+          toast.error(error.response?.data?.message || 'Registration failed');
+        } else {
+          console.error('Unexpected error:', error);
+          toast.error('Something went wrong');
+        }
+      },
+    });
   };
-  const [checked, setChecked] = useState(false);
+
+  const switchDialog = (target: 'sign-in' | 'sign-up' | 'forget-password' | 'email-verify') => {
+    setSearchParams({ auth: target });
+  };
 
   return (
     <div className="flex w-full justify-center">
       <form
-        onSubmit={form.handleSubmit(onSubmit)}
+        onSubmit={form.handleSubmit(submitData)}
         className="flex w-full flex-col items-center justify-center gap-4"
       >
         <FieldGroup className="flex flex-col gap-4">
@@ -84,7 +114,6 @@ const Form: React.FC<FormProps> = ({ type, username }) => {
                     required
                     {...field}
                     error={fieldState.error?.message}
-                    className="h-3"
                   />
                 </Field>
               )}
@@ -95,14 +124,12 @@ const Form: React.FC<FormProps> = ({ type, username }) => {
               control={form.control}
               render={({ field, fieldState }) => (
                 <Field data-invalid={fieldState.invalid}>
-                  <Input
-                    prefixIcon={<ChevronDown size={18} />}
+                  <PhoneInputField
                     label="Phone Number"
-                    placeholder="+972"
+                    placeholder="Enter your phone number"
                     required
                     {...field}
                     error={fieldState.error?.message}
-                    className="h-3"
                   />
                 </Field>
               )}
@@ -114,78 +141,62 @@ const Form: React.FC<FormProps> = ({ type, username }) => {
             control={form.control}
             render={({ field, fieldState }) => (
               <Field data-invalid={fieldState.invalid}>
-                <div className="relative flex w-full items-center">
-                  <Input
-                    prefixIcon={<Lock size={18} />}
-                    label="Password"
-                    placeholder="Enter your password"
-                    type={showPassword ? 'text' : 'password'}
-                    suffixIcon={
-                      showPassword ? (
-                        <EyeOff
-                          onClick={() => setShowPassword((prev) => !prev)}
-                          className="cursor-pointer"
-                          size={18}
-                        />
-                      ) : (
-                        <Eye
-                          onClick={() => setShowPassword((prev) => !prev)}
-                          className="cursor-pointer"
-                          size={18}
-                        />
-                      )
-                    }
-                    required
-                    {...field}
-                    error={fieldState.error?.message}
-                    className="h-3"
-                  />
-                </div>
+                <Input
+                  prefixIcon={<Lock size={18} />}
+                  label="Password"
+                  placeholder="Enter your password"
+                  type={showPassword ? 'text' : 'password'}
+                  suffixIcon={
+                    showPassword ? (
+                      <EyeOff
+                        onClick={() => setShowPassword((prev) => !prev)}
+                        className="cursor-pointer"
+                        size={18}
+                      />
+                    ) : (
+                      <Eye
+                        onClick={() => setShowPassword((prev) => !prev)}
+                        className="cursor-pointer"
+                        size={18}
+                      />
+                    )
+                  }
+                  required
+                  {...field}
+                  error={fieldState.error?.message}
+                />
               </Field>
             )}
           />
-          <Field>
-            <div className="flex w-full flex-col items-center justify-center gap-2">
-              <div className="flex w-full flex-col">
-                <div className="flex w-full items-center gap-1">
-                  <Checkbox onClick={() => setChecked(!checked)} checked={checked} />
-                  <Label onClick={() => setChecked(!checked)}>Create your own store?</Label>
-                </div>
-                <span className="text-text-secondary text-sm">
-                  Use this option to open your store on FirstChance.
-                </span>
-              </div>
 
-              <div className="flex w-full flex-col gap-1">
-                {checked && (
-                  <Controller
-                    name="store"
-                    control={form.control}
-                    render={({ field, fieldState }) => (
-                      <Field data-invalid={fieldState.invalid}>
-                        <Input
-                          prefixIcon={<Store size={16} />}
-                          type="text"
-                          suffixIcon={
-                            isfilled && (
-                              <CircleX
-                                onClick={() => field.onChange('')}
-                                size={18}
-                                className="fill-text-disabled text-background cursor-pointer"
-                              />
-                            )
-                          }
-                          label="Name your store"
-                          placeholder="Enter your name store"
-                          {...field}
-                          error={fieldState.error?.message}
-                          className="h-3"
-                        />
-                      </Field>
-                    )}
-                  />
-                )}
+          <Field>
+            <div className="flex w-full flex-col gap-2">
+              <div className="flex items-center gap-1">
+                <Checkbox onClick={() => setChecked(!checked)} checked={checked} />
+                <Label onClick={() => setChecked(!checked)}>Create your own store?</Label>
               </div>
+              <span className="text-text-secondary text-sm">
+                Use this option to open your store on FirstChance.
+              </span>
+
+              {checked && (
+                <Controller
+                  name="storeName"
+                  control={form.control}
+                  render={({ field, fieldState }) => (
+                    <Field data-invalid={fieldState.invalid}>
+                      <Input
+                        prefixIcon={<Store />}
+                        type="text"
+                        label="Store Name"
+                        placeholder="Enter your store name"
+                        {...field}
+                        error={fieldState.error?.message}
+                      />
+                    </Field>
+                  )}
+                />
+              )}
             </div>
           </Field>
         </FieldGroup>
@@ -196,8 +207,7 @@ const Form: React.FC<FormProps> = ({ type, username }) => {
             title="Get Started"
             type="submit"
             variant="primary"
-            form="form-rhf-demo"
-            className="rounded-7xl h-12"
+            onClick={() => submitData(form.getValues())}
           />
           <div className="flex items-center justify-center gap-2">
             <Separator />
@@ -206,20 +216,11 @@ const Form: React.FC<FormProps> = ({ type, username }) => {
             </div>
             <Separator />
           </div>
-
-          <Button
-            prefixIcon={<Google />}
-            title="Google"
-            type="submit"
-            variant="secondary"
-            form="form-rhf-demo"
-            className="rounded-7xl h-12"
-          />
+          <Button prefixIcon={<Google />} title="Google" type="button" variant="secondary" />
         </div>
+
         <Field className="flex justify-center gap-1" id="signin" orientation="horizontal">
-          <span className="text-text-secondary leading-leading-lg text-sm font-light">
-            Already have an account?
-          </span>
+          <span className="text-text-secondary text-sm font-light">Already have an account?</span>
           <span onClick={() => switchDialog('sign-in')} className="link-text cursor-pointer">
             Sign In
           </span>

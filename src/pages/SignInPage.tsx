@@ -1,5 +1,5 @@
 import SignInPic from '../components/SignInComponents/SignInPic';
-import { FormComponent } from '@/components/SignInComponents/Form';
+import Form from '@/components/SignInComponents/Form';
 import Title from '@/components/SignInComponents/Title';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 
@@ -22,10 +22,10 @@ const SignInPage = () => {
             </TabsTrigger>
           </TabsList>
           <TabsContent value="email">
-            <FormComponent type="email" />
+            <Form type="email" />
           </TabsContent>
           <TabsContent value="phone">
-            <FormComponent type="phone" />
+            <Form type="phone" />
           </TabsContent>
         </Tabs>
       </div>

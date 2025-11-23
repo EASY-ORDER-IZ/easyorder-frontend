@@ -5,6 +5,9 @@ import SignUpPage from '@/pages/SignUpPage';
 import ForgotPasswordPage from '@/pages/ForgotPasswordPage';
 import ResetPassPage from '@/pages/ResetPassPage';
 import SetNewPass from '@/pages/SetNewPass';
+import OTPPage from '@/pages/OTPPage';
+import { Verified } from 'lucide-react';
+import VerifiedEmailPage from '@/pages/VerifiedEmailPage';
 
 const AuthDialogController = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -31,7 +34,7 @@ const AuthDialogController = () => {
       <ForgotPasswordPage
       //   toSignIn={() => switchDialog('sign-in')} onClose={closeDialog}
       />
-    ) : auth === 'reset_pass' ? (
+    ) : auth === 'reset-pass' ? (
       <ResetPassPage
       //   toSignIn={() => switchDialog('sign-in')} onClose={closeDialog}
       />
@@ -39,6 +42,14 @@ const AuthDialogController = () => {
       <SetNewPass
       //   toSignIn={() => switchDialog('sign-in')} onClose={closeDialog}
       />
+    ) : auth === 'email-verify' ? (
+      <OTPPage />
+    ) : auth === 'verified' ? (
+      <Verified />
+    ) : auth === 'reset-pass-otp' ? (
+      <OTPPage />
+    ) : auth === 'verified-email' ? (
+      <VerifiedEmailPage />
     ) : null;
 
   return <Modal open={!!auth} setOpen={(v) => !v && closeDialog()} page={page} />;

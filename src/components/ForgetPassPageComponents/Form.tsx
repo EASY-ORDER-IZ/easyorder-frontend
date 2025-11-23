@@ -8,6 +8,8 @@ import { Field, FieldGroup } from '@/components/ui/field';
 import { ChevronDown, Mail } from 'lucide-react';
 import { Button } from '@/components/ui/button/button';
 import { useSearchParams } from 'react-router-dom';
+import { useMutation } from '@tanstack/react-query';
+import axios, { AxiosError } from 'axios';
 
 interface FormProps {
   type: 'email' | 'phone';
@@ -21,10 +23,19 @@ const signupSchema = z.object({
     .optional(),
 });
 
-type SignupFormValues = z.infer<typeof signupSchema>;
+type resetPassFormValues = z.infer<typeof signupSchema>;
 
 const Form: React.FC<FormProps> = ({ type }) => {
   const [, setSearchParams] = useSearchParams();
+
+  const form = useForm<resetPassFormValues>({
+    resolver: zodResolver(signupSchema),
+    mode: 'onChange',
+    defaultValues: {
+      email: '',
+      phone: '',
+    },
+  });
 
   const switchDialog = (
     target: 'sign-in' | 'sign-up' | 'forget-password' | 'reset_pass' | 'email-verfiy',
@@ -39,25 +50,48 @@ const Form: React.FC<FormProps> = ({ type }) => {
     setSearchParams(params);
   };
 
-  const form = useForm<SignupFormValues>({
-    resolver: zodResolver(signupSchema),
-    mode: 'onChange',
-    defaultValues: {
-      email: '',
-      phone: '',
+  const forgetPassMutation = useMutation({
+    mutationFn: async (data: resetPassFormValues) => {
+      const payload = type === 'email' ? { email: data.email } : { phone: data.phone };
+      const res = await axios.post('http://localhost:3000/api/v1/auth/forgot-password', payload);
+      return res.data;
+    },
+    onSuccess: (_response, variables) => {
+      setSearchParams({
+        auth: 'reset-pass',
+        email: variables.email ?? '',
+        phone: variables.phone ?? '',
+      });
+    },
+    onError: (err: AxiosError) => {
+      const apiError = err.response?.data?.error;
+      const details = apiError?.details?.[0];
+
+      if (details?.field && details?.message) {
+        form.setError(details.field as 'email' | 'phone', {
+          type: 'server',
+          message: details.message,
+        });
+      } else {
+        form.setError(type, {
+          type: 'server',
+          message: apiError?.message || 'Something went wrong',
+        });
+      }
     },
   });
 
-  const isDisabled = type === 'email' ? !form.watch('email') : !form.watch('phone');
-
-  const onSubmit = (data: SignupFormValues) => {
-    console.log(data);
+  const handleSubmit = (data: resetPassFormValues) => {
+    forgetPassMutation.mutate(data);
   };
+
+  const isDisabled = type === 'email' ? !form.watch('email') : !form.watch('phone');
+  // const hasError = !!form.formState.errors[type];
 
   return (
     <div className="flex w-full items-center justify-center">
       <form
-        onSubmit={form.handleSubmit(onSubmit)}
+        onSubmit={form.handleSubmit(handleSubmit)}
         className="flex w-full flex-col items-center justify-center gap-4"
       >
         <FieldGroup className="flex flex-col gap-4">
@@ -73,9 +107,14 @@ const Form: React.FC<FormProps> = ({ type }) => {
                     placeholder="Enter your email"
                     required
                     {...field}
-                    error={fieldState.error?.message}
-                    className="h-3"
+                    className={`h-3 ${fieldState.invalid ? 'border-red-500 text-red-600' : ''}`}
                   />
+
+                  {fieldState.error && (
+                    <p className="text-status-danger mt-1 px-1 text-xs">
+                      {fieldState.error.message}
+                    </p>
+                  )}
                 </Field>
               )}
             />
@@ -91,30 +130,30 @@ const Form: React.FC<FormProps> = ({ type }) => {
                     placeholder="+972"
                     required
                     {...field}
-                    error={fieldState.error?.message}
-                    className="h-3"
+                    className={`h-3 ${fieldState.invalid ? 'border-red-500 text-red-600' : ''}`}
                   />
+
+                  {fieldState.error && (
+                    <p className="text-status-danger mt-1 px-1 text-xs">
+                      {fieldState.error.message}
+                    </p>
+                  )}
                 </Field>
               )}
             />
           )}
         </FieldGroup>
 
-        <div className="flex w-full flex-col gap-2">
-          <Button
-            disabled={isDisabled}
-            title="Continue"
-            type="submit"
-            variant="primary"
-            form="form-rhf-demo"
-            className="rounded-7xl h-12"
-            onClick={() => switchDialog('reset_pass')}
-          />
-        </div>
+        <Button
+          disabled={isDisabled}
+          title="Continue"
+          type="submit"
+          variant="primary"
+          className="rounded-7xl h-12 w-full"
+        />
+
         <Field className="flex justify-center gap-1" id="signin" orientation="horizontal">
-          <span className="text-text-secondary leading-leading-lg text-sm font-light">
-            Remembered your password?
-          </span>
+          <span className="text-text-secondary text-sm font-light">Remembered your password?</span>
           <span onClick={() => switchDialog('sign-in')} className="link-text cursor-pointer">
             Sign In
           </span>
