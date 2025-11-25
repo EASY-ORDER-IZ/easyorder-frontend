@@ -52,10 +52,11 @@ const CommentSection = () => {
         <CarouselOrientation onReady={setCarouselApi} />
 
         <div className="flex flex-row items-center justify-center gap-4">
-          <Button variant="acc" onClick={handlePrev} size="icon">
-            <ChevronLeft size={16} className="text-text-100" />
-          </Button>
-
+          <Button
+            onClick={handlePrev}
+            variant={'acc'}
+            suffixIcon={<ChevronLeft className="text-text-300" size={16} />}
+          />
           <div className="flex justify-center gap-2">
             {Array.from({ length: totalPages }, (_, i) => (
               <button
@@ -71,9 +72,11 @@ const CommentSection = () => {
             ))}
           </div>
 
-          <Button variant="acc" onClick={handleNext} size="icon">
-            <ChevronRight size={16} className="text-text-100" />
-          </Button>
+          <Button
+            onClick={handleNext}
+            variant={'acc'}
+            suffixIcon={<ChevronRight className="text-text-300" size={16} />}
+          />
         </div>
       </div>
     </div>

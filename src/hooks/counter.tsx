@@ -26,7 +26,7 @@ const Counter: React.FC<CounterProps> = ({ end, duration = 2000 }) => {
     return () => clearInterval(interval);
   }, [end, duration]);
 
-  return <span className="text-xl font-bold">{count.toLocaleString()}+</span>;
+  return <span className="text-text-600 text-xl font-bold">{count.toLocaleString()}+</span>;
 };
 
 export default Counter;
