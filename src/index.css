@@ -313,6 +313,26 @@ html {
     font-size: 10px;
   }
 }
+[data-radix-portal] {
+  position: fixed !important;
+  inset: 0 !important;
+  z-index: 9999 !important;
+  pointer-events: auto;
+}
+
+.animate-slide-up {
+  animation: slide-up 0.3s ease-out forwards;
+}
+.font-card-title {
+  font-family: 'satoshi', sans-serif;
+  font-size: 1.3rem;
+
+  font-weight: 700;
+  line-height: 100%;
+  vertical-align: middle;
+  color: var(--text);
+  text-align: left;
+}
 @media (max-width: 375px) {
   html {
     font-size: 9px;
@@ -339,4 +359,25 @@ html {
     oklch(0.35 0.11 200deg / 0.54),
     oklch(0.43 0.13 195deg / 0.91)
   );
+}
+
+.custom-scrollbar {
+  overflow-y: auto;
+  position: relative;
+  width: calc(77% + 27px);
+  padding-right: 27px;
+  box-sizing: content-box;
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 10px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background-color: var(--color-primary-600);
+  border-radius: var(--radius-full);
 }

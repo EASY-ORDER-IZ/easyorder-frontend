@@ -9,9 +9,9 @@ interface FooterColumnProps extends HTMLAttributes<HTMLDivElement> {
 
 const FooterColumn = ({ title, items, className, ...props }: FooterColumnProps) => {
   return (
-    <div className={cn('flex flex-col gap-6', className)} {...props}>
+    <div className={cn('flex flex-col items-center gap-6', className)} {...props}>
       <h1 className="text-list leading-5 font-medium">{title}</h1>
-      <ul className="flex flex-col gap-3">
+      <ul className="flex flex-col items-center gap-3">
         {items.map((item, index) => (
           <li key={index}>
             <NavLink

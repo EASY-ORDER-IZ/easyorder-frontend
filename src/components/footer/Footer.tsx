@@ -1,46 +1,28 @@
-import { FooterBrand, FooterColumn, FooterBottom, NewsletterLogic } from './index';
+import React from 'react';
+import { logo } from '../../assets/icons';
+import Logo from '../../components/CommonComponents/Logo';
 
-const Footer = () => {
+type FooterBackgroundProps = React.HTMLAttributes<HTMLElement> & {
+  src: string;
+  alt?: string;
+  className?: string;
+};
+
+const Footer: React.FC<FooterBackgroundProps> = ({ src, alt = '', className = '' }) => {
   return (
-    <div className="flex w-full flex-col items-center justify-center pt-55 lg:pt-45">
-      <div className="relative w-full items-center justify-between bg-white">
-        <div className="absolute -top-[90px] left-1/2 z-10 -translate-x-1/2">
-          <NewsletterLogic />
-        </div>
-        <div className="bg-footerbottom-bg relative flex w-full flex-col items-center justify-between gap-4 p-4 pt-50 pb-2.5 lg:pt-45">
-          <div className="flex w-[95%] max-w-310 flex-col items-center justify-between gap-6 lg:flex-row lg:gap-0">
-            <div className="mr-10 lg:mr-0 lg:w-71">
-              <FooterBrand />
-            </div>
-            <div className="grid grid-cols-2 justify-center gap-10 gap-y-10 text-left md:w-200 md:grid-cols-4">
-              <FooterColumn title="Company" items={['About', 'Features', 'Forks']} />
-              <FooterColumn
-                title="HELP"
-                items={[
-                  'Customer Support',
-                  'Delivery Details',
-                  'Terms & Conditions',
-                  'Privacy Policy',
-                ]}
-              />
-              <FooterColumn
-                title="FAQ"
-                items={['Account', 'Manage Deliveries', 'Orders', 'Payments']}
-              />
-              <FooterColumn
-                title="RESOURCES"
-                items={['Free eBooks', 'Development Tutorial', 'How to - Blog', 'YouTube Playlist']}
-              />
-            </div>
-          </div>
-          <div className="flex w-full justify-center">
-            <div className="bg-background-600 h-[1px] w-89 md:w-220 lg:w-310" />
-          </div>
+    <footer className={`relative w-full overflow-hidden ${className}`}>
+      <img src={src} alt={alt} className="absolute inset-0 h-full w-full object-cover" />
 
-          <FooterBottom />
+      <div className="relative flex h-full w-full items-end justify-center">
+        <div className="flex w-full max-w-[1229px] flex-col items-center gap-4 px-4 py-10 lg:flex-row lg:gap-[246px]">
+          <Logo src={logo} className="h-7 w-46" />
+
+          <span className="text-sm text-white">
+            FirstChance © 2025, All Rights Reserved to IztechValley
+          </span>
         </div>
       </div>
-    </div>
+    </footer>
   );
 };
 export default Footer;
