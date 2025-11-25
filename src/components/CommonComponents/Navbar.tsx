@@ -3,6 +3,7 @@ import { NavLink, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import useMobile from '@/hooks/useMobile';
 import Logo from './Logo';
+import { navbarlogo } from '../../assets/icons';
 import { Button } from '@/components/ui/button/button';
 import {
   cart,
@@ -59,7 +60,7 @@ const Navbar: React.FC = () => {
           </Button>
 
           <div className="flex flex-1 justify-center">
-            <Logo className="h-8 w-34" />
+            <Logo src={navbarlogo} className="h-8 w-34" />
           </div>
 
           <div className="flex items-center gap-2">
@@ -80,7 +81,7 @@ const Navbar: React.FC = () => {
         </div>
       ) : (
         <div className="flex w-310 items-center justify-between gap-10">
-          <Logo className="h-10 w-42" />
+          <Logo src={navbarlogo} className="h-10 w-42" />
           <div className="flex w-80 items-center gap-6">
             <div
               className="flex w-14 cursor-pointer items-center gap-1 hover:underline"

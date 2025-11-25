@@ -2,10 +2,12 @@ import CommentSection from '@/components/customercomments/CommentSection';
 import HeroSection from '@/components/HeroSection';
 import ProductBar from '@/components/ProductComponents/ProductBar';
 import StylesFilter from '@/components/ProductComponents/StylesFilter';
+import { Footer } from '@/components/footer';
+import { footer1 } from '../assets/icons';
 
 const HomePage = () => {
   return (
-    <div className="flex w-full flex-col gap-10">
+    <div className="relative flex w-full flex-col gap-10 overflow-visible">
       <HeroSection />
 
       <ProductBar title="NEW ARRIVALS" />
@@ -16,7 +18,9 @@ const HomePage = () => {
       <div className="px-4 lg:px-25">
         <StylesFilter />
       </div>
+
       <CommentSection />
+      <Footer src={footer1} alt="Footer Background" className="h-[363px]"></Footer>
     </div>
   );
 };

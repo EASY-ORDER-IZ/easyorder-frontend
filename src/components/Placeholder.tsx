@@ -63,7 +63,7 @@ const Placeholder = () => {
                 className={`flex w-full cursor-pointer items-center transition ${expanded ? 'w-full flex-row justify-between' : 'justify-center'} `}
               >
                 <div className="flex items-center gap-2">
-                  <Icon size={15} className={`${expanded ? 'text-text-100' : 'text-text-400'}`} />
+                  <Icon size={18} className={`${expanded ? 'text-text-100' : 'text-text-400'}`} />
                   {expanded && (
                     <span
                       onClick={(e) => {
@@ -119,7 +119,7 @@ const Placeholder = () => {
           e.stopPropagation();
           handleNavigate('/profile');
         }}
-        className={`flex items-center ${expanded ? 'h-12 justify-between pr-2 shadow-[1px_0px_4px_#0000000D]' : 'justify-center'} w-full`}
+        className={`flex items-center ${expanded ? 'mr-2 h-12 justify-between pr-2 shadow-[1px_0px_4px_#0000000D]' : 'justify-center'} w-full`}
       >
         <div className="flex items-center gap-2">
           <img src={profilephoto} alt="" className="size-6" />
