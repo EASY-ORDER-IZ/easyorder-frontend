@@ -3,6 +3,7 @@ import { newClothes } from '@/store/staticData';
 import { useState } from 'react';
 import ProductCard from './ProductCard';
 import { Button } from '../ui/button/button';
+import { ChevronRight } from 'lucide-react';
 
 interface Props {
   title: string;
@@ -24,7 +25,7 @@ const ProductBar = ({ title }: Props) => {
   const visibleProductsMobile = newClothes.slice(0, visibleCountMobile);
 
   return (
-    <div className="flex flex-col items-center gap-8 px-2">
+    <div className="flex flex-col items-center justify-center gap-8 px-2">
       <div>
         <span className="font-integral text-h2 font-bold">{title}</span>
       </div>
@@ -40,9 +41,10 @@ const ProductBar = ({ title }: Props) => {
         ))}
       </div>
 
-      <div className="flex w-full justify-center sm:w-auto">
-        <Button onClick={handleViewMore} variant="primary" size="md">
+      <div className="flex w-full items-center justify-center sm:w-auto">
+        <Button onClick={handleViewMore} variant="secondary">
           {hasMore ? 'View All' : 'View Less'}
+          <ChevronRight />
         </Button>
       </div>
     </div>
