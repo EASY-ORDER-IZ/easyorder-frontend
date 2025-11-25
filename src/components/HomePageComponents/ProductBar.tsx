@@ -18,7 +18,7 @@ interface Props {
   initialVisible?: number;
 }
 
-const ProductBar = ({ title, array, initialVisible = 4 }: Props) => {
+const ProductBar = ({ title, array, initialVisible = 5 }: Props) => {
   const [showAll, setShowAll] = useState(false);
 
   const handleToggle = () => {
@@ -26,21 +26,15 @@ const ProductBar = ({ title, array, initialVisible = 4 }: Props) => {
   };
 
   const visibleProducts = showAll ? array : array.slice(0, initialVisible);
-  const visibleProductsMobile = showAll ? array : array.slice(0, 2);
 
   return (
-    <div className="flex w-full flex-col items-center justify-center gap-1">
+    <div className="flex w-full max-w-310 flex-col items-center justify-center gap-1">
       <div className="flex w-full justify-center">
         <span className="title-text text-title">{title}</span>
       </div>
 
-      <div className="hidden grid-cols-4 gap-20 p-4 lg:grid">
+      <div className="no-scrollbar relative flex w-full max-w-310 snap-x snap-mandatory gap-20 overflow-x-scroll scroll-smooth p-4 lg:grid-cols-5 lg:gap-4 lg:overflow-visible">
         {visibleProducts.map(() => (
-          <CardSlider />
-        ))}
-      </div>
-      <div className="grid grid-cols-2 gap-20 p-4 lg:hidden">
-        {visibleProductsMobile.map(() => (
           <CardSlider />
         ))}
       </div>
@@ -51,6 +45,7 @@ const ProductBar = ({ title, array, initialVisible = 4 }: Props) => {
             variant="secondary"
             title={showAll ? 'View Less' : 'View All'}
             onClick={handleToggle}
+            className="rounded-7xl"
             suffixIcon={<ChevronRight />}
           />
         </div>

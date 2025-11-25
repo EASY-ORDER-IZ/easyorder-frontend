@@ -1,7 +1,7 @@
 import LogoSVG from '@/assets/svg/logo';
 import { NavLink, useSearchParams } from 'react-router-dom';
 import SearchComponent from './Search';
-import { CircleUserRound, Heart, MenuIcon, ShoppingCart } from 'lucide-react';
+import { CircleUserRound, Heart, MenuIcon, ShoppingCart, Search } from 'lucide-react';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -22,20 +22,50 @@ const Navbar = ({ isModalOpen }: NavbarProps) => {
   };
 
   return (
-    <nav className="font-satoshi relative z-50 flex w-full items-center justify-between bg-white px-22 py-4 text-base">
+    <nav className="font-satoshi relative z-50 w-full bg-white text-base">
       <div
         className={`bg-background ${
           searchParams || isModalOpen ? '' : 'sticky top-0 z-70'
-        } flex w-full items-center justify-between gap-6 px-5 py-4 lg:gap-10`}
+        } w-full px-4 py-3 lg:px-22 lg:py-4`}
       >
-        <div className="flex w-full max-w-[70%] gap-3 lg:w-auto">
-          <div className="flex lg:hidden">
+        {/* ================== SMALL SCREEN ================== */}
+        <div className="flex w-full items-center justify-between lg:hidden">
+          {/* RIGHT SIDE — Wishlist + Cart */}
+          <div className="flex items-center gap-3">
+            <NavLink to="/wish">
+              <Heart className="text-text-secondary h-5 w-5 cursor-pointer" />
+            </NavLink>
+
+            <NavLink to="/cart">
+              <ShoppingCart className="text-text-secondary h-5 w-5 cursor-pointer" />
+            </NavLink>
+          </div>
+
+          {/* CENTER — LOGO */}
+          <LogoSVG className="max-w-[40%]" />
+
+          {/* LEFT SIDE — Search + User + Menu */}
+          <div className="flex items-center gap-3">
+            {/* SEARCH ICON ONLY */}
+            <Search className="text-text-secondary h-5 w-5 cursor-pointer" />
+
+            {/* USER ICON */}
+            <CircleUserRound
+              onClick={() => switchDialog('sign-in')}
+              className="text-text-secondary h-5 w-5 cursor-pointer"
+            />
+
+            {/* MENU ICON WITH SHADCN DROPDOWN */}
             <DropdownMenu>
-              <DropdownMenuTrigger
-                icon={<MenuIcon className="text-text-secondary cursor-pointer" size={18} />}
-              />
-              <DropdownMenuContent>
+              <DropdownMenuTrigger asChild>
+                <button className="cursor-pointer">
+                  <MenuIcon className="text-text-secondary h-5 w-5" />
+                </button>
+              </DropdownMenuTrigger>
+
+              <DropdownMenuContent className="w-40">
                 <DropdownMenuSeparator />
+
                 <DropdownMenuItem>
                   <NavLink
                     to="/"
@@ -48,6 +78,7 @@ const Navbar = ({ isModalOpen }: NavbarProps) => {
                     Home
                   </NavLink>
                 </DropdownMenuItem>
+
                 <DropdownMenuItem>
                   <NavLink
                     to="/new_in"
@@ -60,6 +91,7 @@ const Navbar = ({ isModalOpen }: NavbarProps) => {
                     New In
                   </NavLink>
                 </DropdownMenuItem>
+
                 <DropdownMenuItem>
                   <NavLink
                     to="/about"
@@ -72,6 +104,7 @@ const Navbar = ({ isModalOpen }: NavbarProps) => {
                     Best sellers
                   </NavLink>
                 </DropdownMenuItem>
+
                 <DropdownMenuItem>
                   <NavLink
                     to="/cate"
@@ -87,10 +120,13 @@ const Navbar = ({ isModalOpen }: NavbarProps) => {
               </DropdownMenuContent>
             </DropdownMenu>
           </div>
-          <LogoSVG className="mb-1 flex max-w-[50%] lg:max-w-[100%]" />
         </div>
-        <div className="hidden min-w-80 gap-6 lg:flex">
-          <div className="flex cursor-pointer items-center">
+
+        {/* ================== LARGE SCREEN ================== */}
+        <div className="hidden w-full items-center justify-between lg:flex">
+          <LogoSVG className="max-w-[100%]" />
+
+          <div className="flex min-w-80 gap-6">
             <NavLink
               to="/"
               className={({ isActive }) =>
@@ -101,54 +137,57 @@ const Navbar = ({ isModalOpen }: NavbarProps) => {
             >
               Home
             </NavLink>
-          </div>
-          <NavLink
-            to="/new_in"
-            className={({ isActive }) =>
-              isActive
-                ? 'cursor-pointer text-[var(--color-primary-main)]'
-                : 'cursor-pointer hover:text-[var(--color-primary-main)]'
-            }
-          >
-            New In
-          </NavLink>
 
-          <NavLink
-            to="/about"
-            className={({ isActive }) =>
-              isActive
-                ? 'cursor-pointer text-[var(--color-primary-main)]'
-                : 'cursor-pointer hover:text-[var(--color-primary-main)]'
-            }
-          >
-            Best sellers
-          </NavLink>
-          <NavLink
-            to="/cate"
-            className={({ isActive }) =>
-              isActive
-                ? 'cursor-pointer text-[var(--color-primary-main)]'
-                : 'cursor-pointer hover:text-[var(--color-primary-main)]'
-            }
-          >
-            Categories
-          </NavLink>
-        </div>
-        <div className="hidden min-w-[35%] lg:flex">
-          <SearchComponent />
-        </div>
-        <div className="flex gap-6">
-          <NavLink to="/cart" aria-label="Cart">
-            <ShoppingCart size={24} className="text-text-secondary cursor-pointer" />
-          </NavLink>
-          <NavLink to="/wish" aria-label="Cart">
-            <Heart size={24} className="text-text-secondary cursor-pointer" />
-          </NavLink>
-          <CircleUserRound
-            onClick={() => switchDialog('sign-in')}
-            size={24}
-            className="text-text-secondary cursor-pointer"
-          />
+            <NavLink
+              to="/new_in"
+              className={({ isActive }) =>
+                isActive
+                  ? 'cursor-pointer text-[var(--color-primary-main)]'
+                  : 'cursor-pointer hover:text-[var(--color-primary-main)]'
+              }
+            >
+              New In
+            </NavLink>
+
+            <NavLink
+              to="/about"
+              className={({ isActive }) =>
+                isActive
+                  ? 'cursor-pointer text-[var(--color-primary-main)]'
+                  : 'cursor-pointer hover:text-[var(--color-primary-main)]'
+              }
+            >
+              Best sellers
+            </NavLink>
+
+            <NavLink
+              to="/cate"
+              className={({ isActive }) =>
+                isActive
+                  ? 'cursor-pointer text-[var(--color-primary-main)]'
+                  : 'cursor-pointer hover:text-[var(--color-primary-main)]'
+              }
+            >
+              Categories
+            </NavLink>
+          </div>
+
+          <div className="min-w-[35%]">
+            <SearchComponent />
+          </div>
+
+          <div className="flex gap-6">
+            <NavLink to="/cart">
+              <ShoppingCart className="text-text-secondary h-5 w-5 cursor-pointer" />
+            </NavLink>
+            <NavLink to="/wish">
+              <Heart className="text-text-secondary h-5 w-5 cursor-pointer" />
+            </NavLink>
+            <CircleUserRound
+              onClick={() => switchDialog('sign-in')}
+              className="text-text-secondary h-5 w-5 cursor-pointer"
+            />
+          </div>
         </div>
       </div>
     </nav>
