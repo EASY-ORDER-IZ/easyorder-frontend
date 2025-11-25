@@ -3,10 +3,10 @@ import HomePage from '../pages/HomePage';
 import RootLayout from '../layout/RootLayout';
 import CartPage from '@/pages/CartPage';
 import CategoryPage from '@/pages/CategoryPage';
-import SignInPage from '@/pages/SignInPage';
 import Placeholder from '@/components/Placeholder';
-
+import PaymentForm from '@/components/PaymentForm';
 import CardItem from '@/components/CommonComponents/CardItem/CardSlider';
+
 const Router = createBrowserRouter([
   {
     path: '/',
@@ -36,6 +36,10 @@ const Router = createBrowserRouter([
       {
         path: '/placeholder',
         element: <Placeholder />,
+      },
+      {
+        path: '/payment',
+        element: <PaymentForm />,
       },
       {
         path: '/card',
