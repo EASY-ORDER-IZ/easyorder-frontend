@@ -1,11 +1,14 @@
 import type { HTMLAttributes } from 'react';
-import logo from '../../assets/images/logo.png';
-type PropsType = HTMLAttributes<HTMLDivElement>;
 
-const Logo = (props: PropsType) => {
+type LogoProps = HTMLAttributes<HTMLDivElement> & {
+  src: string;
+  alt?: string;
+};
+
+const Logo = ({ src, alt = 'Logo', className, ...rest }: LogoProps) => {
   return (
-    <div>
-      <img src={logo} className={props.className} />
+    <div {...rest}>
+      <img src={src} alt={alt} className={className} />
     </div>
   );
 };
