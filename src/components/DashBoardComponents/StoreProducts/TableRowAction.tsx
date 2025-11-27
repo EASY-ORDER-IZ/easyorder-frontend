@@ -1,108 +1,35 @@
 'use client';
 
-import { useState } from 'react';
-import { MoreHorizontalIcon } from 'lucide-react';
-
-import {
-  Dialog,
-  DialogClose,
-  DialogContent,
-  DialogDescription,
-  DialogFooter,
-  DialogHeader,
-  DialogTitle,
-} from '@/components/ui/dialog';
 import {
   DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuGroup,
-  DropdownMenuItem,
-  DropdownMenuLabel,
   DropdownMenuTrigger,
+  DropdownMenuContent,
+  DropdownMenuItem,
 } from '@/components/ui/dropdown-menu';
-import { Field, FieldGroup, FieldLabel } from '@/components/ui/field';
-import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
-import { Textarea } from '@/components/ui/textarea';
-import { Button } from '@/components/ui/button/button';
+import { MoreHorizontal } from 'lucide-react';
 
-export function TableRowAction() {
-  const [showNewDialog, setShowNewDialog] = useState(false);
-  const [showShareDialog, setShowShareDialog] = useState(false);
-
+const TableRowAction = () => {
   return (
-    <>
-      <DropdownMenu modal={false}>
-        <DropdownMenuTrigger asChild>
-          <Button variant="default" size="default" aria-label="Open menu">
-            <MoreHorizontalIcon className="h-4 w-4" />
-          </Button>
-        </DropdownMenuTrigger>
+    <DropdownMenu>
+      <DropdownMenuTrigger asChild>
+        <button className="flex h-8 w-8 items-center justify-center rounded hover:bg-gray-200">
+          <MoreHorizontal className="h-4 w-4" />
+        </button>
+      </DropdownMenuTrigger>
 
-        <DropdownMenuContent className="z-50 w-40" align="end">
-          <DropdownMenuLabel>File Actions</DropdownMenuLabel>
-          <DropdownMenuGroup>
-            <DropdownMenuItem onSelect={() => setShowNewDialog(true)}>New File...</DropdownMenuItem>
-            <DropdownMenuItem onSelect={() => setShowShareDialog(true)}>Share...</DropdownMenuItem>
-            <DropdownMenuItem disabled>Download</DropdownMenuItem>
-          </DropdownMenuGroup>
-        </DropdownMenuContent>
-      </DropdownMenu>
-
-      <Dialog open={showNewDialog} onOpenChange={setShowNewDialog}>
-        <DialogContent className="sm:max-w-[425px]">
-          <DialogHeader>
-            <DialogTitle>Create New File</DialogTitle>
-            <DialogDescription>
-              Provide a name for your new file. Click create when you&apos;re done.
-            </DialogDescription>
-          </DialogHeader>
-          <FieldGroup className="pb-3">
-            <Field>
-              <FieldLabel htmlFor="filename">File Name</FieldLabel>
-              <Input id="filename" name="filename" placeholder="document.txt" />
-            </Field>
-          </FieldGroup>
-          <DialogFooter>
-            <DialogClose asChild>
-              <Button>Cancel</Button>
-            </DialogClose>
-            <Button type="submit">Create</Button>
-          </DialogFooter>
-        </DialogContent>
-      </Dialog>
-      <Dialog open={showShareDialog} onOpenChange={setShowShareDialog}>
-        <DialogContent className="sm:max-w-[425px]">
-          <DialogHeader>
-            <DialogTitle>Share File</DialogTitle>
-            <DialogDescription>
-              Anyone with the link will be able to view this file.
-            </DialogDescription>
-          </DialogHeader>
-          <FieldGroup className="py-3">
-            <Field>
-              <Label htmlFor="email">Email Address</Label>
-              <Input
-                id="email"
-                name="email"
-                type="email"
-                placeholder="shadcn@vercel.com"
-                autoComplete="off"
-              />
-            </Field>
-            <Field>
-              <FieldLabel htmlFor="message">Message (Optional)</FieldLabel>
-              <Textarea id="message" name="message" placeholder="Check out this file" />
-            </Field>
-          </FieldGroup>
-          <DialogFooter>
-            <DialogClose asChild>
-              <Button>Cancel</Button>
-            </DialogClose>
-            <Button type="submit">Send Invite</Button>
-          </DialogFooter>
-        </DialogContent>
-      </Dialog>
-    </>
+      <DropdownMenuContent
+        side="bottom"
+        align="end"
+        sideOffset={6}
+        className="z-[9999] rounded-md border bg-white p-1 shadow-md"
+      >
+        <DropdownMenuItem>Edit</DropdownMenuItem>
+        <DropdownMenuItem>View</DropdownMenuItem>
+        <DropdownMenuItem className="text-red-600">Delete</DropdownMenuItem>
+      </DropdownMenuContent>
+    </DropdownMenu>
   );
-}
+};
+// if you forgot the roblem that the table do not take a component that's why it didn't appeare -- also search for tanstack tables
+
+export default TableRowAction;
