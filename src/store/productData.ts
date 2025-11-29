@@ -1,6 +1,6 @@
 type ProductStatus = 'active' | 'draft' | 'archived';
 import { img101, img102, img103, img104 } from '@/assets/icons';
-type Product = {
+export type Product = {
   id: number;
   name: string;
   status: ProductStatus;
@@ -10,7 +10,7 @@ type Product = {
   img: string;
 };
 
-export const products: Product[] = [
+export const productt: Product[] = [
   {
     id: 1,
     img: img101,

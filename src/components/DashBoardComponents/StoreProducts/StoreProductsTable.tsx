@@ -1,72 +1,42 @@
 import React, { useMemo, useState } from 'react';
 import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { useProductStore } from '@/store/productStore';
-import { flexRender, getCoreRowModel, useReactTable, type ColumnDef } from '@tanstack/react-table';
-import { img101 } from '@/assets/icons';
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from '@/components/ui/table';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from '@radix-ui/react-dropdown-menu';
+import { MoreHorizontal } from 'lucide-react';
+import {
+  DropdownMenuRadioGroup,
+  DropdownMenuRadioItem,
+  DropdownMenuSub,
+  DropdownMenuSubContent,
+  DropdownMenuSubTrigger,
+} from '@/components/ui/dropdown-menu';
+import { productt } from '@/store/productData';
 
 type TabValue = 'all' | 'active' | 'draft' | 'archived';
 
 const StoreProductTable = () => {
   const [tab, setTab] = useState<TabValue>('all');
-  const tabs = ['all', 'active', 'draft', 'archived'];
+  const tabs: TabValue[] = ['all', 'active', 'draft', 'archived'];
+  const [status, setStatus] = useState('all');
 
-  const products = useProductStore((state) => state.products);
+  const products = productt;
 
-  const filteredProducts = useMemo(() => {
+  const finalProducts = useMemo(() => {
     if (tab === 'all') return products;
     return products.filter((p) => p.status === tab);
   }, [products, tab]);
-
-  const demoProduct = {
-    id: 'demo',
-    name: 'Demo Product',
-    img: img101, // FIXED
-    price: 30,
-    services: 3,
-    status: 'active',
-    createdAt: 'Nov 21, 2025',
-  };
-
-  const finalProducts = [demoProduct, ...filteredProducts];
-
-  const columns: ColumnDef<typeof finalProducts>[] = [
-    {
-      header: 'Product Name',
-      accessorKey: 'name',
-      cell: ({ row }) => {
-        const p = row.original;
-        return (
-          <div className="flex items-center justify-center gap-6 p-2">
-            <img src={p.img} alt="" className="h-16 w-20 rounded" />
-            {p.name}
-          </div>
-        );
-      },
-    },
-    {
-      header: 'Status',
-      accessorKey: 'status',
-      cell: ({ getValue }) => <span>{getValue()}</span>,
-    },
-    {
-      header: 'Price',
-      accessorKey: 'price',
-    },
-    {
-      header: 'Total Services',
-      accessorKey: 'services',
-    },
-    {
-      header: 'Created at',
-      accessorKey: 'createdAt',
-    },
-  ];
-
-  const table = useReactTable({
-    data: finalProducts,
-    columns,
-    getCoreRowModel: getCoreRowModel(),
-  });
 
   return (
     <div className="mt-6 rounded-2xl bg-white">
@@ -84,36 +54,92 @@ const StoreProductTable = () => {
             ))}
           </TabsList>
         </div>
+        <span>{status}</span>
+        <div className="m-4 rounded-md border border-gray-300 px-6 pb-4">
+          <Table className="w-full">
+            <TableHeader>
+              <TableRow className="border-b border-gray-300">
+                <TableHead className="w-[100px]">ID</TableHead>
+                <TableHead>Name</TableHead>
+                <TableHead>Status</TableHead>
+                <TableHead>Price</TableHead>
+                <TableHead>Services</TableHead>
+                <TableHead>Created At</TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+              {products.map((product) => (
+                <TableRow key={product.id} className="border-b border-gray-300">
+                  <TableCell className="font-medium">
+                    <img src={product.img} alt="" className="h-12 w-12" />
+                  </TableCell>
+                  <TableCell>{product.name}</TableCell>
+                  <TableCell>{product.status}</TableCell>
+                  <TableCell>{product.price}</TableCell>
+                  <TableCell>{product.services}</TableCell>
+                  <TableCell>{product.createdAt}</TableCell>
+                  <TableCell>
+                    {/* tirgger */}
+                    <DropdownMenu modal={false}>
+                      <DropdownMenuTrigger asChild>
+                        <MoreHorizontal className="h-5 w-5 cursor-pointer" />
+                      </DropdownMenuTrigger>
 
-        <div className="px-6 pb-4">
-          <table className="w-full overflow-hidden rounded-xl border border-gray-300 text-sm">
-            <thead>
-              {table.getHeaderGroups().map((headerGroup) => (
-                <tr key={headerGroup.id} className="items-center border-b text-gray-400">
-                  {headerGroup.headers.map((header) => (
-                    <th key={header.id} className="py-3 font-normal">
-                      {flexRender(header.column.columnDef.header, header.getContext())}
-                    </th>
-                  ))}
-                </tr>
+                      <DropdownMenuContent
+                        align="end"
+                        className="w-32 rounded border border-gray-300 bg-white p-3"
+                      >
+                        <DropdownMenuItem className="text-text-400 cursor-pointer rounded p-2 outline-none hover:bg-[#D24560] hover:text-white focus:text-white">
+                          Edit product
+                        </DropdownMenuItem>
+                        <DropdownMenuSub>
+                          <DropdownMenuSubTrigger className="text-text-400 cursor-pointer rounded p-2 outline-none hover:bg-[#D24560] hover:text-white">
+                            Change Status
+                          </DropdownMenuSubTrigger>
+
+                          <DropdownMenuSubContent className="min-w-[140px] rounded border border-gray-300 bg-white p-2">
+                            <DropdownMenuRadioGroup
+                              value={product.status}
+                              onValueChange={setStatus}
+                            >
+                              <DropdownMenuRadioItem
+                                value="active"
+                                className="text-text-400 rounded text-center hover:bg-[#D24560] hover:text-white"
+                              >
+                                Active
+                              </DropdownMenuRadioItem>
+
+                              <DropdownMenuRadioItem
+                                value="draft"
+                                className="text-text-400 rounded text-center hover:bg-[#D24560] hover:text-white"
+                              >
+                                Draft
+                              </DropdownMenuRadioItem>
+
+                              <DropdownMenuRadioItem
+                                value="archived"
+                                className="text-text-400 rounded text-center hover:bg-[#D24560] hover:text-white"
+                              >
+                                Archived
+                              </DropdownMenuRadioItem>
+                            </DropdownMenuRadioGroup>
+                          </DropdownMenuSubContent>
+                        </DropdownMenuSub>
+
+                        <DropdownMenuItem className="cursor-pointer rounded p-2 text-red-500 outline-none hover:bg-[#D24560] hover:text-white">
+                          Delete
+                        </DropdownMenuItem>
+                      </DropdownMenuContent>
+                    </DropdownMenu>
+                  </TableCell>
+                </TableRow>
               ))}
-            </thead>
-            <tbody>
-              {table.getRowModel().rows.map((row) => (
-                <tr key={row.id} className="items-center border-b border-gray-200 last:border-0">
-                  {row.getVisibleCells().map((cell) => (
-                    <td key={cell.id} className="py-3 text-center">
-                      {flexRender(cell.column.columnDef.cell, cell.getContext())}
-                    </td>
-                  ))}
-                </tr>
-              ))}
-            </tbody>
-          </table>
+            </TableBody>
+          </Table>
         </div>
 
         <p className="text-text-400 mt-4 text-xs">
-          showing 1-{filteredProducts.length} of {filteredProducts.length} Products
+          showing 1–{finalProducts.length} of {products.length} Products
         </p>
       </Tabs>
     </div>

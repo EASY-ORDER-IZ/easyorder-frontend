@@ -1,5 +1,6 @@
 'use client';
 
+import { Button } from '@/components/ui/button/button';
 import {
   DropdownMenu,
   DropdownMenuTrigger,
@@ -10,26 +11,20 @@ import { MoreHorizontal } from 'lucide-react';
 
 const TableRowAction = () => {
   return (
-    <DropdownMenu>
+    <DropdownMenu modal={false}>
       <DropdownMenuTrigger asChild>
-        <button className="flex h-8 w-8 items-center justify-center rounded hover:bg-gray-200">
-          <MoreHorizontal className="h-4 w-4" />
-        </button>
+        <Button className="h-8 w-8 rounded p-0 hover:bg-gray-100">
+          <MoreHorizontal className="h-5 w-5" />
+        </Button>
       </DropdownMenuTrigger>
 
-      <DropdownMenuContent
-        side="bottom"
-        align="end"
-        sideOffset={6}
-        className="z-[9999] rounded-md border bg-white p-1 shadow-md"
-      >
-        <DropdownMenuItem>Edit</DropdownMenuItem>
+      <DropdownMenuContent align="end" className="w-32">
         <DropdownMenuItem>View</DropdownMenuItem>
-        <DropdownMenuItem className="text-red-600">Delete</DropdownMenuItem>
+        <DropdownMenuItem>Edit</DropdownMenuItem>
+        <DropdownMenuItem className="text-red-500">Delete</DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
   );
 };
-// if you forgot the roblem that the table do not take a component that's why it didn't appeare -- also search for tanstack tables
 
 export default TableRowAction;
