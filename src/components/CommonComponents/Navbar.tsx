@@ -28,9 +28,7 @@ const Navbar = ({ isModalOpen }: NavbarProps) => {
           searchParams || isModalOpen ? '' : 'sticky top-0 z-70'
         } w-full px-4 py-3 lg:px-22 lg:py-4`}
       >
-        {/* ================== SMALL SCREEN ================== */}
         <div className="flex w-full items-center justify-between lg:hidden">
-          {/* RIGHT SIDE — Wishlist + Cart */}
           <div className="flex items-center gap-3">
             <NavLink to="/wish">
               <Heart className="text-text-secondary h-5 w-5 cursor-pointer" />
@@ -41,27 +39,20 @@ const Navbar = ({ isModalOpen }: NavbarProps) => {
             </NavLink>
           </div>
 
-          {/* CENTER — LOGO */}
           <LogoSVG className="max-w-[40%]" />
 
-          {/* LEFT SIDE — Search + User + Menu */}
           <div className="flex items-center gap-3">
-            {/* SEARCH ICON ONLY */}
-            <Search className="text-text-secondary h-5 w-5 cursor-pointer" />
-
-            {/* USER ICON */}
+            <Search className="text-text-secondary cursor-pointer" size={25} />
             <CircleUserRound
               onClick={() => switchDialog('sign-in')}
-              className="text-text-secondary h-5 w-5 cursor-pointer"
+              size={25}
+              className="text-text-secondary cursor-pointer"
             />
 
-            {/* MENU ICON WITH SHADCN DROPDOWN */}
             <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                <button className="cursor-pointer">
-                  <MenuIcon className="text-text-secondary h-5 w-5" />
-                </button>
-              </DropdownMenuTrigger>
+              <DropdownMenuTrigger
+                icon={<MenuIcon className="text-text-secondary cursor-pointer" size={16} />}
+              />
 
               <DropdownMenuContent className="w-40">
                 <DropdownMenuSeparator />
@@ -122,7 +113,6 @@ const Navbar = ({ isModalOpen }: NavbarProps) => {
           </div>
         </div>
 
-        {/* ================== LARGE SCREEN ================== */}
         <div className="hidden w-full items-center justify-between lg:flex">
           <LogoSVG className="max-w-[100%]" />
 
