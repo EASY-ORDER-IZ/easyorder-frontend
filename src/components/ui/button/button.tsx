@@ -27,8 +27,9 @@ function Button({
     <Comp
       data-slot="button"
       className={cn(
-        'flex w-full items-center justify-center gap-2',
-        buttonVariants({ variant, size, className }),
+        'flex items-center justify-center gap-2',
+        buttonVariants({ variant, size }),
+        className,
       )}
       {...props}
     >
