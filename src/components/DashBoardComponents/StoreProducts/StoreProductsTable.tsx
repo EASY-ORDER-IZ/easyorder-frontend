@@ -23,6 +23,9 @@ import {
   DropdownMenuSubTrigger,
 } from '@/components/ui/dropdown-menu';
 import { productt } from '@/store/productData';
+import EditProductForm from './EditProductForm';
+import { useProductStore, type product } from '@/store/productStore';
+import DeleteProductDialog from './DeleteProductDialog';
 
 type TabValue = 'all' | 'active' | 'draft' | 'archived';
 
@@ -30,13 +33,16 @@ const StoreProductTable = () => {
   const [tab, setTab] = useState<TabValue>('all');
   const tabs: TabValue[] = ['all', 'active', 'draft', 'archived'];
   const [status, setStatus] = useState('all');
-
+  const [editingProduct, setEditingProduct] = useState<product | null>(null);
+  const [deleteProduct, setDeleteProduct] = useState<product | null>(null);
   const products = productt;
+  const product2 = useProductStore((state) => state.products);
 
   const finalProducts = useMemo(() => {
-    if (tab === 'all') return products;
-    return products.filter((p) => p.status === tab);
-  }, [products, tab]);
+    console.log(status);
+    if (tab === 'all') return product2;
+    return product2.filter((p) => p.status === tab);
+  }, [product2, tab]);
 
   return (
     <div className="mt-6 rounded-2xl bg-white">
@@ -54,7 +60,6 @@ const StoreProductTable = () => {
             ))}
           </TabsList>
         </div>
-        <span>{status}</span>
         <div className="m-4 rounded-md border border-gray-300 px-6 pb-4">
           <Table className="w-full">
             <TableHeader>
@@ -68,7 +73,7 @@ const StoreProductTable = () => {
               </TableRow>
             </TableHeader>
             <TableBody>
-              {products.map((product) => (
+              {finalProducts.map((product) => (
                 <TableRow key={product.id} className="border-b border-gray-300">
                   <TableCell className="font-medium">
                     <img src={product.img} alt="" className="h-12 w-12" />
@@ -79,7 +84,6 @@ const StoreProductTable = () => {
                   <TableCell>{product.services}</TableCell>
                   <TableCell>{product.createdAt}</TableCell>
                   <TableCell>
-                    {/* tirgger */}
                     <DropdownMenu modal={false}>
                       <DropdownMenuTrigger asChild>
                         <MoreHorizontal className="h-5 w-5 cursor-pointer" />
@@ -89,7 +93,12 @@ const StoreProductTable = () => {
                         align="end"
                         className="w-32 rounded border border-gray-300 bg-white p-3"
                       >
-                        <DropdownMenuItem className="text-text-400 cursor-pointer rounded p-2 outline-none hover:bg-[#D24560] hover:text-white focus:text-white">
+                        <DropdownMenuItem
+                          className="text-text-400 cursor-pointer rounded p-2 outline-none hover:bg-[#D24560] hover:text-white focus:text-white"
+                          onClick={() => {
+                            setEditingProduct(product);
+                          }}
+                        >
                           Edit product
                         </DropdownMenuItem>
                         <DropdownMenuSub>
@@ -126,7 +135,10 @@ const StoreProductTable = () => {
                           </DropdownMenuSubContent>
                         </DropdownMenuSub>
 
-                        <DropdownMenuItem className="cursor-pointer rounded p-2 text-red-500 outline-none hover:bg-[#D24560] hover:text-white">
+                        <DropdownMenuItem
+                          className="cursor-pointer rounded p-2 text-red-500 outline-none hover:bg-[#D24560] hover:text-white"
+                          onClick={() => setDeleteProduct(product.id)}
+                        >
                           Delete
                         </DropdownMenuItem>
                       </DropdownMenuContent>
@@ -142,6 +154,22 @@ const StoreProductTable = () => {
           showing 1–{finalProducts.length} of {products.length} Products
         </p>
       </Tabs>
+
+      {
+        <DeleteProductDialog
+          open={!!deleteProduct}
+          productId={deleteProduct}
+          onClose={() => setDeleteProduct(null)}
+        />
+      }
+      {editingProduct && (
+        <EditProductForm
+          product={editingProduct}
+          onClose={() => {
+            setEditingProduct(null);
+          }}
+        />
+      )}
     </div>
   );
 };

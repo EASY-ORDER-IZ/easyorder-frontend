@@ -62,6 +62,11 @@ const ProductForm = () => {
     };
 
     addProduct(payload);
+
+    console.log(payload);
+
+    setOpen(false);
+    form.reset();
   };
 
   return (
@@ -76,7 +81,7 @@ const ProductForm = () => {
       />
 
       <div className="mx-auto max-w-2xl p-6">
-        <form onSubmit={form.handleSubmit(() => onSubmit)} className="space-y-6">
+        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
           <div className="flex flex-col gap-1">
             <label className="text-md text-gray-600">Product Name</label>
             <Controller
@@ -141,12 +146,7 @@ const ProductForm = () => {
             )}
           </div>
 
-          <Button
-            type="submit"
-            title="Create Product"
-            disabled={disable}
-            onClick={() => onSubmit(form.getValues())}
-          />
+          <Button type="submit" title="Create Product" disabled={disable} />
         </form>
       </div>
     </>
