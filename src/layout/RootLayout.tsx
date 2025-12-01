@@ -9,7 +9,7 @@ const RootLayout: React.FC = () => {
   const [isModalOpen] = useState<boolean>(false);
 
   return (
-    <div className="flex flex-col items-center justify-center">
+    <div className="flex flex-col">
       <SignupBar />
       <Navbar isModalOpen={isModalOpen} />
       <Outlet />
