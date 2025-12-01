@@ -1,6 +1,6 @@
 import React from 'react';
-import { logo } from '../../assets/icons';
-import Logo from '../../components/CommonComponents/Logo';
+
+import LogoSVG from '@/assets/svg/logo';
 
 type FooterBackgroundProps = React.HTMLAttributes<HTMLElement> & {
   src: string;
@@ -15,7 +15,7 @@ const Footer: React.FC<FooterBackgroundProps> = ({ src, alt = '', className = ''
 
       <div className="relative flex h-full w-full items-end justify-center">
         <div className="flex w-full max-w-[1229px] flex-col items-center gap-4 px-4 py-10 lg:flex-row lg:gap-[246px]">
-          <Logo src={logo} className="h-7 w-46" />
+          <LogoSVG className="mb-1 flex max-w-[50%] lg:max-w-[100%]" color="white" />
 
           <span className="text-sm text-white">
             FirstChance © 2025, All Rights Reserved to IztechValley

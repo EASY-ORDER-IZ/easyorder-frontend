@@ -8,7 +8,7 @@ import versace_logo from './images/versace-logo.svg';
 import calvin_klein_logo from './images/calvin-kline-logo.svg';
 import prada_logo from './images/prada-logo.svg';
 import guccie_logo from './images/gucci-logo.svg';
-import star from './images/star.svg';
+import star from './images/star.png';
 import menu from './images/menu.svg';
 import black_search_icon from './images/black-search-icon.svg';
 import profilephoto from './images/profilephoto.png';
