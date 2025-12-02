@@ -3,7 +3,9 @@ import HomePage from '../pages/HomePage';
 import RootLayout from '../layout/RootLayout';
 import CartPage from '@/pages/CartPage';
 import CategoryPage from '@/pages/CategoryPage';
-import SignInPage from '@/pages/SignInPage';
+import Placeholder from '@/components/Placeholder';
+import PaymentForm from '@/components/PaymentForm';
+import CardItem from '@/components/CommonComponents/CardItem/CardSlider';
 
 const Router = createBrowserRouter([
   {
@@ -11,7 +13,7 @@ const Router = createBrowserRouter([
     element: <RootLayout />,
     children: [
       {
-        path: '/',
+        index: true,
         element: <HomePage />,
       },
       {
@@ -22,14 +24,7 @@ const Router = createBrowserRouter([
         path: 'help',
         element: <div>Help Page</div>,
       },
-      {
-        path: 'signin',
-        element: <SignInPage />,
-      },
-      {
-        path: 'signup',
-        element: <div>Sign Up Page</div>,
-      },
+
       {
         path: 'cart',
         element: <CartPage />,
@@ -37,6 +32,18 @@ const Router = createBrowserRouter([
       {
         path: 'cate/:title',
         element: <CategoryPage />,
+      },
+      {
+        path: '/placeholder',
+        element: <Placeholder />,
+      },
+      {
+        path: '/payment',
+        element: <PaymentForm />,
+      },
+      {
+        path: '/card',
+        element: <CardItem />,
       },
     ],
   },

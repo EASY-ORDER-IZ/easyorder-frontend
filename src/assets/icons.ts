@@ -8,9 +8,23 @@ import versace_logo from './images/versace-logo.svg';
 import calvin_klein_logo from './images/calvin-kline-logo.svg';
 import prada_logo from './images/prada-logo.svg';
 import guccie_logo from './images/gucci-logo.svg';
-import star from './images/star.svg';
+import star from './images/star.png';
 import menu from './images/menu.svg';
 import black_search_icon from './images/black-search-icon.svg';
+import profilephoto from './images/profilephoto.png';
+import LandingBg from './images/LandingBg.png';
+import footer1 from './images/footer1.png';
+import logo from './images/logo.png';
+import navbarlogo from './images/navbarlogo.png';
+import trash from './images/Trash2.svg';
+import emailWarning from './images/MailWarning.svg';
+import errorImg from './images/CircleAlert.svg';
+import verified from './images/CircleCheck.svg';
+import img101 from './images/img101.png';
+import img102 from './images/img102.png';
+import img103 from './images/img103.png';
+import img104 from './images/img104.png';
+import OTP_img from './images/OTP_image.svg';
 export {
   cart,
   down_arrow,
@@ -25,4 +39,18 @@ export {
   star,
   menu,
   black_search_icon,
+  profilephoto,
+  LandingBg,
+  footer1,
+  logo,
+  navbarlogo,
+  trash,
+  emailWarning,
+  errorImg,
+  verified,
+  img101,
+  img102,
+  img103,
+  img104,
+  OTP_img,
 };
