@@ -161,6 +161,16 @@ export const clotherCate = [
   { id: 4, title: 'Hoodie' },
   { id: 5, title: 'Jeans' },
 ];
+export const womenMenCate = [
+  { id: 1, title: 'Casual' },
+  { id: 2, title: 'Formal' },
+  { id: 3, title: 'Sport' },
+];
+export const kidsCate = [
+  { id: 1, title: 'Girls' },
+  { id: 2, title: 'Boys' },
+  { id: 3, title: 'Babies' },
+];
 export const colors = [
   '#00C12B',
   '#F50606',
@@ -174,14 +184,10 @@ export const colors = [
   '#000000',
 ];
 export const size = [
-  { id: 1, title: 'XX-Small' },
-  { id: 2, title: 'X-Small' },
-  { id: 3, title: 'Small' },
-  { id: 5, title: 'medium' },
+  { id: 1, title: 'X-Small' },
+  { id: 2, title: 'Small' },
+  { id: 3, title: 'medium' },
 
-  { id: 6, title: 'Large' },
-  { id: 7, title: 'X-Large' },
-  { id: 8, title: 'XX-Large' },
-  { id: 9, title: '3X-Large' },
-  { id: 10, title: '4X-Large' },
+  { id: 4, title: 'Large' },
+  { id: 5, title: 'X-Large' },
 ];

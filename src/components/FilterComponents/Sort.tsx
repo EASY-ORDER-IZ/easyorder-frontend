@@ -10,33 +10,28 @@ import {
 import React from 'react';
 import { ChevronDown } from 'lucide-react';
 import DrawerComponent from './Drawer';
-interface Props {
-  title?: string;
-  min?: number;
-  max?: number;
-  total?: number;
-}
+import AppliedFilters from './AppliedFilters';
 
-const Sort = ({ title, min, max, total }: Props) => {
+const Sort = () => {
   const [position, setPosition] = React.useState('Most Popular');
   return (
     <div className="flex w-full items-center justify-between">
-      <span className="text-2md leading-full font-bold capitalize">{title}</span>
+      <AppliedFilters />
       <div className="mt-2 flex gap-3 sm:mt-1">
-        <span className="text-text/60 text-list leading-full font-normal">
-          {`Showing ${min}-${max} of ${total}`}
-        </span>
-        <div className="hidden gap-1 sm:flex">
-          <span className="text-text/60 text-list leading-full font-normal">Sort by:</span>
+        <div className="hidden items-center gap-1 whitespace-nowrap sm:flex">
+          <span className="text-list">Sort by:</span>
           <DropdownMenu>
-            <DropdownMenuTrigger asChild>
-              <div className="flex gap-1">
-                <span className="text-list leading-full cursor-pointer font-normal">
-                  {position}
-                </span>
-                <ChevronDown size={20} />
-              </div>
-            </DropdownMenuTrigger>
+            <DropdownMenuTrigger
+              icon={
+                <div className="flex items-center justify-center gap-1">
+                  <span className="text-list text-text-800 cursor-pointer font-bold">
+                    {position}
+                  </span>
+                  <ChevronDown size={20} className="text-text-800 font-bold" />
+                </div>
+              }
+            />
+
             <DropdownMenuContent className="w-45" side="bottom" align="start" sideOffset={4}>
               <DropdownMenuLabel>choose one:</DropdownMenuLabel>
               <DropdownMenuSeparator />

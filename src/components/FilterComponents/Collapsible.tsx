@@ -10,17 +10,19 @@ interface Props {
   component?: React.ReactNode;
 }
 export function CollapsibleComponent({ title, component }: Props) {
-  const [isOpen, setIsOpen] = React.useState(true);
+  const [isOpen, setIsOpen] = React.useState(false);
 
   return (
     <Collapsible open={isOpen} onOpenChange={setIsOpen} className="flex w-full flex-col gap-5">
       <div className="flex w-full justify-between">
-        <span className="align-middle text-[20px] leading-[100%] font-bold">{title}</span>
+        <span className="text-list text-text-main align-middle leading-[100%] font-bold">
+          {title}
+        </span>
         <CollapsibleTrigger asChild>
           {isOpen ? (
-            <ChevronUp className="cursor-pointer" />
+            <ChevronUp className="text-text-main text-list cursor-pointer" />
           ) : (
-            <ChevronDown className="cursor-pointer" />
+            <ChevronDown className="text-text-main text-list cursor-pointer" />
           )}
         </CollapsibleTrigger>
       </div>
