@@ -43,7 +43,7 @@ export function CarouselOrientation({ onReady }: CarouselOrientationProps) {
           {reviews.map((review) => (
             <CarouselItem
               key={review.id}
-              className="basis-[90%] pl-2 sm:basis-[45%] md:basis-[28%] md:pl-4"
+              className="basis-[90%] pl-2 sm:basis-[45%] md:basis-[23%] md:pl-4"
             >
               <div className="w-full">
                 <CommentCard name={review.name} rating={review.rating} review={review.review} />
@@ -53,8 +53,8 @@ export function CarouselOrientation({ onReady }: CarouselOrientationProps) {
         </CarouselContent>
       </Carousel>
 
-      <div className="pointer-events-none absolute inset-y-0 left-0 hidden w-[70px] bg-gradient-to-r from-white/30 to-transparent backdrop-blur-[1.5px] sm:block"></div>
-      <div className="pointer-events-none absolute inset-y-0 right-0 hidden w-[70px] bg-gradient-to-l from-white/30 to-transparent backdrop-blur-[1.5px] sm:block"></div>
+      <div className="pointer-events-none absolute inset-y-0 left-0 hidden w-[190px] bg-gradient-to-r from-white/30 to-transparent backdrop-blur-[1.5px] lg:block"></div>
+      <div className="pointer-events-none absolute inset-y-0 right-0 hidden w-[190px] bg-gradient-to-l from-white/30 to-transparent backdrop-blur-[1.5px] lg:block"></div>
     </div>
   );
 }
