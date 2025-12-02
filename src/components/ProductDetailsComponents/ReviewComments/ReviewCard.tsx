@@ -13,21 +13,21 @@ interface ReviewCardProps {
 
 const ReviewCard: React.FC<ReviewCardProps> = ({ name, date, title, description, rating }) => {
   return (
-    <Card className="mt-3 rounded-md bg-[#FCFBFA] p-3">
-      <CardHeader>
-        <div className="flex justify-between">
+    <Card className="mt-3 rounded-md bg-[#FCFBFA] p-3 sm:p-4">
+      <CardHeader className="p-0">
+        <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
           <div className="flex items-center gap-2">
-            <span>{name}</span>
+            <span className="text-sm sm:text-base">{name}</span>
             <CircleCheck color="green" width={15} height={15} />
           </div>
           <CustomRating value={rating} readOnly />
         </div>
-        <div className="flex justify-between">
-          <CardTitle>{title}</CardTitle>
-          <span className="text-text-400 text-sm">{date}</span>
+        <div className="mt-2 flex flex-col gap-1 sm:flex-row sm:items-center sm:justify-between">
+          <CardTitle className="text-sm sm:text-base">{title}</CardTitle>
+          <span className="text-text-400 text-xs sm:text-sm">{date}</span>
         </div>
       </CardHeader>
-      <CardDescription className="mt-4">{description}</CardDescription>
+      <CardDescription className="mt-4 text-sm sm:text-base">{description}</CardDescription>
     </Card>
   );
 };
