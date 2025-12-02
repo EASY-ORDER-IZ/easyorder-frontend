@@ -18,7 +18,6 @@ const ProductDetailsTab = () => {
         </p>
         <br />
         <p>
-          {' '}
           Perfect for both formal and casual occasions, this versatile scarf can be styled as a
           headscarf, neck accessory, or tied to a handbag for a touch of elegance.
         </p>
