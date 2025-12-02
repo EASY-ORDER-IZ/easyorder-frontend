@@ -12,11 +12,7 @@ const AvailableSizes: React.FC<AvailableSizesProps> = ({ sizes, defaultValue }) 
     <RadioGroup defaultValue={defaultValue || sizes[0]} className="flex gap-4">
       {sizes.map((size) => (
         <div key={size} className="flex items-center space-x-2">
-          <RadioGroupItem
-            value={size}
-            id={size}
-            className="border-gray-400 data-[state=checked]:border-[var(--color-primary-main)] data-[state=checked]:text-[var(--color-primary-main)]"
-          />
+          <RadioGroupItem value={size} id={size} className="border-gray-400" />
           <Label htmlFor={size}>{size}</Label>
         </div>
       ))}
