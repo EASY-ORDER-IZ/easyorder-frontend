@@ -3,26 +3,14 @@ import AvialableColors from './AvialableColors';
 import AvailableSizes from './AvailableSizes';
 import { Button } from '../ui/button/button';
 import { Minus, Plus } from 'lucide-react';
+import CustomRating from '../ui/CustomRating';
 
 const Details = () => {
   const [btnTitle, setBtnTitle] = useState('Add to cart');
   const [count, setCount] = useState(1);
 
-  const handleIncrement = () => {
-    if (count > 0) {
-      setCount(count + 1);
-    } else {
-      setCount(0);
-    }
-  };
-
-  const handleDecrement = () => {
-    if (count > 0) {
-      setCount(count - 1);
-    } else {
-      setCount(0);
-    }
-  };
+  const handleIncrement = () => setCount(count + 1);
+  const handleDecrement = () => setCount(count > 0 ? count - 1 : 0);
 
   const handleAddToCart = () => {
     setTimeout(() => {
@@ -31,34 +19,39 @@ const Details = () => {
   };
 
   return (
-    <div className="p-6">
-      <div>
-        <h1 className="text-[2.3rem] font-bold">Persian Elegance Silk Scarf</h1>
+    <div className="p-4 md:p-6">
+      <div className="flex items-center gap-2">
+        <CustomRating value={4.5} readOnly />
+        <span className="text-sm md:text-base">({4.5})</span>
+      </div>
 
-        <p className="text-text-400 w-[31.2rem]">
+      <div className="mt-2">
+        <h1 className="text-2xl font-bold md:text-[2.3rem]">Persian Elegance Silk Scarf</h1>
+        <p className="text-text-400 max-w-full text-sm md:max-w-[31.2rem] md:text-base">
           A luxurious satin silk scarf featuring intricate Persian paisley patterns in rich navy and
           gold tones.
         </p>
-
-        <span className="text-text-400 text-[2.3rem] font-bold">$24.84</span>
+        <span className="text-text-400 text-xl font-bold md:text-[2.3rem]">$24.84</span>
       </div>
 
       <hr className="my-4" />
 
       <div>
-        <h2 className="text-text-400 text-[1.5rem] font-bold">Available colors</h2>
+        <h2 className="text-text-400 text-base font-bold md:text-[1.5rem]">Available colors</h2>
         <AvialableColors colors={['#353D54', '#D24560', '#006E8D']} />
       </div>
       <br />
+
       <div>
-        <h2 className="text-text-400 text-[1.5rem] font-bold">Available sizes</h2>
+        <h2 className="text-text-400 text-base font-bold md:text-[1.5rem]">Available sizes</h2>
         <AvailableSizes sizes={['OneSize', 'Small', 'Medium', 'Large']} defaultValue="Medium" />
       </div>
       <br />
       <hr />
       <br />
-      <div className="mt-4 flex gap-2">
-        <div className="border-text-400 flex w-[10.3rem] items-center justify-center gap-5 rounded-full border border-2">
+
+      <div className="mt-4 flex flex-col gap-2 md:flex-row md:gap-4">
+        <div className="border-text-400 flex w-full items-center justify-center gap-4 rounded-full border border-2 md:w-[10.3rem] md:gap-5">
           <button onClick={handleDecrement} className="cursor-pointer">
             <Minus size={20} />
           </button>
@@ -67,7 +60,11 @@ const Details = () => {
             <Plus size={20} />
           </button>
         </div>
-        <Button title={btnTitle} onClick={handleAddToCart} className="w-[24.5rem] rounded-full" />
+        <Button
+          title={btnTitle}
+          onClick={handleAddToCart}
+          className="w-full rounded-full md:w-[24.5rem]"
+        />
       </div>
     </div>
   );

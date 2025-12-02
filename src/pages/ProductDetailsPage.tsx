@@ -1,6 +1,7 @@
 import Details from '@/components/ProductDetailsComponents/Details';
 import ImgDisplay from '@/components/ProductDetailsComponents/ImgDisplay';
 import Links from '@/components/ProductDetailsComponents/Links';
+import ProductTabs from '@/components/ProductDetailsComponents/Tabs/ProductTabs';
 import React from 'react';
 
 const ProductDetailsPage = () => {
@@ -13,6 +14,7 @@ const ProductDetailsPage = () => {
           <Details />
         </div>
       </div>
+      <ProductTabs />
     </div>
   );
 };
