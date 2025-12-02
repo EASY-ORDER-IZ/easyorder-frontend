@@ -1,8 +1,6 @@
-import { SlidersVertical } from 'lucide-react';
-import { clotherCate, cate } from '@/store/staticData';
+import { clotherCate, womenMenCate, kidsCate } from '@/store/staticData';
 import CollapsibleComponent from './Collapsible';
 import SliderComponents from './Slider';
-import ColorsComponent from './Colors';
 import TypeFilter from './TypeFilter';
 import Size from './Size';
 import { Button } from '../ui/button/button';
@@ -10,25 +8,34 @@ import { Separator } from '@/components/ui/separator';
 
 const FliterComponent = () => {
   return (
-    <div className="border-button-bg/10 rounded-1xl flex w-full max-w-[290px] flex-col gap-6 border px-6 py-5">
+    <div className="border-button-bg/10 rounded-1xl custom-scrollbar flex h-280 w-full max-w-50 flex-col gap-6 overflow-y-auto border px-6 py-5">
       <div className="flex w-full justify-between">
-        <span className="text-h3 leading-full flex font-bold">Filters</span>
-        <SlidersVertical size={24} className="opacity-40" />
+        <span className="text-small text-text-200 leading-full flex font-bold">Categories</span>
       </div>
+      <CollapsibleComponent
+        title="Women"
+        component={<TypeFilter component={womenMenCate} type={clotherCate} filterKey="Women" />}
+      />
       <Separator />
-      <TypeFilter type={clotherCate} />
+      <CollapsibleComponent
+        title="Men"
+        component={<TypeFilter component={womenMenCate} type={clotherCate} filterKey="Men" />}
+      />
       <Separator />
-      <CollapsibleComponent title="Price" component={<SliderComponents />} />
+      <CollapsibleComponent
+        title="Kids"
+        component={<TypeFilter component={kidsCate} type={clotherCate} filterKey="Kids" />}
+      />
       <Separator />
-      <CollapsibleComponent title="Colors" component={<ColorsComponent />} />
-      <Separator />
-      <CollapsibleComponent title="Size" component={<Size />} />
-      <Separator />
-      <CollapsibleComponent title="Dress Style" component={<TypeFilter type={cate} />} />
-
-      <Button className="text-button-text rounded-7xl" size="apply" variant="default">
-        <span className="text-table-sm leading-full tracking-normal">Apply Filter</span>
-      </Button>
+      <div className="flex w-full justify-between">
+        <span className="text-small text-text-200 leading-full flex font-bold">Size</span>
+      </div>
+      <Size />
+      <div className="flex w-full justify-between">
+        <span className="text-small text-text-200 leading-full flex font-bold">Price</span>
+      </div>
+      <SliderComponents />
+      <Button className="rounded-7xl text-sm" title="Apply Filters" />
     </div>
   );
 };

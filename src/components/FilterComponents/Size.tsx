@@ -1,28 +1,34 @@
-import { Button } from '../ui/button/button';
 import { size } from '../../store/staticData';
-import { useState } from 'react';
+import { Checkbox } from '../ui/checkbox';
+import { useFiltersStore } from '@/store/useFiltersStore';
+
 const Size = () => {
-  const [activeIndex, setActiveIndex] = useState<number | null>(null);
-  const handleSelect = (index: number) => {
-    return setActiveIndex(index);
-  };
+  const addFilter = useFiltersStore((s) => s.addFilter);
+  const removeFilter = useFiltersStore((s) => s.removeFilter);
+
   return (
-    <div className="flex w-full flex-wrap gap-2">
-      {size.map((s, index) => {
-        const isActive = activeIndex === index;
+    <div className="flex w-full flex-col flex-wrap gap-2">
+      {size.map((s) => {
         return (
-          <Button
-            onClick={() => handleSelect(index)}
-            key={index}
-            variant="primary"
-            className={`text-p flex cursor-pointer gap-[12px] rounded-[62px] border px-5 py-[18px] ${
-              isActive
-                ? 'text-button-text border-transparent bg-black'
-                : 'text-text/60 border-[#F0F0F0] bg-[#F0F0F0]'
-            } `}
+          <div
+            className="text-small text-text-300 flex flex-row items-center justify-between"
+            key={s.id}
           >
             {s.title}
-          </Button>
+            <Checkbox
+              onCheckedChange={(checked) => {
+                if (checked) {
+                  addFilter({
+                    key: `size-${s.id}`,
+                    label: s.title,
+                    value: String(s.id),
+                  });
+                } else {
+                  removeFilter(String(s.id));
+                }
+              }}
+            />
+          </div>
         );
       })}
     </div>
