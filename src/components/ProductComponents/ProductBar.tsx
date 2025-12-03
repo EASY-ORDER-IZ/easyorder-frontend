@@ -4,6 +4,7 @@ import { useState } from 'react';
 import ProductCard from './ProductCard';
 import { Button } from '../ui/button/button';
 import { ChevronRight } from 'lucide-react';
+import CardItem2 from '../CommonComponents/CardItem/CardItem2';
 
 interface Props {
   title: string;
@@ -32,7 +33,7 @@ const ProductBar = ({ title }: Props) => {
 
       <div className="hidden gap-3 sm:grid sm:grid-cols-4">
         {visibleProductsLarge.map((product) => (
-          <ProductCard key={product.id} product={product} />
+          <CardItem2 key={product.id} title={product.name} img={product.img} />
         ))}
       </div>
       <div className="grid grid-cols-2 gap-3 sm:hidden">
@@ -42,10 +43,13 @@ const ProductBar = ({ title }: Props) => {
       </div>
 
       <div className="flex w-full items-center justify-center sm:w-auto">
-        <Button onClick={handleViewMore} variant="secondary">
-          {hasMore ? 'View All' : 'View Less'}
-          <ChevronRight />
-        </Button>
+        <Button
+          variant="secondary"
+          title="View all"
+          className="m-2 rounded-full"
+          onClick={handleViewMore}
+          suffixIcon={<ChevronRight />}
+        />
       </div>
     </div>
   );

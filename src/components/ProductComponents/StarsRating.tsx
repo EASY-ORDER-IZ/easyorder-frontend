@@ -16,11 +16,14 @@ const StarsRating = ({ rating, className }: Rating) => {
         <Star
           size={12}
           key={`full-${i}`}
+          color="yellow"
           className={`${className} fill-status-warning text-status-warning`}
         />
       ))}
 
-      {hasHalfStar && <StarHalf size={12} className="fill-status-warning text-status-warning" />}
+      {hasHalfStar && (
+        <StarHalf size={12} color="yellow" className="fill-status-warning text-status-warning" />
+      )}
     </div>
   );
 };

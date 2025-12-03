@@ -6,6 +6,7 @@ import CategoryPage from '@/pages/CategoryPage';
 import Placeholder from '@/components/Placeholder';
 import PaymentForm from '@/components/PaymentForm';
 import CardItem from '@/components/CommonComponents/CardItem/CardSlider';
+import ProductDetailsPage from '@/pages/ProductDetailsPage';
 
 const Router = createBrowserRouter([
   {
@@ -44,6 +45,14 @@ const Router = createBrowserRouter([
       {
         path: '/card',
         element: <CardItem />,
+      },
+      {
+        path: '/productDetails',
+        element: <ProductDetailsPage />,
+      },
+      {
+        path: 'top-selling',
+        element: <div>top selling</div>,
       },
     ],
   },
