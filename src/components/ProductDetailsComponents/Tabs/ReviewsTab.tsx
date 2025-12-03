@@ -5,6 +5,21 @@ import { Button } from '@/components/ui/button/button';
 import { Filter } from 'lucide-react';
 import Select from '@/components/CommonComponents/Select';
 
+const selectOptions = [
+  {
+    label: 'Latest',
+    value: 'latest',
+  },
+  {
+    label: 'Oldest',
+    value: 'oldest',
+  },
+  {
+    label: 'Highest Rated',
+    value: 'highest-rated',
+  },
+];
+
 const ReviewsTab = () => {
   const [showAll, setShowAll] = useState(reviews.length > 5 ? false : true);
   const displayedReviews = showAll ? reviews : reviews.slice(0, 5);
@@ -18,7 +33,7 @@ const ReviewsTab = () => {
         </div>
         <div className="flex items-center gap-3">
           <Filter size={24} />
-          <Select placeholder="Latest" />
+          <Select placeholder="Latest" data={selectOptions} className="border-0 text-[18px]" />
         </div>
       </div>
       <div>
