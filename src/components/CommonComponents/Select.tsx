@@ -1,39 +1,49 @@
-import React from 'react';
+import * as React from 'react';
 import {
-  Select as UISelect,
+  Select,
   SelectContent,
+  SelectGroup,
   SelectItem,
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select';
-import { selectData } from '@/store/selectData';
+import { cn } from '@/lib/utils';
 
-interface SelectProps {
-  placeholder: string;
+interface OptionItem {
+  label?: string;
+  value: string;
 }
 
-const Select: React.FC<SelectProps> = ({ placeholder }) => {
+interface SelectComponentProps {
+  data: OptionItem[];
+  placeholder?: string;
+  className?: string;
+}
+
+const SelectComponent: React.FC<SelectComponentProps> = ({ data, placeholder, className }) => {
+  const [value, setValue] = React.useState<string | undefined>(undefined);
+
   return (
-    <div className="flex flex-col gap-2">
-      <span>{placeholder}</span>
-      <UISelect>
-        <SelectTrigger className="w-auto min-w-[11.25rem]">
-          <SelectValue placeholder="Select" className="text-color-text-100" />
-        </SelectTrigger>
-        <SelectContent className="max-h-60 overflow-y-auto rounded-md border-none bg-white shadow-lg">
-          {selectData.map((item) => (
+    <Select value={value} onValueChange={setValue}>
+      <SelectTrigger className={cn('w-[180px]', className)}>
+        <SelectValue placeholder={placeholder || 'Select...'} />
+      </SelectTrigger>
+
+      <SelectContent>
+        <SelectGroup>
+          {data.map((item) => (
             <SelectItem
-              key={item.id}
+              key={item.value}
               value={item.value}
-              className="px-3 py-2 whitespace-nowrap text-gray-400 hover:bg-[#D24560] hover:text-white"
+              className="mt-2 hover:bg-[var(--color-primary-main)] hover:text-white"
             >
-              {item.lable}
+              {item.label}
             </SelectItem>
           ))}
-        </SelectContent>
-      </UISelect>
-    </div>
+        </SelectGroup>
+      </SelectContent>
+    </Select>
   );
 };
 
-export default Select;
+export default SelectComponent;
