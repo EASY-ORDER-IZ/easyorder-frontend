@@ -14,10 +14,13 @@ const Footer: React.FC<FooterBackgroundProps> = ({ src, alt = '', className = ''
       <img src={src} alt={alt} className="absolute inset-0 h-full w-full object-cover" />
 
       <div className="relative flex h-full w-full items-end justify-center">
-        <div className="flex w-full max-w-[1229px] flex-col items-center gap-4 px-4 py-10 lg:flex-row lg:gap-[246px]">
-          <LogoSVG className="mb-1 flex max-w-[50%] lg:max-w-[100%]" color="white" />
+        <div className="flex w-full max-w-[1229px] flex-col items-center gap-4 px-4 py-6 sm:py-8 md:py-10 lg:flex-row lg:gap-[246px] lg:py-10">
+          <LogoSVG
+            className="mb-1 flex max-w-[60%] sm:max-w-[50%] md:max-w-[40%] lg:max-w-[100%]"
+            color="white"
+          />
 
-          <span className="text-sm text-white">
+          <span className="text-center text-xs text-white sm:text-sm md:text-sm">
             FirstChance © 2025, All Rights Reserved to IztechValley
           </span>
         </div>
