@@ -18,13 +18,19 @@ interface SelectComponentProps {
   data: OptionItem[];
   placeholder?: string;
   className?: string;
+  onValueChange?: (value: string) => void;
 }
 
-const SelectComponent: React.FC<SelectComponentProps> = ({ data, placeholder, className }) => {
-  const [value, setValue] = React.useState<string | undefined>(undefined);
+const SelectComponent: React.FC<SelectComponentProps> = ({
+  data,
+  placeholder,
+  className,
+  onValueChange,
+}) => {
+  const [value] = React.useState<string | undefined>(undefined);
 
   return (
-    <Select value={value} onValueChange={setValue}>
+    <Select value={value} onValueChange={onValueChange}>
       <SelectTrigger className={cn('w-[180px]', className)}>
         <SelectValue placeholder={placeholder || 'Select...'} />
       </SelectTrigger>

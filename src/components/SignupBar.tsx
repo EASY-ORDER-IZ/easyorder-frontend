@@ -1,10 +1,12 @@
 import { useState } from 'react';
 import { XIcon } from 'lucide-react';
 import { useSearchParams } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 const SignupBar = () => {
   const [visible, setVisible] = useState(true);
   const [, setSearchParams] = useSearchParams();
+  const { t } = useTranslation();
 
   const switchDialog = (target: 'sign-in' | 'sign-up' | 'forget-password' | 'email-verfiy') => {
     setSearchParams({ auth: target });
@@ -15,13 +17,13 @@ const SignupBar = () => {
     <div className="bg-accent-primary flex w-full items-center justify-between px-3 py-2">
       <div></div>
       <div className="flex items-center justify-center gap-2">
-        <span className="header-text">Sign up and get 20% off your first order</span>
+        <span className="header-text">{t('signupBar.title')}</span>
 
         <span
           onClick={() => switchDialog('sign-up')}
           className="link-text !text-background cursor-pointer"
         >
-          Join Now
+          {t('signupBar.joinNow')}
         </span>
       </div>
       <div className="flex items-center justify-center">
