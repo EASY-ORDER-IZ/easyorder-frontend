@@ -64,13 +64,13 @@ const NavbarLogo: FC<NavbarProps> = () => {
 
           <div className="text-text-secondary hidden items-center gap-4 sm:flex lg:gap-6">
             <ShoppingCart
-              size={18}
+              size={24}
               className="cursor-pointer hover:text-[var(--color-primary-main)]"
             />
-            <Heart size={18} className="cursor-pointer hover:text-[var(--color-primary-main)]" />
+            <Heart size={24} className="cursor-pointer hover:text-[var(--color-primary-main)]" />
             <CircleUserRound
               onClick={() => switchDialog('sign-in')}
-              size={18}
+              size={24}
               className="cursor-pointer hover:text-[var(--color-primary-main)]"
             />
           </div>
