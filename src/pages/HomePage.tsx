@@ -10,7 +10,11 @@ const HomePage = () => {
       <HeroSection />
       <Body />
       <CommentSection />
-      <Footer src={footer1} alt="Footer Background" className="h-[363px]"></Footer>
+      <Footer
+        src={footer1}
+        alt="Footer Background"
+        className="h-[8.125rem] sm:h-[15.625rem] md:h-[18.75rem]"
+      ></Footer>
     </div>
   );
 };
