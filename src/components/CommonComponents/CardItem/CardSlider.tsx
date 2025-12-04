@@ -9,7 +9,7 @@ import { cardData } from '../../../store/CardData';
 
 const CardSlider: React.FC = () => {
   return (
-    <div className="relative h-96 w-[15.5rem]">
+    <div className="relative h-96 w-[15.5rem] md:h-80 md:w-[11.875rem] lg:h-96 lg:w-[15.5rem]">
       <Swiper
         modules={[Autoplay, Pagination]}
         pagination={{
