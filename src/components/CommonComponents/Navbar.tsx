@@ -1,187 +1,120 @@
-import LogoSVG from '@/assets/svg/logo';
+import React, { useState } from 'react';
 import { NavLink, useSearchParams } from 'react-router-dom';
+import { CircleUserRound, Heart, Menu, ShoppingCart, X, Search } from 'lucide-react';
+import LogoSVG from '@/assets/svg/logo';
+import mobileLogo from '@/assets/svg/mobileLogo.svg';
+import useMobile from '@/hooks/useMobile';
 import SearchComponent from './Search';
-import { CircleUserRound, Heart, MenuIcon, ShoppingCart, Search } from 'lucide-react';
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from '@/components/ui/dropdown-menu';
 
 interface NavbarProps {
   isModalOpen: boolean;
 }
 
-const Navbar = ({ isModalOpen }: NavbarProps) => {
-  const [searchParams, setSearchParams] = useSearchParams();
+const NavbarLogo: FC<NavbarProps> = () => {
+  const isMobileMenu = useMobile(768);
+  const [isOpen, setIsOpen] = useState(false);
+  const [, setSearchParams] = useSearchParams();
+
+  const toggleMenu = () => setIsOpen(!isOpen);
+  const closeMenu = () => setIsOpen(false);
 
   const switchDialog = (target: 'sign-in' | 'sign-up' | 'forget-password' | 'email-verfiy') => {
     setSearchParams({ auth: target });
   };
 
+  const linkClasses =
+    'font-poppins hover:text-[var(--color-primary-main)] text-text-600 transition-colors duration-200 whitespace-nowrap';
+
   return (
-    <nav className="font-satoshi relative z-50 w-full bg-white text-base">
-      <div
-        className={`bg-background ${
-          searchParams || isModalOpen ? '' : 'sticky top-0 z-70'
-        } w-full px-4 py-3 lg:px-22 lg:py-4`}
-      >
-        <div className="flex w-full items-center justify-between lg:hidden">
-          <div className="flex items-center gap-3">
-            <NavLink to="/wish">
-              <Heart className="text-text-secondary h-5 w-5 cursor-pointer" />
-            </NavLink>
-
-            <NavLink to="/cart">
-              <ShoppingCart className="text-text-secondary h-5 w-5 cursor-pointer" />
-            </NavLink>
+    <nav className="relative mt-4 px-4 sm:px-8 lg:px-22">
+      <div className="flex items-center justify-between gap-4">
+        <div className="flex shrink-0 items-center gap-3">
+          <div className="text-text-secondary flex gap-4 sm:hidden">
+            <Heart size={20} className="cursor-pointer" />
+            <ShoppingCart size={20} className="cursor-pointer" />
           </div>
-
-          <LogoSVG className="max-w-[40%]" />
-
-          <div className="flex items-center gap-3">
-            <Search className="text-text-secondary cursor-pointer" size={25} />
-            <CircleUserRound
-              onClick={() => switchDialog('sign-in')}
-              size={25}
-              className="text-text-secondary cursor-pointer"
-            />
-
-            <DropdownMenu>
-              <DropdownMenuTrigger
-                icon={<MenuIcon className="text-text-secondary cursor-pointer" size={16} />}
-              />
-
-              <DropdownMenuContent className="w-40">
-                <DropdownMenuSeparator />
-
-                <DropdownMenuItem>
-                  <NavLink
-                    to="/"
-                    className={({ isActive }) =>
-                      isActive
-                        ? 'cursor-pointer text-[var(--color-primary-main)]'
-                        : 'cursor-pointer hover:text-[var(--color-primary-main)]'
-                    }
-                  >
-                    Home
-                  </NavLink>
-                </DropdownMenuItem>
-
-                <DropdownMenuItem>
-                  <NavLink
-                    to="/new_in"
-                    className={({ isActive }) =>
-                      isActive
-                        ? 'cursor-pointer text-[var(--color-primary-main)]'
-                        : 'cursor-pointer hover:text-[var(--color-primary-main)]'
-                    }
-                  >
-                    New In
-                  </NavLink>
-                </DropdownMenuItem>
-
-                <DropdownMenuItem>
-                  <NavLink
-                    to="/about"
-                    className={({ isActive }) =>
-                      isActive
-                        ? 'cursor-pointer text-[var(--color-primary-main)]'
-                        : 'cursor-pointer hover:text-[var(--color-primary-main)]'
-                    }
-                  >
-                    Best sellers
-                  </NavLink>
-                </DropdownMenuItem>
-
-                <DropdownMenuItem>
-                  <NavLink
-                    to="/cate"
-                    className={({ isActive }) =>
-                      isActive
-                        ? 'cursor-pointer text-[var(--color-primary-main)]'
-                        : 'cursor-pointer hover:text-[var(--color-primary-main)]'
-                    }
-                  >
-                    Categories
-                  </NavLink>
-                </DropdownMenuItem>
-              </DropdownMenuContent>
-            </DropdownMenu>
-          </div>
+          <LogoSVG className="mb-1 hidden h-auto w-[8.5rem] sm:block lg:w-[10.5rem]" />
         </div>
 
-        <div className="hidden w-full items-center justify-between lg:flex">
-          <LogoSVG className="max-w-[100%]" />
+        <div className="hidden items-center gap-6 md:flex">
+          <NavLink to="/" className={linkClasses}>
+            Home
+          </NavLink>
+          <NavLink to="/new-in" className={linkClasses}>
+            New In
+          </NavLink>
+          <NavLink to="/best-sellers" className={linkClasses}>
+            Best Sellers
+          </NavLink>
+          <NavLink to="/categories" className={linkClasses}>
+            Categories
+          </NavLink>
+        </div>
 
-          <div className="flex min-w-80 gap-6">
-            <NavLink
-              to="/"
-              className={({ isActive }) =>
-                isActive
-                  ? 'cursor-pointer text-[var(--color-primary-main)]'
-                  : 'cursor-pointer hover:text-[var(--color-primary-main)]'
-              }
-            >
-              Home
-            </NavLink>
+        <div className="absolute left-1/2 block -translate-x-1/2 sm:hidden">
+          <img src={mobileLogo} alt="Mobile Logo" className="h-[2rem]" />
+        </div>
 
-            <NavLink
-              to="/new_in"
-              className={({ isActive }) =>
-                isActive
-                  ? 'cursor-pointer text-[var(--color-primary-main)]'
-                  : 'cursor-pointer hover:text-[var(--color-primary-main)]'
-              }
-            >
-              New In
-            </NavLink>
-
-            <NavLink
-              to="/about"
-              className={({ isActive }) =>
-                isActive
-                  ? 'cursor-pointer text-[var(--color-primary-main)]'
-                  : 'cursor-pointer hover:text-[var(--color-primary-main)]'
-              }
-            >
-              Best sellers
-            </NavLink>
-
-            <NavLink
-              to="/cate"
-              className={({ isActive }) =>
-                isActive
-                  ? 'cursor-pointer text-[var(--color-primary-main)]'
-                  : 'cursor-pointer hover:text-[var(--color-primary-main)]'
-              }
-            >
-              Categories
-            </NavLink>
-          </div>
-
-          <div className="min-w-[35%]">
+        <div className="flex shrink-0 items-center gap-4 sm:gap-6">
+          <div className="hidden w-[12rem] md:block lg:w-[15rem] xl:w-[18rem]">
             <SearchComponent />
           </div>
 
-          <div className="flex gap-6">
-            <NavLink to="/cart">
-              <ShoppingCart className="text-text-secondary h-5 w-5 cursor-pointer" />
-            </NavLink>
-            <NavLink to="/wish">
-              <Heart className="text-text-secondary h-5 w-5 cursor-pointer" />
-            </NavLink>
+          <Search className="text-text-secondary block cursor-pointer md:hidden" size={20} />
+
+          <div className="text-text-secondary hidden items-center gap-4 sm:flex lg:gap-6">
+            <ShoppingCart
+              size={18}
+              className="cursor-pointer hover:text-[var(--color-primary-main)]"
+            />
+            <Heart size={18} className="cursor-pointer hover:text-[var(--color-primary-main)]" />
             <CircleUserRound
               onClick={() => switchDialog('sign-in')}
-              className="text-text-secondary h-5 w-5 cursor-pointer"
+              size={18}
+              className="cursor-pointer hover:text-[var(--color-primary-main)]"
             />
           </div>
+
+          <button
+            onClick={toggleMenu}
+            className="text-text-600 hover:text-[var(--color-primary-main)] focus:outline-none md:hidden"
+          >
+            {isOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
         </div>
       </div>
+
+      {isMobileMenu && isOpen && (
+        <div className="animate-in slide-in-from-top-2 absolute top-full left-0 z-50 flex w-full flex-col gap-5 border-t border-gray-100 bg-white px-6 py-6 shadow-lg duration-200">
+          <NavLink to="/" onClick={closeMenu} className={linkClasses}>
+            Home
+          </NavLink>
+          <NavLink to="/new-in" onClick={closeMenu} className={linkClasses}>
+            New In
+          </NavLink>
+          <NavLink to="/best-sellers" onClick={closeMenu} className={linkClasses}>
+            Best Sellers
+          </NavLink>
+          <NavLink to="/categories" onClick={closeMenu} className={linkClasses}>
+            Categories
+          </NavLink>
+
+          <div className="mt-2 flex flex-col gap-4 border-t border-gray-100 pt-4 sm:hidden">
+            <div
+              className="text-text-600 flex items-center gap-2"
+              onClick={() => {
+                switchDialog('sign-in');
+                closeMenu();
+              }}
+            >
+              <CircleUserRound size={18} />
+              <span>Register</span>
+            </div>
+          </div>
+        </div>
+      )}
     </nav>
   );
 };
 
-export default Navbar;
+export default NavbarLogo;
