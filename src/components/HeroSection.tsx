@@ -1,83 +1,82 @@
-import React from 'react';
-import { useTranslation } from 'react-i18next';
-import { Button } from './ui/button/button';
-import { NavLink } from 'react-router-dom';
-import Counter from '../hooks/counter';
-import { star } from '@/assets/icons';
-import LandingBg from './CommonComponents/LandingBg';
-import Watan from '@/assets/svg/Watan';
-import Pailroots from '@/assets/svg/Pailroots';
-import Rula from '@/assets/svg/Rula';
+import { Button } from '@/components/ui/button/button';
+import bb from '../assets/images/bb.png';
+import { Separator } from '@/components/ui/separator';
+import Counter from '@/hooks/counter';
+import Pailroots from '../assets/svg/Pailroots';
 import Collecttive from '@/assets/svg/Collecttive';
-
-const HeroSection: React.FC = () => {
-  const { t } = useTranslation();
-
+import Watan from '../assets/svg/Watan';
+import aa from '../assets/images/rula.png';
+import star from '../assets/images/star.png';
+const Header = () => {
   return (
-    <div className="w-full">
-      <div className="bg-background-50 relative flex flex-col md:flex-row">
-        <div className="flex flex-1 flex-col items-center justify-center p-6 text-center md:items-start md:p-20 md:text-left">
-          <h1 className="font-integral text-text-600 mb-6 text-4xl font-bold sm:text-6xl">
-            {t('heroSection.title.line1')}
-            <br />
-            {t('heroSection.title.line2')}
-            <br />
-            {t('heroSection.title.line3')}
-          </h1>
-
-          <p className="text-text-200 mb-6 py-3">
-            {t('heroSection.description.line1')}
-            <br />
-            {t('heroSection.description.line2')}
-          </p>
-          <NavLink to="/products">
-            <Button className="mb-6 w-full rounded-full md:w-[210px]" title="Shop Now !" />
-          </NavLink>
-
-          <div className="font-satoshi mb-6 flex flex-col items-center gap-8 md:flex-row">
-            <div className="flex gap-8">
-              <div>
-                <Counter end={200} /> <br />
-                <span className="text-text-400">{t('heroSection.counter')}</span>
+    <>
+      <div className="">
+        <div className="flex w-full items-center justify-between px-5 py-4 lg:py-0">
+          <div className="flex flex-col items-center gap-5 px-14 lg:items-start">
+            <div className="flex w-full flex-col items-center justify-center gap-4 lg:max-w-[62%]">
+              <span className="text-text-primary text-title leading-14 font-bold">
+                FIND CLOTHES THAT MATCHES YOUR STYLE
+              </span>
+              <span className="button-text text-text-secondary">
+                Browse through our diverse range of meticulously crafted garments, designed to bring
+                out your individuality and cater to your sense of style.
+              </span>
+            </div>
+            <div className="flex w-full max-w-[80%] justify-center lg:max-w-[27%]">
+              <Button variant="primary" title="Shop Now!"></Button>
+            </div>
+            <div className="flex w-full justify-center gap-5 lg:justify-start">
+              <div className="flex flex-col items-center justify-center">
+                <Counter end={200} />
+                <span className="lg:text-input text-text-secondary leading-5">
+                  International Brands
+                </span>
               </div>
-              <div>
-                <Counter end={2000} /> <br />
-                <span className="text-text-400">{t('heroSection.counter2')}</span>
+              <Separator orientation="vertical" className="h-auto w-auto" />
+              <div className="flex flex-col items-center justify-center">
+                <Counter end={2000} />
+                <span className="md:text-input text-text-secondary leading-5">
+                  International Brands
+                </span>
+              </div>
+              <Separator orientation="vertical" className="h-auto w-auto" />
+              <div className="flex flex-col items-center justify-center">
+                <Counter end={30000} />
+                <span className="lg:text-input text-text-secondary leading-5">
+                  International Brands
+                </span>
               </div>
             </div>
+          </div>
+          <div className="max-w-[65%]">
+            <img src={bb} className="hidden object-cover lg:flex lg:h-[600px] lg:w-[700px]" />
+            <div className="">
+              <img src={star} alt="" className="absolute top-1 right-5" />
+              <img src={star} alt="" className="absolute top-15 right-25 h-[70px] w-[70px]" />
+            </div>
+          </div>
+          <div className="hidden w-20 lg:flex"></div>
+        </div>
 
-            <div>
-              <Counter end={30000} /> <br />
-              <span className="text-text-400">{t('heroSection.counter3')}</span>
+        <div className="bg-text-secondary">
+          <div className="grid grid-cols-2 items-center p-6 lg:flex lg:justify-evenly lg:p-6">
+            <div className="flex justify-center">
+              <Pailroots />
+            </div>
+            <div className="flex justify-center">
+              <Collecttive />
+            </div>
+            <div className="flex justify-center">
+              <Watan />
+            </div>
+            <div className="flex justify-center">
+              <img className="max-w-[82%]" src={aa} />
             </div>
           </div>
         </div>
-
-        <div className="relative hidden md:block">
-          <img
-            src={star}
-            alt=""
-            className="absolute top-4 right-12 hidden h-[76px] w-[76px] sm:top-2 sm:right-4 sm:h-[104px] sm:w-[104px] md:block"
-          />
-          <img
-            src={star}
-            alt="Star"
-            className="absolute hidden sm:w-[56px] md:top-22 md:right-28 md:block md:h-[56px]"
-          />
-          <LandingBg className="hidden object-cover md:block" />
-        </div>
       </div>
-
-      <div className="bg-background-900 w-full py-6 md:py-10">
-        <div className="flex items-center justify-around overflow-x-auto">
-          <Pailroots />
-          <Collecttive />
-          <Watan />
-          <Rula />
-        </div>
-      </div>
-    </div>
+    </>
   );
 };
 
-export default HeroSection;
+export default Header;
