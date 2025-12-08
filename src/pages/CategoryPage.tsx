@@ -7,9 +7,11 @@ import { newClothes } from '@/store/staticData';
 import { useState } from 'react';
 import ProductCard from '@/components/ProductComponents/ProductCard';
 import { Separator } from '@/components/ui/separator';
+import { products } from '@/store/dummmyData';
 
 const CategoryPage = () => {
   const { title } = useParams();
+  const { sub } = useParams();
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 9;
 
@@ -19,11 +21,11 @@ const CategoryPage = () => {
   if (currentPage > totalPages) setCurrentPage(totalPages);
 
   const firstIndex = (currentPage - 1) * itemsPerPage;
-  const currentProducts = newClothes.slice(firstIndex, firstIndex + itemsPerPage);
+  const currentProducts = products.slice(firstIndex, firstIndex + itemsPerPage);
 
   return (
     <div className="flex flex-col gap-6">
-      <BreadCrumbComponent cate={title} />
+      <BreadCrumbComponent cate={title} subCate={sub} />
 
       <div className="flex w-full gap-6">
         <div className="hidden flex-col gap-5 sm:flex">
@@ -39,9 +41,15 @@ const CategoryPage = () => {
                 </div>
               </div>
 
-              <div className="grid grid-cols-2 gap-4 sm:grid-cols-3">
+              <div className="grid grid-cols-2 gap-13 sm:grid-cols-3">
                 {currentProducts.map((p, idx) => (
-                  <ProductCard key={idx} product={p} />
+                  <ProductCard
+                    key={idx}
+                    title={p.title}
+                    price={p.price}
+                    description={p.discription}
+                    img={p.image}
+                  />
                 ))}
               </div>
 
