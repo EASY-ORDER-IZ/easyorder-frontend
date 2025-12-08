@@ -155,12 +155,35 @@ export const cate = [
   { id: 4, title: 'Gym', img: casual },
 ];
 export const clotherCate = [
-  { id: 1, title: 'T-shirts' },
-  { id: 2, title: 'Shorts' },
-  { id: 3, title: 'Shirts' },
-  { id: 4, title: 'Hoodie' },
-  { id: 5, title: 'Jeans' },
+  {
+    id: 1,
+    title: 'Womens',
+    data: {
+      Casual: ['T-shirts', 'Jeans', 'Hoodies'],
+      Formal: ['Dresses', 'Scarves', 'Blazers'],
+      Sport: ['Tracksuits', 'T-shirts'],
+    },
+  },
+  {
+    id: 2,
+    title: 'Mens',
+    data: {
+      Casual: ['T-shirts', 'Shirts', 'Jeans'],
+      Formal: ['Suits', 'Shirts'],
+      Sport: ['Tracksuits', 'Shorts'],
+    },
+  },
+  {
+    id: 3,
+    title: 'Kids',
+    data: {
+      Girls: ['Dresses', 'T-shirts'],
+      Boys: ['T-shirts', 'Shorts'],
+      Babies: ['Sets', 'Bodysuits'],
+    },
+  },
 ];
+
 export const colors = [
   '#00C12B',
   '#F50606',
