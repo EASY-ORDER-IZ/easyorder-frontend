@@ -10,6 +10,7 @@ const CategoryPage = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 9;
   const [appliedFilters, setAppliedFilters] = useState<string[]>([]);
+  const [priceRange, setPriceRange] = useState<[number, number]>([0, 250]);
 
   const totalItems = newClothes.length;
   const totalPages = Math.max(1, Math.ceil(totalItems / itemsPerPage));
@@ -24,14 +25,19 @@ const CategoryPage = () => {
 
       <div className="flex w-full gap-6">
         <div className="hidden w-[400px] flex-col gap-5 sm:flex">
-          <FliterComponent appliedFilters={appliedFilters} setAppliedFilters={setAppliedFilters} />
+          <FliterComponent
+            appliedFilters={appliedFilters}
+            setAppliedFilters={setAppliedFilters}
+            priceRange={priceRange}
+            setPriceRange={setPriceRange}
+          />
         </div>
 
         <div className="flex flex-col items-center justify-center gap-5">
           <div className="inline-block w-full">
             <div className="inline-block w-auto align-top">
               <div className="max-w-full p-2">
-                <FilterGroup appliedFilters={appliedFilters} />
+                <FilterGroup appliedFilters={appliedFilters} priceRange={priceRange} />
               </div>
 
               <div className="mt-6">
