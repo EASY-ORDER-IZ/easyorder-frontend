@@ -2,7 +2,6 @@ import { SlidersVertical } from 'lucide-react';
 import { clotherCate } from '@/store/staticData';
 import CollapsibleComponent from './Collapsible';
 import SliderComponents from './Slider';
-import ColorsComponent from './Colors';
 import TypeFilter from './TypeFilter';
 import Size from './Size';
 import { Button } from '../ui/button/button';
@@ -40,9 +39,12 @@ const FliterComponent: React.FC<Props> = ({
         component={<SliderComponents range={priceRange} setRange={setPriceRange} />}
       />
       <Separator />
-      <CollapsibleComponent title="Colors" component={<ColorsComponent />} />
-      <Separator />
-      <CollapsibleComponent title="Size" component={<Size />} />
+      {/* <CollapsibleComponent title="Colors" component={<ColorsComponent />} /> */}
+      {/* <Separator /> */}
+      <CollapsibleComponent
+        title="Size"
+        component={<Size appliedFilters={appliedFilters} setAppliedFilters={setAppliedFilters} />}
+      />
       <Separator />
 
       <Button className="text-button-text rounded-7xl" size="apply" variant="default">

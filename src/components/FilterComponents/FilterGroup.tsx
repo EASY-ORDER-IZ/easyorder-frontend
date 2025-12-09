@@ -15,7 +15,8 @@ const FilterGroup = ({ appliedFilters = [], priceRange = [0, 250] }: Props) => {
         (filter) =>
           p.category?.includes(filter) ||
           p.subcategory?.includes(filter) ||
-          p.title?.toLowerCase().includes(filter.toLowerCase()),
+          p.title?.toLowerCase().includes(filter.toLowerCase()) ||
+          (p.sizes && p.sizes.includes(filter)),
       );
 
     const matchesPrice = p.price >= priceRange[0] && p.price <= priceRange[1];
