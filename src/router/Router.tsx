@@ -31,7 +31,7 @@ const Router = createBrowserRouter([
         element: <CartPage />,
       },
       {
-        path: 'cate/:title',
+        path: 'category',
         element: <CategoryPage />,
       },
       {

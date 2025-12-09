@@ -13,6 +13,7 @@ const CategoryPage = () => {
   const [priceRange, setPriceRange] = useState<[number, number]>([0, 250]);
   const [tempFilters, setTempFilters] = useState<string[]>([]);
   const [tempPriceRange, setTempPriceRange] = useState<[number, number]>([0, 250]);
+  const [hasProducts, setHasProducts] = useState(true);
 
   const totalItems = newClothes.length;
   const totalPages = Math.max(1, Math.ceil(totalItems / itemsPerPage));
@@ -43,21 +44,27 @@ const CategoryPage = () => {
           <div className="inline-block w-full">
             <div className="inline-block w-auto align-top">
               <div className="max-w-full p-2">
-                <FilterGroup appliedFilters={appliedFilters} priceRange={priceRange} />
+                <FilterGroup
+                  appliedFilters={appliedFilters}
+                  priceRange={priceRange}
+                  onHasProducts={setHasProducts}
+                />
               </div>
 
               <div className="mt-6">
                 <Separator />
               </div>
 
-              <div className="mt-4 flex justify-center">
-                <ProductPagination
-                  totalItems={totalItems}
-                  itemsPerPage={itemsPerPage}
-                  currentPage={currentPage}
-                  setCurrentPage={setCurrentPage}
-                />
-              </div>
+              {hasProducts && (
+                <div className="mt-4 flex justify-center">
+                  <ProductPagination
+                    totalItems={totalItems}
+                    itemsPerPage={itemsPerPage}
+                    currentPage={currentPage}
+                    setCurrentPage={setCurrentPage}
+                  />
+                </div>
+              )}
             </div>
           </div>
         </div>

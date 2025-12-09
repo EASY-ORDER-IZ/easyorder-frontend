@@ -68,6 +68,7 @@ const ProductPagination: React.FC<Props> = ({
       <PaginationContent className="flex justify-center">
         <PaginationItem className="absolute left-0">
           <PaginationPrevious
+            className="hover:text-white"
             href="#"
             onClick={(e) => {
               e.preventDefault();
@@ -76,7 +77,7 @@ const ProductPagination: React.FC<Props> = ({
           />
         </PaginationItem>
 
-        <PaginationItem>
+        <PaginationItem className="flex gap-3">
           {leftPages.map((p) => (
             <PaginationLink
               key={p}
@@ -86,6 +87,7 @@ const ProductPagination: React.FC<Props> = ({
                 e.preventDefault();
                 setCurrentPage(p);
               }}
+              className="w-8 border-1 border-gray-300 p-1 hover:text-white"
             >
               {p}
             </PaginationLink>
@@ -120,6 +122,7 @@ const ProductPagination: React.FC<Props> = ({
 
         <PaginationItem className="absolute right-0">
           <PaginationNext
+            className="hover:text-white"
             href="#"
             onClick={(e) => {
               e.preventDefault();

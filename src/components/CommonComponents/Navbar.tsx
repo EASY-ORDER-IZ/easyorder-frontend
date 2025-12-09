@@ -98,7 +98,7 @@ const Navbar = ({ isModalOpen }: NavbarProps) => {
 
                 <DropdownMenuItem>
                   <NavLink
-                    to="/cate"
+                    to="/category"
                     className={({ isActive }) =>
                       isActive
                         ? 'cursor-pointer text-[var(--color-primary-main)]'
@@ -151,7 +151,7 @@ const Navbar = ({ isModalOpen }: NavbarProps) => {
             </NavLink>
 
             <NavLink
-              to="/cate"
+              to="/category"
               className={({ isActive }) =>
                 isActive
                   ? 'cursor-pointer text-[var(--color-primary-main)]'
