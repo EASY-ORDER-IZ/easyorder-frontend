@@ -2,10 +2,26 @@ import { products } from '@/store/dummmyData';
 import React from 'react';
 import ProductCard from '../ProductComponents/ProductCard';
 
-const FilterGroup = () => {
-  const womenProducts = products.filter((p) => p.gender === 'Women');
-  const menProducts = products.filter((p) => p.gender === 'Men');
-  const kidsProducts = products.filter((p) => p.gender === 'Kids');
+interface Props {
+  appliedFilters?: string[];
+}
+
+const FilterGroup = ({ appliedFilters = [] }: Props) => {
+  const filteredProducts =
+    appliedFilters.length > 0
+      ? products.filter((p) =>
+          appliedFilters.some(
+            (filter) =>
+              p.category?.includes(filter) ||
+              p.subcategory?.includes(filter) ||
+              p.title?.toLowerCase().includes(filter.toLowerCase()),
+          ),
+        )
+      : products;
+
+  const womenProducts = filteredProducts.filter((p) => p.gender === 'Women');
+  const menProducts = filteredProducts.filter((p) => p.gender === 'Men');
+  const kidsProducts = filteredProducts.filter((p) => p.gender === 'Kids');
 
   return (
     <div className="flex flex-col gap-10">
@@ -34,7 +50,7 @@ const FilterGroup = () => {
         <hr />
         <br />
         <br />
-        <div className="flex justify-start gap-4">
+        <div className="flex flex-wrap gap-4">
           {menProducts.map((p) => (
             <ProductCard
               key={p.id}
@@ -54,7 +70,7 @@ const FilterGroup = () => {
         <hr />
         <br />
         <br />
-        <div className="flex justify-start gap-4">
+        <div className="flex flex-wrap gap-4">
           {kidsProducts.map((p) => (
             <ProductCard
               key={p.id}

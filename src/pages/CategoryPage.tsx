@@ -31,7 +31,7 @@ const CategoryPage = () => {
           <div className="inline-block w-full">
             <div className="inline-block w-auto align-top">
               <div className="max-w-full p-2">
-                <FilterGroup />
+                <FilterGroup appliedFilters={appliedFilters} />
               </div>
 
               <div className="mt-6">
