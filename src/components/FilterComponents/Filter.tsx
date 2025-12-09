@@ -8,7 +8,12 @@ import Size from './Size';
 import { Button } from '../ui/button/button';
 import { Separator } from '@/components/ui/separator';
 
-const FliterComponent = () => {
+interface Props {
+  appliedFilters: string[];
+  setAppliedFilters: React.Dispatch<React.SetStateAction<string[]>>;
+}
+
+const FliterComponent: React.FC<Props> = ({ appliedFilters, setAppliedFilters }) => {
   return (
     <div className="border-button-bg/10 rounded-1xl flex w-full max-w-[290px] flex-col gap-6 border px-6 py-5">
       <div className="flex w-full justify-between">
@@ -16,7 +21,12 @@ const FliterComponent = () => {
         <SlidersVertical size={24} className="opacity-40" />
       </div>
       <Separator />
-      <TypeFilter type={clotherCate} />
+      <TypeFilter
+        type={clotherCate}
+        appliedFilters={appliedFilters}
+        setAppliedFilters={setAppliedFilters}
+      />
+
       <Separator />
       <CollapsibleComponent title="Price" component={<SliderComponents />} />
       <Separator />

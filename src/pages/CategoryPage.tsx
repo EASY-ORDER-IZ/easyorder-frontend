@@ -1,18 +1,15 @@
 import FliterComponent from '@/components/FilterComponents/Filter';
-import BreadCrumbComponent from '@/components/FilterComponents/BreadCrumb';
-import { useParams } from 'react-router-dom';
-// import Sort from '@/components/FilterComponents/Sort';
 import ProductPagination from '@/components/ProductComponents/Pagination';
 import { newClothes } from '@/store/staticData';
 import { useState } from 'react';
 import { Separator } from '@/components/ui/separator';
 import FilterGroup from '@/components/FilterComponents/FilterGroup';
+import AppliedFilters from '@/components/FilterComponents/AppliedFilters';
 
 const CategoryPage = () => {
-  const { title } = useParams();
-  const { sub } = useParams();
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 9;
+  const [appliedFilters, setAppliedFilters] = useState<string[]>([]);
 
   const totalItems = newClothes.length;
   const totalPages = Math.max(1, Math.ceil(totalItems / itemsPerPage));
@@ -22,23 +19,17 @@ const CategoryPage = () => {
   // const firstIndex = (currentPage - 1) * itemsPerPage;
 
   return (
-    <div className="flex flex-col gap-6 p-3">
-      <BreadCrumbComponent cate={title} subCate={sub} />
+    <div className="flex flex-col gap-6 p-3 px-22">
+      <AppliedFilters appliedFilters={appliedFilters} setAppliedFilters={setAppliedFilters} />
 
       <div className="flex w-full gap-6">
         <div className="hidden w-[400px] flex-col gap-5 sm:flex">
-          <FliterComponent />
+          <FliterComponent appliedFilters={appliedFilters} setAppliedFilters={setAppliedFilters} />
         </div>
 
         <div className="flex flex-col items-center justify-center gap-5">
           <div className="inline-block w-full">
             <div className="inline-block w-auto align-top">
-              {/* <div className="mb-4 flex w-full justify-between">
-                <div className="w-full">
-                  <Sort min={1} max={10} total={100} title={title} />
-                </div>
-              </div> */}
-
               <div className="max-w-full p-2">
                 <FilterGroup />
               </div>

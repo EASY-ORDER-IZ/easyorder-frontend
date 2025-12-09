@@ -1,7 +1,6 @@
 import { ChevronDown, ChevronRight } from 'lucide-react';
 import { useState } from 'react';
 import { Checkbox } from '../ui/checkbox';
-import { useNavigate } from 'react-router-dom';
 
 interface TypeItem {
   id: number | string;
@@ -11,23 +10,14 @@ interface TypeItem {
 
 interface Props {
   type?: TypeItem[];
+  appliedFilters: string[];
+  setAppliedFilters: React.Dispatch<React.SetStateAction<string[]>>;
 }
 
-const TypeFilter = ({ type = [] }: Props) => {
+const TypeFilter = ({ type = [], appliedFilters, setAppliedFilters }: Props) => {
   const [open, setOpen] = useState<number | null>(null);
   const [openSub, setOpenSub] = useState<string | null>(null);
   const [activeSub, setActiveSub] = useState<string | null>(null);
-  const [, setClick] = useState(false);
-
-  const navigate = useNavigate();
-
-  const handleCate = (title: string) => {
-    navigate(`/cate/${title.toLowerCase()}`);
-  };
-
-  const handleSubCate = (title: string, sub: string) => {
-    navigate(`/cate/${title.toLowerCase()}/${sub.toLowerCase()}`);
-  };
 
   const handleToggle = (index: number) => {
     setOpen(open === index ? null : index);
@@ -45,10 +35,7 @@ const TypeFilter = ({ type = [] }: Props) => {
               className="font-satoshi flex w-full items-center justify-between"
               onClick={() => handleToggle(index)}
             >
-              <span
-                className="cursor-pointer text-[24px] leading-[100%] opacity-60 hover:text-[var(--color-primary-main)]"
-                onClick={() => handleCate(c.title)}
-              >
+              <span className="cursor-pointer text-[24px] leading-[100%] opacity-60 hover:text-[var(--color-primary-main)]">
                 {c.title}
               </span>
 
@@ -65,7 +52,6 @@ const TypeFilter = ({ type = [] }: Props) => {
                       onClick={() => {
                         setOpenSub(openSub === sub ? null : sub);
                         setActiveSub(sub);
-                        handleSubCate(c.title, sub);
                       }}
                       className={`flex cursor-pointer justify-between text-[20px] ${
                         openSub === sub || activeSub === sub
@@ -82,11 +68,16 @@ const TypeFilter = ({ type = [] }: Props) => {
                         {c.data?.[sub]?.map((subItem) => (
                           <div key={subItem} className="flex items-center gap-3">
                             <Checkbox
-                              onClick={() => {
-                                setClick((prev) => !prev);
-                                setActiveSub(sub);
+                              checked={appliedFilters.includes(subItem)}
+                              onCheckedChange={() => {
+                                if (appliedFilters.includes(subItem)) {
+                                  setAppliedFilters(appliedFilters.filter((f) => f !== subItem));
+                                } else {
+                                  setAppliedFilters([...appliedFilters, subItem]);
+                                }
                               }}
                             />
+
                             <span className="cursor-pointer text-[14px] opacity-60 hover:opacity-100">
                               {subItem}
                             </span>
