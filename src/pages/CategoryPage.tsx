@@ -1,13 +1,12 @@
 import FliterComponent from '@/components/FilterComponents/Filter';
 import BreadCrumbComponent from '@/components/FilterComponents/BreadCrumb';
 import { useParams } from 'react-router-dom';
-import Sort from '@/components/FilterComponents/Sort';
+// import Sort from '@/components/FilterComponents/Sort';
 import ProductPagination from '@/components/ProductComponents/Pagination';
 import { newClothes } from '@/store/staticData';
 import { useState } from 'react';
-import ProductCard from '@/components/ProductComponents/ProductCard';
 import { Separator } from '@/components/ui/separator';
-import { products } from '@/store/dummmyData';
+import FilterGroup from '@/components/FilterComponents/FilterGroup';
 
 const CategoryPage = () => {
   const { title } = useParams();
@@ -20,37 +19,28 @@ const CategoryPage = () => {
 
   if (currentPage > totalPages) setCurrentPage(totalPages);
 
-  const firstIndex = (currentPage - 1) * itemsPerPage;
-  const currentProducts = products.slice(firstIndex, firstIndex + itemsPerPage);
+  // const firstIndex = (currentPage - 1) * itemsPerPage;
 
   return (
-    <div className="flex flex-col gap-6">
+    <div className="flex flex-col gap-6 p-3">
       <BreadCrumbComponent cate={title} subCate={sub} />
 
       <div className="flex w-full gap-6">
-        <div className="hidden flex-col gap-5 sm:flex">
+        <div className="hidden w-[400px] flex-col gap-5 sm:flex">
           <FliterComponent />
         </div>
 
         <div className="flex flex-col items-center justify-center gap-5">
           <div className="inline-block w-full">
             <div className="inline-block w-auto align-top">
-              <div className="mb-4 flex w-full justify-between">
+              {/* <div className="mb-4 flex w-full justify-between">
                 <div className="w-full">
                   <Sort min={1} max={10} total={100} title={title} />
                 </div>
-              </div>
+              </div> */}
 
-              <div className="grid grid-cols-2 gap-13 sm:grid-cols-3">
-                {currentProducts.map((p, idx) => (
-                  <ProductCard
-                    key={idx}
-                    title={p.title}
-                    price={p.price}
-                    description={p.discription}
-                    img={p.image}
-                  />
-                ))}
+              <div className="max-w-full p-2">
+                <FilterGroup />
               </div>
 
               <div className="mt-6">

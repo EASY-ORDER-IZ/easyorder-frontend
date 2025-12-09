@@ -1,5 +1,5 @@
 import { SlidersVertical } from 'lucide-react';
-import { clotherCate, cate } from '@/store/staticData';
+import { clotherCate } from '@/store/staticData';
 import CollapsibleComponent from './Collapsible';
 import SliderComponents from './Slider';
 import ColorsComponent from './Colors';
@@ -24,7 +24,6 @@ const FliterComponent = () => {
       <Separator />
       <CollapsibleComponent title="Size" component={<Size />} />
       <Separator />
-      <CollapsibleComponent title="Dress Style" component={<TypeFilter type={cate} />} />
 
       <Button className="text-button-text rounded-7xl" size="apply" variant="default">
         <span className="text-table-sm leading-full tracking-normal">Apply Filter</span>
