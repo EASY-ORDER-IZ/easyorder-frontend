@@ -12,6 +12,7 @@ interface Props {
   setAppliedFilters: React.Dispatch<React.SetStateAction<string[]>>;
   priceRange?: [number, number];
   setPriceRange?: React.Dispatch<React.SetStateAction<[number, number]>>;
+  onApplyFilters?: () => void;
 }
 
 const FliterComponent: React.FC<Props> = ({
@@ -19,6 +20,7 @@ const FliterComponent: React.FC<Props> = ({
   setAppliedFilters,
   priceRange = [0, 250],
   setPriceRange,
+  onApplyFilters,
 }) => {
   return (
     <div className="border-button-bg/10 rounded-1xl flex w-full max-w-[290px] flex-col gap-6 border px-6 py-5">
@@ -45,11 +47,14 @@ const FliterComponent: React.FC<Props> = ({
         title="Size"
         component={<Size appliedFilters={appliedFilters} setAppliedFilters={setAppliedFilters} />}
       />
-      <Separator />
+      {/* <Separator /> */}
 
-      <Button className="text-button-text rounded-7xl" size="apply" variant="default">
-        <span className="text-table-sm leading-full tracking-normal">Apply Filter</span>
-      </Button>
+      <Button
+        className="text-button-text rounded-7xl"
+        size="apply"
+        onClick={onApplyFilters}
+        title="Apply Filters"
+      />
     </div>
   );
 };

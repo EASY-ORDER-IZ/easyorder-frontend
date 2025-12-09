@@ -11,6 +11,8 @@ const CategoryPage = () => {
   const itemsPerPage = 9;
   const [appliedFilters, setAppliedFilters] = useState<string[]>([]);
   const [priceRange, setPriceRange] = useState<[number, number]>([0, 250]);
+  const [tempFilters, setTempFilters] = useState<string[]>([]);
+  const [tempPriceRange, setTempPriceRange] = useState<[number, number]>([0, 250]);
 
   const totalItems = newClothes.length;
   const totalPages = Math.max(1, Math.ceil(totalItems / itemsPerPage));
@@ -26,10 +28,14 @@ const CategoryPage = () => {
       <div className="flex w-full gap-6">
         <div className="hidden w-[400px] flex-col gap-5 sm:flex">
           <FliterComponent
-            appliedFilters={appliedFilters}
-            setAppliedFilters={setAppliedFilters}
-            priceRange={priceRange}
-            setPriceRange={setPriceRange}
+            appliedFilters={tempFilters}
+            setAppliedFilters={setTempFilters}
+            priceRange={tempPriceRange}
+            setPriceRange={setTempPriceRange}
+            onApplyFilters={() => {
+              setAppliedFilters(tempFilters);
+              setPriceRange(tempPriceRange);
+            }}
           />
         </div>
 
