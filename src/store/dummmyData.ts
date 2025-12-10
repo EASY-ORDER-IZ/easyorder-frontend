@@ -80,8 +80,6 @@ export const reviews: Review[] = [
   { id: 10, name: 'Nour Khalaf', comment: 'Perfect in every way! Highly recommend.', rate: 5 },
 ];
 
-// store/productsData.ts
-
 export const products = [
   {
     id: 1,
@@ -101,7 +99,7 @@ export const products = [
     id: 2,
     title: 'Navy Blue Hijab',
     category: 'Scarves',
-    gender: 'Women',
+    gender: 'Men',
     style: 'Casual',
     sizes: ['S', 'M', 'L'],
     price: 250,
@@ -115,7 +113,7 @@ export const products = [
     id: 3,
     title: 'Printed Formal Hijab',
     category: 'Scarves',
-    gender: 'Women',
+    gender: 'Men',
     style: 'Formal',
     sizes: ['M', 'L'],
     price: 280,
@@ -129,7 +127,7 @@ export const products = [
     id: 4,
     title: 'Blazer Brooch Pin',
     category: 'Accessories',
-    gender: 'Women',
+    gender: 'Kids',
     style: 'Formal',
     sizes: ['One Size'],
     price: 150,
