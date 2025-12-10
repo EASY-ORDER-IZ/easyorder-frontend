@@ -12,7 +12,7 @@ interface Props {
 const ProductCard: React.FC<Props> = ({ title, price, description, img }) => {
   return (
     <div>
-      <Card className="flex w-[300px] flex-col rounded-md border border-white p-3 shadow-lg">
+      <Card className="flex w-full flex-col rounded-md border border-white p-3 shadow-lg">
         <CardContent className="flex h-full flex-col p-0">
           <div className="mb-3 flex items-center justify-center">
             <img src={img} alt="" className="h-[380px] w-full rounded-md object-cover" />

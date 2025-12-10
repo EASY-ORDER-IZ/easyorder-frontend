@@ -5,6 +5,7 @@ import { useState } from 'react';
 import { Separator } from '@/components/ui/separator';
 import FilterGroup from '@/components/FilterComponents/FilterGroup';
 import AppliedFilters from '@/components/FilterComponents/AppliedFilters';
+import DrawerComponent from '@/components/FilterComponents/Drawer';
 
 const CategoryPage = () => {
   const [currentPage, setCurrentPage] = useState(1);
@@ -27,6 +28,19 @@ const CategoryPage = () => {
       <AppliedFilters appliedFilters={appliedFilters} setAppliedFilters={setAppliedFilters} />
 
       <div className="flex w-full gap-6">
+        <div className="sm:hidden">
+          <DrawerComponent
+            appliedFilters={tempFilters}
+            setAppliedFilters={setTempFilters}
+            priceRange={tempPriceRange}
+            setPriceRange={setTempPriceRange}
+            onApplyFilters={() => {
+              setAppliedFilters(tempFilters);
+              setPriceRange(tempPriceRange);
+            }}
+          />
+        </div>
+
         <div className="hidden w-[400px] flex-col gap-5 sm:flex">
           <FliterComponent
             appliedFilters={tempFilters}
