@@ -3,6 +3,7 @@ import { Heart, Star } from 'lucide-react';
 import { addToFav } from '@/hooks/useFav';
 import { removeFromLocalStorageById } from '@/utils/localStorage';
 import { SuccessSonner } from '../sonners/SuccessSonner';
+import { DeleteSonner } from '../sonners/DeleteSonner';
 
 interface cardProps {
   id: number;
@@ -60,6 +61,13 @@ const CardImg: React.FC<cardProps> = ({
     });
   };
 
+  const handleDelete = () => {
+    DeleteSonner({
+      title: 'Removed from favorites!',
+      placeholder: 'Your selected item was removed.',
+    });
+  };
+
   return (
     <div className="relative h-96 w-[16.5rem] overflow-hidden rounded-[0.3rem] text-white shadow-lg">
       <img src={img} alt={title} className="absolute top-0 left-0 h-full w-full object-cover" />
@@ -80,7 +88,8 @@ const CardImg: React.FC<cardProps> = ({
           height={22}
           onClick={() => {
             handleToggle();
-            handleSuccess();
+            if (!favorite) handleSuccess();
+            else handleDelete();
           }}
           className={`cursor-pointer ${favorite || heart ? 'fill-red-500 stroke-red-500' : 'stroke-white'}`}
         />
