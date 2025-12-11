@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Heart, Star } from 'lucide-react';
 import { addToFav } from '@/hooks/useFav';
 import { removeFromLocalStorageById } from '@/utils/localStorage';
+import { SuccessSonner } from '../sonners/SuccessSonner';
 
 interface cardProps {
   id: number;
@@ -12,6 +13,7 @@ interface cardProps {
   rating: number;
   sale?: string;
   fav?: boolean;
+  heart?: boolean;
 }
 
 const CardImg: React.FC<cardProps> = ({
@@ -23,6 +25,7 @@ const CardImg: React.FC<cardProps> = ({
   rating,
   sale,
   fav = false,
+  heart = false,
 }) => {
   const [favorite, setFavorite] = useState(fav);
 
@@ -50,6 +53,10 @@ const CardImg: React.FC<cardProps> = ({
     }
   };
 
+  const handleSuccess = () => {
+    SuccessSonner();
+  };
+
   return (
     <div className="relative h-96 w-[16.5rem] overflow-hidden rounded-[0.3rem] text-white shadow-lg">
       <img src={img} alt={title} className="absolute top-0 left-0 h-full w-full object-cover" />
@@ -68,8 +75,11 @@ const CardImg: React.FC<cardProps> = ({
         <Heart
           width={22}
           height={22}
-          onClick={handleToggle}
-          className={`cursor-pointer ${favorite ? 'fill-red-500 stroke-red-500' : 'stroke-white'}`}
+          onClick={() => {
+            handleToggle();
+            handleSuccess();
+          }}
+          className={`cursor-pointer ${favorite || heart ? 'fill-red-500 stroke-red-500' : 'stroke-white'}`}
         />
       </div>
 
