@@ -7,6 +7,7 @@ import Placeholder from '@/components/Placeholder';
 import PaymentForm from '@/components/PaymentForm';
 import CardItem from '@/components/CommonComponents/CardItem/CardSlider';
 import ProductDetailsPage from '@/pages/ProductDetailsPage';
+import Favorite from '@/pages/Favorite';
 
 const Router = createBrowserRouter([
   {
@@ -53,6 +54,10 @@ const Router = createBrowserRouter([
       {
         path: 'top-selling',
         element: <div>top selling</div>,
+      },
+      {
+        path: '/favorite',
+        element: <Favorite />,
       },
     ],
   },

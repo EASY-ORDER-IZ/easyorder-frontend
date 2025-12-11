@@ -30,7 +30,7 @@ const Navbar = ({ isModalOpen }: NavbarProps) => {
       >
         <div className="flex w-full items-center justify-between lg:hidden">
           <div className="flex items-center gap-3">
-            <NavLink to="/wish">
+            <NavLink to="/favorite">
               <Heart className="text-text-secondary h-5 w-5 cursor-pointer" />
             </NavLink>
 
@@ -170,7 +170,7 @@ const Navbar = ({ isModalOpen }: NavbarProps) => {
             <NavLink to="/cart">
               <ShoppingCart className="text-text-secondary h-5 w-5 cursor-pointer" />
             </NavLink>
-            <NavLink to="/wish">
+            <NavLink to="/favorite">
               <Heart className="text-text-secondary h-5 w-5 cursor-pointer" />
             </NavLink>
             <CircleUserRound
