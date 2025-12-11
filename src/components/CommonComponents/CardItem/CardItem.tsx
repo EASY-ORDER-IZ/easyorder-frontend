@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Heart, Star } from 'lucide-react';
-import { addItemTOFav, removeItemFromFav } from '@/hooks/useFav';
+import { addToFav } from '@/hooks/useFav';
+import { removeFromLocalStorageById } from '@/utils/localStorage';
 
 interface cardProps {
   id: number;
@@ -41,9 +42,11 @@ const CardImg: React.FC<cardProps> = ({
     };
 
     if (updated) {
-      addItemTOFav('favorites', payload);
+      addToFav('favorites', payload);
+      setFavorite(true);
     } else {
-      removeItemFromFav('favorites', id);
+      removeFromLocalStorageById('favorites', id);
+      setFavorite(false);
     }
   };
 

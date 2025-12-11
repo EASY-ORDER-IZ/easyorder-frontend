@@ -1,37 +1,30 @@
 export interface expiringItem<T> {
-  value: T;
+  value: T[];
   expireAt: Date;
 }
 
-export function addItemTOFav<T>(key: string, value: T): void {
-  const now = new Date();
-  const item = {
-    value,
-    expiry: now.getDate() + 7 * 24 * 60 * 60 * 1000,
-  };
-  localStorage.setItem(key, JSON.stringify(item));
-}
+// key       value
+// fav        [{item} , {item} , ...ect]
 
-export function getItemFromLocalStorage<T>(key: string): T | null {
-  const storageItem = localStorage.getItem(key);
-  if (!storageItem) return null;
+export const addToFav = <T>(key: string, item: T) => {
+  const store: T[] = [];
 
-  try {
-    const item: expiringItem<T> = JSON.parse(storageItem);
-    const now = new Date();
-
-    if (now > item.expireAt) {
-      localStorage.removeItem(key);
-      return null;
-    }
-
-    return item.value;
-  } catch (error) {
-    console.error(error);
-    return null;
+  const fav = localStorage.getItem(key);
+  if (fav) {
+    store.push(...JSON.parse(fav));
   }
-}
 
-export function removeItemFromFav(key: string): void {
-  localStorage.removeItem(key);
-}
+  store.push(item);
+
+  localStorage.setItem(key, JSON.stringify(store));
+};
+
+export const removeFromFav = <T extends { id: number }>(key: string, id: number) => {
+  const exist = localStorage.getItem(key);
+  if (!exist) return;
+
+  const items: T[] = JSON.parse(exist);
+  const filtered = items.filter((i) => i.id !== id);
+
+  localStorage.removeItem(JSON.stringify(filtered));
+};
