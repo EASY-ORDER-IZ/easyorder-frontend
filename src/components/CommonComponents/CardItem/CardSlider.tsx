@@ -29,6 +29,8 @@ const CardSlider: React.FC = () => {
               rating={card.rating}
               discount={card.priceBeforeDiscount}
               sale={card.type}
+              fav={card.favourite}
+              id={card.id}
             />
           </SwiperSlide>
         ))}
