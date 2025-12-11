@@ -19,6 +19,19 @@ export const addToFav = <T>(key: string, item: T) => {
   localStorage.setItem(key, JSON.stringify(store));
 };
 
+export const getAllFav = <T>(key: string): T[] => {
+  const exist = localStorage.getItem(key);
+  if (!exist) return [];
+  return JSON.parse(exist);
+};
+
+export const getFavItem = (key: string, id: number) => {
+  const exist = localStorage.getItem(key);
+  if (!exist) return;
+  const find = JSON.parse(exist).find((i) => i.id === id);
+  return find;
+};
+
 export const removeFromFav = <T extends { id: number }>(key: string, id: number) => {
   const exist = localStorage.getItem(key);
   if (!exist) return;
@@ -26,5 +39,5 @@ export const removeFromFav = <T extends { id: number }>(key: string, id: number)
   const items: T[] = JSON.parse(exist);
   const filtered = items.filter((i) => i.id !== id);
 
-  localStorage.removeItem(JSON.stringify(filtered));
+  localStorage.setItem(key, JSON.stringify(filtered));
 };
