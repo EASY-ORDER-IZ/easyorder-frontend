@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { Outlet } from 'react-router-dom';
 import Navbar from '../components/CommonComponents/Navbar';
 import SignupBar from '../components/SignupBar';
+import { Toaster } from 'sonner';
 
 const RootLayout: React.FC = () => {
   const [isModalOpen] = useState<boolean>(false);
@@ -13,6 +14,7 @@ const RootLayout: React.FC = () => {
       <SignupBar />
       <Navbar isModalOpen={isModalOpen} />
       <Outlet />
+      <Toaster richColors closeButton />
       <AuthDialogController />
     </div>
   );

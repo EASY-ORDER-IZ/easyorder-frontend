@@ -54,7 +54,10 @@ const CardImg: React.FC<cardProps> = ({
   };
 
   const handleSuccess = () => {
-    SuccessSonner();
+    SuccessSonner({
+      title: 'Added to favorites!',
+      placeholder: 'Your changes were saved.',
+    });
   };
 
   return (
