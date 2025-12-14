@@ -1,6 +1,6 @@
 import FliterComponent from '@/components/FilterComponents/Filter';
 import ProductPagination from '@/components/ProductComponents/Pagination';
-import { newClothes } from '@/store/staticData';
+import { products } from '@/store/dummmyData';
 import { useState } from 'react';
 import { Separator } from '@/components/ui/separator';
 import FilterGroup from '@/components/FilterComponents/FilterGroup';
@@ -16,7 +16,7 @@ const CategoryPage = () => {
   const [tempPriceRange, setTempPriceRange] = useState<[number, number]>([0, 250]);
   const [hasProducts, setHasProducts] = useState(true);
 
-  const totalItems = newClothes.length;
+  const totalItems = products.length;
   const totalPages = Math.max(1, Math.ceil(totalItems / itemsPerPage));
 
   if (currentPage > totalPages) setCurrentPage(totalPages);
@@ -61,6 +61,8 @@ const CategoryPage = () => {
                 <FilterGroup
                   appliedFilters={appliedFilters}
                   priceRange={priceRange}
+                  currentPage={currentPage}
+                  itemsPerPage={itemsPerPage}
                   onHasProducts={setHasProducts}
                 />
               </div>
