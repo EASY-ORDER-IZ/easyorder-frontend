@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Heart, Star } from 'lucide-react';
-import { addToFav } from '@/hooks/useFav';
+import { addToFav, getFavItem } from '@/hooks/useFav';
 import { removeFromLocalStorageById } from '@/utils/localStorage';
 import { SuccessSonner } from '../sonners/SuccessSonner';
 import { DeleteSonner } from '../sonners/DeleteSonner';
@@ -29,6 +29,13 @@ const CardImg: React.FC<cardProps> = ({
   heart = false,
 }) => {
   const [favorite, setFavorite] = useState(fav);
+
+  useEffect(() => {
+    const favItem = getFavItem('favorites', id);
+    if (favItem) {
+      setFavorite(true);
+    }
+  }, [id]);
 
   const handleToggle = () => {
     const updated = !favorite;
