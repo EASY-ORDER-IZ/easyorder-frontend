@@ -1,6 +1,5 @@
 import React from 'react';
 import ProductCard from '../ProductComponents/ProductCard';
-import { Separator } from '@/components/ui/separator';
 import { products } from '@/store/dummmyData';
 
 interface Props {
@@ -9,14 +8,16 @@ interface Props {
   currentPage?: number;
   itemsPerPage?: number;
   onHasProducts?: (hasProducts: boolean) => void;
+  activeTabb?: 'all' | 'men' | 'women' | 'kids';
 }
 
 const FilterGroup = ({
   appliedFilters = [],
   priceRange = [0, 250],
-  //   currentPage = 1,
-  //   itemsPerPage = 6,
+  currentPage = 1,
+  itemsPerPage = 6,
   onHasProducts,
+  activeTabb,
 }: Props) => {
   const filteredProducts = products.filter((p) => {
     const matchesFilters =
@@ -34,18 +35,22 @@ const FilterGroup = ({
     return matchesFilters && matchesPrice;
   });
 
-  const womenProducts = filteredProducts.filter((p) => p.gender === 'Women');
-  const menProducts = filteredProducts.filter((p) => p.gender === 'Men');
-  const kidsProducts = filteredProducts.filter((p) => p.gender === 'Kids');
+  let displayedProducts = filteredProducts;
+  if (activeTabb === 'women')
+    displayedProducts = filteredProducts.filter((p) => p.gender === 'Women');
+  else if (activeTabb === 'men')
+    displayedProducts = filteredProducts.filter((p) => p.gender === 'Men');
+  else if (activeTabb === 'kids') displayedProducts.filter((p) => p.gender === 'Kids');
 
-  //   const startIndex = (currentPage - 1) * itemsPerPage;
-  //   const endIndex = startIndex + itemsPerPage;
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const endIndex = startIndex + itemsPerPage;
+  const paginatedProducts = displayedProducts.slice(startIndex, endIndex);
 
-  //   const paginatedWomenProducts = womenProducts.slice(startIndex, endIndex);
-  //   const paginatedMenProducts = menProducts.slice(startIndex, endIndex);
-  //   const paginatedKidsProducts = kidsProducts.slice(startIndex, endIndex);
+  // const paginatedWomenProducts = womenProducts.slice(startIndex, endIndex);
+  // const paginatedMenProducts = menProducts.slice(startIndex, endIndex);
+  // const paginatedKidsProducts = kidsProducts.slice(startIndex, endIndex);
 
-  const hasFilteredProducts = filteredProducts.length > 0;
+  const hasFilteredProducts = displayedProducts.length > 0;
 
   if (onHasProducts) {
     onHasProducts(hasFilteredProducts);
@@ -61,73 +66,17 @@ const FilterGroup = ({
 
   return (
     <div className="flex flex-col gap-10">
-      {womenProducts.length > 0 && (
-        <div>
-          <h2 className="mb-4 text-2xl font-bold text-[var(--color-primary-main)]">Women</h2>
-          <Separator />
-          <br />
-          <br />
-          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-            {womenProducts.map((p) => (
-              <ProductCard
-                key={p.id}
-                title={p.title}
-                price={p.price}
-                description={p.discription}
-                img={p.image}
-              />
-            ))}
-          </div>
-        </div>
-      )}
-
-      {menProducts.length > 0 && (
-        <>
-          <br />
-          <br />
-          <div>
-            <h2 className="mb-4 text-2xl font-bold text-[var(--color-primary-main)]">Men</h2>
-            <Separator />
-            <br />
-            <br />
-            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-              {menProducts.map((p) => (
-                <ProductCard
-                  key={p.id}
-                  title={p.title}
-                  price={p.price}
-                  description={p.discription}
-                  img={p.image}
-                />
-              ))}
-            </div>
-          </div>
-        </>
-      )}
-
-      {kidsProducts.length > 0 && (
-        <>
-          <br />
-          <br />
-          <div>
-            <h2 className="mb-4 text-2xl font-bold text-[var(--color-primary-main)]">Kids</h2>
-            <Separator />
-            <br />
-            <br />
-            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-              {kidsProducts.map((p) => (
-                <ProductCard
-                  key={p.id}
-                  title={p.title}
-                  price={p.price}
-                  description={p.discription}
-                  img={p.image}
-                />
-              ))}
-            </div>
-          </div>
-        </>
-      )}
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+        {paginatedProducts.map((p) => (
+          <ProductCard
+            key={p.id}
+            title={p.title}
+            price={p.price}
+            description={p.discription}
+            img={p.image}
+          />
+        ))}
+      </div>
     </div>
   );
 };
