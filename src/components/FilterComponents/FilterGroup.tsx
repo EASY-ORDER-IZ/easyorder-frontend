@@ -1,7 +1,7 @@
-import { products } from '@/store/dummmyData';
 import React from 'react';
 import ProductCard from '../ProductComponents/ProductCard';
 import { Separator } from '@/components/ui/separator';
+import { products } from '@/store/dummmyData';
 
 interface Props {
   appliedFilters?: string[];
@@ -38,7 +38,6 @@ const FilterGroup = ({
   const menProducts = filteredProducts.filter((p) => p.gender === 'Men');
   const kidsProducts = filteredProducts.filter((p) => p.gender === 'Kids');
 
-  // Apply pagination to each category separately
   const startIndex = (currentPage - 1) * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
 
@@ -46,10 +45,8 @@ const FilterGroup = ({
   const paginatedMenProducts = menProducts.slice(startIndex, endIndex);
   const paginatedKidsProducts = kidsProducts.slice(startIndex, endIndex);
 
-  // Check if there are any filtered products
   const hasFilteredProducts = filteredProducts.length > 0;
 
-  // Notify parent component about product availability
   if (onHasProducts) {
     onHasProducts(hasFilteredProducts);
   }
@@ -64,7 +61,7 @@ const FilterGroup = ({
 
   return (
     <div className="flex flex-col gap-10">
-      {paginatedWomenProducts.length > 0 && (
+      {womenProducts.length > 0 && (
         <div>
           <h2 className="mb-4 text-2xl font-bold text-[var(--color-primary-main)]">Women</h2>
           <Separator />
@@ -84,7 +81,7 @@ const FilterGroup = ({
         </div>
       )}
 
-      {paginatedMenProducts.length > 0 && (
+      {menProducts.length > 0 && (
         <>
           <br />
           <br />
@@ -108,7 +105,7 @@ const FilterGroup = ({
         </>
       )}
 
-      {paginatedKidsProducts.length > 0 && (
+      {kidsProducts.length > 0 && (
         <>
           <br />
           <br />
