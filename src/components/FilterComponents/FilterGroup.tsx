@@ -14,8 +14,8 @@ interface Props {
 const FilterGroup = ({
   appliedFilters = [],
   priceRange = [0, 250],
-  currentPage = 1,
-  itemsPerPage = 6,
+  //   currentPage = 1,
+  //   itemsPerPage = 6,
   onHasProducts,
 }: Props) => {
   const filteredProducts = products.filter((p) => {
@@ -38,12 +38,12 @@ const FilterGroup = ({
   const menProducts = filteredProducts.filter((p) => p.gender === 'Men');
   const kidsProducts = filteredProducts.filter((p) => p.gender === 'Kids');
 
-  const startIndex = (currentPage - 1) * itemsPerPage;
-  const endIndex = startIndex + itemsPerPage;
+  //   const startIndex = (currentPage - 1) * itemsPerPage;
+  //   const endIndex = startIndex + itemsPerPage;
 
-  const paginatedWomenProducts = womenProducts.slice(startIndex, endIndex);
-  const paginatedMenProducts = menProducts.slice(startIndex, endIndex);
-  const paginatedKidsProducts = kidsProducts.slice(startIndex, endIndex);
+  //   const paginatedWomenProducts = womenProducts.slice(startIndex, endIndex);
+  //   const paginatedMenProducts = menProducts.slice(startIndex, endIndex);
+  //   const paginatedKidsProducts = kidsProducts.slice(startIndex, endIndex);
 
   const hasFilteredProducts = filteredProducts.length > 0;
 
@@ -68,7 +68,7 @@ const FilterGroup = ({
           <br />
           <br />
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-            {paginatedWomenProducts.map((p) => (
+            {womenProducts.map((p) => (
               <ProductCard
                 key={p.id}
                 title={p.title}
@@ -91,7 +91,7 @@ const FilterGroup = ({
             <br />
             <br />
             <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-              {paginatedMenProducts.map((p) => (
+              {menProducts.map((p) => (
                 <ProductCard
                   key={p.id}
                   title={p.title}
@@ -115,7 +115,7 @@ const FilterGroup = ({
             <br />
             <br />
             <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-              {paginatedKidsProducts.map((p) => (
+              {kidsProducts.map((p) => (
                 <ProductCard
                   key={p.id}
                   title={p.title}

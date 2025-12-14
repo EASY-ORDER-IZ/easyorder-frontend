@@ -6,7 +6,7 @@ interface Props {
   setRange?: React.Dispatch<React.SetStateAction<[number, number]>>;
 }
 
-const SliderComponents = ({ range = [50, 200], setRange }: Props) => {
+const SliderComponents = ({ range = [50, 1500], setRange }: Props) => {
   const [internalRange, setInternalRange] = useState<[number, number]>(range);
   const currentRange = setRange ? range : internalRange;
   const currentSetRange = setRange || setInternalRange;
@@ -17,7 +17,7 @@ const SliderComponents = ({ range = [50, 200], setRange }: Props) => {
         value={currentRange}
         onValueChange={currentSetRange}
         min={0}
-        max={250}
+        max={1500}
         step={1}
       />
 
