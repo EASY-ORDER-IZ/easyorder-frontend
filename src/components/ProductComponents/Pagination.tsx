@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {
   Pagination,
   PaginationContent,
@@ -6,130 +6,60 @@ import {
   PaginationLink,
   PaginationNext,
   PaginationPrevious,
-  PaginationEllipsis,
 } from '@/components/ui/pagination';
-import { Button } from '../ui/button/button';
 
-interface Props {
+interface props {
   totalItems: number;
   itemsPerPage: number;
   currentPage: number;
-  setCurrentPage: (p: number) => void;
+  setCurrentPage: React.Dispatch<React.SetStateAction<number>>;
+  totalPages?: number;
 }
-
-const ProductPagination: React.FC<Props> = ({
+const ProductPagination: React.FC<props> = ({
   totalItems,
   itemsPerPage,
   currentPage,
   setCurrentPage,
+  totalPages: propTotalPages,
 }) => {
-  const totalPages = Math.max(1, Math.ceil(totalItems / itemsPerPage));
-  const leftCount = 3;
-  const rightCount = 3;
-
-  const range = (start: number, end: number) =>
-    Array.from({ length: end - start + 1 }, (_, i) => start + i);
-
-  const handleEllipsisClick = () => {
-    if (currentPage <= leftCount) {
-      setCurrentPage(Math.max(leftCount + 1, totalPages - rightCount + 1));
-      setRightPages(
-        rightStart <= totalPages ? range(totalPages - rightStart + leftCount - 1, totalPages) : [],
-      );
-    } else {
-      setCurrentPage(leftCount);
-      setRightPages(rightStart <= totalPages ? range(rightStart, totalPages) : []);
-    }
-  };
-
-  const goPrev = () => {
-    setCurrentPage(Math.max(1, currentPage - 1));
-    if (currentPage <= leftCount)
-      setRightPages(rightStart <= totalPages ? range(rightStart, totalPages) : []);
-  };
-  const goNext = () => {
-    setCurrentPage(Math.min(totalPages, currentPage + 1));
-    if (currentPage >= leftCount)
-      setRightPages(
-        rightStart <= totalPages ? range(totalPages - rightStart + leftCount - 1, totalPages) : [],
-      );
-  };
-
-  const shouldShowAll = totalPages <= leftCount + rightCount;
-
-  const leftPages = range(1, Math.min(leftCount, totalPages));
-  const rightStart = Math.max(leftCount + 1, totalPages - rightCount + 1);
-  const [rightPages, setRightPages] = useState(
-    rightStart <= totalPages ? range(rightStart, totalPages) : [],
-  );
-
+  const totalPages = propTotalPages || Math.max(1, Math.ceil(totalItems / itemsPerPage));
   return (
-    <Pagination className="relative">
-      <PaginationContent className="flex justify-center">
-        <PaginationItem className="absolute left-0">
-          <PaginationPrevious
-            className="hover:text-white"
-            href="#"
-            onClick={(e) => {
-              e.preventDefault();
-              goPrev();
-            }}
-          />
-        </PaginationItem>
-
-        <PaginationItem className="flex gap-3">
-          {leftPages.map((p) => (
+    <Pagination>
+      <PaginationContent>
+        <PaginationPrevious
+          href="#"
+          onClick={(e) => {
+            e.preventDefault();
+            if (currentPage > 1) setCurrentPage(currentPage - 1);
+          }}
+          className="hover:text-white"
+        />
+        {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
+          <PaginationItem key={page} className="w-12 p-2">
             <PaginationLink
-              key={p}
               href="#"
-              isActive={currentPage === p}
               onClick={(e) => {
                 e.preventDefault();
-                setCurrentPage(p);
+                setCurrentPage(page);
               }}
-              className="w-8 border-1 border-gray-300 p-1 hover:text-white"
+              className={
+                page === currentPage
+                  ? 'bg-[var(--color-primary-main)] text-white'
+                  : 'hover:text-white'
+              }
             >
-              {p}
+              {page}
             </PaginationLink>
-          ))}
-
-          {!shouldShowAll && (
-            <>
-              <Button
-                aria-label="jump-pages"
-                onClick={handleEllipsisClick}
-                className="cursor-pointer items-center border-0 bg-transparent"
-              >
-                <PaginationEllipsis />
-              </Button>
-
-              {rightPages.map((p) => (
-                <PaginationLink
-                  key={p}
-                  href="#"
-                  isActive={currentPage === p}
-                  onClick={(e) => {
-                    e.preventDefault();
-                    setCurrentPage(p);
-                  }}
-                >
-                  {p}
-                </PaginationLink>
-              ))}
-            </>
-          )}
-        </PaginationItem>
-
-        <PaginationItem className="absolute right-0">
-          <PaginationNext
-            className="hover:text-white"
-            href="#"
-            onClick={(e) => {
-              e.preventDefault();
-              goNext();
-            }}
-          />
-        </PaginationItem>
+          </PaginationItem>
+        ))}
+        <PaginationNext
+          href="#"
+          onClick={(e) => {
+            e.preventDefault();
+            if (currentPage < totalPages) setCurrentPage(currentPage + 1);
+          }}
+          className="hover:text-white"
+        />
       </PaginationContent>
     </Pagination>
   );
