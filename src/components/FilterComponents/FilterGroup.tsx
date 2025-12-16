@@ -40,7 +40,8 @@ const FilterGroup = ({
     displayedProducts = filteredProducts.filter((p) => p.gender === 'Women');
   else if (activeTabb === 'men')
     displayedProducts = filteredProducts.filter((p) => p.gender === 'Men');
-  else if (activeTabb === 'kids') displayedProducts.filter((p) => p.gender === 'Kids');
+  else if (activeTabb === 'kids')
+    displayedProducts = displayedProducts.filter((p) => p.gender === 'Kids');
 
   const startIndex = (currentPage - 1) * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;

@@ -70,11 +70,11 @@ const TypeFilter = ({ type = [], appliedFilters, setAppliedFilters }: Props) => 
                             <Checkbox
                               checked={appliedFilters.includes(subItem)}
                               onCheckedChange={() => {
-                                if (appliedFilters.includes(subItem)) {
-                                  setAppliedFilters(appliedFilters.filter((f) => f !== subItem));
-                                } else {
-                                  setAppliedFilters([...appliedFilters, subItem]);
-                                }
+                                setAppliedFilters((prev) =>
+                                  prev.includes(subItem)
+                                    ? prev.filter((f) => f !== subItem)
+                                    : [...prev, subItem],
+                                );
                               }}
                             />
 

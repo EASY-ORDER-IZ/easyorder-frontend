@@ -1,11 +1,17 @@
+import { X } from 'lucide-react';
 import React from 'react';
 
 interface AppliedFiltersProps {
   appliedFilters: string[];
   setAppliedFilters: React.Dispatch<React.SetStateAction<string[]>>;
+  setTempFilters: React.Dispatch<React.SetStateAction<string[]>>;
 }
 
-const AppliedFilters: React.FC<AppliedFiltersProps> = ({ appliedFilters, setAppliedFilters }) => {
+const AppliedFilters: React.FC<AppliedFiltersProps> = ({
+  appliedFilters,
+  setAppliedFilters,
+  setTempFilters,
+}) => {
   return (
     <div className="flex flex-wrap items-center gap-3">
       <span className="text-[24px] font-bold">Applied Filters:</span>
@@ -18,9 +24,12 @@ const AppliedFilters: React.FC<AppliedFiltersProps> = ({ appliedFilters, setAppl
           {filter}
           <button
             className="text-red-500"
-            onClick={() => setAppliedFilters((prev) => prev.filter((f) => f !== filter))}
+            onClick={() => {
+              setAppliedFilters((prev) => prev.filter((f) => f !== filter));
+              setTempFilters((prev) => prev.filter((f) => f !== filter));
+            }}
           >
-            ✕
+            <X color="gray" />
           </button>
         </div>
       ))}
