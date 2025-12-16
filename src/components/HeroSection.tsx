@@ -51,8 +51,12 @@ const Header = () => {
           <div className="max-w-[65%]">
             <img src={bb} className="hidden object-cover lg:flex lg:h-[600px] lg:w-[700px]" />
             <div className="">
-              <img src={star} alt="" className="absolute top-1 right-5" />
-              <img src={star} alt="" className="absolute top-15 right-25 h-[70px] w-[70px]" />
+              <img src={star} alt="" className="lg:absolute lg:top-1 lg:right-5" />
+              <img
+                src={star}
+                alt=""
+                className="lg:absolute lg:top-15 lg:right-25 lg:h-[70px] lg:w-[70px]"
+              />
             </div>
           </div>
           <div className="hidden w-20 lg:flex"></div>
