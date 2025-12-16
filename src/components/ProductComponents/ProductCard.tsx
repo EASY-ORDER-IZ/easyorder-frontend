@@ -1,15 +1,19 @@
 import React from 'react';
 import { Card, CardContent } from '../ui/card';
 import { Button } from '../ui/button/button';
+import { useNavigate } from 'react-router';
 
 interface Props {
+  id: number;
   title: string;
   price: number;
   description: string;
   img: string;
 }
 
-const ProductCard: React.FC<Props> = ({ title, price, description, img }) => {
+const ProductCard: React.FC<Props> = ({ id, title, price, description, img }) => {
+  const navigate = useNavigate();
+
   return (
     <div>
       <Card className="flex w-full flex-col rounded-md border border-white p-3 shadow-lg">
@@ -31,6 +35,7 @@ const ProductCard: React.FC<Props> = ({ title, price, description, img }) => {
                 title="View product"
                 variant="secondary"
                 className="flex-1 rounded-full px-3 py-2 text-sm"
+                onClick={() => navigate(`/productDetails/${id}`)}
               />
             </div>
           </div>

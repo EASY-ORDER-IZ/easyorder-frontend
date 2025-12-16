@@ -70,11 +70,12 @@ const FilterGroup = ({
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
         {paginatedProducts.map((p) => (
           <ProductCard
+            id={p.id}
             key={p.id}
             title={p.title}
             price={p.price}
-            description={p.discription}
-            img={p.image}
+            description={p.description}
+            img={p.images[0]}
           />
         ))}
       </div>
