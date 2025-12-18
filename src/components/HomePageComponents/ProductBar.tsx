@@ -47,7 +47,7 @@ const ProductBar = ({ title, array, initialVisible = 5 }: Props) => {
             variant="secondary"
             title={showAll ? 'View Less' : 'View All'}
             onClick={handleToggle}
-            className="rounded-7xl"
+            className="rounded-7xl w-[15rem]"
             suffixIcon={<ChevronRight />}
           />
         </div>
