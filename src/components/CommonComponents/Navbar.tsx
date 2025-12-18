@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, type FC } from 'react';
 import { NavLink, useSearchParams } from 'react-router-dom';
 import { CircleUserRound, Heart, Menu, ShoppingCart, X, Search } from 'lucide-react';
 import LogoSVG from '@/assets/svg/logo';
@@ -10,7 +10,7 @@ interface NavbarProps {
   isModalOpen: boolean;
 }
 
-const NavbarLogo: FC<NavbarProps> = () => {
+const Navbar: FC<NavbarProps> = () => {
   const isMobileMenu = useMobile(768);
   const [isOpen, setIsOpen] = useState(false);
   const [, setSearchParams] = useSearchParams();
@@ -26,7 +26,7 @@ const NavbarLogo: FC<NavbarProps> = () => {
     'font-poppins hover:text-[var(--color-primary-main)] text-text-600 transition-colors duration-200 whitespace-nowrap';
 
   return (
-    <nav className="relative mt-4 px-4 sm:px-8 lg:px-22">
+    <nav className="font-satoshi relative mt-4 px-4 sm:px-8 lg:px-22">
       <div className="flex items-center justify-between gap-4">
         <div className="flex shrink-0 items-center gap-3">
           <div className="text-text-secondary flex gap-4 sm:hidden">
@@ -117,4 +117,4 @@ const NavbarLogo: FC<NavbarProps> = () => {
   );
 };
 
-export default NavbarLogo;
+export default Navbar;

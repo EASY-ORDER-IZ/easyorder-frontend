@@ -31,9 +31,9 @@ html {
   }
 }
 @theme inline {
-  --font-satoshi: satoshi, 'sans-serif';
-  --font-integral: integral, 'sans-serif';
-  --font-pop: pop, 'sans-serif';
+  --font-satoshi: 'Satoshi', 'sans-serif';
+  --font-integral: 'Integral', 'sans-serif';
+  --font-poppins: 'Poppins', 'sans-serif';
 
   --text-xxs: 0.6rem;
   --text-xs: 0.75rem; /* 12px (extra small text) */
@@ -144,9 +144,9 @@ html {
 }
 
 @theme inline {
-  --font-satoshi: satoshi, 'sans-serif';
-  --font-integral: integral, 'sans-serif';
-  --font-pop: pop, 'sans-serif';
+  --font-satoshi: 'Satoshi', 'sans-serif';
+  --font-integral: 'Integral', 'sans-serif';
+  --font-poppins: 'Poppins', 'sans-serif';
 
   --text-xxs: 0.6rem;
   --text-xs: 0.75rem; /* 12px (extra small text) */
