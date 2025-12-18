@@ -33,7 +33,9 @@ const ProductBar = ({ title, array, initialVisible = 5 }: Props) => {
         <span className="title-text text-title">{title}</span>
       </div>
 
-      <div className="no-scrollbar relative flex w-full max-w-310 snap-x snap-mandatory gap-20 overflow-x-scroll scroll-smooth p-4 lg:grid-cols-5 lg:gap-4 lg:overflow-visible">
+      <div
+        className={`no-scrollbar relative flex w-full max-w-310 snap-x snap-mandatory gap-20 overflow-x-scroll scroll-smooth p-4 lg:grid-cols-5 lg:gap-4 lg:overflow-visible ${showAll ? 'cols-5 gap-12 lg:grid' : ''}`}
+      >
         {visibleProducts.map(() => (
           <CardSlider />
         ))}
