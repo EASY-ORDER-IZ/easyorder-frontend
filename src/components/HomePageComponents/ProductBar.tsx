@@ -33,7 +33,7 @@ const ProductBar = ({ title, array, initialVisible = 5 }: Props) => {
 
           <div className="w-full overflow-hidden">
             <div
-              className={`no-scrollbar flex w-full snap-x snap-mandatory gap-4 overflow-x-auto scroll-smooth ${showAll ? 'lg:grid lg:grid-cols-5 lg:gap-6 lg:overflow-visible' : ''} `}
+              className={`$ no-scrollbar flex w-full snap-x snap-mandatory overflow-x-auto scroll-smooth`}
             >
               {visibleProducts.map((product) => (
                 <div key={product.id} className="snap-start">
