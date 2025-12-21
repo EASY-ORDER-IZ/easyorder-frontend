@@ -51,13 +51,13 @@ const HeroSection = () => {
             </div>
           </div>
           <div className="max-w-[65%]">
-            <img src={bb} className="hidden object-cover lg:flex lg:h-[600px] lg:w-[600px]" />
+            <img src={bb} className="hidden object-cover lg:flex lg:h-[600px] lg:w-[700px]" />
             <div className="">
-              <img src={star} alt="" className="lg:absolute lg:top-1 lg:right-5" />
+              <img src={star} alt="" className="lg:absolute lg:top-1 lg:right-0" />
               <img
                 src={star}
                 alt=""
-                className="lg:absolute lg:top-15 lg:right-25 lg:h-[70px] lg:w-[70px]"
+                className="lg:absolute lg:top-17 lg:right-23 lg:h-[66px] lg:w-[56px]"
               />
             </div>
           </div>
