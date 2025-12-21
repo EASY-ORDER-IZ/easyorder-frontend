@@ -13,11 +13,11 @@ const HeroSection = () => {
       <div className="">
         <div className="flex w-full items-center justify-between px-5 py-4 lg:py-0">
           <div className="flex flex-col items-center gap-5 px-14 lg:items-start">
-            <div className="flex w-full flex-col items-center justify-center gap-4 lg:max-w-[82%]">
-              <span className="text-text-primary text-h2 font-poppins leading-13 font-bold">
+            <div className="flex w-full flex-col items-center justify-center gap-4 lg:max-w-[84%]">
+              <span className="text-text-primary text-h2 font-poppins leading-13 font-extrabold">
                 FIND CLOTHES THAT MATCHES YOUR STYLE
               </span>
-              <span className="text-text-secondary font-poppins text-xs">
+              <span className="text-text-secondary font-poppins text-table-sm">
                 Browse through our diverse range of meticulously crafted garments, designed to bring
                 out your individuality and cater to your sense of style.
               </span>
@@ -51,7 +51,7 @@ const HeroSection = () => {
             </div>
           </div>
           <div className="max-w-[65%]">
-            <img src={bb} className="hidden object-cover lg:flex lg:h-[600px] lg:w-[700px]" />
+            <img src={bb} className="hidden object-cover lg:flex lg:h-[600px] lg:w-[800px]" />
             <div className="">
               <img src={star} alt="" className="lg:absolute lg:top-1 lg:right-0" />
               <img
