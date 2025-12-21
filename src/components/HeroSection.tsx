@@ -7,25 +7,29 @@ import Collecttive from '@/assets/svg/Collecttive';
 import Watan from '../assets/svg/Watan';
 import aa from '../assets/images/rula.png';
 import star from '../assets/images/star.png';
-const Header = () => {
+const HeroSection = () => {
   return (
     <>
       <div className="">
         <div className="flex w-full items-center justify-between px-5 py-4 lg:py-0">
           <div className="flex flex-col items-center gap-5 px-14 lg:items-start">
-            <div className="flex w-full flex-col items-center justify-center gap-4 lg:max-w-[62%]">
-              <span className="text-text-primary text-title leading-14 font-bold">
+            <div className="flex w-full flex-col items-center justify-center gap-4 lg:max-w-[82%]">
+              <span className="text-text-primary text-h2 font-poppins leading-13 font-bold">
                 FIND CLOTHES THAT MATCHES YOUR STYLE
               </span>
-              <span className="button-text text-text-secondary">
+              <span className="text-text-secondary font-poppins text-xs">
                 Browse through our diverse range of meticulously crafted garments, designed to bring
                 out your individuality and cater to your sense of style.
               </span>
             </div>
-            <div className="flex w-full max-w-[80%] justify-center lg:max-w-[27%]">
-              <Button variant="primary" title="Shop Now!"></Button>
+            <div className="mt-5 flex w-full max-w-[80%] justify-center lg:max-w-[35%]">
+              <Button
+                title="Shop Now!"
+                className="rounded-full text-[14px] text-white"
+                variant="primary"
+              />
             </div>
-            <div className="flex w-full justify-center gap-5 lg:justify-start">
+            <div className="mt-12 flex w-full justify-center gap-5 lg:justify-start">
               <div className="flex flex-col items-center justify-center">
                 <Counter end={200} />
                 <span className="lg:text-input text-text-secondary leading-5">
@@ -36,20 +40,18 @@ const Header = () => {
               <div className="flex flex-col items-center justify-center">
                 <Counter end={2000} />
                 <span className="md:text-input text-text-secondary leading-5">
-                  International Brands
+                  High-Quality Products
                 </span>
               </div>
               <Separator orientation="vertical" className="h-auto w-auto" />
               <div className="flex flex-col items-center justify-center">
                 <Counter end={30000} />
-                <span className="lg:text-input text-text-secondary leading-5">
-                  International Brands
-                </span>
+                <span className="lg:text-input text-text-secondary leading-5">Happy Customers</span>
               </div>
             </div>
           </div>
           <div className="max-w-[65%]">
-            <img src={bb} className="hidden object-cover lg:flex lg:h-[600px] lg:w-[700px]" />
+            <img src={bb} className="hidden object-cover lg:flex lg:h-[600px] lg:w-[600px]" />
             <div className="">
               <img src={star} alt="" className="lg:absolute lg:top-1 lg:right-5" />
               <img
@@ -83,4 +85,4 @@ const Header = () => {
   );
 };
 
-export default Header;
+export default HeroSection;
