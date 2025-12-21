@@ -1,56 +1,49 @@
 import { ChevronRight } from 'lucide-react';
 import { Button } from '../ui/button/button';
-import { useState } from 'react';
 import CategoryCard from './CategoryCard';
+import { useNavigate } from 'react-router-dom';
 
 export interface Product {
   id: number;
   name: string;
   img: string;
-  stars?: number;
-  price?: number;
-  discount?: number;
 }
 
 interface Props {
   title: string;
   array: Product[];
-  initialVisible?: number;
 }
 
-const ProductBar = ({ title, array, initialVisible = 5 }: Props) => {
-  const [showAll, setShowAll] = useState(false);
-
-  const handleToggle = () => {
-    setShowAll((prev) => !prev);
-  };
-
-  const visibleProducts = showAll ? array : array.slice(0, initialVisible);
+const ProductBar = ({ title, array }: Props) => {
+  const navigate = useNavigate();
 
   return (
-    <div className="flex w-full max-w-310 flex-col items-center justify-center gap-6">
-      <div className="flex w-full justify-center">
-        <span className="title-text text-title">{title}</span>
-      </div>
+    <section className="w-full">
+      <div className="mx-auto max-w-[1440px] px-4 sm:px-8 lg:px-12">
+        <div className="flex flex-col items-center gap-6">
+          <span className="text-text-400 text-title font-poppins text-center font-bold">
+            {title}
+          </span>
+          <div className="w-full overflow-hidden">
+            <div className="no-scrollbar flex w-full snap-x snap-mandatory gap-4 overflow-x-auto scroll-smooth lg:grid lg:grid-cols-5 lg:place-items-center lg:gap-4 lg:overflow-visible">
+              {array.map((p) => (
+                <div key={p.id} className="shrink-0 snap-start">
+                  <CategoryCard img={p.img} alt={p.name} />
+                </div>
+              ))}
+            </div>
+          </div>
 
-      <div className="no-scrollbar relative flex w-full snap-x snap-mandatory overflow-x-scroll scroll-smooth p-12 lg:grid lg:grid-cols-5 lg:gap-4 lg:overflow-visible lg:px-0">
-        {visibleProducts.map((p) => (
-          <CategoryCard key={p.id} img={p.img} alt={p.name} />
-        ))}
-      </div>
-
-      {array.length > initialVisible && (
-        <div className="flex items-center justify-center">
           <Button
             variant="secondary"
-            title={showAll ? 'View Less' : 'Explore Categories'}
-            onClick={handleToggle}
-            className="rounded-7xl"
+            title="Explore More"
             suffixIcon={<ChevronRight />}
+            onClick={() => navigate(`/${title.toLowerCase()}`)}
+            className="w-[15rem] rounded-full"
           />
         </div>
-      )}
-    </div>
+      </div>
+    </section>
   );
 };
 
