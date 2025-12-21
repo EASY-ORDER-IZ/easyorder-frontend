@@ -13,8 +13,8 @@ const HeroSection = () => {
       <div className="">
         <div className="flex w-full items-center justify-between px-5 py-4 lg:py-0">
           <div className="flex flex-col items-center gap-5 px-14 lg:items-start">
-            <div className="flex w-full flex-col items-center justify-center gap-4 lg:max-w-[84%]">
-              <span className="text-text-primary text-h2 font-poppins leading-13 font-extrabold">
+            <div className="flex w-full flex-col items-center justify-center gap-4 lg:max-w-[89%]">
+              <span className="text-text-primary text-title font-poppins leading-17 font-extrabold">
                 FIND CLOTHES THAT MATCHES YOUR STYLE
               </span>
               <span className="text-text-secondary font-poppins text-table-sm">
