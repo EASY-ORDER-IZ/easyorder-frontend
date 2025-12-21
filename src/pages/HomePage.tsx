@@ -9,6 +9,7 @@ const HomePage = () => {
     <div className="relative flex w-full flex-col gap-10 overflow-visible">
       <HeroSection />
       <Body />
+      <br />
       <CommentSection />
       <Footer
         src={footer1}
