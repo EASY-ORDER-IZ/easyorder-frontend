@@ -51,7 +51,7 @@ const HeroSection = () => {
             </div>
           </div>
           <div className="max-w-[65%]">
-            <img src={bb} className="hidden object-cover lg:flex lg:h-[600px] lg:w-[800px]" />
+            <img src={bb} className="hidden object-cover lg:flex lg:h-[600px] lg:w-[650px]" />
             <div className="">
               <img src={star} alt="" className="lg:absolute lg:top-1 lg:right-0" />
               <img

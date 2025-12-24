@@ -15,7 +15,7 @@ const Navbar: FC<NavbarProps> = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [, setSearchParams] = useSearchParams();
 
-  const toggleMenu = () => setIsOpen(!isOpen);
+  const toggleMenu = () => setIsOpen((prev) => !prev);
   const closeMenu = () => setIsOpen(false);
 
   const switchDialog = (target: 'sign-in' | 'sign-up' | 'forget-password' | 'email-verfiy') => {
@@ -23,20 +23,21 @@ const Navbar: FC<NavbarProps> = () => {
   };
 
   const linkClasses =
-    'font-poppins hover:text-[var(--color-primary-main)] text-text-600 transition-colors duration-200 whitespace-nowrap';
+    'font-poppins text-text-600 hover:text-[var(--color-primary-main)] transition-colors duration-200 whitespace-nowrap';
 
   return (
-    <nav className="font-satoshi relative mt-4 px-4 sm:px-8 lg:px-22">
-      <div className="flex items-center justify-between gap-4">
+    <nav className="font-satoshi relative mt-4 px-4 sm:px-8 lg:px-12">
+      <div className="flex items-center gap-12">
         <div className="flex shrink-0 items-center gap-3">
           <div className="text-text-secondary flex gap-4 sm:hidden">
             <Heart size={20} className="cursor-pointer" />
             <ShoppingCart size={20} className="cursor-pointer" />
           </div>
-          <LogoSVG className="mb-1 hidden h-auto w-[8.5rem] sm:block lg:w-[10.5rem]" />
+
+          <LogoSVG className="hidden h-auto w-[8.5rem] sm:block lg:w-[10.5rem]" />
         </div>
 
-        <div className="hidden items-center gap-6 md:flex">
+        <div className="hidden items-center justify-between gap-8 md:flex">
           <NavLink to="/" className={linkClasses}>
             Home
           </NavLink>
@@ -51,7 +52,7 @@ const Navbar: FC<NavbarProps> = () => {
           </NavLink>
         </div>
 
-        <div className="absolute left-1/2 block -translate-x-1/2 sm:hidden">
+        <div className="absolute left-1/2 -translate-x-1/2 sm:hidden">
           <img src={mobileLogo} alt="Mobile Logo" className="h-[2rem]" />
         </div>
 
@@ -60,27 +61,27 @@ const Navbar: FC<NavbarProps> = () => {
             <SearchComponent />
           </div>
 
-          <Search className="text-text-secondary block cursor-pointer md:hidden" size={20} />
-
-          <div className="text-text-secondary hidden items-center gap-4 sm:flex lg:gap-6">
-            <ShoppingCart
-              size={24}
-              className="cursor-pointer hover:text-[var(--color-primary-main)]"
-            />
-            <Heart size={24} className="cursor-pointer hover:text-[var(--color-primary-main)]" />
-            <CircleUserRound
-              onClick={() => switchDialog('sign-in')}
-              size={24}
-              className="cursor-pointer hover:text-[var(--color-primary-main)]"
-            />
-          </div>
+          <Search size={20} className="text-text-secondary block cursor-pointer md:hidden" />
 
           <button
             onClick={toggleMenu}
             className="text-text-600 hover:text-[var(--color-primary-main)] focus:outline-none md:hidden"
+            aria-label="Toggle menu"
           >
             {isOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
+        </div>
+        <div className="text-text-secondary ml-auto hidden items-center gap-4 sm:flex lg:gap-6">
+          <ShoppingCart
+            size={24}
+            className="cursor-pointer hover:text-[var(--color-primary-main)]"
+          />
+          <Heart size={24} className="cursor-pointer hover:text-[var(--color-primary-main)]" />
+          <CircleUserRound
+            size={24}
+            onClick={() => switchDialog('sign-in')}
+            className="cursor-pointer hover:text-[var(--color-primary-main)]"
+          />
         </div>
       </div>
 
@@ -100,8 +101,9 @@ const Navbar: FC<NavbarProps> = () => {
           </NavLink>
 
           <div className="mt-2 flex flex-col gap-4 border-t border-gray-100 pt-4 sm:hidden">
-            <div
-              className="text-text-600 flex items-center gap-2"
+            <button
+              type="button"
+              className="text-text-600 flex items-center gap-2 transition-colors hover:text-[var(--color-primary-main)]"
               onClick={() => {
                 switchDialog('sign-in');
                 closeMenu();
@@ -109,7 +111,7 @@ const Navbar: FC<NavbarProps> = () => {
             >
               <CircleUserRound size={18} />
               <span>Register</span>
-            </div>
+            </button>
           </div>
         </div>
       )}
