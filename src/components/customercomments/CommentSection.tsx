@@ -1,81 +1,83 @@
-import CommentCard from './CommentCard';
-import { reviews } from './CardData';
-import { useState } from 'react';
+import { Button } from '@/components/ui/button/button';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { CarouselOrientation } from './CarouselOrientation';
+import { useState, useEffect } from 'react';
+import type { CarouselApi } from '@/components/ui/carousel';
+import { reviews } from './CardData';
 
 const CommentSection = () => {
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const itemsPerPage = 4;
+  const [carouselApi, setCarouselApi] = useState<CarouselApi | null>(null);
+  const [currentPage, setCurrentPage] = useState(0);
 
-  const arrowClass = 'flex h-6 w-6 items-center justify-center cursor-pointer';
+  const cardsPerPage = 3;
+  const totalPages = Math.ceil(reviews.length / cardsPerPage);
 
-  const totalPages = Math.ceil(reviews.length / itemsPerPage);
-  const startIndex = currentIndex * itemsPerPage;
-  const endIndex = startIndex + itemsPerPage;
-  const currentReviews = reviews.slice(startIndex, endIndex);
-
-  const goToPage = (index: number) => {
-    setCurrentIndex(index);
+  const handlePrev = () => {
+    carouselApi?.scrollPrev();
   };
 
-  const goPrev = () => {
-    setCurrentIndex((prev) => (prev > 0 ? prev - 1 : totalPages - 1));
+  const handleNext = () => {
+    carouselApi?.scrollNext();
   };
 
-  const goNext = () => {
-    setCurrentIndex((prev) => (prev < totalPages - 1 ? prev + 1 : 0));
-  };
+  useEffect(() => {
+    if (!carouselApi) return;
+
+    const updatePage = () => {
+      const index = carouselApi.selectedScrollSnap();
+      const newPage = Math.floor(index / cardsPerPage);
+      setCurrentPage(newPage);
+    };
+
+    carouselApi.on('select', updatePage);
+    updatePage();
+
+    return () => {
+      carouselApi.off('select', updatePage);
+    };
+  }, [carouselApi]);
 
   return (
     <div className="flex w-full justify-center">
       <div className="flex w-full max-w-359 flex-col items-center gap-6">
-        <h1 className="text-h1 text-text-400 font-poppins text-center font-extrabold tracking-[1px] capitalize">
+        <h1 className="text-h1 text-text-400 text-center font-extrabold tracking-[0.06rem] capitalize">
           What Our Happy Users Say!
         </h1>
 
-        <p className="text-text-400 font-poppins text-center">
-          Smarter shopping, faster deals, and endless style — here's why FirstChance is your
+        <p className="text-h4 text-text-400 text-center">
+          Smarter shopping, faster deals, and endless style — here’s why FirstChance is your
           ultimate shopping destination.
         </p>
 
-        <div className="w-full">
-          <div className="no-scrollbar relative flex w-full snap-x snap-mandatory overflow-x-scroll scroll-smooth p-4">
-            {currentReviews.map((review) => (
-              <div
-                key={review.id}
-                className="flex min-w-[80%] flex-shrink-0 cursor-pointer snap-center flex-col gap-3 sm:min-w-[60%] md:min-w-[45%] lg:min-w-[30%]"
-              >
-                <CommentCard name={review.name} rating={review.rating} review={review.review} />
-              </div>
-            ))}
-          </div>
-        </div>
+        <CarouselOrientation onReady={setCarouselApi} />
 
-        {totalPages > 1 && (
-          <div className="flex items-center gap-2">
-            <button onClick={goPrev} className={arrowClass}>
-              <ChevronLeft
-                className="h-3 w-3 hover:text-[var(--color-primary-main)]"
-                color="gray"
-              />
-            </button>
-            {Array.from({ length: totalPages }, (_, index) => (
+        <div className="flex flex-row items-center justify-center gap-4">
+          <Button
+            onClick={handlePrev}
+            variant={'acc'}
+            suffixIcon={<ChevronLeft className="text-text-300 hover:text-white" size={16} />}
+          />
+          <div className="flex justify-center gap-2">
+            {Array.from({ length: totalPages }, (_, i) => (
               <button
-                key={index}
-                onClick={() => goToPage(index)}
-                className={`h-2 w-2 rounded-full transition-colors ${
-                  index === currentIndex ? 'bg-[var(--color-primary-main)]' : 'bg-gray-300'
+                key={i}
+                onClick={() => {
+                  const targetIndex = i * cardsPerPage;
+                  carouselApi?.scrollTo(targetIndex);
+                }}
+                className={`size-3 rounded-full transition-all duration-300 ${
+                  currentPage === i ? 'bg-primary-600' : 'bg-gray-300'
                 }`}
               />
             ))}
-            <button onClick={goNext} className={arrowClass}>
-              <ChevronRight
-                className="h-3 w-3 hover:text-[var(--color-primary-main)]"
-                color="gray"
-              />
-            </button>
           </div>
-        )}
+
+          <Button
+            onClick={handleNext}
+            variant={'acc'}
+            suffixIcon={<ChevronRight className="text-text-300 hover:text-white" size={16} />}
+          />
+        </div>
       </div>
     </div>
   );

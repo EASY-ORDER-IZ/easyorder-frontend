@@ -53,8 +53,8 @@ export function CarouselOrientation({ onReady }: CarouselOrientationProps) {
         </CarouselContent>
       </Carousel>
 
-      <div className="pointer-events-none absolute inset-y-0 left-0 hidden w-[190px] bg-gradient-to-r from-white/30 to-transparent backdrop-blur-[1.5px] lg:block"></div>
-      <div className="pointer-events-none absolute inset-y-0 right-0 hidden w-[190px] bg-gradient-to-l from-white/30 to-transparent backdrop-blur-[1.5px] lg:block"></div>
+      <div className="pointer-events-none absolute inset-y-0 left-0 hidden w-[11.8rem] bg-gradient-to-r from-white/30 to-transparent backdrop-blur-[0.09rem] lg:block"></div>
+      <div className="pointer-events-none absolute inset-y-0 right-0 hidden w-[11.8rem] bg-gradient-to-l from-white/30 to-transparent backdrop-blur-[0.09rem] lg:block"></div>
     </div>
   );
 }
