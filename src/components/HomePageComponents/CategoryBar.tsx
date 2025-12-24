@@ -39,7 +39,7 @@ const ProductBar = ({ title, array }: Props) => {
             title="Explore More"
             suffixIcon={<ChevronRight />}
             onClick={() => navigate(`/${title.toLowerCase()}`)}
-            className="w-[15rem] rounded-full"
+            className="w-full rounded-full sm:w-[15rem]"
           />
         </div>
       </div>

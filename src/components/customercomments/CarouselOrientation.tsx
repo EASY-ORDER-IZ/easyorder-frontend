@@ -43,7 +43,7 @@ export function CarouselOrientation({ onReady }: CarouselOrientationProps) {
           {reviews.map((review) => (
             <CarouselItem
               key={review.id}
-              className="basis-[90%] pl-2 sm:basis-[45%] md:basis-[23%] md:pl-4"
+              className="basis-[45%] pl-2 sm:basis-[40%] md:basis-[23%] md:pl-4"
             >
               <div className="w-full">
                 <CommentCard name={review.name} rating={review.rating} review={review.review} />

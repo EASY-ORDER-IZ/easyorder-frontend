@@ -1,4 +1,4 @@
-import React, { useState, type FC } from 'react';
+import { useState, type FC } from 'react';
 import { NavLink, useSearchParams } from 'react-router-dom';
 import { CircleUserRound, Heart, Menu, ShoppingCart, X, Search } from 'lucide-react';
 import LogoSVG from '@/assets/svg/logo';
@@ -27,7 +27,7 @@ const Navbar: FC<NavbarProps> = () => {
 
   return (
     <nav className="font-satoshi relative mt-4 px-4 sm:px-8 lg:px-12">
-      <div className="flex items-center gap-12">
+      <div className="relative flex items-center gap-8">
         <div className="flex shrink-0 items-center gap-3">
           <div className="text-text-secondary flex gap-4 sm:hidden">
             <Heart size={20} className="cursor-pointer" />
@@ -36,8 +36,11 @@ const Navbar: FC<NavbarProps> = () => {
 
           <LogoSVG className="hidden h-auto w-[8.5rem] sm:block lg:w-[10.5rem]" />
         </div>
+        <div className="pointer-events-none absolute left-1/2 mt-6 -translate-x-1/2 sm:hidden">
+          <img src={mobileLogo} alt="Mobile Logo" className="h-[2rem]" />
+        </div>
 
-        <div className="hidden items-center justify-between gap-8 md:flex">
+        <div className="mt-6 hidden items-center justify-between gap-8 md:flex">
           <NavLink to="/" className={linkClasses}>
             Home
           </NavLink>
@@ -51,25 +54,21 @@ const Navbar: FC<NavbarProps> = () => {
             Categories
           </NavLink>
         </div>
-
-        <div className="absolute left-1/2 -translate-x-1/2 sm:hidden">
-          <img src={mobileLogo} alt="Mobile Logo" className="h-[2rem]" />
+        <div className="ml-auto flex items-center gap-6 sm:hidden">
+          <Search size={20} className="text-text-secondary cursor-pointer" />
+          <button
+            onClick={toggleMenu}
+            className="text-text-600 px-0 hover:text-[var(--color-primary-main)] focus:outline-none"
+            aria-label="Toggle menu"
+          >
+            {isOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
         </div>
 
         <div className="flex shrink-0 items-center gap-4 sm:gap-6">
           <div className="hidden w-[12rem] md:block lg:w-[15rem] xl:w-[18rem]">
             <SearchComponent />
           </div>
-
-          <Search size={20} className="text-text-secondary block cursor-pointer md:hidden" />
-
-          <button
-            onClick={toggleMenu}
-            className="text-text-600 hover:text-[var(--color-primary-main)] focus:outline-none md:hidden"
-            aria-label="Toggle menu"
-          >
-            {isOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
         </div>
         <div className="text-text-secondary ml-auto hidden items-center gap-4 sm:flex lg:gap-6">
           <ShoppingCart

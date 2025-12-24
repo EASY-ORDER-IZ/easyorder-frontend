@@ -33,7 +33,7 @@ const ProductBar = ({ title, array, initialVisible = 5 }: Props) => {
 
           <div className="w-full overflow-hidden">
             <div
-              className={`$ no-scrollbar flex w-full snap-x snap-mandatory overflow-x-auto scroll-smooth`}
+              className={`no-scrollbar flex w-full snap-x snap-mandatory gap-6 overflow-x-auto scroll-smooth sm:gap-0`}
             >
               {visibleProducts.map((product) => (
                 <div key={product.id} className="snap-start">
@@ -47,7 +47,7 @@ const ProductBar = ({ title, array, initialVisible = 5 }: Props) => {
             variant="secondary"
             title={showAll ? 'View Less' : 'View All'}
             onClick={() => navigate(`/${title?.toLowerCase()}`)}
-            className="rounded-7xl w-[15rem]"
+            className="rounded-7xl w-full sm:w-[15rem]"
             suffixIcon={<ChevronRight />}
           />
         </div>

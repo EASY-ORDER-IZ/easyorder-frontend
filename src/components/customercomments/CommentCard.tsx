@@ -26,7 +26,7 @@ const CommentCard = ({ name, rating, review, reviewId }: CommentCardProps) => {
 
   return (
     <div className="flex justify-center">
-      <Card className="bg-background-400 flex h-auto min-h-31 w-76 flex-col gap-2 rounded-sm px-6 py-2 duration-300">
+      <Card className="bg-background-400 flex h-auto min-h-31 w-74 flex-col gap-2 rounded-sm px-4 py-2 duration-300 sm:w-76 sm:px-6">
         <CardHeader className="m-0 p-0">
           <CardTitle className="m-0 p-0">
             <div className="flex items-center gap-1">
