@@ -32,7 +32,7 @@ const SearchComponent = () => {
   };
 
   return (
-    <div className="relative flex w-[480px] flex-col items-center gap-1">
+    <div className="relative flex w-[30.5rem] flex-col items-center gap-1">
       <Input
         prefixIcon={<Search size={18} className="text-text-100" />}
         suffixIcon={<Camera size={18} className="text-text-100" />}

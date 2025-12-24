@@ -25,7 +25,7 @@ const HeroSection = () => {
             <div className="mt-5 flex w-full max-w-[80%] justify-center lg:max-w-[35%]">
               <Button
                 title="Shop Now!"
-                className="rounded-full text-[14px] text-white"
+                className="rounded-full text-sm text-white"
                 variant="primary"
               />
             </div>
@@ -51,13 +51,13 @@ const HeroSection = () => {
             </div>
           </div>
           <div className="max-w-[65%]">
-            <img src={bb} className="hidden object-cover lg:flex lg:h-[600px] lg:w-[650px]" />
+            <img src={bb} className="hidden object-cover lg:flex lg:h-[37.5rem] lg:w-[40.6rem]" />
             <div className="">
               <img src={star} alt="" className="lg:absolute lg:top-1 lg:right-0" />
               <img
                 src={star}
                 alt=""
-                className="lg:absolute lg:top-17 lg:right-23 lg:h-[66px] lg:w-[56px]"
+                className="lg:absolute lg:top-17 lg:right-23 lg:h-[4rem] lg:w-[3.5rem]"
               />
             </div>
           </div>
