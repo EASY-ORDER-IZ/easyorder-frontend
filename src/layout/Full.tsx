@@ -5,8 +5,8 @@ interface Props {
   className?: string;
 }
 
-const Full = ({ children, className }: Props) => {
-  return <div className={cn('-mx-14 w-screen', className)}>{children}</div>;
+const Full = (props: Props) => {
+  return <div className={cn('-mx-14 w-screen', props.className)}>{props.children}</div>;
 };
 
 export default Full;

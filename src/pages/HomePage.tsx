@@ -14,19 +14,15 @@ const HomePage = () => {
       <PageSection>
         <HeroSection />
       </PageSection>
-
       <PageSection>
         <ProductBar array={newClothes} title="New In" />
       </PageSection>
-
       <PageSection>
         <ProductBar array={topSelling} title="Top Selling" />
       </PageSection>
-
       <PageSection>
         <CategoryBar array={cate} title="Shop by category" />
       </PageSection>
-
       <PageSection>
         <CommentSection />
       </PageSection>

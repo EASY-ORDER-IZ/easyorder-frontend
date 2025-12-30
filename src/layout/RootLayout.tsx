@@ -18,7 +18,6 @@ const RootLayout: React.FC = () => {
 
       <main className={cn('flex w-full flex-1 flex-col', noPadding ? 'p-0' : 'px-14')}>
         <Navbar isModalOpen={isModalOpen} />
-
         <Outlet />
       </main>
 
