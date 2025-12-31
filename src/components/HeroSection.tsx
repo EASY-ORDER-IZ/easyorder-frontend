@@ -9,6 +9,7 @@ import Watan from '@/assets/svg/Watan';
 import Pailroots from '@/assets/svg/Pailroots';
 import Rula from '@/assets/svg/Rula';
 import Collecttive from '@/assets/svg/Collecttive';
+import Full from '@/layout/Full';
 
 const HeroSection: React.FC = () => {
   const { t } = useTranslation();
@@ -68,14 +69,16 @@ const HeroSection: React.FC = () => {
         </div>
       </div>
 
-      <div className="bg-background-900 w-full py-6 md:py-10">
-        <div className="flex items-center justify-around overflow-x-auto">
-          <Pailroots />
-          <Collecttive />
-          <Watan />
-          <Rula />
+      <Full>
+        <div className="bg-background-900 w-full py-6 md:py-10">
+          <div className="flex items-center justify-around overflow-x-auto">
+            <Pailroots />
+            <Collecttive />
+            <Watan />
+            <Rula />
+          </div>
         </div>
-      </div>
+      </Full>
     </div>
   );
 };

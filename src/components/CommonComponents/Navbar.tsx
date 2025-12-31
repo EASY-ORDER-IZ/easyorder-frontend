@@ -26,7 +26,7 @@ const Navbar = ({ isModalOpen }: NavbarProps) => {
       <div
         className={`bg-background ${
           searchParams || isModalOpen ? '' : 'sticky top-0 z-70'
-        } w-full px-4 py-3 lg:px-22 lg:py-4`}
+        } w-full py-3 lg:py-4`}
       >
         <div className="flex w-full items-center justify-between lg:hidden">
           <div className="flex items-center gap-3">
