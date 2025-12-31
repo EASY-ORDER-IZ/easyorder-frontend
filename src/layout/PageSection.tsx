@@ -1,6 +1,11 @@
 import React from 'react';
-const PageSection = ({ children }: { children: React.ReactNode }) => {
-  return <section className="flex w-full flex-col gap-6 md:gap-10">{children}</section>;
+
+interface Props {
+  children: React.ReactNode;
+}
+
+const PageSection = (props: Props) => {
+  return <section className="flex w-full flex-col gap-6 md:gap-10">{props.children}</section>;
 };
 
 export default PageSection;

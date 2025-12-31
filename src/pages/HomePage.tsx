@@ -10,7 +10,7 @@ import Full from '@/layout/Full';
 
 const HomePage = () => {
   return (
-    <div className="relative flex w-full flex-col gap-22 overflow-visible">
+    <div className="relative flex w-full flex-col gap-22 overflow-hidden">
       <PageSection>
         <HeroSection />
       </PageSection>
@@ -26,7 +26,6 @@ const HomePage = () => {
       <PageSection>
         <CommentSection />
       </PageSection>
-
       <Full>
         <Footer src={footer1} alt="Footer Background" className="h-[363px]" />
       </Full>
