@@ -40,11 +40,10 @@ const CommentSection = () => {
   return (
     <div className="flex w-full justify-center">
       <div className="flex w-full max-w-359 flex-col items-center gap-6">
-        <h1 className="text-h1 text-text-400 text-center font-extrabold tracking-[1px] capitalize">
+        <h1 className="text-h1 text-text-400 w-[24rem] text-center font-extrabold tracking-[0.06rem] capitalize sm:w-auto">
           What Our Happy Users Say!
         </h1>
-
-        <p className="text-h4 text-text-400 text-center">
+        <p className="sm:text-h4 sm:text-text-400 hidden sm:block sm:text-center">
           Smarter shopping, faster deals, and endless style — here’s why FirstChance is your
           ultimate shopping destination.
         </p>
@@ -55,7 +54,7 @@ const CommentSection = () => {
           <Button
             onClick={handlePrev}
             variant={'acc'}
-            suffixIcon={<ChevronLeft className="text-text-300" size={16} />}
+            suffixIcon={<ChevronLeft className="text-text-300 hover:text-white" size={16} />}
           />
           <div className="flex justify-center gap-2">
             {Array.from({ length: totalPages }, (_, i) => (
@@ -75,7 +74,7 @@ const CommentSection = () => {
           <Button
             onClick={handleNext}
             variant={'acc'}
-            suffixIcon={<ChevronRight className="text-text-300" size={16} />}
+            suffixIcon={<ChevronRight className="text-text-300 hover:text-white" size={16} />}
           />
         </div>
       </div>
