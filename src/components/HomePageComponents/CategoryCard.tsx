@@ -6,7 +6,7 @@ interface Props {
 
 const CategoryCard = ({ img, alt, key }: Props) => {
   return (
-    <div className="flex min-w-[80%] flex-shrink-0 cursor-pointer snap-center flex-col gap-3 sm:min-w-[60%] md:min-w-[45%] lg:min-w-0">
+    <div className="flex w-[14.6rem] flex-shrink-0 cursor-pointer snap-center flex-col gap-3 p-2 sm:min-w-[60%] md:min-w-[45%] lg:min-w-0">
       <div key={key} className="flex h-full w-full">
         <img src={img} alt={alt} className="rounded-sm object-cover" />
       </div>

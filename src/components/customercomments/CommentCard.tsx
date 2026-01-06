@@ -1,8 +1,8 @@
 import { Card, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Check } from 'lucide-react';
-import StarsRating from '../ProductComponents/StarsRating';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import Rating from '@mui/material/Rating';
 
 interface CommentCardProps {
   name: string;
@@ -15,7 +15,6 @@ const CommentCard = ({ name, rating, review, reviewId }: CommentCardProps) => {
   const [expanded, setExpanded] = useState(false);
   const navigate = useNavigate();
 
-  // Limit review preview length
   const maxLength = 100;
   const isLong = review.length > maxLength;
   const preview = isLong ? review.slice(0, maxLength) + '...' : review;
@@ -27,7 +26,7 @@ const CommentCard = ({ name, rating, review, reviewId }: CommentCardProps) => {
 
   return (
     <div className="flex justify-center">
-      <Card className="bg-background-400 flex h-auto min-h-31 w-76 flex-col gap-2 rounded-sm px-6 py-2 duration-300">
+      <Card className="bg-background-400 flex h-auto min-h-31 w-74 flex-col gap-2 rounded-sm px-4 py-2 duration-300 sm:w-76 sm:px-6">
         <CardHeader className="m-0 p-0">
           <CardTitle className="m-0 p-0">
             <div className="flex items-center gap-1">
@@ -45,10 +44,13 @@ const CommentCard = ({ name, rating, review, reviewId }: CommentCardProps) => {
           </CardDescription>
 
           <div className="flex items-center gap-2">
-            <StarsRating rating={rating} className="size-3" />
+            <Rating readOnly value={rating} className="h-4 w-4" />
 
             {isLong && (
-              <button onClick={handleReadFull} className="text-text-100 text-xs underline">
+              <button
+                onClick={handleReadFull}
+                className="text-text-100 cursor-pointer text-xs underline"
+              >
                 Read full review
               </button>
             )}

@@ -1,7 +1,8 @@
+import { useState } from 'react';
 import { ChevronRight } from 'lucide-react';
 import { Button } from '../ui/button/button';
-import { useState } from 'react';
 import CardSlider from '../CommonComponents/CardItem/CardSlider';
+import { useNavigate } from 'react-router-dom';
 
 export interface Product {
   id: number;
@@ -19,38 +20,39 @@ interface Props {
 }
 
 const ProductBar = ({ title, array, initialVisible = 5 }: Props) => {
-  const [showAll, setShowAll] = useState(false);
-
-  const handleToggle = () => {
-    setShowAll((prev) => !prev);
-  };
+  const [showAll] = useState(false);
+  const navigate = useNavigate();
 
   const visibleProducts = showAll ? array : array.slice(0, initialVisible);
 
   return (
-    <div className="flex w-full max-w-310 flex-col items-center justify-center gap-1">
-      <div className="flex w-full justify-center">
-        <span className="title-text text-title">{title}</span>
-      </div>
+    <section className="w-full">
+      <div className="mx-auto max-w-[1440px] px-4 sm:px-8 lg:px-12">
+        <div className="flex flex-col items-center gap-6">
+          <h2 className="text-text-400 text-title font-poppins text-center font-bold">{title}</h2>
 
-      <div className="no-scrollbar relative flex w-full max-w-310 snap-x snap-mandatory gap-20 overflow-x-scroll scroll-smooth p-4 lg:grid-cols-5 lg:gap-4 lg:overflow-visible">
-        {visibleProducts.map(() => (
-          <CardSlider />
-        ))}
-      </div>
+          <div className="w-full overflow-hidden">
+            <div
+              className={`no-scrollbar flex w-full snap-x snap-mandatory gap-6 overflow-x-auto scroll-smooth sm:gap-0`}
+            >
+              {visibleProducts.map((product) => (
+                <div key={product.id} className="snap-start">
+                  <CardSlider />
+                </div>
+              ))}
+            </div>
+          </div>
 
-      {array.length > initialVisible && (
-        <div className="flex items-center justify-center">
           <Button
             variant="secondary"
             title={showAll ? 'View Less' : 'View All'}
-            onClick={handleToggle}
-            className="rounded-7xl"
+            onClick={() => navigate(`/${title?.toLowerCase()}`)}
+            className="rounded-7xl w-full sm:w-[15rem]"
             suffixIcon={<ChevronRight />}
           />
         </div>
-      )}
-    </div>
+      </div>
+    </section>
   );
 };
 

@@ -2,11 +2,13 @@ import { useState } from 'react';
 import { XIcon } from 'lucide-react';
 import { useSearchParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import useMobile from '@/hooks/useMobile';
 
 const SignupBar = () => {
   const [visible, setVisible] = useState(true);
   const [, setSearchParams] = useSearchParams();
   const { t } = useTranslation();
+  const isMobile = useMobile(768);
 
   const switchDialog = (target: 'sign-in' | 'sign-up' | 'forget-password' | 'email-verfiy') => {
     setSearchParams({ auth: target });
@@ -29,7 +31,7 @@ const SignupBar = () => {
       <div className="flex items-center justify-center">
         <XIcon
           onClick={() => setVisible(false)}
-          size={18}
+          size={isMobile ? 12 : 18}
           className="text-background absolute right-7 cursor-pointer transition hover:opacity-70 sm:right-22"
         />
       </div>
