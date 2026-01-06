@@ -8,6 +8,11 @@ import Watan from '../assets/svg/Watan';
 import aa from '../assets/images/rula.png';
 import star from '../assets/images/star.png';
 const HeroSection = () => {
+import Full from '@/layout/Full';
+
+const HeroSection: React.FC = () => {
+  const { t } = useTranslation();
+
   return (
     <>
       <div className="">
@@ -64,24 +69,32 @@ const HeroSection = () => {
           <div className="hidden w-20 lg:flex"></div>
         </div>
 
-        <div className="bg-text-secondary">
-          <div className="grid grid-cols-2 items-center p-6 lg:flex lg:justify-evenly lg:p-6">
-            <div className="flex justify-center">
-              <Pailroots />
-            </div>
-            <div className="flex justify-center">
-              <Collecttive />
-            </div>
-            <div className="flex justify-center">
-              <Watan />
-            </div>
-            <div className="flex justify-center">
-              <img className="max-w-[82%]" src={aa} />
-            </div>
-          </div>
+        <div className="relative hidden md:block">
+          <img
+            src={star}
+            alt=""
+            className="absolute top-4 right-12 hidden h-[76px] w-[76px] sm:top-2 sm:right-4 sm:h-[104px] sm:w-[104px] md:block"
+          />
+          <img
+            src={star}
+            alt="Star"
+            className="absolute hidden sm:w-[56px] md:top-22 md:right-28 md:block md:h-[56px]"
+          />
+          <LandingBg className="hidden object-cover md:block" />
         </div>
       </div>
-    </>
+
+      <Full>
+        <div className="bg-background-900 w-full py-6 md:py-10">
+          <div className="flex items-center justify-around overflow-x-auto">
+            <Pailroots />
+            <Collecttive />
+            <Watan />
+            <Rula />
+          </div>
+        </div>
+      </Full>
+    </div>
   );
 };
 

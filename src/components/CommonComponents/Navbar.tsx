@@ -22,8 +22,18 @@ const Navbar: FC<NavbarProps> = () => {
     setSearchParams({ auth: target });
   };
 
-  const linkClasses =
-    'font-poppins text-text-600 hover:text-[var(--color-primary-main)] transition-colors duration-200 whitespace-nowrap';
+  return (
+    <nav className="font-satoshi relative z-50 w-full bg-white text-base">
+      <div
+        className={`bg-background ${
+          searchParams || isModalOpen ? '' : 'sticky top-0 z-70'
+        } w-full py-3 lg:py-4`}
+      >
+        <div className="flex w-full items-center justify-between lg:hidden">
+          <div className="flex items-center gap-3">
+            <NavLink to="/wish">
+              <Heart className="text-text-secondary h-5 w-5 cursor-pointer" />
+            </NavLink>
 
   return (
     <nav className="font-satoshi relative mt-4 px-4 sm:px-8 lg:px-12">
