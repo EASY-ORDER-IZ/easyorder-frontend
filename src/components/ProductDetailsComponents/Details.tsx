@@ -5,7 +5,16 @@ import { Button } from '../ui/button/button';
 import { Minus, Plus } from 'lucide-react';
 import CustomRating from '../ui/CustomRating';
 
-const Details = () => {
+interface DetailsProps {
+  title: string;
+  description: string;
+  price: number;
+  rating: number;
+  colors: string[];
+  sizes: string[];
+}
+
+const Details: React.FC<DetailsProps> = ({ title, description, price, colors, sizes }) => {
   const [btnTitle, setBtnTitle] = useState('Add to cart');
   const [count, setCount] = useState(1);
 
@@ -26,25 +35,24 @@ const Details = () => {
       </div>
 
       <div className="mt-2">
-        <h1 className="text-2xl font-bold md:text-[2.3rem]">Persian Elegance Silk Scarf</h1>
+        <h1 className="text-2xl font-bold md:text-[2.3rem]">{title}</h1>
         <p className="text-text-400 max-w-full text-sm md:max-w-[31.2rem] md:text-base">
-          A luxurious satin silk scarf featuring intricate Persian paisley patterns in rich navy and
-          gold tones.
+          {description}
         </p>
-        <span className="text-text-400 text-xl font-bold md:text-[2.3rem]">$24.84</span>
+        <span className="text-text-400 text-xl font-bold md:text-[2.3rem]">{price}</span>
       </div>
 
       <hr className="my-4" />
 
       <div>
         <h2 className="text-text-400 text-base font-bold md:text-[1.5rem]">Available colors</h2>
-        <AvialableColors colors={['#353D54', '#D24560', '#006E8D']} />
+        <AvialableColors colors={colors} />
       </div>
       <br />
 
       <div>
         <h2 className="text-text-400 text-base font-bold md:text-[1.5rem]">Available sizes</h2>
-        <AvailableSizes sizes={['OneSize', 'Small', 'Medium', 'Large']} defaultValue="Medium" />
+        <AvailableSizes sizes={sizes} defaultValue="Medium" />
       </div>
       <br />
       <hr />

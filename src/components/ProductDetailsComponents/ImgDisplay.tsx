@@ -1,13 +1,17 @@
 import React, { useState, MouseEvent } from 'react';
 import ProductImg from './ProductImg';
-import { img101 } from '../../assets/icons';
 import { ArrowLeft, ArrowRight, X, ZoomIn } from 'lucide-react';
 import { Button } from '../ui/button/button';
 
-const ImgDisplay: React.FC = () => {
-  const images: string[] = [img101, img101, img101, img101, img101, img101];
+interface ImgDisplayProps {
+  images: string;
+}
+
+const ImgDisplay: React.FC<ImgDisplayProps> = ({ images }) => {
   const [activeIndex, setActiveIndex] = useState<number>(0);
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+
+  if (!images || images.length === 0) return null;
 
   const VISIBLE_SIDE_COUNT = 3;
   const sideImages = images.slice(1, 1 + VISIBLE_SIDE_COUNT);
@@ -41,7 +45,7 @@ const ImgDisplay: React.FC = () => {
             <ProductImg
               src={images[activeIndex]}
               alt="main-product"
-              className="h-full w-full rounded object-cover"
+              className="h-[33.375rem] w-full rounded object-cover"
             />
             <div className="absolute right-2 bottom-5 flex items-center gap-2 rounded bg-white px-4 py-1">
               <ZoomIn size={20} color="grey" />

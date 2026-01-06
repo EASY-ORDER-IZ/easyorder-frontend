@@ -1,6 +1,5 @@
 import React, { useMemo, useState } from 'react';
 import ReviewCard from '../ReviewComments/ReviewCard';
-import { reviews } from '@/store/ReviewCardsData';
 import { Button } from '@/components/ui/button/button';
 import { ListFilter } from 'lucide-react';
 import Select from '@/components/CommonComponents/Select';
@@ -11,23 +10,30 @@ const selectOptions = [
   { label: 'Highest Rated', value: 'highest-rated' },
 ];
 
-const ReviewsTab = () => {
+interface Review {
+  id: number;
+  name: string;
+  comment: string;
+  rate: number;
+  date?: string;
+}
+
+interface ReviewsTabProps {
+  reviews: Review[];
+}
+
+const ReviewsTab: React.FC<ReviewsTabProps> = ({ reviews }) => {
   const [showAll, setShowAll] = useState(reviews.length <= 5);
   const [filter, setFilter] = useState<string>('latest');
 
   const filteredReviews = useMemo(() => {
     let sorted = [...reviews];
 
-    if (filter === 'oldest') {
-      sorted = [...reviews].reverse();
-    }
-
-    if (filter === 'highest-rated') {
-      sorted = [...reviews].sort((a, b) => b.rating - a.rating);
-    }
+    if (filter === 'oldest') sorted = [...reviews].reverse();
+    if (filter === 'highest-rated') sorted = [...reviews].sort((a, b) => b.rate - a.rate);
 
     return sorted;
-  }, [filter]);
+  }, [filter, reviews]);
 
   const displayedReviews = showAll ? filteredReviews : filteredReviews.slice(0, 5);
 
@@ -55,11 +61,9 @@ const ReviewsTab = () => {
         {displayedReviews.map((review) => (
           <ReviewCard
             key={review.id}
-            name={review.username}
-            date={review.date}
-            title={review.title}
-            description={review.text}
-            rating={review.rating}
+            name={review.name}
+            description={review.comment}
+            rating={review.rate}
           />
         ))}
 

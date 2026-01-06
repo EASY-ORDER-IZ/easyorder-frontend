@@ -1,45 +1,47 @@
-import StarsRating from './StarsRating';
-import { Card, CardTitle, CardContent } from '../ui/card';
-import { Badge } from '@/components/ui/badge';
+import React from 'react';
+import { Card, CardContent } from '../ui/card';
+import { Button } from '../ui/button/button';
+import { useNavigate } from 'react-router';
 
-interface Product {
-  name?: string;
-  description?: string;
-  price?: number;
-  img?: string;
-  stars?: number;
-  discount?: number;
+interface Props {
+  id: number;
+  title: string;
+  price: number;
+  description: string;
+  img: string;
 }
 
-const ProductCard = ({ product }: { product: Product }) => {
-  const hasDiscount = !!product.discount;
-  const roundedRating = Math.round((product.stars || 0) * 2) / 2;
-
-  const dis = ((product.discount || 0) * (product.price || 0)) / 100;
-  const finalPrice = (product.price || 0) - dis;
+const ProductCard: React.FC<Props> = ({ id, title, price, description, img }) => {
+  const navigate = useNavigate();
 
   return (
-    <Card className="inline-block">
-      <CardContent className="flex w-full flex-col justify-center">
-        <img src={product.img} alt={product.name} className="rounded-1xl size-60" />
-        <CardTitle className="font-card-title">{product.name}</CardTitle>
-        <CardTitle className="flex gap-3">
-          <StarsRating rating={product.stars || 0} />
-          <span className="text-table-sm leading-[100%] font-light">{`${roundedRating}/5`}</span>
-        </CardTitle>
-        <CardTitle className="flex items-center gap-3">
-          {hasDiscount ? (
-            <>
-              <span className="text-p font-bold">${finalPrice.toFixed(2)}</span>
-              <span className="text-text-300 text-p line-through">${product.price}</span>
-              <Badge className="flex" variant="discount">{`-${product.discount}%`}</Badge>
-            </>
-          ) : (
-            <span className="text-p font-bold">${product.price}</span>
-          )}
-        </CardTitle>
-      </CardContent>
-    </Card>
+    <div>
+      <Card className="flex w-full flex-col rounded-md border border-white p-3 shadow-lg">
+        <CardContent className="flex h-full flex-col p-0">
+          <div className="mb-3 flex items-center justify-center">
+            <img src={img} alt="" className="h-[380px] w-full rounded-md object-cover" />
+          </div>
+
+          <div className="flex flex-1 flex-col gap-2">
+            <h3 className="text-h4 line-clamp-1 font-bold">{title}</h3>
+            <span className="text-lg font-semibold text-[var(--color-primary-main)]">{price}$</span>
+
+            <p className="line-clamp-2 flex-1 text-sm text-gray-600">{description}</p>
+
+            <div className="mt-3 flex gap-2">
+              <Button title="Add to cart" className="flex-1 rounded-full px-3 py-2 text-sm" />
+
+              <Button
+                title="View product"
+                variant="secondary"
+                className="flex-1 rounded-full px-3 py-2 text-sm"
+                onClick={() => navigate(`/productDetails/${id}`)}
+              />
+            </div>
+          </div>
+        </CardContent>
+      </Card>
+    </div>
   );
 };
 
