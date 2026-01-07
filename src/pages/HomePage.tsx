@@ -1,11 +1,11 @@
 import CommentSection from '@/components/customercomments/CommentSection';
-import HeroSection from '@/components/HeroSection';
 import { Footer } from '@/components/HomePageComponents/footer';
 import { footer1 } from '../assets/icons';
 import PageSection from '@/layout/PageSection';
 import ProductBar from '@/components/HomePageComponents/ProductBar';
 import { cate, newClothes, topSelling } from '@/store/dummmyData';
 import CategoryBar from '@/components/HomePageComponents/CategoryBar';
+import HeroSection from '@/components/HeroSection';
 
 const HomePage = () => {
   return (

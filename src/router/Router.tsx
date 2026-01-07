@@ -6,8 +6,7 @@ import CategoryPage from '@/pages/CategoryPage';
 import Placeholder from '@/components/Placeholder';
 import PaymentForm from '@/components/PaymentForm';
 import CardItem from '@/components/CommonComponents/CardItem/CardSlider';
-import ProductDetailsPage from '@/pages/ProductDetailsPage';
-
+import StorePage from '@/pages/StorePage';
 const Router = createBrowserRouter([
   {
     path: '/',
@@ -48,12 +47,8 @@ const Router = createBrowserRouter([
         element: <CardItem />,
       },
       {
-        path: '/productDetails/:id',
-        element: <ProductDetailsPage />,
-      },
-      {
-        path: 'top-selling',
-        element: <div>top selling</div>,
+        path: '/store',
+        element: <StorePage />,
       },
     ],
   },
