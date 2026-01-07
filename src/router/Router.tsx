@@ -6,7 +6,9 @@ import CategoryPage from '@/pages/CategoryPage';
 import Placeholder from '@/components/Placeholder';
 import PaymentForm from '@/components/PaymentForm';
 import CardItem from '@/components/CommonComponents/CardItem/CardSlider';
-import StorePage from '@/pages/StorePage';
+import ProductDetailsPage from '@/pages/ProductDetailsPage';
+import Favorite from '@/pages/Favorite';
+
 const Router = createBrowserRouter([
   {
     path: '/',
@@ -49,6 +51,10 @@ const Router = createBrowserRouter([
       {
         path: '/store',
         element: <StorePage />,
+      },
+      {
+        path: '/favorite',
+        element: <Favorite />,
       },
     ],
   },

@@ -8,6 +8,7 @@ interface card {
   rating: number;
   img: string;
   type: 'sale' | 'new';
+  favourite?: boolean;
 }
 
 export const cardData: card[] = [
@@ -20,6 +21,7 @@ export const cardData: card[] = [
     rating: 4,
     img: img101,
     type: 'sale',
+    favourite: false,
   },
 
   {
@@ -31,6 +33,7 @@ export const cardData: card[] = [
     rating: 4,
     img: img102,
     type: 'new',
+    favourite: false,
   },
 
   {
@@ -42,6 +45,7 @@ export const cardData: card[] = [
     rating: 4,
     img: img103,
     type: 'sale',
+    favourite: false,
   },
 
   {
@@ -53,6 +57,7 @@ export const cardData: card[] = [
     rating: 4,
     img: img104,
     type: 'new',
+    favourite: false,
   },
 
   {
@@ -64,6 +69,7 @@ export const cardData: card[] = [
     rating: 4,
     img: img103,
     type: 'sale',
+    favourite: false,
   },
 
   {
@@ -75,6 +81,7 @@ export const cardData: card[] = [
     rating: 4,
     img: img102,
     type: 'new',
+    favourite: false,
   },
 
   {
@@ -86,6 +93,7 @@ export const cardData: card[] = [
     rating: 4,
     img: img104,
     type: 'sale',
+    favourite: false,
   },
 
   {
@@ -97,5 +105,6 @@ export const cardData: card[] = [
     rating: 4,
     img: img101,
     type: 'new',
+    favourite: false,
   },
 ];

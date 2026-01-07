@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { Outlet, useMatches } from 'react-router-dom';
 import Navbar from '../components/CommonComponents/Navbar';
 import SignupBar from '../components/SignupBar';
+import { Toaster } from 'sonner';
 import { cn } from '@/lib/utils';
 
 const RootLayout: React.FC = () => {

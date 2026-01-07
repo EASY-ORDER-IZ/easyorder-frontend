@@ -1,17 +1,79 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Heart, Star } from 'lucide-react';
+import { addToFav, getFavItem } from '@/hooks/useFav';
+import { removeFromLocalStorageById } from '@/utils/localStorage';
+import { SuccessSonner } from '../sonners/SuccessSonner';
+import { DeleteSonner } from '../sonners/DeleteSonner';
 
 interface cardProps {
+  id: number;
   title: string;
   img: string;
   price: number;
   discount?: number;
   rating: number;
   sale?: string;
+  fav?: boolean;
+  heart?: boolean;
 }
 
-const CardImg: React.FC<cardProps> = ({ title, img, price, discount, rating, sale }) => {
-  const [faviorits, setFaviorits] = useState(false);
+const CardImg: React.FC<cardProps> = ({
+  id,
+  title,
+  img,
+  price,
+  discount,
+  rating,
+  sale,
+  fav = false,
+  heart = false,
+}) => {
+  const [favorite, setFavorite] = useState(fav);
+
+  useEffect(() => {
+    const favItem = getFavItem('favorites', id);
+    if (favItem) {
+      setFavorite(true);
+    }
+  }, [id]);
+
+  const handleToggle = () => {
+    const updated = !favorite;
+    setFavorite(updated);
+
+    const payload = {
+      id,
+      title,
+      img,
+      price,
+      discount,
+      rating,
+      sale,
+      fav: updated,
+    };
+
+    if (updated) {
+      addToFav('favorites', payload);
+      setFavorite(true);
+    } else {
+      removeFromLocalStorageById('favorites', id);
+      setFavorite(false);
+    }
+  };
+
+  const handleSuccess = () => {
+    SuccessSonner({
+      title: 'Added to favorites!',
+      placeholder: 'Your changes were saved.',
+    });
+  };
+
+  const handleDelete = () => {
+    DeleteSonner({
+      title: 'Removed from favorites!',
+      placeholder: 'Your selected item was removed.',
+    });
+  };
 
   return (
     <div className="relative h-96 w-[14.5rem] overflow-hidden rounded-[0.3rem] text-white shadow-lg">
@@ -36,8 +98,12 @@ const CardImg: React.FC<cardProps> = ({ title, img, price, discount, rating, sal
         <Heart
           width={22}
           height={22}
-          onClick={() => setFaviorits(!faviorits)}
-          className={`cursor-pointer ${faviorits ? 'fill-red-500 stroke-red-500' : 'stroke-white'}`}
+          onClick={() => {
+            handleToggle();
+            if (!favorite) handleSuccess();
+            else handleDelete();
+          }}
+          className={`cursor-pointer ${favorite || heart ? 'fill-red-500 stroke-red-500' : 'stroke-white'}`}
         />
       </div>
 
