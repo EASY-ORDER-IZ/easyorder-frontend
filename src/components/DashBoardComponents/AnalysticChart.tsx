@@ -1,74 +1,58 @@
 import React from 'react';
-import Chart from 'react-apexcharts';
-import type { ApexOptions } from 'apexcharts';
+import { LineChart, Line, XAxis, CartesianGrid } from 'recharts';
+import { Card, CardContent, CardFooter } from '@/components/ui/card';
+import {
+  ChartContainer,
+  ChartTooltip,
+  ChartTooltipContent,
+  type ChartConfig,
+} from '@/components/ui/chart';
 
-interface AnalyticsChartProps {
-  title: string;
-  labels: string[];
+interface Props {
+  label: string[];
   values: number[];
-  color?: string;
 }
 
-const AnalyticsChart: React.FC<AnalyticsChartProps> = ({
-  title,
-  labels,
-  values,
-  color = 'var(--color-primary-main)',
-}) => {
-  const series = [
-    {
-      name: title,
-      data: values,
-    },
-  ];
+const chartConfig = {
+  desktop: {
+    label: 'Desktop',
+    color: 'var(--color-primary-main)',
+  },
+} satisfies ChartConfig;
 
-  const options: ApexOptions = {
-    chart: {
-      type: 'area',
-      toolbar: { show: false },
-    },
-
-    stroke: {
-      width: 2,
-      curve: 'straight',
-      dashArray: 3,
-      colors: [color],
-    },
-
-    fill: {
-      type: 'gradient',
-      gradient: {
-        opacityFrom: 0.5,
-        opacityTo: 0,
-        colorStops: [
-          { offset: 0, color: color, opacity: 0.35 },
-          { offset: 100, color: color, opacity: 0 },
-        ],
-      },
-    },
-
-    xaxis: {
-      categories: labels,
-      labels: { style: { colors: '#777', fontSize: 'var(--text-sm)' } },
-    },
-
-    yaxis: {
-      labels: { style: { colors: '#777', fontSize: '0.75rem' } },
-    },
-
-    grid: {
-      borderColor: '#e5e5e5',
-      strokeDashArray: 3,
-    },
-
-    dataLabels: { enabled: false },
-  };
+const AnalysticChart: React.FC<Props> = ({ label, values }) => {
+  const chartData = label.map((lbl, i) => ({
+    month: lbl,
+    desktop: values[i] ?? 0,
+  }));
 
   return (
-    <div className="w-[45rem] rounded-lg bg-white p-4">
-      <Chart options={options} series={series} type="area" height={200} />
-    </div>
+    <Card>
+      <CardContent>
+        <ChartContainer config={chartConfig}>
+          <LineChart data={chartData} margin={{ left: 12, right: 12 }}>
+            <CartesianGrid strokeDasharray="3 3" vertical={false} />
+            <XAxis
+              dataKey="month"
+              tickLine={false}
+              axisLine={false}
+              tickMargin={8}
+              tickFormatter={(value) => String(value).slice(0, 3)}
+            />
+            <ChartTooltip cursor={false} content={<ChartTooltipContent hideLabel />} />
+            <Line
+              dataKey="desktop"
+              type="linear"
+              stroke="var(--color-primary-main)"
+              strokeWidth={2}
+              dot={false}
+            />
+          </LineChart>
+        </ChartContainer>
+      </CardContent>
+      <CardFooter className="w-[450px] flex-col items-start gap-2 text-sm"></CardFooter>
+    </Card>
   );
 };
 
-export default AnalyticsChart;
+export default AnalysticChart;

@@ -77,8 +77,7 @@ const StorePage = () => {
           <div className="p-2">
             <h3 className="text-[24px]">{paraData[selectedCard].title}</h3>
             <AnalyticsChart
-              title={selectedCard}
-              labels={chart_data[selectedCard].labels}
+              label={chart_data[selectedCard].labels}
               values={chart_data[selectedCard].values}
             />
           </div>
