@@ -13,7 +13,7 @@ type Props = {
 
 const CartCard = ({ item, onIncrement, onDecrement, onDelete }: Props) => {
   return (
-    <Card key={item.id} className="mt-4 flex w-82 flex-row border-0 shadow-none lg:w-167">
+    <Card key={item.id} className="mt-4 flex w-72 flex-row border-0 shadow-none lg:w-167">
       <div>
         <img src={item.image} alt={item.title} className="size-25 lg:size-31" />
       </div>
@@ -26,13 +26,18 @@ const CartCard = ({ item, onIncrement, onDecrement, onDelete }: Props) => {
             <Button
               variant="ghost"
               size="icon"
-              className="size-6 border-0"
+              className="size-7 border-0"
               onClick={() => onDelete(item.id)}
-              suffixIcon={<Trash2 size={19} className="scale-[0.8] text-red-500 lg:scale-100" />}
+              suffixIcon={
+                <Trash2
+                  size={19}
+                  className="scale-[0.8] text-red-500 hover:text-white lg:scale-100"
+                />
+              }
             />
           </CardHeader>
           <CardContent className="flex w-[80%] flex-col gap-1 px-6 sm:w-[96%]">
-            <p className="text-text-200 flex flex-row gap-1">
+            <p className="text-text-200 flex flex-row items-center gap-1">
               Size: <span className="text-text-200 font-xs text-table-sm">{item.size}</span>
             </p>
             <p className="text-text-200 flex flex-row gap-1">
@@ -48,17 +53,17 @@ const CartCard = ({ item, onIncrement, onDecrement, onDelete }: Props) => {
             <Button
               size="icon"
               variant="ghost"
-              className="size-5 hover:text-white"
+              className="size-5 p-2 hover:text-white"
               onClick={() => onDecrement(item.id)}
-              suffixIcon={<Minus size={15} className="scale-[0.8] lg:scale-100" />}
+              suffixIcon={<Minus size={15} className="scale-[0.8] hover:text-white lg:scale-100" />}
             />
             <span className="w-6 text-center font-medium">{item.quantity}</span>
             <Button
               size="icon"
               variant="ghost"
-              className="size-5 hover:text-white"
+              className="size-5 p-2 hover:text-white"
               onClick={() => onIncrement(item.id)}
-              suffixIcon={<Plus size={15} className="scale-[0.8] lg:scale-100" />}
+              suffixIcon={<Plus size={15} className="scale-[0.8] hover:text-white lg:scale-100" />}
             />
           </div>
         </CardFooter>
