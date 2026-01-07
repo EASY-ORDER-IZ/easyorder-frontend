@@ -22,7 +22,7 @@ export default function CartSummary({
 }: Props) {
   return (
     <Card className="border-border-cards rounded-1xl flex h-96 w-90 flex-col gap-5 border-1 p-4 shadow-none lg:h-114 lg:w-128 lg:gap-6 lg:px-6 lg:py-5">
-      <h2 className="text-6 font-extrabold">Order Summary</h2>
+      <h2 className="text-6 font-extrabold text-[var(--color-primary-main)]">Order Summary</h2>
       <div className="flex flex-col gap-5">
         <div className="flex justify-between text-sm">
           <span className="text-brand-text">Subtotal</span>
@@ -41,7 +41,7 @@ export default function CartSummary({
         <div className="flex w-full justify-center lg:justify-start">
           <div className="bg-border-cards h-[1px] w-full"></div>
         </div>
-        <div className="font-sm flex justify-between text-base">
+        <div className="font-sm flex justify-between text-base text-[var(--color-primary-main)]">
           <span>Total</span>
           <span className="font-extrabold">${total.toFixed(2)}</span>
         </div>
@@ -63,12 +63,13 @@ export default function CartSummary({
         </Button>
       </div>
 
-      <Button variant={'orderbutton'} className="h-14 px-14 py-4 lg:h-16">
-        <div className="flex items-center justify-center gap-3">
-          <span>Go to Checkout</span>
-          <ArrowRight size={16} className="scale-[0.8] lg:scale-100" />
-        </div>
-      </Button>
+      <Button
+        variant="primary"
+        title="Go to checkout "
+        suffixIcon={<ArrowRight color="white" size={16} />}
+        className="mt-4 rounded-full"
+        onClick={() => console.log('Go to checkout')}
+      />
     </Card>
   );
 }

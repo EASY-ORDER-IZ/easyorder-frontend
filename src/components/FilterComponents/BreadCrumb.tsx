@@ -27,7 +27,9 @@ const BreadCrumbComponent = ({ cate, subCate }: Props) => {
           <>
             <BreadcrumbSeparator />
             <BreadcrumbItem>
-              <BreadcrumbPage className="text-md leading-[100%] capitalize">{cate}</BreadcrumbPage>
+              <BreadcrumbPage className="text-md leading-[100%] text-[var(--color-primary-main)] capitalize">
+                {cate}
+              </BreadcrumbPage>
             </BreadcrumbItem>
           </>
         )}
