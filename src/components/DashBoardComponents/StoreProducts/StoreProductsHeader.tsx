@@ -30,9 +30,7 @@ const StoreProductsHome = () => {
           />
         </div>
         <div className="flex items-center gap-3">
-          <div className="w-[25rem]">
-            <SearchComponent />
-          </div>
+          <SearchComponent />
           <AddProducts />
         </div>
       </div>

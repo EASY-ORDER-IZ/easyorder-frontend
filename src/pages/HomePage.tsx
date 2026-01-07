@@ -5,8 +5,7 @@ import PageSection from '@/layout/PageSection';
 import ProductBar from '@/components/HomePageComponents/ProductBar';
 import { cate, newClothes, topSelling } from '@/store/dummmyData';
 import CategoryBar from '@/components/HomePageComponents/CategoryBar';
-import Full from '@/layout/Full';
-import type HeroSection from '@/components/HeroSection';
+import HeroSection from '@/components/HeroSection';
 
 const HomePage = () => {
   return (
@@ -26,9 +25,9 @@ const HomePage = () => {
       <PageSection>
         <CommentSection />
       </PageSection>
-      <Full>
-        <Footer src={footer1} alt="Footer Background" className="h-[363px]" />
-      </Full>
+      <PageSection>
+        <Footer src={footer1} alt="Footer Background" className="h-[363px] w-full" />
+      </PageSection>
     </div>
   );
 };

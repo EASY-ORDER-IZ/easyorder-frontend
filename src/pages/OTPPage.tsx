@@ -2,7 +2,7 @@ import React, { useMemo, useState } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import InputOTPPattern from '@/components/SignUpPageComponents/OTP';
 import { Button } from '@/components/ui/button/button';
-import { OTP_img } from '@/assets/icons';
+// import { OTP_img } from '@/assets/icons';
 import { Link } from 'react-router-dom';
 import OTPTimer from '@/components/SignUpPageComponents/OTPTimer';
 import axios from 'axios';
@@ -41,7 +41,7 @@ const OTPPage: React.FC = () => {
       <div className="hidden w-[360px] shrink-0 lg:block">
         <div className="relative h-[520px] w-full overflow-hidden rounded-2xl">
           <img
-            src={OTP_img}
+            // src={OTP_img}
             alt="OTP Verification"
             className="absolute inset-0 h-full w-full object-cover"
           />

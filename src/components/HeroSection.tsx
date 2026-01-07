@@ -5,18 +5,18 @@ import Counter from '@/hooks/counter';
 import Pailroots from '../assets/svg/Pailroots';
 import Collecttive from '@/assets/svg/Collecttive';
 import Watan from '../assets/svg/Watan';
-import aa from '../assets/images/rula.png';
+import Rula from '@/assets/svg/Rula';
 import star from '../assets/images/star.png';
-const HeroSection = () => {
+// const HeroSection = () => {
 import Full from '@/layout/Full';
 
 const HeroSection: React.FC = () => {
-  const { t } = useTranslation();
+  // const { t } = useTranslation();
 
   return (
     <>
-      <div className="">
-        <div className="flex w-full items-center justify-between px-5 py-4 lg:py-0">
+      <div className="relative">
+        <div className="flex w-full items-center justify-between lg:py-0">
           <div className="flex flex-col items-center gap-5 px-14 lg:items-start">
             <div className="flex w-full flex-col items-center justify-center gap-4 lg:max-w-[89%]">
               <span className="text-text-primary text-title font-poppins leading-17 font-extrabold">
@@ -55,35 +55,16 @@ const HeroSection: React.FC = () => {
               </div>
             </div>
           </div>
-          <div className="max-w-[65%]">
-            <img src={bb} className="hidden object-cover lg:flex lg:h-[37.5rem] lg:w-[40.6rem]" />
-            <div className="">
-              <img src={star} alt="" className="lg:absolute lg:top-1 lg:right-0" />
-              <img
-                src={star}
-                alt=""
-                className="lg:absolute lg:top-17 lg:right-23 lg:h-[4rem] lg:w-[3.5rem]"
-              />
+          <div className="relative max-w-[65%]">
+            <img src={bb} className="hidden object-cover lg:block lg:h-[37.5rem] lg:w-[40.6rem]" />
+            <div className="hidden lg:block">
+              <img src={star} alt="" className="absolute top-1 right-0" />
+              <img src={star} alt="" className="absolute top-17 right-23 h-[4rem] w-[3.5rem]" />
             </div>
           </div>
           <div className="hidden w-20 lg:flex"></div>
         </div>
-
-        <div className="relative hidden md:block">
-          <img
-            src={star}
-            alt=""
-            className="absolute top-4 right-12 hidden h-[76px] w-[76px] sm:top-2 sm:right-4 sm:h-[104px] sm:w-[104px] md:block"
-          />
-          <img
-            src={star}
-            alt="Star"
-            className="absolute hidden sm:w-[56px] md:top-22 md:right-28 md:block md:h-[56px]"
-          />
-          <LandingBg className="hidden object-cover md:block" />
-        </div>
       </div>
-
       <Full>
         <div className="bg-background-900 w-full py-6 md:py-10">
           <div className="flex items-center justify-around overflow-x-auto">
@@ -94,7 +75,7 @@ const HeroSection: React.FC = () => {
           </div>
         </div>
       </Full>
-    </div>
+    </>
   );
 };
 

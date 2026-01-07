@@ -1,45 +1,57 @@
 import { Input } from '@/components/ui/input';
+import { useProductStore, type Product } from '@/store/productStore';
 import { Camera, Search } from 'lucide-react';
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 
-type User = { name?: string };
+interface Props {
+  onProductSelect?: (product: Product) => void;
+  placeholder?: string;
+}
 
-const SearchComponent = () => {
+const SearchComponent = ({ placeholder = 'Search for products...' }: Props) => {
   const [input, setInput] = useState('');
-  const [results, setResults] = useState<User[]>([]);
   const [showBox, setShowBox] = useState(false);
+  const products = useProductStore((state) => state.products);
 
-  const fetchData = (value: string) => {
-    fetch('https://jsonplaceholder.typicode.com/users')
-      .then((response) => response.json() as Promise<User[]>)
-      .then((data) => {
-        const result = value.toLowerCase();
-        const filtered = data.filter((user) => user.name?.toLowerCase().includes(result));
-        setResults(filtered);
-        setShowBox(true);
-      })
-      .catch((err) => console.error(err));
-  };
+  const filteredProducts = useMemo(() => {
+    if (!input.trim()) return [];
+    return products.filter(
+      (product) =>
+        product.name.toLowerCase().includes(input.toLowerCase()) ||
+        product.category?.toLowerCase().includes(input.toLowerCase()),
+    );
+  }, [products, input]);
 
   const handleChange = (value: string) => {
     setInput(value);
-    if (value.trim() === '') {
-      setShowBox(false);
-      setResults([]);
-    } else {
-      fetchData(value);
-    }
+    setShowBox(value.trim() !== '');
   };
 
+  // const handleProductClick = (product: Product) => {
+  //   onProductSelect?.(product);
+  //   setShowBox(false);
+  //   setInput('');
+  // };
+
+  // const handleChange = (value: string) => {
+  //   setInput(value);
+  //   if (value.trim() === '') {
+  //     setShowBox(false);
+  //     setResults([]);
+  //   } else {
+  //     fetchData(value);
+  //   }
+  // };
+
   return (
-    <div className="relative flex w-[30.5rem] flex-col items-center gap-1">
+    <div className="relative flex w-[27rem] flex-col items-center gap-1">
       <Input
         prefixIcon={<Search size={16} className="text-text-secondary" />}
         suffixIcon={<Camera size={16} className="text-text-secondary" />}
         value={input}
         onChange={(e) => handleChange(e.target.value)}
         type="search"
-        placeholder="Search for products..."
+        placeholder={placeholder}
         className="no-cancel"
       />
 
@@ -47,13 +59,13 @@ const SearchComponent = () => {
         <div className="custom-shadow bg-background absolute top-full right-0 left-0 z-10 mt-2 flex max-h-60 flex-col gap-2 overflow-y-scroll rounded-sm p-2">
           <span className="suggestion-text text-text-secondary">Suggestions</span>
           <div className="flex w-full flex-col gap-1.5">
-            {results.length > 0 ? (
-              results.map((user, index) => (
+            {filteredProducts.length > 0 ? (
+              filteredProducts.map((products, index) => (
                 <div
                   key={index}
                   className="bg-background hover:text-background hover:bg-accent-primary cursor-pointer rounded-sm p-1"
                 >
-                  <span className="button-text"> {user.name}</span>
+                  <span className="button-text"> {products.name}</span>
                 </div>
               ))
             ) : (

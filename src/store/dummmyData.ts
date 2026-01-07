@@ -42,10 +42,6 @@ export const cate = [
   { id: 2, name: 'Casual', img: cate2 },
   { id: 3, name: 'Sports', img: cate3 },
   { id: 4, name: 'Modest', img: cate4 },
-  { id: 5, name: 'Classic', img: top1 },
-  { id: 6, name: 'Islamic', img: top2 },
-  { id: 7, name: 'Men', img: top3 },
-  { id: 8, name: 'Women', img: top4 },
 ];
 export const reviews: Review[] = [
   {

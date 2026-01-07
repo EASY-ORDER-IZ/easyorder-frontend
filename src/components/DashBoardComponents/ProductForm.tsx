@@ -15,8 +15,8 @@ const ACCEPTED_FILE_TYPES = ['image/jpeg', 'image/png', 'image/jpg'];
 
 const productFormSchema = z.object({
   productName: z.string().min(2),
-  price: z.coerce.number().min(0),
-  services: z.coerce.number().min(0),
+  price: z.string(),
+  services: z.string(),
   category: z.string().min(1),
   images: z
     .custom<FileList>()
@@ -27,7 +27,11 @@ const productFormSchema = z.object({
 
 type ProductFormType = z.infer<typeof productFormSchema>;
 
-const ProductForm = () => {
+interface ProductFormProps {
+  onClose?: () => void;
+}
+
+const ProductForm = ({ onClose }: ProductFormProps = {}) => {
   const [open, setOpen] = useState(false);
   const [preview, setPreview] = useState<string[]>([]);
 
@@ -42,7 +46,21 @@ const ProductForm = () => {
     return dt.files;
   };
 
-  const disable = !form.formState.isValid;
+  const hasRequiredFields =
+    form.watch('productName')?.length >= 2 &&
+    parseFloat(form.watch('price') || '0') > 0 &&
+    parseFloat(form.watch('services') || '0') >= 0 &&
+    form.watch('category')?.length >= 1 &&
+    preview.length > 0;
+
+  const disable = !hasRequiredFields;
+
+  // Debug: Log form state to see what's invalid
+  console.log('Form state:', {
+    isValid: form.formState.isValid,
+    errors: form.formState.errors,
+    values: form.getValues(),
+  });
 
   const addProduct = useProductStore((state) => state.addProduct);
 
@@ -51,9 +69,10 @@ const ProductForm = () => {
       id: crypto.randomUUID(),
       name: data.productName,
       img: preview[0],
-      price: data.price,
+      price: parseFloat(data.price),
       status: 'active' as const,
-      services: data.services,
+      services: parseFloat(data.services),
+      category: data.category,
       createdAt: new Date().toLocaleDateString('en-US', {
         month: 'short',
         day: 'numeric',
@@ -67,6 +86,7 @@ const ProductForm = () => {
 
     setOpen(false);
     form.reset();
+    onClose?.();
   };
 
   return (

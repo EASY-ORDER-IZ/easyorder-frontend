@@ -1,5 +1,5 @@
 import { useState, type FC } from 'react';
-import { NavLink, useSearchParams } from 'react-router-dom';
+import { NavLink, useNavigate, useSearchParams } from 'react-router-dom';
 import { CircleUserRound, Heart, Menu, ShoppingCart, X, Search } from 'lucide-react';
 import LogoSVG from '@/assets/svg/logo';
 import mobileLogo from '@/assets/svg/mobileLogo.svg';
@@ -17,31 +17,20 @@ const Navbar: FC<NavbarProps> = () => {
 
   const toggleMenu = () => setIsOpen((prev) => !prev);
   const closeMenu = () => setIsOpen(false);
+  const navigate = useNavigate();
 
   const switchDialog = (target: 'sign-in' | 'sign-up' | 'forget-password' | 'email-verfiy') => {
     setSearchParams({ auth: target });
   };
 
-  return (
-    <nav className="font-satoshi relative z-50 w-full bg-white text-base">
-      <div
-        className={`bg-background ${
-          searchParams || isModalOpen ? '' : 'sticky top-0 z-70'
-        } w-full py-3 lg:py-4`}
-      >
-        <div className="flex w-full items-center justify-between lg:hidden">
-          <div className="flex items-center gap-3">
-            <NavLink to="/wish">
-              <Heart className="text-text-secondary h-5 w-5 cursor-pointer" />
-            </NavLink>
-
+  const linkClasses = 'font-medium text-text-primary hover:text-[var(--color-primary-main)]';
   return (
     <nav className="font-satoshi relative mt-4 px-4 sm:px-8 lg:px-12">
       <div className="relative flex items-center gap-8">
         <div className="flex shrink-0 items-center gap-3">
           <div className="text-text-secondary flex gap-4 sm:hidden">
             <Heart size={20} className="cursor-pointer" />
-            <ShoppingCart size={20} className="cursor-pointer" />
+            <ShoppingCart size={20} className="cursor-pointer" onClick={() => navigate('/cart')} />
           </div>
 
           <LogoSVG className="hidden h-auto w-[8.5rem] sm:block lg:w-[10.5rem]" />
@@ -50,7 +39,7 @@ const Navbar: FC<NavbarProps> = () => {
           <img src={mobileLogo} alt="Mobile Logo" className="h-[2rem]" />
         </div>
 
-        <div className="mt-6 hidden items-center justify-between gap-8 md:flex">
+        <div className="mt-2 hidden items-center justify-between gap-8 md:flex">
           <NavLink to="/" className={linkClasses}>
             Home
           </NavLink>
@@ -84,6 +73,7 @@ const Navbar: FC<NavbarProps> = () => {
           <ShoppingCart
             size={24}
             className="cursor-pointer hover:text-[var(--color-primary-main)]"
+            onClick={() => navigate('/cart')}
           />
           <Heart size={24} className="cursor-pointer hover:text-[var(--color-primary-main)]" />
           <CircleUserRound

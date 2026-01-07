@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   Dialog,
   DialogContent,
@@ -9,11 +9,18 @@ import {
 } from '@/components/ui/dialog';
 import { Plus } from 'lucide-react';
 import ProductForm from './ProductForm';
+
 const AddProducts = () => {
+  const [open, setOpen] = useState(false);
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
   return (
     <div>
-      <Dialog>
-        <DialogTrigger>
+      <Dialog open={open} onOpenChange={setOpen}>
+        <DialogTrigger asChild>
           <div className="rounded-7xl flex w-[11rem] cursor-pointer items-center gap-3 bg-[var(--color-primary-main)] p-3 p-4 text-white">
             <Plus size={24} color="white" />
             <span>Add Products</span>
@@ -25,7 +32,7 @@ const AddProducts = () => {
               Add Your new Product
             </DialogTitle>
             <DialogDescription>
-              <ProductForm />
+              <ProductForm onClose={handleClose} />
             </DialogDescription>
           </DialogHeader>
         </DialogContent>
