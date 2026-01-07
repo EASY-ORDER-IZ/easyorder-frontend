@@ -76,10 +76,15 @@ const CardImg: React.FC<cardProps> = ({
   };
 
   return (
-    <div className="relative h-96 w-[16.5rem] overflow-hidden rounded-[0.3rem] text-white shadow-lg">
-      <img src={img} alt={title} className="absolute top-0 left-0 h-full w-full object-cover" />
+    <div className="relative h-96 w-[14.5rem] overflow-hidden rounded-[0.3rem] text-white shadow-lg">
+      {/* Image */}
+      <img src={img} alt="Product" className="absolute inset-0 h-full w-full object-cover" />
 
-      <div className="absolute top-3 right-5 left-2 flex items-center justify-between">
+      {/* 🔥 Bottom gray gradient overlay */}
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black/70 via-black/40 to-transparent" />
+
+      {/* Top badges */}
+      <div className="absolute top-3 right-5 left-2 z-10 flex items-center justify-between">
         <div
           className={`${
             sale?.toLowerCase() === 'sale'
@@ -87,7 +92,7 @@ const CardImg: React.FC<cardProps> = ({
               : 'bg-[linear-gradient(to_right,oklch(0.35_0.11_200deg/_0.54),oklch(0.43_0.13_195deg/_0.91))]'
           } w-[4.75rem] rounded-[0.4rem] px-3 py-1 text-center text-sm`}
         >
-          <span>{sale}</span>
+          {sale}
         </div>
 
         <Heart
@@ -102,24 +107,27 @@ const CardImg: React.FC<cardProps> = ({
         />
       </div>
 
-      <div className="absolute right-2 bottom-2 left-2 flex flex-col gap-3">
-        <span className="text-Poppins font-weight-500 text-[1.25rem]">{title}</span>
+      <div className="absolute right-2 bottom-2 left-2 z-10 flex flex-col gap-3">
+        <span className="font-poppins text-[1.25rem] font-medium">{title}</span>
 
-        <div className="flex w-full items-center justify-between">
-          <div className="flex gap-3">
-            <span className="text-xs">{price}$</span>
-            {discount && <del className="text-text-200 text-xs">250$</del>}
+        <div className="flex items-center justify-between">
+          <div className="flex gap-2">
+            <span className="text-xs">${price}</span>
+            {discount && <del className="text-text-200 text-xs">${discount}</del>}
           </div>
 
-          <div className="relative flex items-center">
-            <Star className="h-4 w-4 stroke-yellow-400" />
-            <div
-              className="absolute inset-0 overflow-hidden"
-              style={{ width: `${(rating / 5) * 100}%` }}
-            >
-              <Star className="h-4 w-4 fill-yellow-400 stroke-yellow-400" />
+          <div className="relative flex flex-row-reverse items-center gap-1">
+            <span className="text-xs">{rating.toFixed(1)}</span>
+
+            <div className="relative h-4 w-4">
+              <Star className="absolute inset-0 h-4 w-4 stroke-yellow-400" />
+              <div
+                className="absolute inset-0 overflow-hidden"
+                style={{ width: `${(rating / 5) * 100}%` }}
+              >
+                <Star className="h-4 w-4 fill-yellow-400 stroke-yellow-400" />
+              </div>
             </div>
-            <span className="ml-1 text-xs">{rating.toFixed(1)}</span>
           </div>
         </div>
       </div>

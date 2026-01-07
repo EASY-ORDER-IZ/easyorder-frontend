@@ -9,9 +9,10 @@ import {
 import { NavLink } from 'react-router-dom';
 interface Props {
   cate?: string;
+  subCate?: string;
 }
 
-const BreadCrumbComponent = ({ cate }: Props) => {
+const BreadCrumbComponent = ({ cate, subCate }: Props) => {
   return (
     <Breadcrumb>
       <BreadcrumbList>
@@ -26,7 +27,19 @@ const BreadCrumbComponent = ({ cate }: Props) => {
           <>
             <BreadcrumbSeparator />
             <BreadcrumbItem>
-              <BreadcrumbPage className="text-md leading-[100%] capitalize">{cate}</BreadcrumbPage>
+              <BreadcrumbPage className="text-md leading-[100%] text-[var(--color-primary-main)] capitalize">
+                {cate}
+              </BreadcrumbPage>
+            </BreadcrumbItem>
+          </>
+        )}
+        {subCate && (
+          <>
+            <BreadcrumbSeparator />
+            <BreadcrumbItem>
+              <BreadcrumbPage className="text-md leading-[100%] capitalize">
+                {subCate}
+              </BreadcrumbPage>
             </BreadcrumbItem>
           </>
         )}

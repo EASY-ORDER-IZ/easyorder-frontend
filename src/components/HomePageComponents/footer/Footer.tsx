@@ -1,5 +1,4 @@
 import React from 'react';
-
 import LogoSVG from '@/assets/svg/logo';
 
 type FooterBackgroundProps = React.HTMLAttributes<HTMLElement> & {
@@ -11,16 +10,17 @@ type FooterBackgroundProps = React.HTMLAttributes<HTMLElement> & {
 const Footer: React.FC<FooterBackgroundProps> = ({ src, alt = '', className = '' }) => {
   return (
     <footer className={`relative w-full overflow-hidden ${className}`}>
-      <img src={src} alt={alt} className="absolute inset-0 h-full w-full object-cover" />
+      <img
+        src={src}
+        alt={alt}
+        className="absolute inset-0 h-[80px] w-[400px] sm:h-full sm:w-full sm:object-cover md:h-full"
+      />
 
-      <div className="relative flex h-full w-full items-end justify-center">
-        <div className="flex w-full max-w-[1229px] flex-col items-center gap-4 px-4 py-6 sm:py-8 md:py-10 lg:flex-row lg:gap-[246px] lg:py-10">
-          <LogoSVG
-            className="mb-1 flex max-w-[60%] sm:max-w-[50%] md:max-w-[40%] lg:max-w-[100%]"
-            color="white"
-          />
+      <div className="relative flex h-full w-full items-end justify-center px-4">
+        <div className="flex w-full max-w-[1129px] flex-col items-center gap-3 pb-6 lg:flex-row lg:items-center lg:justify-between lg:gap-6">
+          <LogoSVG color="white" className="" />
 
-          <span className="text-center text-xs text-white sm:text-sm md:text-sm">
+          <span className="text-[10px] text-white sm:text-xs md:text-sm lg:text-sm">
             FirstChance © 2025, All Rights Reserved to IztechValley
           </span>
         </div>
@@ -28,4 +28,5 @@ const Footer: React.FC<FooterBackgroundProps> = ({ src, alt = '', className = ''
     </footer>
   );
 };
+
 export default Footer;

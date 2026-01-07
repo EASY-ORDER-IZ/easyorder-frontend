@@ -1,62 +1,122 @@
 import FliterComponent from '@/components/FilterComponents/Filter';
-import BreadCrumbComponent from '@/components/FilterComponents/BreadCrumb';
-import { useParams } from 'react-router-dom';
-import Sort from '@/components/FilterComponents/Sort';
 import ProductPagination from '@/components/ProductComponents/Pagination';
-import { newClothes } from '@/store/staticData';
-import { useState } from 'react';
-import ProductCard from '@/components/ProductComponents/ProductCard';
+import { products } from '@/store/dummmyData';
+import { useState, useEffect } from 'react';
 import { Separator } from '@/components/ui/separator';
+import FilterGroup from '@/components/FilterComponents/FilterGroup';
+import AppliedFilters from '@/components/FilterComponents/AppliedFilters';
+import DrawerComponent from '@/components/FilterComponents/Drawer';
+import CateTabs from '@/components/FilterComponents/Tabs';
 
 const CategoryPage = () => {
-  const { title } = useParams();
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 9;
+  const [appliedFilters, setAppliedFilters] = useState<string[]>([]);
+  const [priceRange, setPriceRange] = useState<[number, number]>([0, 250]);
+  const [tempFilters, setTempFilters] = useState<string[]>([]);
+  const [tempPriceRange, setTempPriceRange] = useState<[number, number]>([0, 250]);
+  const [hasProducts, setHasProducts] = useState(true);
+  const [activeTab, setActiveTab] = useState<'all' | 'men' | 'women' | 'kids'>('all');
 
-  const totalItems = newClothes.length;
+  const getFilteredCount = () => {
+    let filtered = products.filter((p) => {
+      const matchesFilters =
+        appliedFilters.length === 0 ||
+        appliedFilters.some(
+          (filter) =>
+            p.category?.includes(filter) ||
+            p.subcategory?.includes(filter) ||
+            p.title?.toLowerCase().includes(filter.toLowerCase()) ||
+            (p.sizes && p.sizes.includes(filter)),
+        );
+
+      const matchesPrice = p.price >= priceRange[0] && p.price <= priceRange[1];
+      return matchesFilters && matchesPrice;
+    });
+
+    if (activeTab === 'women') filtered = filtered.filter((p) => p.gender === 'Women');
+    else if (activeTab === 'men') filtered = filtered.filter((p) => p.gender === 'Men');
+    else if (activeTab === 'kids') filtered = filtered.filter((p) => p.gender === 'Kids');
+
+    return filtered.length;
+  };
+
+  const totalItems = getFilteredCount();
   const totalPages = Math.max(1, Math.ceil(totalItems / itemsPerPage));
 
   if (currentPage > totalPages) setCurrentPage(totalPages);
 
-  const firstIndex = (currentPage - 1) * itemsPerPage;
-  const currentProducts = newClothes.slice(firstIndex, firstIndex + itemsPerPage);
+  // Reset to page 1 when tab changes
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [activeTab]);
 
   return (
-    <div className="flex flex-col gap-6">
-      <BreadCrumbComponent cate={title} />
+    <div className="mt-4 flex flex-col gap-6">
+      <AppliedFilters
+        appliedFilters={appliedFilters}
+        setAppliedFilters={setAppliedFilters}
+        setTempFilters={setTempFilters}
+      />
 
       <div className="flex w-full gap-6">
-        <div className="hidden flex-col gap-5 sm:flex">
-          <FliterComponent />
+        <div className="sm:hidden">
+          <DrawerComponent
+            appliedFilters={tempFilters}
+            setAppliedFilters={setTempFilters}
+            priceRange={tempPriceRange}
+            setPriceRange={setTempPriceRange}
+            onApplyFilters={() => {
+              setAppliedFilters(tempFilters);
+              setPriceRange(tempPriceRange);
+            }}
+          />
+        </div>
+
+        <div className="hidden w-[400px] flex-col gap-5 sm:flex">
+          <FliterComponent
+            appliedFilters={tempFilters}
+            setAppliedFilters={setTempFilters}
+            priceRange={tempPriceRange}
+            setPriceRange={setTempPriceRange}
+            onApplyFilters={() => {
+              setAppliedFilters(tempFilters);
+              setPriceRange(tempPriceRange);
+            }}
+          />
         </div>
 
         <div className="flex flex-col items-center justify-center gap-5">
           <div className="inline-block w-full">
             <div className="inline-block w-auto align-top">
-              <div className="mb-4 flex w-full justify-between">
-                <div className="w-full">
-                  <Sort min={1} max={10} total={100} title={title} />
-                </div>
-              </div>
+              <div className="max-w-full p-2">
+                <CateTabs activeTab={activeTab} setActiveTab={setActiveTab} />
 
-              <div className="grid grid-cols-2 gap-4 sm:grid-cols-3">
-                {currentProducts.map((p, idx) => (
-                  <ProductCard key={idx} product={p} />
-                ))}
+                <FilterGroup
+                  appliedFilters={appliedFilters}
+                  priceRange={priceRange}
+                  currentPage={currentPage}
+                  itemsPerPage={itemsPerPage}
+                  activeTabb={activeTab}
+                  onHasProducts={setHasProducts}
+                />
               </div>
 
               <div className="mt-6">
                 <Separator />
               </div>
 
-              <div className="mt-4 flex justify-center">
-                <ProductPagination
-                  totalItems={totalItems}
-                  itemsPerPage={itemsPerPage}
-                  currentPage={currentPage}
-                  setCurrentPage={setCurrentPage}
-                />
-              </div>
+              {hasProducts && (
+                <div className="mt-4 flex justify-center">
+                  <ProductPagination
+                    totalItems={totalItems}
+                    itemsPerPage={itemsPerPage}
+                    currentPage={currentPage}
+                    setCurrentPage={setCurrentPage}
+                    totalPages={totalPages}
+                  />
+                </div>
+              )}
             </div>
           </div>
         </div>

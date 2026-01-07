@@ -1,4 +1,14 @@
 @font-face {
-  font-family: pop;
-  src: url('../src/assets/fonts/Poppins-Regular.ttf');
+  font-family: 'Poppins';
+  src: url('../assets/fonts/Poppins-Regular.ttf');
+}
+
+@font-face {
+  font-family: 'Satoshi';
+  src: url('../assets/fonts/Satoshi-Regular.otf');
+}
+
+@font-face {
+  font-family: 'Integral';
+  src: url('../assets/fonts/Fontspring-DEMO-integralcf-regular.otf');
 }

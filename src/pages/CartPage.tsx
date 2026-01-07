@@ -86,14 +86,14 @@ const CartPage = () => {
 
   return (
     <div className="flex w-full flex-col gap-8">
-      <div className="flex h-full w-full flex-col gap-4 px-25">
+      <div className="flex h-full w-full flex-col gap-4">
         <BreadCrumbComponent cate="cart" />
 
         <h1 className="font-integral text-h2 leading-h1 text-left font-bold">Your cart</h1>
 
         <div className="flex flex-col gap-5 lg:flex-row">
           {/* Cart Items */}
-          <div className="border-border-cards rounded-1xl left-4 flex w-89.5 flex-col gap-6 border p-4 lg:w-179 lg:px-6 lg:py-5">
+          <div className="border-border-cards rounded-1xl left-4 flex max-h-[28rem] w-89.5 flex-col gap-6 overflow-x-hidden overflow-y-auto border p-4 lg:w-179 lg:px-6 lg:py-5">
             {cartItems.map((item, index) => (
               <div key={item.id} className="flex flex-col gap-4">
                 <CartCard
