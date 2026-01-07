@@ -19,11 +19,14 @@ const Navbar: FC<NavbarProps> = () => {
   const closeMenu = () => setIsOpen(false);
   const navigate = useNavigate();
 
+  const linkClasses =
+    'text-text-secondary cursor-pointer font-stoshie hover:text-[var(--color-primary-main)]';
+
   const switchDialog = (target: 'sign-in' | 'sign-up' | 'forget-password' | 'email-verfiy') => {
     setSearchParams({ auth: target });
   };
 
-  const linkClasses = 'font-medium text-text-primary hover:text-[var(--color-primary-main)]';
+  // const linkClasses = 'font-medium text-text-primary hover:text-[var(--color-primary-main)]';
   return (
     <nav className="font-satoshi relative mt-4 px-4 sm:px-8 lg:px-12">
       <div className="relative flex items-center gap-8">
