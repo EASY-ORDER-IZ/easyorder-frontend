@@ -16,6 +16,7 @@ const Router = createBrowserRouter([
       {
         index: true,
         element: <HomePage />,
+        handle: { noPadding: true },
       },
       {
         path: 'about',
@@ -31,7 +32,7 @@ const Router = createBrowserRouter([
         element: <CartPage />,
       },
       {
-        path: 'category',
+        path: 'categories',
         element: <CategoryPage />,
       },
       {

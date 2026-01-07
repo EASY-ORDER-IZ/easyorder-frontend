@@ -52,7 +52,7 @@ const CategoryPage = () => {
   }, [activeTab]);
 
   return (
-    <div className="flex flex-col gap-6 p-3 px-22">
+    <div className="mt-4 flex flex-col gap-6">
       <AppliedFilters
         appliedFilters={appliedFilters}
         setAppliedFilters={setAppliedFilters}

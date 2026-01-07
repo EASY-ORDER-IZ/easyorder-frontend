@@ -23,10 +23,10 @@ const FliterComponent: React.FC<Props> = ({
   onApplyFilters,
 }) => {
   return (
-    <div className="border-button-bg/10 rounded-1xl flex w-full max-w-[290px] flex-col gap-6 border px-6 py-5">
+    <div className="border-button-bg/10 rounded-1xl flex w-full max-w-[390px] flex-col gap-6 border px-2 py-5">
       <div className="flex w-full justify-between">
         <span className="text-h3 leading-full flex font-bold">Filters</span>
-        <SlidersVertical size={24} className="opacity-40" />
+        <SlidersVertical size={24} className="mt-3 opacity-40" />
       </div>
       <Separator />
       <TypeFilter

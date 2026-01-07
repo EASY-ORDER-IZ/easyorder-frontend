@@ -16,9 +16,11 @@ const RootLayout: React.FC = () => {
     <div className="flex min-h-screen flex-col gap-8">
       <SignupBar />
 
-      <main className={cn('flex w-full flex-1 flex-col', noPadding ? 'p-0' : 'px-14')}>
+      <main className={cn('flex w-full flex-1 flex-col', noPadding ? 'p-0' : 'px-8')}>
         <Navbar isModalOpen={isModalOpen} />
-        <Outlet />
+        <div className={`${noPadding ? 'p-0' : 'px-12'}`}>
+          <Outlet />
+        </div>
       </main>
 
       <AuthDialogController />
