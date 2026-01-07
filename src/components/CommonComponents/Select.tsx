@@ -1,55 +1,80 @@
 import * as React from 'react';
 import {
-  Select,
+  Select as UISelect,
   SelectContent,
-  SelectGroup,
   SelectItem,
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select';
-import { cn } from '@/lib/utils';
 
-interface OptionItem {
-  label?: string;
+interface Option {
+  id: string;
+  label: string;
   value: string;
 }
 
-interface SelectComponentProps {
-  data: OptionItem[];
-  placeholder?: string;
+interface SelectProps {
+  placeholder: string;
+  data: Option[];
   className?: string;
-  onValueChange?: (value: string) => void;
+  triggerClassName?: string;
+  onChange?: (value: string) => void;
+  variant?: 'default' | 'minimal';
 }
 
-const SelectComponent: React.FC<SelectComponentProps> = ({
-  data,
+const Select: React.FC<SelectProps> = ({
   placeholder,
-  className,
-  onValueChange,
+  data,
+  className = '',
+  triggerClassName = '',
+  onChange,
+  variant = 'default',
 }) => {
-  const [value] = React.useState<string | undefined>(undefined);
+  const minimalStyles = `
+    border-none
+    outline-none
+    ring-0
+    focus:ring-0
+    focus:ring-offset-0
+    shadow-none
+    bg-transparent
+    h-auto
+    px-0
+  `;
+
+  const defaultStyles = `
+    border
+    border-input
+    rounded-md
+    px-3
+    h-10
+  `;
 
   return (
-    <Select value={value} onValueChange={onValueChange}>
-      <SelectTrigger className={cn('w-[180px]', className)}>
-        <SelectValue placeholder={placeholder || 'Select...'} />
-      </SelectTrigger>
+    <div className={`flex flex-col gap-2 ${className}`}>
+      <span>{placeholder}</span>
 
-      <SelectContent>
-        <SelectGroup>
+      <UISelect onValueChange={onChange}>
+        <SelectTrigger
+          className={`min-w-0 ${variant === 'minimal' ? minimalStyles : defaultStyles} ${triggerClassName}`}
+        >
+          <SelectValue placeholder="Select" />
+        </SelectTrigger>
+
+        <SelectContent className="max-h-60 overflow-y-auto rounded-md border bg-white shadow-lg">
           {data.map((item) => (
             <SelectItem
               key={item.value}
               value={item.value}
-              className="mt-2 hover:bg-[var(--color-primary-main)] hover:text-white"
+              className="px-3 py-2 whitespace-nowrap text-gray-600 hover:bg-[#D24560] hover:text-white"
             >
               {item.label}
             </SelectItem>
           ))}
-        </SelectGroup>
-      </SelectContent>
-    </Select>
+        </SelectContent>
+      </UISelect>
+    </div>
   );
 };
 
-export default SelectComponent;
+export default Select;

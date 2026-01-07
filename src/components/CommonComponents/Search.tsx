@@ -34,8 +34,8 @@ const SearchComponent = () => {
   return (
     <div className="relative flex w-[30.5rem] flex-col items-center gap-1">
       <Input
-        prefixIcon={<Search size={18} className="text-text-100" />}
-        suffixIcon={<Camera size={18} className="text-text-100" />}
+        prefixIcon={<Search size={16} className="text-text-secondary" />}
+        suffixIcon={<Camera size={16} className="text-text-secondary" />}
         value={input}
         onChange={(e) => handleChange(e.target.value)}
         type="search"
